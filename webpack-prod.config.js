@@ -1,38 +1,33 @@
-const webpack = require('webpack');
 const webpackMerge = require('webpack-merge');
-const AngularCompilerPlugin = require('@ngtools/webpack').AngularCompilerPlugin;
+const webpackNgtools = require('@ngtools/webpack');
+const WebpackMd5Hash = require('webpack-md5-hash');
 const commonConfig = require('./webpack.config.js');
 const helpers = require('./webpack.helpers');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
-
 module.exports = webpackMerge(commonConfig, {
+    mode: 'production',
+
     output: {
         path: helpers.root('prod'),
         publicPath: '/',
-        filename: '[name].js',
-        chunkFilename: '[id].chunk.js'
+        filename: '[name].[chunkhash].js',
     },
+
 
     module: {
         rules: [
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
                 use: '@ngtools/webpack'
-            }
+            },
         ]
     },
 
     plugins: [
-        new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                'ENV': JSON.stringify(ENV)
-            }
-        }),
-        new AngularCompilerPlugin({
+        new webpackNgtools.AngularCompilerPlugin({
             tsConfigPath: helpers.root('tsconfig.json'),
-            entryModule: helpers.root('src/app/app-container.module#AppContainerModule')
-        })
-    ]
+            entryModule: helpers.root('src/app/app.module#AppModule')
+        }),
+        new WebpackMd5Hash(),
+    ],
 });

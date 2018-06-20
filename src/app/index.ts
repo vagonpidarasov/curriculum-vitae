@@ -1,1 +1,1 @@
-export {AppContainerModule} from './app-container.module';
+export {AppModule} from './app.module';

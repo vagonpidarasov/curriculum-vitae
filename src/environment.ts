@@ -1,2 +1,2 @@
-export const isProductionEnvironment:boolean = (process.env.ENV === 'production');
-export const isDevelopmentEnvironment:boolean = (process.env.ENV === 'development');
+export const isProductionEnvironment:boolean = (process.env.NODE_ENV === 'production');
+export const isDevelopmentEnvironment:boolean = (process.env.NODE_ENV === 'development');

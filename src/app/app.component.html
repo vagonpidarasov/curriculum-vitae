@@ -1,0 +1,9 @@
+<header
+    [isAuthenticated]="authenticationStore.isAuthenticated | async"
+    (signIn)="signIn($event)"
+    (signOut)="signOut()"
+></header>
+
+<navigation-bar></navigation-bar>
+
+<router-outlet></router-outlet>

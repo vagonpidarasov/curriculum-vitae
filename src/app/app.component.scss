@@ -1,0 +1,20 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.flex-justify {
+    flex: 1 1 auto;
+}
+
+.ng-app mat-card-actions {
+    display: flex;
+}
+
+button.mat-button {
+    text-transform: uppercase;
+}
+
+.mat-snack-bar-handset .mat-snack-bar-container {
+    border-radius: 0;
+}

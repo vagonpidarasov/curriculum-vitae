@@ -2,31 +2,26 @@
     "compilerOptions": {
         "target": "es5",
         "module": "es2015",
-        "lib": [
-            "es2015",
-            "dom"
-        ],
-        "allowJs": true,
+        "lib": ["es2015", "dom"],
         "moduleResolution": "node",
-        "types": [
-            "node",
-            "webpack",
-            "core-js",
-            "jasmine",
-            "rx"
-        ],
-        "typeRoots": [
-            "node_modules/@types"
-        ],
+        "types": ["node", "webpack", "core-js", "rx"],
+        "typeRoots": ["node_modules/@types"],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
         "noEmitHelpers": true,
-        "jsx": "react",
-        "baseUrl": "./"
+        "baseUrl": "./",
     },
+
     "exclude": [
         "node_modules",
         "./src/**/*.spec.ts"
-    ]
+    ],
+
+    "awesomeTypescriptLoaderOptions": {
+        "resolveGlobs": true,
+        "forkChecker": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false
 }
