@@ -1,7 +1,7 @@
 <header
     [isAuthenticated]="authenticationStore.isAuthenticated | async"
-    (signIn)="signIn($event)"
-    (signOut)="signOut()"
+    (signInRequest)="signInRequest()"
+    (signOutRequest)="signOutRequest()"
 ></header>
 
 <navigation-bar></navigation-bar>

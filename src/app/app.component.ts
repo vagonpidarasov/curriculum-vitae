@@ -1,10 +1,12 @@
 import {Component, ViewEncapsulation, OnInit, OnDestroy} from '@angular/core';
 import {Router, RouterEvent, NavigationCancel} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
-import {Subscription} from 'rxjs';
 
-import {SignInPayload, AuthenticationStore} from 'src/modules/authentication';
+import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
+
+import {AuthenticationStore} from 'src/modules/authentication';
+import {SignInDialogService} from 'src/dialogs';
 
 export const InsufficientPermissionsErrorMsg:string = 'Seems like you don not have permissions';
 
@@ -21,19 +23,22 @@ export class AppComponent implements OnInit, OnDestroy {
     constructor(
         public authenticationStore:AuthenticationStore,
         private router:Router,
-        private snackBar:MatSnackBar
+        private snackBar:MatSnackBar,
+        private signInDialog:SignInDialogService
     ) {}
 
     ngOnInit() {
-        this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated.subscribe(
-            (isAuthenticated:boolean) => !isAuthenticated ? this.router.navigateByUrl('/') : null
-        );
+        this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
+            .pipe(filter((isAuthenticated:boolean) => !isAuthenticated))
+            .subscribe((isAuthenticated:boolean) => this.router.navigateByUrl('/'))
+        ;
 
         this.routerEventsSubscription = this.router.events
             .pipe(filter((event:RouterEvent) => event instanceof NavigationCancel))
             .subscribe((event:NavigationCancel) => this.snackBar.open(
                 InsufficientPermissionsErrorMsg, 'OK', {duration: 2500}
-            ));
+            ))
+        ;
     }
 
     ngOnDestroy() {
@@ -41,11 +46,11 @@ export class AppComponent implements OnInit, OnDestroy {
         this.routerEventsSubscription.unsubscribe();
     }
 
-    signIn(payload:SignInPayload) {
-        this.authenticationStore.signIn(payload);
+    signInRequest() {
+        this.signInDialog.open();
     }
 
-    signOut() {
+    signOutRequest() {
         this.authenticationStore.signOut();
     }
 }

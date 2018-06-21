@@ -1,22 +1,21 @@
-import {Component, ViewEncapsulation, Output, EventEmitter, Input} from '@angular/core';
-import {SignInPayload} from 'src/modules/authentication';
+import {Component, Output, EventEmitter, Input, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
     selector: 'header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss'],
-    encapsulation: ViewEncapsulation.Emulated,
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
     @Input() isAuthenticated:boolean = false;
-    @Output() signIn:EventEmitter<SignInPayload> = new EventEmitter();
-    @Output() signOut:EventEmitter<null> = new EventEmitter();
+    @Output() signInRequest:EventEmitter<null> = new EventEmitter();
+    @Output() signOutRequest:EventEmitter<null> = new EventEmitter();
 
     doSignIn() {
-        this.signIn.emit({username: 'Batman', password: 'Alfred'});
+        this.signInRequest.emit();
     }
 
     doSignOut() {
-        this.signOut.emit();
+        this.signOutRequest.emit();
     }
 }

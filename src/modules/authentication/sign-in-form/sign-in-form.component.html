@@ -1,0 +1,47 @@
+<form [formGroup]="signInForm" (ngSubmit)="submit()">
+    <section>
+        <mat-form-field>
+            <mat-placeholder>Username</mat-placeholder>
+            <input
+                matInput
+                type="text"
+                autocomplete="off"
+                formControlName="username"
+                [minlength]="usernameMinLength"
+                [maxlength]="usernameMaxLength"
+            />
+
+            <!--<mat-icon matPrefix>account_circle</mat-icon>-->
+
+            <mat-error *ngIf="isUsernameMinLengthError">At least {{usernameMinLength}} characters</mat-error>
+        </mat-form-field>
+    </section>
+
+    <section>
+        <mat-form-field>
+            <mat-placeholder>Password</mat-placeholder>
+            <input
+                matInput
+                type="password"
+                autocomplete="off"
+                formControlName="password"
+                [minlength]="passwordMinLength"
+                [maxlength]="passwordMaxLength"
+            />
+
+            <!--<mat-icon matPrefix>lock</mat-icon>-->
+
+            <mat-error *ngIf="isPasswordMinLengthError">At least {{passwordMinLength}} characters</mat-error>
+        </mat-form-field>
+    </section>
+
+    <section class="flex ">
+        <button
+            mat-raised-button
+            type="submit"
+            class="flex-basis-100"
+            color="primary"
+            [disabled]="signInForm.invalid"
+        >Sign In</button>
+    </section>
+</form>

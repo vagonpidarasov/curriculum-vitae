@@ -7,14 +7,16 @@ import {RouterConfig} from './router.config';
 import {HomePageModule} from './home-page';
 import {PublicPageModule} from './public-page';
 
-
+export const RoutingModules = [
+    HomePageModule,
+    PublicPageModule,
+];
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule.forRoot([], RouterConfig),
-        HomePageModule,
-        PublicPageModule,
+        ...RoutingModules,
     ],
     exports: [RouterOutlet],
 })
