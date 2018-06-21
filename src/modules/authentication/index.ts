@@ -1,3 +1,5 @@
+export {AuthenticationRepository} from './authentication.repository';
 export {AuthenticationModule} from './authentication.module';
-export {SignInPayload} from './sign-in-payload.interface';
+export {AuthenticationPayload} from './authentication-payload.interface';
+export {AuthenticationResponse} from './authentication-response.interface';
 export {AuthenticationStore} from './redux/store';

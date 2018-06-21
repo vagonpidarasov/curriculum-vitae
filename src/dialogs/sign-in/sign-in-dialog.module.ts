@@ -1,4 +1,5 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {MatDialogModule} from '@angular/material';
 
 import {AuthenticationModule} from 'src/modules/authentication';
@@ -9,6 +10,7 @@ import {SignInDialogService} from './sign-in-dialog.service';
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
+        CommonModule,
         MatDialogModule,
         AuthenticationModule,
     ],

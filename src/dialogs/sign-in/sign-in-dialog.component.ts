@@ -4,7 +4,7 @@ import {MatDialogRef} from '@angular/material';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {SignInPayload} from 'src/modules/authentication';
+import {AuthenticationPayload} from 'src/modules/authentication';
 import {AuthenticationStore} from 'src/modules/authentication';
 
 @Component({
@@ -16,7 +16,7 @@ export class SignInDialogComponent implements OnInit, OnDestroy {
 
     constructor(
         private dialogRef:MatDialogRef<SignInDialogComponent>,
-        private authenticationStore:AuthenticationStore
+        public authenticationStore:AuthenticationStore
     ) {}
 
     ngOnInit() {
@@ -30,7 +30,7 @@ export class SignInDialogComponent implements OnInit, OnDestroy {
         this.isAuthenticatedSubscription.unsubscribe();
     }
 
-    signIn(payload:SignInPayload) {
+    signIn(payload:AuthenticationPayload) {
         this.authenticationStore.signIn(payload);
     }
 }

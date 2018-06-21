@@ -6,7 +6,7 @@ import {Component, Output, EventEmitter, Input, ChangeDetectionStrategy} from '@
     styleUrls: ['./header.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
+export class HeaderComponent  {
     @Input() isAuthenticated:boolean = false;
     @Output() signInRequest:EventEmitter<null> = new EventEmitter();
     @Output() signOutRequest:EventEmitter<null> = new EventEmitter();

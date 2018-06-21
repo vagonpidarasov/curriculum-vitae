@@ -1,4 +1,13 @@
-import {Component, Output, EventEmitter, Input, ChangeDetectionStrategy} from '@angular/core';
+import {
+    Component,
+    Output,
+    EventEmitter,
+    Input,
+    ChangeDetectionStrategy,
+    SimpleChanges,
+    OnChanges,
+} from '@angular/core';
+
 import {
     FormGroup,
     FormBuilder,
@@ -7,7 +16,7 @@ import {
     AbstractControl,
 } from '@angular/forms';
 
-import {SignInPayload} from 'src/modules/authentication';
+import {AuthenticationPayload} from 'src/modules/authentication';
 
 import {
     USERNAME_VALIDATION_REGEXP,
@@ -26,11 +35,12 @@ import {
     styleUrls: ['./sign-in-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInFormComponent {
+export class SignInFormComponent implements OnChanges {
     @Input() error:string = null;
     @Input() isInProgress:boolean = false;
+    @Input() isAuthenticated:boolean = false;
 
-    @Output() signInRequest:EventEmitter<SignInPayload> = new EventEmitter();
+    @Output() signInRequest:EventEmitter<AuthenticationPayload> = new EventEmitter();
 
     signInForm:FormGroup;
 
@@ -73,8 +83,17 @@ export class SignInFormComponent {
         });
     }
 
+    ngOnChanges(changes:SimpleChanges) {
+        if (changes.isInProgress) {
+            changes.isInProgress.currentValue ?
+                this.signInForm.disable({onlySelf: false}) :
+                this.signInForm.enable({onlySelf: false})
+            ;
+        }
+    }
+
     submit() {
-        if (this.signInForm.valid) {
+        if (this.signInForm.valid && !this.isAuthenticated && !this.isInProgress) {
             this.signInRequest.emit(this.signInForm.value);
         }
     }

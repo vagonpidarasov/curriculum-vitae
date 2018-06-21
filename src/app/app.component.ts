@@ -8,7 +8,7 @@ import {filter} from 'rxjs/operators';
 import {AuthenticationStore} from 'src/modules/authentication';
 import {SignInDialogService} from 'src/dialogs';
 
-export const InsufficientPermissionsErrorMsg:string = 'Seems like you don not have permissions';
+export const InsufficientPermissionsErrorMsg:string = 'Seems like you don\'t have permissions to do that';
 
 @Component({
     selector: 'app',

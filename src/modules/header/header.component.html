@@ -2,8 +2,19 @@
     <mat-toolbar-row>
         <a routerLink="/" routerLinkActive="active">Home</a>
         <a routerLink="/public" routerLinkActive="active">Public</a>
+
         <span class="flex-justify"></span>
-        <button *ngIf="!isAuthenticated" mat-button (click)="doSignIn()">Sign In</button>
-        <button *ngIf="isAuthenticated" mat-button (click)="doSignOut()">Sign Out</button>
+
+        <button
+            *ngIf="!isAuthenticated"
+            mat-button
+            (click)="doSignIn()"
+        >Sign In</button>
+
+        <button
+            *ngIf="isAuthenticated"
+            mat-button
+            (click)="doSignOut()"
+        >Sign Out</button>
     </mat-toolbar-row>
 </mat-toolbar>

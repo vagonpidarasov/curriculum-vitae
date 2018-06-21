@@ -8,3 +8,7 @@ export function isAuthenticated(state:AppState):boolean {
 export function username(state:AppState):string {
     return state[AuthenticationStateName].username;
 }
+
+export function isInProgress(state:AppState):boolean {
+    return state[AuthenticationStateName].isInProgress;
+}

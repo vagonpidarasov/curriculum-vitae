@@ -3,9 +3,9 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {AppState} from './app-state';
-import {isAuthenticated} from './selectors';
+import {isAuthenticated, username, isInProgress} from './selectors';
 import {SignIn, SignOut} from './actions';
-import {SignInPayload} from '../sign-in-payload.interface';
+import {AuthenticationPayload} from '../authentication-payload.interface';
 
 @Injectable()
 export class AuthenticationStore {
@@ -15,7 +15,15 @@ export class AuthenticationStore {
         return this.store.select(isAuthenticated);
     }
 
-    signIn(payload:SignInPayload):void {
+    get username():Observable<string> {
+        return this.store.select(username);
+    }
+
+    get isInProgress():Observable<boolean> {
+        return this.store.select(isInProgress);
+    }
+
+    signIn(payload:AuthenticationPayload):void {
         this.store.dispatch(new SignIn(payload));
     }
 

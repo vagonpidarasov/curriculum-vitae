@@ -11,8 +11,6 @@
                 [maxlength]="usernameMaxLength"
             />
 
-            <!--<mat-icon matPrefix>account_circle</mat-icon>-->
-
             <mat-error *ngIf="isUsernameMinLengthError">At least {{usernameMinLength}} characters</mat-error>
         </mat-form-field>
     </section>
@@ -29,19 +27,20 @@
                 [maxlength]="passwordMaxLength"
             />
 
-            <!--<mat-icon matPrefix>lock</mat-icon>-->
-
             <mat-error *ngIf="isPasswordMinLengthError">At least {{passwordMinLength}} characters</mat-error>
         </mat-form-field>
     </section>
 
-    <section class="flex ">
+    <section class="flex">
         <button
+            *ngIf="!isInProgress"
             mat-raised-button
             type="submit"
             class="flex-basis-100"
             color="primary"
             [disabled]="signInForm.invalid"
         >Sign In</button>
+
+        <mat-progress-bar *ngIf="isInProgress" mode="buffer"></mat-progress-bar>
     </section>
 </form>

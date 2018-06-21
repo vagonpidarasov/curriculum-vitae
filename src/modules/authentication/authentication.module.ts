@@ -1,7 +1,7 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {MatInputModule, MatButtonModule, MatIconModule} from '@angular/material';
+import {MatInputModule, MatButtonModule, MatIconModule, MatProgressBarModule} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 
@@ -15,6 +15,7 @@ export const MatModules = [
     MatInputModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressBarModule,
 ];
 
 @NgModule({

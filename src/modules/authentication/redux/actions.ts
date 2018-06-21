@@ -1,21 +1,28 @@
 import {Action} from '@ngrx/store';
-import {SignInPayload} from '../sign-in-payload.interface';
+import {AuthenticationPayload} from '../authentication-payload.interface';
 
 export enum AuthenticationActions {
     SIGN_IN = 'Authentication:SIGN_IN',
     SIGN_IN_SUCCESS = 'Authentication:SIGN_IN_SUCCESS',
+    SIGN_IN_FAIL = 'Authentication:SIGN_IN_FAIL',
     SIGN_OUT = 'Authentication:SIGN_OUT',
     RESET = 'Authentication:RESET',
+    SET_PROGRESS = 'Authentication:SET_PROGRESS',
 }
 
 export class SignIn implements Action {
     readonly type = AuthenticationActions.SIGN_IN;
-    constructor(public payload:SignInPayload) {}
+    constructor(public payload:AuthenticationPayload) {}
 }
 
 export class SignInSuccess implements Action {
     readonly type = AuthenticationActions.SIGN_IN_SUCCESS;
     constructor(public payload:{username:string}) {}
+}
+
+export class SignInFail implements Action {
+    readonly type = AuthenticationActions.SIGN_IN_FAIL;
+    constructor(public payload:{reason:string}) {}
 }
 
 export class SignOut implements Action {
@@ -24,4 +31,9 @@ export class SignOut implements Action {
 
 export class Reset implements Action {
     readonly type = AuthenticationActions.RESET;
+}
+
+export class SetProgress implements Action {
+    readonly type = AuthenticationActions.SET_PROGRESS;
+    constructor(public payload:boolean) {}
 }
