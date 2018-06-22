@@ -9,7 +9,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AppRoutingModule} from 'src/routing';
 import {HeaderModule} from 'src/modules/header';
 import {AuthenticationModule} from 'src/modules/authentication';
-import {DialogsModule} from 'src/dialogs';
+import {SignInDialogModule} from 'src/dialogs';
 import {RepositoriesModule} from 'src/repositories';
 
 import {AppComponent} from './app.component';
@@ -27,7 +27,7 @@ import {AppComponent} from './app.component';
         RouterModule,
         HeaderModule,
         AuthenticationModule,
-        DialogsModule,
+        SignInDialogModule,
         RepositoriesModule,
     ],
     declarations: [AppComponent],
