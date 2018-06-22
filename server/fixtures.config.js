@@ -1,7 +1,32 @@
 const fixtures = [
     {
+        method: 'get',
+        url: '/test',
+        data: function () {
+            return {
+                result: 'OK',
+            };
+        },
+        useMock: true,
+        useError: false,
+        errorData: {},
+    },
+
+    {
+        method: 'get',
+        url: '/error',
+        data: {},
+        useMock: true,
+        useError: true,
+        errorCode: 500,
+        errorData: {
+            reason: 'unknown reason',
+        },
+    },
+
+    {
         method: 'post',
-        url: '/signin',
+        url: '/authenticate',
         data: function () {
             return {
                 username: 'Batman',
@@ -11,6 +36,7 @@ const fixtures = [
         useMock: true,
         useError: false,
         errorData: {},
+        timeout: 1000,
     },
 ];
 

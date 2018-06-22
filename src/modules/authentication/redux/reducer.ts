@@ -1,6 +1,6 @@
 import {Action} from '@ngrx/store';
 import {AuthenticationState} from './feature-state';
-import {SignInSuccess, SignOut, SetProgress, AuthenticationActions} from './actions';
+import {SignInSuccess, SignOut, SetProgress, AuthenticationActions, SetError} from './actions';
 
 type AuthenticationReducer = (state:AuthenticationState, action:Action) => AuthenticationState;
 const actions:Map<string, AuthenticationReducer> = new Map<string, AuthenticationReducer>();
@@ -30,5 +30,11 @@ export function signOut(state:AuthenticationState, action:SignOut) {
 actions.set(AuthenticationActions.SET_PROGRESS, setProgress);
 export function setProgress(state:AuthenticationState, action:SetProgress) {
     state.isInProgress = action.payload;
+    return state;
+}
+
+actions.set(AuthenticationActions.SET_ERROR, setError);
+export function setError(state:AuthenticationState, action:SetError) {
+    state.error = action.payload;
     return state;
 }

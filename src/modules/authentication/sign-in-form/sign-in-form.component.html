@@ -31,16 +31,19 @@
         </mat-form-field>
     </section>
 
+    <section class="error">
+        <div *ngIf="!isInProgress && !error">&nbsp;</div>
+        <mat-progress-bar *ngIf="isInProgress" mode="indeterminate"></mat-progress-bar>
+        <mat-error *ngIf="error">{{error}}</mat-error>
+    </section>
+
     <section class="flex">
         <button
-            *ngIf="!isInProgress"
             mat-raised-button
             type="submit"
             class="flex-basis-100"
             color="primary"
-            [disabled]="signInForm.invalid"
+            [disabled]="submitButtonDisabled"
         >Sign In</button>
-
-        <mat-progress-bar *ngIf="isInProgress" mode="buffer"></mat-progress-bar>
     </section>
 </form>

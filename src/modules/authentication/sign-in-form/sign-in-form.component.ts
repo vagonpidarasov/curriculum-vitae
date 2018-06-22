@@ -68,17 +68,19 @@ export class SignInFormComponent implements OnChanges {
         return this.passwordFormControl.hasError('minlength');
     }
 
+    get submitButtonDisabled():boolean {
+        return this.signInForm.invalid || this.isInProgress;
+    }
+
     constructor(formBuilder:FormBuilder) {
         this.signInForm = formBuilder.group({
             [this.usernameFormControlName]: new FormControl(null, Validators.compose([
                 Validators.required,
                 Validators.pattern(USERNAME_VALIDATION_REGEXP),
-                // () => this.signInError ? {external: true} : null
             ])),
             [this.passwordFormControlName]: new FormControl(null, Validators.compose([
                 Validators.required,
                 Validators.pattern(PASSWORD_VALIDATION_REGEXP),
-                // () => this.signInError ? {external: true} : null
             ])),
         });
     }

@@ -22,15 +22,20 @@ export class SignInDialogComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
             .pipe(filter((isAuthenticated:boolean) => isAuthenticated))
-            .subscribe((isAuthenticated:boolean) => this.dialogRef.close())
+            .subscribe((isAuthenticated:boolean) => this.close())
         ;
     }
 
     ngOnDestroy() {
         this.isAuthenticatedSubscription.unsubscribe();
+        this.authenticationStore.setError(null);
     }
 
     signIn(payload:AuthenticationPayload) {
         this.authenticationStore.signIn(payload);
+    }
+
+    close() {
+        this.dialogRef.close();
     }
 }

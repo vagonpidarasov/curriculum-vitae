@@ -7,10 +7,17 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 
-import {AuthenticationActions, SignInFail, SetProgress, SignInSuccess} from './actions';
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationPayload} from '../authentication-payload.interface';
 import {AuthenticationResponse} from '../authentication-response.interface';
+
+import {
+    AuthenticationActions,
+    SignInFail,
+    SetProgress,
+    SignInSuccess,
+    SetError,
+} from './actions';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -28,9 +35,20 @@ export class AuthenticationEffects {
     private authenticate(payload:AuthenticationPayload) {
         return this.authenticationRepository.authenticate(payload).pipe(
             map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
-            catchError((e) => of(new SignInFail({reason: 'unknown'})))
+            catchError((e) => of(new SignInFail(e)))
         );
     }
+
+    @Effect() SingInFailEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.SIGN_IN_FAIL),
+        map(toPayload),
+        map((payload:any) => new SetError(`Failed to sign in: ${payload.statusText}`))
+    );
+
+    @Effect() ResetErrorEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.SIGN_IN),
+        map(() => new SetError(null))
+    );
 
     @Effect() SetProgressEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN),

@@ -8,6 +8,7 @@ export enum AuthenticationActions {
     SIGN_OUT = 'Authentication:SIGN_OUT',
     RESET = 'Authentication:RESET',
     SET_PROGRESS = 'Authentication:SET_PROGRESS',
+    SET_ERROR = 'Authentication:SET_ERROR',
 }
 
 export class SignIn implements Action {
@@ -22,7 +23,7 @@ export class SignInSuccess implements Action {
 
 export class SignInFail implements Action {
     readonly type = AuthenticationActions.SIGN_IN_FAIL;
-    constructor(public payload:{reason:string}) {}
+    constructor(public payload:any) {console.log(payload);}
 }
 
 export class SignOut implements Action {
@@ -36,4 +37,9 @@ export class Reset implements Action {
 export class SetProgress implements Action {
     readonly type = AuthenticationActions.SET_PROGRESS;
     constructor(public payload:boolean) {}
+}
+
+export class SetError implements Action {
+    readonly type = AuthenticationActions.SET_ERROR;
+    constructor(public payload:string) {}
 }

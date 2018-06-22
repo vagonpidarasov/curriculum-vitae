@@ -54,7 +54,7 @@ fixturesConfig.forEach(function(fixture){
         if (fixture.useMock) {
             setTimeout(() => {
                 if (fixture.useError) {
-                    res.status(fixture.errorCode).send(fixture.errorData);
+                    res.status(fixture.errorCode || 404).send(fixture.errorData);
                 } else {
                     res.json((typeof fixture.data === 'function') ? fixture.data(): fixture.data);
                 }
