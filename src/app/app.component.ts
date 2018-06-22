@@ -6,9 +6,8 @@ import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {AuthenticationStore} from 'src/modules/authentication';
+import {insufficientPermissionsError} from 'src/modules/error';
 import {SignInDialogService} from 'src/dialogs';
-
-export const InsufficientPermissionsErrorMsg:string = 'Seems like you don\'t have permissions to do that';
 
 @Component({
     selector: 'app',
@@ -36,7 +35,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.routerEventsSubscription = this.router.events
             .pipe(filter((event:RouterEvent) => event instanceof NavigationCancel))
             .subscribe((event:NavigationCancel) => this.snackBar.open(
-                InsufficientPermissionsErrorMsg, 'OK', {duration: 2500}
+                insufficientPermissionsError(), 'OK', {duration: 2500}
             ))
         ;
     }

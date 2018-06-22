@@ -3,6 +3,7 @@
 const express = require('express');
 const path = require('path');
 const httpProxy = require('http-proxy');
+const bodyParser = require('body-parser');
 
 const proxyConfig = require('./proxy.config.js');
 const fixturesConfig = require('./fixtures.config.js');
@@ -12,16 +13,13 @@ const app_dir = path.normalize(proxyConfig.app_dir);
 const app = express();
 const proxy = httpProxy.createProxyServer({});
 
-proxy.on('proxyReq', function(proxyReq) {
-    console.log(proxyReq.method, proxyReq.path);
-});
-
 // allow requests to endpoints with untrusted certs
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 app
     .use(express.static(app_dir))
     .use(require('connect-livereload')())
+    .use(bodyParser.json())
     .enable('trust proxy')
     .listen(proxyConfig.port);
 
@@ -35,6 +33,9 @@ app.use(function (req, res, next) {
 });
 
 console.log(`proxy is up and running on port ${proxyConfig.port}`);
+proxy.on('proxyReq', function(proxyReq) {
+    console.log(proxyReq.method, proxyReq.path);
+});
 
 function getAuthHeaders(username, password, accept) {
     // const base64 = new Buffer([username, password].join(':')).toString('base64');
@@ -52,13 +53,16 @@ function getAuthHeaders(username, password, accept) {
 fixturesConfig.forEach(function(fixture){
     app[fixture.method](`${proxyConfig.api_base}${fixture.url}`, function(req, res){
         if (fixture.useMock) {
+            const {delay, statusCode, data} = fixture.response(req);
+
             setTimeout(() => {
-                if (fixture.useError) {
-                    res.status(fixture.errorCode || 404).send(fixture.errorData);
-                } else {
-                    res.json((typeof fixture.data === 'function') ? fixture.data(): fixture.data);
-                }
-            }, fixture.timeout || 0);
+                res.status(statusCode || 200).json(data);
+                // if (fixture.useError) {
+                //     res.status(fixture.errorCode || 404).send(fixture.errorData);
+                // } else {
+                //     res.json((typeof fixture.data === 'function') ? fixture.data(): fixture.data);
+                // }
+            }, delay || 0);
         } else {
             proxy.web(req, res, {
                 target: proxyConfig.api_domian,

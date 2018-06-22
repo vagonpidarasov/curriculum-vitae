@@ -23,7 +23,7 @@ export class SignInSuccess implements Action {
 
 export class SignInFail implements Action {
     readonly type = AuthenticationActions.SIGN_IN_FAIL;
-    constructor(public payload:any) {console.log(payload);}
+    constructor(public payload:any) {}
 }
 
 export class SignOut implements Action {
