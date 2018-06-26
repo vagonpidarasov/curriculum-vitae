@@ -6,6 +6,8 @@ import {
     ChangeDetectionStrategy,
     SimpleChanges,
     OnChanges,
+    OnInit,
+    OnDestroy,
 } from '@angular/core';
 
 import {
@@ -15,6 +17,9 @@ import {
     FormControl,
     AbstractControl,
 } from '@angular/forms';
+
+import {Subscription, merge} from 'rxjs';
+import {distinctUntilChanged} from 'rxjs/operators';
 
 import {AuthenticationPayload} from 'src/modules/authentication';
 
@@ -35,12 +40,13 @@ import {
     styleUrls: ['./sign-in-form.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SignInFormComponent implements OnChanges {
+export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     @Input() error:string = null;
     @Input() isInProgress:boolean = false;
     @Input() isAuthenticated:boolean = false;
 
     @Output() signInRequest:EventEmitter<AuthenticationPayload> = new EventEmitter();
+    @Output() valueChanges:EventEmitter<AuthenticationPayload> = new EventEmitter();
 
     signInForm:FormGroup;
 
@@ -51,6 +57,8 @@ export class SignInFormComponent implements OnChanges {
 
     private usernameFormControlName:string = USERNAME_DATA_NAME;
     private passwordFormControlName:string = PASSWORD_DATA_NAME;
+
+    private subscription:Subscription;
 
     private get usernameFormControl():AbstractControl {
         return this.signInForm.controls[this.usernameFormControlName];
@@ -83,6 +91,19 @@ export class SignInFormComponent implements OnChanges {
                 Validators.pattern(PASSWORD_VALIDATION_REGEXP),
             ])),
         });
+    }
+
+    ngOnInit() {
+        this.subscription = merge(
+            this.usernameFormControl.valueChanges.pipe(distinctUntilChanged()),
+            this.passwordFormControl.valueChanges.pipe(distinctUntilChanged())
+        ).subscribe(
+            (value:string) => this.valueChanges.emit(this.signInForm.value)
+        );
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 
     ngOnChanges(changes:SimpleChanges) {

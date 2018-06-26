@@ -1,23 +1,10 @@
+@import './styles/animations.scss';
+@import './styles/flex.scss';
+
 body, html {
     margin: 0;
     padding: 0;
     font-family: Roboto, 'Helvetica Neue', sans-serif;
-}
-
-.flex-justify {
-    flex: 1 1 auto;
-}
-
-.flex-row-reverse {
-    flex-direction: row-reverse;
-}
-
-.flex-direction-column {
-    flex-direction: column;
-}
-
-.flex-basis-100 {
-    flex-basis: 100%;
 }
 
 .ng-app mat-card-actions {

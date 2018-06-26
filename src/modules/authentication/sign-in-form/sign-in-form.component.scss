@@ -4,6 +4,8 @@ mat-progress-bar {
 
 section.error {
     font-size: 75%;
-    margin-bottom: 10px;
+    height: 20px;
     max-width: 180px;
+    //margin-bottom: 10px;
+    transform: translate(0, -10px);
 }
