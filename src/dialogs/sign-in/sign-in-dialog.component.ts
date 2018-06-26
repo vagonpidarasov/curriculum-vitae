@@ -10,6 +10,7 @@ import {AuthenticationStore} from 'src/modules/authentication';
 @Component({
     selector: 'sign-in-dialog',
     templateUrl: './sign-in-dialog.component.html',
+    styleUrls: ['./sign-in-dialog.component.scss'],
 })
 export class SignInDialogComponent implements OnInit, OnDestroy {
     private isAuthenticatedSubscription:Subscription;

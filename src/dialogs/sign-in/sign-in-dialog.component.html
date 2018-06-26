@@ -1,4 +1,9 @@
-<h2 mat-dialog-title>Sign In</h2>
+<h2
+    mat-dialog-title
+    class="text-align-center"
+    [class.error]="authenticationStore.error | async"
+    [class.in-progress]="authenticationStore.isInProgress | async"
+>Sign In</h2>
 <mat-dialog-content>
     <sign-in-form
         [isInProgress]="authenticationStore.isInProgress | async"
