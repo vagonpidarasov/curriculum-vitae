@@ -1,78 +1,34 @@
-'use strict';
+// Karma configuration file, see link for more information
+// https://karma-runner.github.io/1.0/config/configuration-file.html
 
-module.exports = function(karma) {
-    karma.set({
-        basePath: __dirname,
-
-        frameworks: ['jasmine'],
-
-        mime: {
-            'text/x-typescript': ['ts','tsx']
-        },
-
-        files: [
-            {pattern: 'src/polyfills.ts', watched: false},
-            {pattern: 'src/test-setup.ts', watched: false},
-            {pattern: 'src/**/*.spec.ts', watched: false}
+module.exports = function (config) {
+    config.set({
+        basePath: '',
+        frameworks: ['jasmine', '@angular-devkit/build-angular'],
+        plugins: [
+            require('karma-jasmine'),
+            require('karma-chrome-launcher'),
+            require('karma-jasmine-html-reporter'),
+            require('karma-coverage-istanbul-reporter'),
+            require('@angular-devkit/build-angular/plugins/karma')
         ],
-
-        exclude: [],
-
-        preprocessors: {
-            'src/polyfills.ts': ['webpack', 'sourcemap'],
-            'src/test-setup.ts': ['webpack', 'sourcemap'],
-            '**/*.ts': ['webpack', 'sourcemap'],
-            '**/*.tsx': ['webpack', 'sourcemap']
+        client: {
+            clearContext: false // leave Jasmine Spec Runner output visible in browser
         },
-
-        reporters: ['progress', 'junit', 'coverage'],
-
-        junitReporter: {
-            outputDir: 'testresults',
-            outputFile: 'karma-test-results.xml',
-            suite: 'unit',
-            useBrowserName: false
+        coverageIstanbulReporter: {
+            dir: require('path').join(__dirname, 'coverage'),
+            reports: ['html', 'lcovonly'],
+            fixWebpackSourcePaths: true
         },
-        coverageReporter: {
-            type: 'lcov',
-            dir: 'testresults/',
-            subdir: function(browser) {
-                return browser.toLowerCase().split(/[ /-]/)[0];
-            }
+        angularCli: {
+            environment: 'dev'
         },
-
-        webpack: {
-            node: {
-                fs: 'empty',
-                net: 'empty',
-                tls: 'empty'
-            },
-            devtool: 'inline-source-map',
-            resolve: {
-                extensions: ['.ts', '.js', '.tsx'],
-                modules: ['src', 'node_modules']
-            },
-
-            module: {
-                rules: [
-                    {
-                        test: /\.(ts|tsx|)$/,
-                        use: ['awesome-typescript-loader']
-                    }
-                ]
-            },
-        },
-
-        webpackServer: {
-            noInfo: true
-        },
-
-        browsers: ['Chrome'],
-        port: 9998,
-        runnerPort: 9101,
+        reporters: ['progress', 'kjhtml'],
+        port: 9876,
         colors: true,
-        logLevel: karma.LOG_INFO,
+        logLevel: config.LOG_INFO,
         autoWatch: true,
-        singleRun: true
+        browsers: ['Chrome'],
+        singleRun: false
     });
 };

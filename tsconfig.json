@@ -4,18 +4,17 @@
         "module": "es2015",
         "lib": ["es2015", "dom"],
         "moduleResolution": "node",
-        "types": ["node", "webpack", "core-js", "rx"],
+        "types": ["node", "webpack", "core-js", "rx", "jasmine"],
         "typeRoots": ["node_modules/@types"],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
         "noEmitHelpers": true,
-        "baseUrl": "./",
+        "baseUrl": "./"
     },
 
     "exclude": [
-        "node_modules",
-        "./src/**/*.spec.ts"
+        "node_modules"
     ],
 
     "awesomeTypescriptLoaderOptions": {

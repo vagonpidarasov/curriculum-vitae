@@ -8,12 +8,14 @@
         <button
             *ngIf="!isAuthenticated"
             mat-button
+            class="sign-in-button"
             (click)="doSignIn()"
         >Sign In</button>
 
         <button
             *ngIf="isAuthenticated"
             mat-button
+            class="sign-out-button"
             (click)="doSignOut()"
         >Sign Out</button>
     </mat-toolbar-row>

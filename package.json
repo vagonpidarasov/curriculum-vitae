@@ -53,6 +53,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
+    "@angular-devkit/build-angular": "0.6.8",
     "@types/jasmine": "2.8.3",
     "connect-livereload": "0.6.0",
     "express": "4.16.2",
@@ -61,7 +62,9 @@
     "karma": "2.0.0",
     "karma-chrome-launcher": "2.2.0",
     "karma-coverage": "1.1.1",
+    "karma-coverage-istanbul-reporter": "2.0.1",
     "karma-jasmine": "1.1.1",
+    "karma-jasmine-html-reporter": "0.2.2",
     "karma-junit-reporter": "1.2.0",
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "2.0.9",
@@ -78,7 +81,7 @@
     "dev": "webpack-dev-server --config webpack-dev.config.js --progress --profile --colors",
     "prod": "webpack-dev-server --config webpack-prod.config.js --progress --profile --colors --compress",
     "lint": "tslint -c tslint.json 'src/**/*.tsx'",
-    "test": "karma start karma.conf.js --log-level debug --single-run",
+    "test": "ng test",
     "proxy": "node ./server/proxy.js"
   },
   "repository": {

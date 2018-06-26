@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/@angular-devkit/core/src/workspace/workspace-schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "angular.io-example": {
+      "root": "",
+      "projectType": "application",
+      "prefix": "app",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.json",
+            "karmaConfig": "karma.conf.js",
+            "scripts": []
+          }
+        }
+      }
+    }
+  }
+}
