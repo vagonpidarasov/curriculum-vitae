@@ -82,7 +82,8 @@
     "prod": "webpack-dev-server --config webpack-prod.config.js --progress --profile --colors --compress",
     "lint": "tslint -c tslint.json 'src/**/*.tsx'",
     "test": "ng test",
-    "proxy": "node ./server/proxy.js"
+    "proxy": "node ./server/proxy.js",
+    "ngrok": "ngrok http 8080 -host-header=\"localhost:8080\""
   },
   "repository": {
     "type": "git",

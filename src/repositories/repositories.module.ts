@@ -7,7 +7,7 @@ import {AuthenticationHttpRepository} from './http/authentication.http-repositor
 @NgModule({
     imports: [HttpClientModule],
     providers: [
-        {provide: AuthenticationRepository, useClass:AuthenticationHttpRepository},
+        {provide: AuthenticationRepository, useClass: AuthenticationHttpRepository},
     ],
 })
 export class RepositoriesModule {}

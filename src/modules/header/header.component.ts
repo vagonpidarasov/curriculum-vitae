@@ -11,11 +11,11 @@ export class HeaderComponent  {
     @Output() signInRequest:EventEmitter<null> = new EventEmitter();
     @Output() signOutRequest:EventEmitter<null> = new EventEmitter();
 
-    doSignIn() {
+    signIn() {
         this.signInRequest.emit();
     }
 
-    doSignOut() {
+    signOut() {
         this.signOutRequest.emit();
     }
 }

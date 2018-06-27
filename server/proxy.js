@@ -57,11 +57,6 @@ fixturesConfig.forEach(function(fixture){
 
             setTimeout(() => {
                 res.status(statusCode || 200).json(data);
-                // if (fixture.useError) {
-                //     res.status(fixture.errorCode || 404).send(fixture.errorData);
-                // } else {
-                //     res.json((typeof fixture.data === 'function') ? fixture.data(): fixture.data);
-                // }
             }, delay || 0);
         } else {
             proxy.web(req, res, {

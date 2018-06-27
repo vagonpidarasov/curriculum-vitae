@@ -1,9 +1,9 @@
 import {Action} from '@ngrx/store';
+import {ReducerType} from 'src/modules/redux-helpers';
 import {AuthenticationState} from './feature-state';
 import {SignInSuccess, SignOut, SetProgress, AuthenticationActions, SetError} from './actions';
 
-type AuthenticationReducer = (state:AuthenticationState, action:Action) => AuthenticationState;
-const actions:Map<string, AuthenticationReducer> = new Map<string, AuthenticationReducer>();
+const actions:Map<string, ReducerType<AuthenticationState>> = new Map<string, ReducerType<AuthenticationState>>();
 
 export function AuthenticationReducer(
     state:AuthenticationState = new AuthenticationState(),
