@@ -80,8 +80,9 @@
     "build:prod": "rimraf prod && webpack --config webpack-prod.config.js --progress --profile --colors",
     "dev": "webpack-dev-server --config webpack-dev.config.js --progress --profile --colors",
     "prod": "webpack-dev-server --config webpack-prod.config.js --progress --profile --colors --compress",
-    "lint": "tslint -c tslint.json 'src/**/*.tsx'",
-    "test": "ng test",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
+    "test:unit": "ng test",
+    "test": "npm run test:unit",
     "proxy": "node ./server/proxy.js",
     "ngrok": "ngrok http 8080 -host-header=\"localhost:8080\""
   },
