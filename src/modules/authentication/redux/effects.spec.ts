@@ -7,7 +7,7 @@ import {AuthenticationEffects} from './effects';
 import {SignIn, SetProgress, SignInSuccess} from './actions';
 
 import {AuthenticationRepository} from '../authentication.repository';
-import {AuthenticationMockRepository} from '../authentication.mock-repository';
+import {AuthenticationMockRepository} from '../mock';
 
 describe('AuthenticationEffects', () => {
     let effects:AuthenticationEffects;

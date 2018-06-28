@@ -1,1 +1,1 @@
-export * from './reducer-test-helpers';
+export * from './reducer-test-suite';

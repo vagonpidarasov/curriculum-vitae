@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {AuthenticationPayload} from '../authentication-payload.interface';
+import {AuthenticationPayload} from '../interfaces/';
 
 export enum AuthenticationActions {
     SIGN_IN = 'Authentication:SIGN_IN',

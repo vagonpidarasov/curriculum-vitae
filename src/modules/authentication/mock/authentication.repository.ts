@@ -1,9 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
-import {AuthenticationResponse} from './authentication-response.interface';
-import {AuthenticationPayload} from './authentication-payload.interface';
-import {AuthenticationRepository} from './authentication.repository';
+import {AuthenticationResponse, AuthenticationPayload } from '../interfaces';
+import {AuthenticationRepository} from '../authentication.repository';
 
 @Injectable()
 export class AuthenticationMockRepository implements AuthenticationRepository {

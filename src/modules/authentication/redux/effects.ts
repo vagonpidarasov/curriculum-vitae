@@ -9,8 +9,7 @@ import {toPayload} from 'src/modules/redux-helpers';
 import {normalizeError} from 'src/modules/error';
 
 import {AuthenticationRepository} from '../authentication.repository';
-import {AuthenticationPayload} from '../authentication-payload.interface';
-import {AuthenticationResponse} from '../authentication-response.interface';
+import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
 
 import {
     AuthenticationActions,

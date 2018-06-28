@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import {AuthenticationRepository} from 'src/modules/authentication';
-import {AuthenticationHttpRepository} from './http/authentication.http-repository';
+import {AuthenticationHttpRepository} from './http';
 
 @NgModule({
     imports: [HttpClientModule],

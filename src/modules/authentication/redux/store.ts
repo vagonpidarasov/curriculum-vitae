@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {AppState} from './app-state';
 import {isAuthenticated, username, isInProgress, error} from './selectors';
 import {SignIn, SignOut, SetError} from './actions';
-import {AuthenticationPayload} from '../authentication-payload.interface';
+import {AuthenticationPayload} from '../interfaces';
 
 @Injectable()
 export class AuthenticationStore {
