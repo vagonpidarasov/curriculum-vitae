@@ -1,6 +1,6 @@
 import {HttpErrorResponse} from '@angular/common/http';
 import {normalizeError} from './normalize-error';
-import {unknownError} from './error-messages';
+import {unknownError} from './unknown-error';
 
 describe('normalizeError', () => {
     it('should extract reason', () => {
@@ -16,7 +16,6 @@ describe('normalizeError', () => {
     });
 
     it('should extract default error', () => {
-        const error = new HttpErrorResponse({});
-        expect(normalizeError(error)).toEqual(unknownError());
+        expect(normalizeError()).toEqual(unknownError());
     });
 });

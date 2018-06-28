@@ -1,0 +1,26 @@
+@function rem($multiplier) {
+    $font-size: 10px;
+    @return $multiplier * $font-size;
+}
+
+$md-body-font-size: rem(1.6) !default;
+$md-font-family: Roboto, 'Helvetica Neue', sans-serif !default;
+
+html, body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga';
+}
+
+body {
+    font-family: $md-font-family;
+    font-weight: normal;
+    font-size: $md-body-font-size;
+}

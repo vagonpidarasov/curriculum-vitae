@@ -3,9 +3,9 @@ import {AuthenticationStore} from 'src/modules/authentication';
 
 @Component({
     selector: 'home-page',
-    templateUrl: './home-page.component.html',
-    styleUrls: ['./home-page.component.scss'],
+    templateUrl: './home-page-container.component.html',
+    styleUrls: ['./home-page-container.component.scss'],
 })
-export class HomePageComponent {
+export class HomePageContainerComponent {
     constructor(public authenticationStore:AuthenticationStore) {}
 }

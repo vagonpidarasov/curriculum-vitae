@@ -1,26 +1,16 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterModule} from '@angular/router';
-import {MatCardModule, MatButtonModule} from '@angular/material';
 
-import {AuthenticationModule} from 'src/modules/authentication';
-
-import {PublicPageComponent as component} from './public-page.component';
+import {PublicPageContainerModule, PublicPageContainerComponent as component} from './container';
 import {path} from './path';
-import {CanActivatePublic} from './can-activate';
-
-export const MatModules = [
-    MatCardModule,
-    MatButtonModule,
-];
+import {RouterGuardModule, AuthenticationGuardService} from '../router-guard';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        AuthenticationModule,
-        RouterModule.forChild([{path, component, canActivate: [CanActivatePublic]}]),
-        ...MatModules,
+        PublicPageContainerModule,
+        RouterGuardModule,
+        RouterModule.forChild([{path, component, canActivate: [AuthenticationGuardService]}]),
     ],
-    declarations: [component],
-    providers: [CanActivatePublic],
 })
 export class PublicPageModule {}

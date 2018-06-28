@@ -1,0 +1,5 @@
+<header
+    [isAuthenticated]="authenticationStore.isAuthenticated | async"
+    (signInRequest)="signInDialog.open()"
+    (signOutRequest)="authenticationStore.signOut()"
+></header>

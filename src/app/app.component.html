@@ -1,9 +1,3 @@
-<header
-    [isAuthenticated]="authenticationStore.isAuthenticated | async"
-    (signInRequest)="signInRequest()"
-    (signOutRequest)="signOutRequest()"
-></header>
-
-<navigation-bar></navigation-bar>
-
+<header-container></header-container>
 <router-outlet></router-outlet>
+<router-guard></router-guard>
