@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {AuthenticationStore} from 'src/modules/authentication';
 
 @Injectable()
-export class AuthenticationGuardService implements CanActivate {
+export class RouterGuardService implements CanActivate {
     constructor(private authenticationStore:AuthenticationStore) {}
 
     canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):Observable<boolean> {

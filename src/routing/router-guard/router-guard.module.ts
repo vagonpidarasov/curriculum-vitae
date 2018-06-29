@@ -4,13 +4,13 @@ import {MatSnackBarModule} from '@angular/material';
 
 import {AuthenticationModule} from 'src/modules/authentication';
 
-import {AuthenticationGuardService} from './authentication-guard.service';
+import {RouterGuardService} from './router-guard.service';
 import {RouterGuardComponent} from './router-guard.component';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [AuthenticationModule, MatSnackBarModule, RouterModule],
-    providers: [AuthenticationGuardService],
+    providers: [RouterGuardService],
     exports: [RouterGuardComponent],
     declarations: [RouterGuardComponent],
 })

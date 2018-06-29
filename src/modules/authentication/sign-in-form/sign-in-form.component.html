@@ -7,11 +7,10 @@
                 type="text"
                 autocomplete="off"
                 formControlName="username"
-                [minlength]="usernameMinLength"
-                [maxlength]="usernameMaxLength"
             />
 
-            <mat-error *ngIf="isUsernameMinLengthError">At least {{usernameMinLength}} characters</mat-error>
+            <mat-error *ngIf="isUsernameMinLengthError">Username is too short</mat-error>
+            <mat-error *ngIf="isUsernameMaxLengthError">Username is too long</mat-error>
         </mat-form-field>
     </section>
 
@@ -23,11 +22,10 @@
                 type="password"
                 autocomplete="off"
                 formControlName="password"
-                [minlength]="passwordMinLength"
-                [maxlength]="passwordMaxLength"
             />
 
-            <mat-error *ngIf="isPasswordMinLengthError">At least {{passwordMinLength}} characters</mat-error>
+            <mat-error *ngIf="isPasswordMinLengthError">Password is too short</mat-error>
+            <mat-error *ngIf="isPasswordMaxLengthError">Password is too long</mat-error>
         </mat-form-field>
     </section>
 

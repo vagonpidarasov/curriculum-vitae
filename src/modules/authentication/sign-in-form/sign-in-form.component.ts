@@ -24,8 +24,8 @@ import {distinctUntilChanged} from 'rxjs/operators';
 import {AuthenticationPayload} from 'src/modules/authentication';
 
 import {
-    USERNAME_VALIDATION_REGEXP,
-    PASSWORD_VALIDATION_REGEXP,
+    USERNAME_VALIDATION_PATTERN,
+    PASSWORD_VALIDATION_PATTERN,
     USERNAME_MAX_LENGTH,
     USERNAME_MIN_LENGTH,
     PASSWORD_MAX_LENGTH,
@@ -50,30 +50,30 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
 
     signInForm:FormGroup;
 
-    usernameMinLength:number = USERNAME_MIN_LENGTH;
-    usernameMaxLength:number = USERNAME_MAX_LENGTH;
-    passwordMinLength:number = PASSWORD_MIN_LENGTH;
-    passwordMaxLength:number = PASSWORD_MAX_LENGTH;
-
-    private usernameFormControlName:string = USERNAME_DATA_NAME;
-    private passwordFormControlName:string = PASSWORD_DATA_NAME;
-
     private subscription:Subscription;
 
     private get usernameFormControl():AbstractControl {
-        return this.signInForm.controls[this.usernameFormControlName];
+        return this.signInForm.controls[USERNAME_DATA_NAME];
     }
 
     private get passwordFormControl():AbstractControl {
-        return this.signInForm.controls[this.passwordFormControlName];
+        return this.signInForm.controls[PASSWORD_DATA_NAME];
     }
 
     get isUsernameMinLengthError():boolean {
         return this.usernameFormControl.hasError('minlength');
     }
 
+    get isUsernameMaxLengthError():boolean {
+        return this.usernameFormControl.hasError('maxlength');
+    }
+
     get isPasswordMinLengthError():boolean {
         return this.passwordFormControl.hasError('minlength');
+    }
+
+    get isPasswordMaxLengthError():boolean {
+        return this.passwordFormControl.hasError('maxlength');
     }
 
     get submitButtonDisabled():boolean {
@@ -82,13 +82,17 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
 
     constructor(formBuilder:FormBuilder) {
         this.signInForm = formBuilder.group({
-            [this.usernameFormControlName]: new FormControl(null, Validators.compose([
+            [USERNAME_DATA_NAME]: new FormControl(null, Validators.compose([
                 Validators.required,
-                Validators.pattern(USERNAME_VALIDATION_REGEXP),
+                Validators.pattern(USERNAME_VALIDATION_PATTERN),
+                Validators.minLength(USERNAME_MIN_LENGTH),
+                Validators.maxLength(USERNAME_MAX_LENGTH),
             ])),
-            [this.passwordFormControlName]: new FormControl(null, Validators.compose([
+            [PASSWORD_DATA_NAME]: new FormControl(null, Validators.compose([
                 Validators.required,
-                Validators.pattern(PASSWORD_VALIDATION_REGEXP),
+                Validators.pattern(PASSWORD_VALIDATION_PATTERN),
+                Validators.minLength(PASSWORD_MIN_LENGTH),
+                Validators.maxLength(PASSWORD_MAX_LENGTH),
             ])),
         });
     }
@@ -98,7 +102,7 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
             this.usernameFormControl.valueChanges.pipe(distinctUntilChanged()),
             this.passwordFormControl.valueChanges.pipe(distinctUntilChanged())
         ).subscribe(
-            (value:string) => this.valueChanges.emit(this.signInForm.value)
+            () => this.valueChanges.emit(this.signInForm.value)
         );
     }
 
