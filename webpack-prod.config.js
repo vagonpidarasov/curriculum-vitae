@@ -1,6 +1,6 @@
 const webpackMerge = require('webpack-merge');
 const webpackNgtools = require('@ngtools/webpack');
-const WebpackMd5Hash = require('webpack-md5-hash');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const commonConfig = require('./webpack.config.js');
 const helpers = require('./webpack.helpers');
 
@@ -18,9 +18,13 @@ module.exports = webpackMerge(commonConfig, {
         rules: [
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts)$/,
-                use: '@ngtools/webpack'
+                use: '@ngtools/webpack',
             },
-        ]
+        ],
+    },
+
+    optimization: {
+        noEmitOnErrors: true,
     },
 
     plugins: [
@@ -28,6 +32,6 @@ module.exports = webpackMerge(commonConfig, {
             tsConfigPath: helpers.root('tsconfig.json'),
             entryModule: helpers.root('src/app/app.module#AppModule')
         }),
-        new WebpackMd5Hash(),
+        new MiniCssExtractPlugin({filename: '[name].[chunkhash].css'}),
     ],
 });

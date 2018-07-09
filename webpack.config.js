@@ -1,20 +1,16 @@
 const webpack = require('webpack');
 const helpers = require('./webpack.helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
-
-const extractTextPlugin = new ExtractTextPlugin('app.css');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: {
-        app: [
-            helpers.root('src/polyfills'),
-            helpers.root('src/vendor'),
-            helpers.root('src/index'),
-            helpers.root('src/styles'),
-        ],
-    },
+    entry: [
+        helpers.root('src/polyfills'),
+        helpers.root('src/vendor'),
+        helpers.root('src/index'),
+        helpers.root('src/styles'),
+    ],
 
     // devtool: 'source-map',
 
@@ -42,7 +38,11 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: extractTextPlugin.extract({fallback: 'style-loader', use: 'css-loader'}),
+                use: [
+                    {loader: MiniCssExtractPlugin.loader},
+                    'css-loader'
+                ],
+
                 include: [/node_modules/],
             },
             {
@@ -60,10 +60,21 @@ module.exports = {
         ],
     },
 
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendor',
+                    chunks: 'all'
+                }
+            }
+        },
+    },
+
     plugins: [
         new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, helpers.root('src')),
         new HtmlWebpackPlugin({template: 'src/index.html'}),
-        extractTextPlugin,
         // new webpackBundleAnalyzer.BundleAnalyzerPlugin(),
-    ]
+    ],
 };

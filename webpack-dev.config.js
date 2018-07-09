@@ -1,4 +1,5 @@
 const webpackMerge = require('webpack-merge');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const atl = require('awesome-typescript-loader');
 
 const commonConfig = require('./webpack.config.js');
@@ -19,11 +20,12 @@ module.exports = webpackMerge(commonConfig, {
             {
                 test: /\.ts$/,
                 use: ['awesome-typescript-loader', 'angular2-template-loader'],
-            }
-        ]
+            },
+        ],
     },
 
     plugins: [
         new atl.CheckerPlugin(),
+        new MiniCssExtractPlugin({filename: '[name].css'})
     ],
 });
