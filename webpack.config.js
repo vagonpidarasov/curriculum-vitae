@@ -1,8 +1,9 @@
 const webpack = require('webpack');
-const helpers = require('./webpack.helpers');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const helpers = require('./webpack.helpers');
 
 module.exports = {
     entry: [

@@ -1,6 +1,7 @@
 const webpackMerge = require('webpack-merge');
 const webpackNgtools = require('@ngtools/webpack');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 const commonConfig = require('./webpack.config.js');
 const helpers = require('./webpack.helpers');
 
@@ -32,6 +33,6 @@ module.exports = webpackMerge(commonConfig, {
             tsConfigPath: helpers.root('tsconfig.json'),
             entryModule: helpers.root('src/app/app.module#AppModule')
         }),
-        new MiniCssExtractPlugin({filename: '[name].[chunkhash].css'}),
+        new MiniCssExtractPlugin({filename: '[name].[contenthash].css'}),
     ],
 });
