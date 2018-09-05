@@ -29,12 +29,14 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
-        new webpackNgtools.AngularCompilerPlugin({
-            tsConfigPath: helpers.root('tsconfig.json'),
-            entryModule: helpers.root('src/app/app.module#AppModule'),
-            i18nInFile: helpers.root('i18n/messages.ru.xlf'),
-            locale: 'ru',
-        }),
+            new webpackNgtools.AngularCompilerPlugin({
+                tsConfigPath: helpers.root('tsconfig.json'),
+                entryModule: helpers.root('src/app/app.module#AppModule'),
+                i18nOutFile: helpers.root('i18n/messages.xlf'),
+                i18nOutFormat: 'xlf',
+                locale: 'en',
+                platform: 0,
+            }),
         new MiniCssExtractPlugin({filename: '[name].[contenthash].css'}),
     ],
 });

@@ -79,6 +79,7 @@
     "clean": "rimraf node_modules && npm cache verify",
     "build:dev": "rimraf dev && webpack --config webpack-dev.config.js --progress --profile --colors",
     "build:prod": "rimraf prod && webpack --config webpack-prod.config.js --progress --profile --colors",
+    "extract": "rimraf prod && webpack --config webpack-extract-i18n.config.js",
     "dev": "webpack-dev-server --config webpack-dev.config.js --progress --profile --colors",
     "prod": "webpack-dev-server --config webpack-prod.config.js --progress --profile --colors --compress",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",

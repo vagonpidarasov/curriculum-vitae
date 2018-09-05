@@ -1,2 +1,6 @@
 <h1>Welcome</h1>
-<h3 *ngIf="authenticationStore.isAuthenticated | async">{{authenticationStore.username | async}}</h3>
+<h3 *ngIf="authenticationStore.isAuthenticated | async"
+    class="flex align-items-center justify-content-center">
+    <mat-icon class="verified-user">verified_user</mat-icon>
+    <span>{{authenticationStore.username | async}}</span>
+</h3>
