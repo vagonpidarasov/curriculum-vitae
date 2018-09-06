@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Inject, LOCALE_ID} from '@angular/core';
 import {AuthenticationStore} from 'src/modules/authentication';
 
 @Component({
@@ -7,5 +7,8 @@ import {AuthenticationStore} from 'src/modules/authentication';
     styleUrls: ['./home-page-container.component.scss'],
 })
 export class HomePageContainerComponent {
-    constructor(public authenticationStore:AuthenticationStore) {}
+    constructor(
+        @Inject(LOCALE_ID) public locale:string,
+        public authenticationStore:AuthenticationStore,
+    ) {}
 }
