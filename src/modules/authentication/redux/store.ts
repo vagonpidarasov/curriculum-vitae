@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-import {AppState} from './app-state';
+import {FeatureState} from './feature';
 import {isAuthenticated, username, isInProgress, error} from './selectors';
 import {SignIn, SignOut, SetError} from './actions';
 import {AuthenticationPayload} from '../interfaces';
 
 @Injectable()
 export class AuthenticationStore {
-    constructor(private store:Store<AppState>) {}
+    constructor(private store:Store<FeatureState>) {}
 
     get isAuthenticated():Observable<boolean> {
         return this.store.select(isAuthenticated);

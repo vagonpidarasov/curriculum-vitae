@@ -1,5 +1,5 @@
 import {ReducerTestSuite} from 'src/modules/redux-helpers/test';
-import {AuthenticationState} from './feature-state';
+import {AuthenticationState} from './state';
 import {AuthenticationReducer, signInSuccess} from './reducer';
 import {SignInSuccess, SignOut} from './actions';
 

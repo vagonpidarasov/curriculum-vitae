@@ -1,20 +1,19 @@
 import {isAuthenticated} from './selectors';
-import {AppState} from './app-state';
-import {AuthenticationStateName} from './feature-state-name';
-import {AuthenticationState} from './feature-state';
+import {AuthenticationState} from './state';
+import {FeatureStateName, FeatureState} from './feature';
 
 describe('Authentication selectors', () => {
-    let appState:AppState;
+    let appState:FeatureState;
 
     beforeEach(() => {
         appState = {
-            [AuthenticationStateName]: new AuthenticationState(),
+            [FeatureStateName]: new AuthenticationState(),
         };
     });
 
     it('should select isAuthenticated value', () => {
         expect(isAuthenticated(appState)).toBeFalsy();
-        appState[AuthenticationStateName].isAuthenticated = true;
+        appState[FeatureStateName].isAuthenticated = true;
         expect(isAuthenticated(appState)).toBeTruthy();
     });
 });

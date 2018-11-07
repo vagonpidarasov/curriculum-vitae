@@ -5,10 +5,13 @@ import {MatInputModule, MatButtonModule, MatIconModule, MatProgressBarModule} fr
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 
-import {AuthenticationStore} from './redux/store';
-import {AuthenticationReducer} from './redux/reducer';
-import {AuthenticationStateName} from './redux/feature-state-name';
-import {AuthenticationEffects} from './redux/effects';
+import {
+    AuthenticationStore,
+    AuthenticationReducer,
+    FeatureStateName,
+    AuthenticationEffects,
+} from './redux';
+
 import {SignInFormComponent} from './sign-in-form';
 
 export const MatModules = [
@@ -24,7 +27,7 @@ export const MatModules = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        StoreModule.forFeature(AuthenticationStateName, AuthenticationReducer),
+        StoreModule.forFeature(FeatureStateName, AuthenticationReducer),
         EffectsModule.forFeature([AuthenticationEffects]),
         ...MatModules,
     ],
