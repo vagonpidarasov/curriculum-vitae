@@ -25,12 +25,16 @@ export class RouterGuardComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
-            .pipe(filter((isAuthenticated:boolean) => !isAuthenticated))
+            .pipe(
+                filter((isAuthenticated:boolean) => !isAuthenticated)
+            )
             .subscribe(() => this.router.navigateByUrl('/'))
         ;
 
         this.routerEventsSubscription = this.router.events
-            .pipe(filter((event:RouterEvent) => event instanceof NavigationCancel))
+            .pipe(
+                filter((event:RouterEvent) => event instanceof NavigationCancel)
+            )
             .subscribe(() => this.snackBar.open(
                 insufficientPermissionsError(), 'OK', {duration: 2500}
             ))

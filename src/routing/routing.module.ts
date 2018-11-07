@@ -2,6 +2,8 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, RouterOutlet} from '@angular/router';
 
+import {NavigationModule} from 'src/modules/navigation';
+
 import {RouterConfig} from './router.config';
 import {RouterGuardModule, RouterGuardComponent} from './router-guard';
 
@@ -18,6 +20,7 @@ export const RoutingModules = [
         CommonModule,
         RouterModule.forRoot([], RouterConfig),
         RouterGuardModule,
+        NavigationModule,
         ...RoutingModules,
     ],
     exports: [RouterOutlet, RouterGuardComponent],
