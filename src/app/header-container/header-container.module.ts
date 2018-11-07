@@ -3,7 +3,6 @@ import {CommonModule} from '@angular/common';
 
 import {HeaderModule} from 'src/modules/header';
 import {AuthenticationModule} from 'src/modules/authentication';
-import {SignInDialogModule} from 'src/dialogs';
 
 import {HeaderContainerComponent} from './header-container.component';
 
@@ -13,7 +12,6 @@ import {HeaderContainerComponent} from './header-container.component';
         CommonModule,
         HeaderModule,
         AuthenticationModule,
-        SignInDialogModule,
     ],
     declarations: [HeaderContainerComponent],
     exports: [HeaderContainerComponent],

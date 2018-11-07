@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule, RouterOutlet} from '@angular/router';
 
-import {NavigationModule, NavigationGuardComponent} from 'src/modules/navigation';
+import {NavigationModule} from 'src/modules/navigation';
 
 import {RouterConfig} from './router.config';
 
@@ -21,6 +21,6 @@ export const RoutingModules = [
         NavigationModule,
         ...RoutingModules,
     ],
-    exports: [RouterOutlet, NavigationGuardComponent],
+    exports: [RouterOutlet],
 })
 export class AppRoutingModule {}

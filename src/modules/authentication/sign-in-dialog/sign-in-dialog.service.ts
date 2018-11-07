@@ -3,10 +3,10 @@ import {MatDialog, MatDialogRef} from '@angular/material';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {AuthenticationStore} from 'src/modules/authentication';
-
+import {AuthenticationStore} from '../redux';
 import {SignInDialogComponent} from './sign-in-dialog.component';
 
+// TODO move one dir up
 @Injectable()
 export class SignInDialogService {
     private dialogRef:MatDialogRef<SignInDialogComponent>;

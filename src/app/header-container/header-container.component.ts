@@ -1,7 +1,5 @@
 import {Component} from '@angular/core';
-
-import {AuthenticationStore} from 'src/modules/authentication';
-import {SignInDialogService} from 'src/dialogs';
+import {AuthenticationStore, SignInDialogService} from 'src/modules/authentication';
 
 @Component({
     selector: 'header-container',

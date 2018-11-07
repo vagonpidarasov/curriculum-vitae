@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {AuthenticationPayload} from 'src/modules/authentication';
-import {AuthenticationStore} from 'src/modules/authentication';
+import {AuthenticationPayload} from '../interfaces';
+import {AuthenticationStore} from '../redux';
 
 @Component({
     selector: 'sign-in-dialog',

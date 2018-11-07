@@ -1,7 +1,13 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ReactiveFormsModule, FormsModule} from '@angular/forms';
-import {MatInputModule, MatButtonModule, MatIconModule, MatProgressBarModule} from '@angular/material';
+import {
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule,
+    MatDialogModule,
+} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 
@@ -13,12 +19,14 @@ import {
 } from './redux';
 
 import {SignInFormComponent} from './sign-in-form';
+import {SignInDialogService, SignInDialogComponent} from './sign-in-dialog';
 
 export const MatModules = [
     MatInputModule,
     MatButtonModule,
     MatIconModule,
     MatProgressBarModule,
+    MatDialogModule,
 ];
 
 @NgModule({
@@ -31,9 +39,9 @@ export const MatModules = [
         EffectsModule.forFeature([AuthenticationEffects]),
         ...MatModules,
     ],
-    providers: [AuthenticationStore],
-    exports: [SignInFormComponent],
-    declarations: [SignInFormComponent],
-
+    providers: [AuthenticationStore, SignInDialogService],
+    exports: [SignInFormComponent, SignInDialogComponent],
+    declarations: [SignInFormComponent, SignInDialogComponent],
+    entryComponents: [SignInDialogComponent],
 })
 export class AuthenticationModule {}

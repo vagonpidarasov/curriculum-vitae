@@ -6,7 +6,6 @@ import {StoreRouterConnectingModule, routerReducer} from '@ngrx/router-store';
 import {AuthenticationModule} from 'src/modules/authentication';
 
 import {NavigationStore, NavigationEffects, FeatureStateName, NavigationReducer} from './redux';
-import {NavigationGuardComponent} from './navigation-guard.component';
 import {RouterGuardService} from './router-guard.service';
 
 @NgModule({
@@ -17,8 +16,6 @@ import {RouterGuardService} from './router-guard.service';
         EffectsModule.forFeature([NavigationEffects]),
         AuthenticationModule,
     ],
-    declarations: [NavigationGuardComponent],
-    exports: [NavigationGuardComponent],
     providers: [NavigationStore, RouterGuardService],
 })
 export class NavigationModule {}
