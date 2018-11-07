@@ -14,7 +14,8 @@ import {
 } from 'src/modules/authentication';
 
 import {extractActivatedRoute} from '../extract-activated-route';
-import {NavigationActions, SyncCurrentRoute, SetRequestedRoute} from './actions';
+import {NavigationActions, SyncCurrentRoute, SetRequestedRoute, SetCurrentRoute} from './actions';
+import {defaultRoute} from '../default-route.const';
 
 @Injectable()
 export class NavigationEffects {
@@ -47,6 +48,14 @@ export class NavigationEffects {
     @Effect() ResetProgressEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN_SUCCESS),
         map(() => new SyncCurrentRoute())
+    );
+
+    /**
+     * @Effect listens for SIGN_OUT action and navigation to the default route
+     */
+    @Effect() SignOutEffectEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.SIGN_OUT),
+        map(() => new SetCurrentRoute(defaultRoute))
     );
 
     /**

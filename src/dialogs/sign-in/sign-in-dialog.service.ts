@@ -4,7 +4,6 @@ import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
 import {AuthenticationStore} from 'src/modules/authentication';
-import {NavigationService} from 'src/modules/navigation';
 
 import {SignInDialogComponent} from './sign-in-dialog.component';
 
@@ -16,8 +15,7 @@ export class SignInDialogService {
 
     constructor(
         private dialog:MatDialog,
-        private authenticationStore:AuthenticationStore,
-        private navigationService:NavigationService,
+        private authenticationStore:AuthenticationStore
     ) {
         this.subscription = this.authenticationStore.authenticationRequest
             .pipe(filter((authRequest:number) => !!authRequest))

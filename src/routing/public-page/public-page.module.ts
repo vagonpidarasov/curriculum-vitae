@@ -3,13 +3,13 @@ import {RouterModule} from '@angular/router';
 
 import {PublicPageContainerModule, PublicPageContainerComponent as component} from './container';
 import {path} from './path';
-import {RouterGuardModule, RouterGuardService} from '../router-guard';
+import {NavigationModule, RouterGuardService} from 'src/modules/navigation';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         PublicPageContainerModule,
-        RouterGuardModule,
+        NavigationModule,
         RouterModule.forChild([{path, component, canActivate: [RouterGuardService]}]),
     ],
 })
