@@ -3,4 +3,5 @@ export class AuthenticationState {
     username:string = null;
     isInProgress:boolean = false;
     error:string = null;
+    authenticationRequest:number = 0;
 }

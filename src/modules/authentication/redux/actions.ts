@@ -9,6 +9,7 @@ export enum AuthenticationActions {
     RESET = 'Authentication:RESET',
     SET_PROGRESS = 'Authentication:SET_PROGRESS',
     SET_ERROR = 'Authentication:SET_ERROR',
+    AUTHENTICATION_REQUEST = 'Authentication:AUTHENTICATION_REQUEST',
 }
 
 export class SignIn implements Action {
@@ -42,4 +43,8 @@ export class SetProgress implements Action {
 export class SetError implements Action {
     readonly type = AuthenticationActions.SET_ERROR;
     constructor(public payload:string) {}
+}
+
+export class AuthenticationRequest implements Action {
+    readonly type = AuthenticationActions.AUTHENTICATION_REQUEST;
 }

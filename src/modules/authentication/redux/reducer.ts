@@ -1,7 +1,14 @@
 import {Action} from '@ngrx/store';
 import {ReducerType} from 'src/modules/redux-helpers';
 import {AuthenticationState} from './state';
-import {SignInSuccess, SignOut, SetProgress, AuthenticationActions, SetError} from './actions';
+import {
+    AuthenticationActions,
+    SignInSuccess,
+    SignOut,
+    SetProgress,
+    SetError,
+    AuthenticationRequest,
+} from './actions';
 
 const actions:Map<string, ReducerType<AuthenticationState>> = new Map<string, ReducerType<AuthenticationState>>();
 
@@ -36,5 +43,11 @@ export function setProgress(state:AuthenticationState, action:SetProgress) {
 actions.set(AuthenticationActions.SET_ERROR, setError);
 export function setError(state:AuthenticationState, action:SetError) {
     state.error = action.payload;
+    return state;
+}
+
+actions.set(AuthenticationActions.AUTHENTICATION_REQUEST, authRequest);
+export function authRequest(state:AuthenticationState, action:AuthenticationRequest) {
+    state.authenticationRequest = (new Date()).getTime();
     return state;
 }

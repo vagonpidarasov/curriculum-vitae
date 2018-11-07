@@ -15,3 +15,7 @@ export function error(state:FeatureState):string {
 export function isInProgress(state:FeatureState):boolean {
     return state[FeatureStateName].isInProgress;
 }
+
+export function authenticationRequest(state:FeatureState):number {
+    return state[FeatureStateName].authenticationRequest;
+}

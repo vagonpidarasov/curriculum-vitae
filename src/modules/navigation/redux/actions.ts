@@ -2,17 +2,15 @@ import {Action} from '@ngrx/store';
 import {ActivatedRouteSnapshot} from '@angular/router';
 
 export enum NavigationActions {
-    PROTECTED_ROUTE_REQUEST = 'Navigation:PROTECTED_ROUTE_REQUEST',
-    NAVIGATE_TO_REQUEST = 'Navigation:NAVIGATE_TO_REQUEST',
+    SET_REQUESTED_ROUTE = 'Navigation:SET_REQUESTED_ROUTE',
+    SYNC_CURRENT_ROUTE = 'Navigation:SYNC_CURRENT_ROUTE',
 }
 
-export class ProtectedRouteRequest implements Action {
-    readonly type = NavigationActions.PROTECTED_ROUTE_REQUEST;
+export class SetRequestedRoute implements Action {
+    readonly type = NavigationActions.SET_REQUESTED_ROUTE;
     constructor(public payload:ActivatedRouteSnapshot) {}
 }
 
-// TODO rename to NavigateToRequest, requestedRoute
-export class NavigateToRequest implements Action {
-    readonly type = NavigationActions.NAVIGATE_TO_REQUEST;
-    constructor(public payload:ActivatedRouteSnapshot) {}
+export class SyncCurrentRoute implements Action {
+    readonly type = NavigationActions.SYNC_CURRENT_ROUTE;
 }

@@ -1,22 +1,22 @@
-import {Injectable} from '@angular/core';
+import {Injectable, OnDestroy} from '@angular/core';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
 
 import {NavigationStore} from './redux';
 
 @Injectable()
-export class NavigationService {
+export class NavigationService implements OnDestroy {
     private subscription:Subscription;
-    constructor(private router:Router, private navigationStore:NavigationStore) {}
-
-    init():void {
-        this.subscription = this.navigationStore.requestedRoute.subscribe((route:ActivatedRouteSnapshot) => {
-            console.log(route);
-            // this.router.navigateByUrl(route).then();
+    constructor(private router:Router, private navigationStore:NavigationStore) {
+        this.subscription = this.navigationStore.currentRoute
+            .pipe(filter((route:ActivatedRouteSnapshot) => !!route))
+            .subscribe((route:ActivatedRouteSnapshot) => {
+                this.router.navigateByUrl(route.url.toString()).then();
         });
     }
 
-    destroy():void {
+    ngOnDestroy():void {
         this.subscription.unsubscribe();
     }
 }

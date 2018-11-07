@@ -31,14 +31,14 @@ export class RouterGuardComponent implements OnInit, OnDestroy {
             .subscribe(() => this.router.navigateByUrl('/'))
         ;
 
-        this.routerEventsSubscription = this.router.events
-            .pipe(
-                filter((event:RouterEvent) => event instanceof NavigationCancel)
-            )
-            .subscribe(() => this.snackBar.open(
-                insufficientPermissionsError(), 'OK', {duration: 2500}
-            ))
-        ;
+        // this.routerEventsSubscription = this.router.events
+        //     .pipe(
+        //         filter((event:RouterEvent) => event instanceof NavigationCancel)
+        //     )
+        //     .subscribe(() => this.snackBar.open(
+        //         insufficientPermissionsError(), 'OK', {duration: 2500}
+        //     ))
+        // ;
     }
 
     ngOnDestroy() {
