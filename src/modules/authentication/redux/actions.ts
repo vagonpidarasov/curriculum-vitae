@@ -10,6 +10,7 @@ export enum AuthenticationActions {
     SET_PROGRESS = 'Authentication:SET_PROGRESS',
     SET_ERROR = 'Authentication:SET_ERROR',
     AUTHENTICATION_REQUEST = 'Authentication:AUTHENTICATION_REQUEST',
+    AUTHENTICATION_DISCARD = 'Authentication:AUTHENTICATION_DISCARD',
 }
 
 export class SignIn implements Action {
@@ -47,4 +48,8 @@ export class SetError implements Action {
 
 export class AuthenticationRequest implements Action {
     readonly type = AuthenticationActions.AUTHENTICATION_REQUEST;
+}
+
+export class AuthenticationDiscard implements Action {
+    readonly type = AuthenticationActions.AUTHENTICATION_DISCARD;
 }

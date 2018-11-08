@@ -1,7 +1,5 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy} from '@angular/core';
 import {MatDialogRef} from '@angular/material';
-import {Subscription} from 'rxjs';
-import {filter} from 'rxjs/operators';
 
 import {AuthenticationPayload} from '../interfaces';
 import {AuthenticationStore} from '../redux';
@@ -11,23 +9,13 @@ import {AuthenticationStore} from '../redux';
     templateUrl: './sign-in-dialog.component.html',
     styleUrls: ['./sign-in-dialog.component.scss'],
 })
-export class SignInDialogComponent implements OnInit, OnDestroy {
-    private isAuthenticatedSubscription:Subscription;
-
+export class SignInDialogComponent implements OnDestroy {
     constructor(
         private dialogRef:MatDialogRef<SignInDialogComponent>,
         public authenticationStore:AuthenticationStore
     ) {}
 
-    ngOnInit() {
-        this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
-            .pipe(filter((isAuthenticated:boolean) => isAuthenticated))
-            .subscribe((isAuthenticated:boolean) => this.close())
-        ;
-    }
-
     ngOnDestroy() {
-        this.isAuthenticatedSubscription.unsubscribe();
         this.authenticationStore.setError(null);
     }
 
@@ -41,5 +29,6 @@ export class SignInDialogComponent implements OnInit, OnDestroy {
 
     close() {
         this.dialogRef.close();
+        this.authenticationStore.authDiscard();
     }
 }

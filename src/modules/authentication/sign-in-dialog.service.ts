@@ -1,5 +1,5 @@
 import {Injectable, OnDestroy} from '@angular/core';
-import {MatDialog} from '@angular/material';
+import {MatDialog, MatDialogRef} from '@angular/material';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
@@ -8,20 +8,38 @@ import {SignInDialogComponent} from './sign-in-dialog';
 
 @Injectable()
 export class SignInDialogService implements OnDestroy {
-    private subscription:Subscription;
+    private dialogRef:MatDialogRef<SignInDialogComponent>;
+    private authenticationRequestSubscription:Subscription;
+    private isAuthenticatedSubscription:Subscription;
 
     constructor(
         private dialog:MatDialog,
         private authenticationStore:AuthenticationStore
     ) {}
 
+    private open() {
+        this.dialogRef = this.dialog.open(SignInDialogComponent);
+    }
+
+    private close() {
+        if (this.dialogRef) {
+            this.dialogRef.close();
+        }
+    }
+
     init() {
-        this.subscription = this.authenticationStore.authenticationRequest
-            .pipe(filter((authRequest:number) => !!authRequest))
-            .subscribe(() => this.dialog.open(SignInDialogComponent));
+        this.authenticationRequestSubscription = this.authenticationStore.authenticationRequest
+            .pipe(filter((authRequest:number) => authRequest > 0))
+            .subscribe(() => this.open());
+
+        this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
+            .pipe(filter((isAuthenticated:boolean) => isAuthenticated))
+            .subscribe(() => this.close())
+        ;
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        this.authenticationRequestSubscription.unsubscribe();
+        this.isAuthenticatedSubscription.unsubscribe();
     }
 }

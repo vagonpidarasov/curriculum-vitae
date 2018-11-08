@@ -8,6 +8,7 @@ import {
     SetProgress,
     SetError,
     AuthenticationRequest,
+    AuthenticationDiscard,
 } from './actions';
 
 const actions:Map<string, ReducerType<AuthenticationState>> = new Map<string, ReducerType<AuthenticationState>>();
@@ -49,5 +50,11 @@ export function setError(state:AuthenticationState, action:SetError) {
 actions.set(AuthenticationActions.AUTHENTICATION_REQUEST, authRequest);
 export function authRequest(state:AuthenticationState, action:AuthenticationRequest) {
     state.authenticationRequest = (new Date()).getTime();
+    return state;
+}
+
+actions.set(AuthenticationActions.AUTHENTICATION_DISCARD, authDiscard);
+export function authDiscard(state:AuthenticationState, action:AuthenticationDiscard) {
+    state.authenticationRequest = 0;
     return state;
 }

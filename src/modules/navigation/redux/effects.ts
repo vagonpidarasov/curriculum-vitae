@@ -65,4 +65,9 @@ export class NavigationEffects {
         ofType(ROUTER_NAVIGATION),
         map(() => new SetRequestedRoute(null)),
     );
+
+    @Effect() AuthenticationDiscardEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.AUTHENTICATION_DISCARD),
+        map(() => new SetRequestedRoute(null)),
+    );
 }
