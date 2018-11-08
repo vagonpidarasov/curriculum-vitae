@@ -17,6 +17,7 @@ import {
     SetProgress,
     SignInSuccess,
     SetError,
+    AuthenticationDiscard,
 } from './actions';
 
 @Injectable()
@@ -61,5 +62,10 @@ export class AuthenticationEffects {
             AuthenticationActions.SIGN_IN_FAIL,
         ),
         map(() => new SetProgress(false))
+    );
+
+    @Effect() SignInSuccessEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.SIGN_IN_SUCCESS),
+        map(() => new AuthenticationDiscard())
     );
 }

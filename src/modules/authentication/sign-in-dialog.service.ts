@@ -9,8 +9,8 @@ import {SignInDialogComponent} from './sign-in-dialog';
 @Injectable()
 export class SignInDialogService implements OnDestroy {
     private dialogRef:MatDialogRef<SignInDialogComponent>;
-    private authenticationRequestSubscription:Subscription;
-    private isAuthenticatedSubscription:Subscription;
+    private dialogOpenSubscription:Subscription;
+    private dialogCloseSubscription:Subscription;
 
     constructor(
         private dialog:MatDialog,
@@ -28,18 +28,17 @@ export class SignInDialogService implements OnDestroy {
     }
 
     init() {
-        this.authenticationRequestSubscription = this.authenticationStore.authenticationRequest
+        this.dialogOpenSubscription = this.authenticationStore.authenticationRequest
             .pipe(filter((authRequest:number) => authRequest > 0))
             .subscribe(() => this.open());
 
-        this.isAuthenticatedSubscription = this.authenticationStore.isAuthenticated
-            .pipe(filter((isAuthenticated:boolean) => isAuthenticated))
-            .subscribe(() => this.close())
-        ;
+        this.dialogCloseSubscription = this.authenticationStore.authenticationRequest
+            .pipe(filter((authRequest:number) => authRequest === 0))
+            .subscribe(() => this.close());
     }
 
     ngOnDestroy() {
-        this.authenticationRequestSubscription.unsubscribe();
-        this.isAuthenticatedSubscription.unsubscribe();
+        this.dialogOpenSubscription.unsubscribe();
+        this.dialogCloseSubscription.unsubscribe();
     }
 }

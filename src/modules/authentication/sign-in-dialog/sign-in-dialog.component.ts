@@ -1,5 +1,4 @@
 import {Component, OnDestroy} from '@angular/core';
-import {MatDialogRef} from '@angular/material';
 
 import {AuthenticationPayload} from '../interfaces';
 import {AuthenticationStore} from '../redux';
@@ -10,10 +9,7 @@ import {AuthenticationStore} from '../redux';
     styleUrls: ['./sign-in-dialog.component.scss'],
 })
 export class SignInDialogComponent implements OnDestroy {
-    constructor(
-        private dialogRef:MatDialogRef<SignInDialogComponent>,
-        public authenticationStore:AuthenticationStore
-    ) {}
+    constructor(public authenticationStore:AuthenticationStore) {}
 
     ngOnDestroy() {
         this.authenticationStore.setError(null);
@@ -28,7 +24,6 @@ export class SignInDialogComponent implements OnDestroy {
     }
 
     close() {
-        this.dialogRef.close();
         this.authenticationStore.authDiscard();
     }
 }
