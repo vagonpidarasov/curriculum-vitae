@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
 import {isAuthenticated, username, isInProgress, error, authenticationRequest} from './selectors';
-import {SignIn, SignOut, SetError} from './actions';
+import {SignIn, SignOut, SetError, AuthenticationRequest} from './actions';
 import {AuthenticationPayload} from '../interfaces';
 
 @Injectable()
@@ -41,5 +41,9 @@ export class AuthenticationStore {
 
     signOut():void {
         this.store.dispatch(new SignOut());
+    }
+
+    authRequest():void {
+        this.store.dispatch(new AuthenticationRequest());
     }
 }

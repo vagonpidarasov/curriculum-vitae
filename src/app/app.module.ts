@@ -6,9 +6,9 @@ import {EffectsModule} from '@ngrx/effects';
 
 import {AppRoutingModule} from 'src/routing';
 import {RepositoriesModule} from 'src/repositories';
+import {HeaderModule} from 'src/modules/header';
 
 import {AppComponent} from './app.component';
-import {HeaderContainerModule} from './header-container';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -20,7 +20,7 @@ import {HeaderContainerModule} from './header-container';
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         RepositoriesModule,
-        HeaderContainerModule,
+        HeaderModule,
     ],
     declarations: [AppComponent],
 })

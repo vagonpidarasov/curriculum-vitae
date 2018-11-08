@@ -19,7 +19,8 @@ import {
 } from './redux';
 
 import {SignInFormComponent} from './sign-in-form';
-import {SignInDialogService, SignInDialogComponent} from './sign-in-dialog';
+import {SignInDialogComponent} from './sign-in-dialog';
+import {SignInDialogService} from './sign-in-dialog.service';
 
 export const MatModules = [
     MatInputModule,

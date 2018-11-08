@@ -7,16 +7,22 @@ import {NavigationStore} from './redux';
 
 @Injectable()
 export class NavigationService implements OnDestroy {
-    private subscription:Subscription;
-    constructor(private router:Router, private navigationStore:NavigationStore) {
-        this.subscription = this.navigationStore.currentRoute
+    private currentRouteSubscription:Subscription;
+
+    constructor(
+        private navigationStore:NavigationStore,
+        private router:Router,
+    ) {}
+
+    init() {
+        this.currentRouteSubscription = this.navigationStore.currentRoute
             .pipe(filter((route:ActivatedRouteSnapshot) => !!route))
-            .subscribe((route:ActivatedRouteSnapshot) => {
-                this.router.navigateByUrl(route.url.toString()).then();
-        });
+            .subscribe((route:ActivatedRouteSnapshot) =>
+                this.router.navigateByUrl(route.url.toString())
+            );
     }
 
-    ngOnDestroy():void {
-        this.subscription.unsubscribe();
+    ngOnDestroy() {
+        this.currentRouteSubscription.unsubscribe();
     }
 }

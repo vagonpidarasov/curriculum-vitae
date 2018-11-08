@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {AuthenticationStore, SignInDialogService} from 'src/modules/authentication';
+import {AuthenticationStore} from 'src/modules/authentication';
 
 @Component({
     selector: 'header-container',
@@ -7,8 +7,5 @@ import {AuthenticationStore, SignInDialogService} from 'src/modules/authenticati
     styleUrls: ['./header-container.component.scss'],
 })
 export class HeaderContainerComponent {
-    constructor(
-        public authenticationStore:AuthenticationStore,
-        public signInDialog:SignInDialogService
-    ) {}
+    constructor(public authenticationStore:AuthenticationStore) {}
 }
