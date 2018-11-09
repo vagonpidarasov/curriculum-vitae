@@ -46,6 +46,7 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     @Input() isAuthenticated:boolean = false;
 
     @Output() signInRequest:EventEmitter<AuthenticationPayload> = new EventEmitter();
+    @Output() resetErrorRequest:EventEmitter<null> = new EventEmitter();
     @Output() valueChanges:EventEmitter<AuthenticationPayload> = new EventEmitter();
 
     signInForm:FormGroup;
@@ -102,7 +103,12 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
             this.usernameFormControl.valueChanges.pipe(distinctUntilChanged()),
             this.passwordFormControl.valueChanges.pipe(distinctUntilChanged())
         ).subscribe(
-            () => this.valueChanges.emit(this.signInForm.value)
+            () => {
+                this.valueChanges.emit(this.signInForm.value);
+                if (this.error) {
+                    this.resetErrorRequest.emit(null);
+                }
+            }
         );
     }
 

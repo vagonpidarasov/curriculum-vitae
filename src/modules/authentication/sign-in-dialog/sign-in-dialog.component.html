@@ -10,7 +10,7 @@
         [isAuthenticated]="authenticationStore.isAuthenticated | async"
         [error]="authenticationStore.error | async"
         (signInRequest)="signIn($event)"
-        (valueChanges)="valueChanges($event)"
+        (resetErrorRequest)="resetError($event)"
     ></sign-in-form>
 </mat-dialog-content>
 <mat-dialog-actions>

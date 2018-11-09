@@ -3,7 +3,7 @@ import {Action} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, map, exhaustMap} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 import {normalizeError} from 'src/modules/error';
@@ -30,7 +30,7 @@ export class AuthenticationEffects {
     @Effect() SignInEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN),
         map(toPayload),
-        switchMap((payload:AuthenticationPayload) => this.authenticate(payload))
+        exhaustMap((payload:AuthenticationPayload) => this.authenticate(payload))
     );
 
     private authenticate(payload:AuthenticationPayload) {
