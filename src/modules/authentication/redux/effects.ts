@@ -3,13 +3,14 @@ import {Action} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, exhaustMap} from 'rxjs/operators';
+import {catchError, map, exhaustMap, tap} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 import {normalizeError} from 'src/modules/error';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
+import {SignInDialogService} from '../sign-in-dialog.service';
 
 import {
     AuthenticationActions,
@@ -17,14 +18,14 @@ import {
     SetProgress,
     SignInSuccess,
     SetError,
-    AuthenticationDiscard,
 } from './actions';
 
 @Injectable()
 export class AuthenticationEffects {
     constructor(
         private actions$:Actions,
-        private authenticationRepository:AuthenticationRepository
+        private authenticationRepository:AuthenticationRepository,
+        private signInDialogService:SignInDialogService,
     ) {}
 
     @Effect() SignInEffect$:Observable<Action> = this.actions$.pipe(
@@ -65,10 +66,23 @@ export class AuthenticationEffects {
     );
 
     /**
-     * @Effect discards authentication request upon successful authentication
+     * @Effect opens dialog upon AUTHENTICATION_REQUEST
      */
-    @Effect() SignInSuccessEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(AuthenticationActions.SIGN_IN_SUCCESS),
-        map(() => new AuthenticationDiscard()),
+    @Effect({dispatch: false})
+    OpenDialogEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.AUTHENTICATION_REQUEST),
+        tap(() => this.signInDialogService.open()),
+    );
+
+    /**
+     * @Effect opens dialog upon AUTHENTICATION_DISCARD or SIGN_IN_SUCCESS
+     */
+    @Effect({dispatch: false})
+    CloseDialogEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(
+            AuthenticationActions.SIGN_IN_SUCCESS,
+            AuthenticationActions.AUTHENTICATION_DISCARD,
+        ),
+        tap(() => this.signInDialogService.close()),
     );
 }
