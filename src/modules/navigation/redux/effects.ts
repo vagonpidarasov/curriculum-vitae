@@ -39,7 +39,7 @@ export class NavigationEffects {
         filter((action:SetRequestedRoute) => !!action.payload),
         withLatestFrom(this.store, (action:Action, store:AuthFeatureState) => store.authentication.isAuthenticated),
         filter((isAuthenticated:boolean) => !isAuthenticated),
-        map(() => new AuthenticationRequest())
+        map(() => new AuthenticationRequest()),
     );
 
     /**
@@ -47,15 +47,15 @@ export class NavigationEffects {
      */
     @Effect() ResetProgressEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN_SUCCESS),
-        map(() => new SyncCurrentRoute())
+        map(() => new SyncCurrentRoute()),
     );
 
     /**
-     * @Effect listens for SIGN_OUT action and navigation to the default route
+     * @Effect listens for SIGN_OUT action and sets current route to the default
      */
     @Effect() SignOutEffectEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_OUT),
-        map(() => new SetCurrentRoute(defaultRoute))
+        map(() => new SetCurrentRoute(defaultRoute)),
     );
 
     /**

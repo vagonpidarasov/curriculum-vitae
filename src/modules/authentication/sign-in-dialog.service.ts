@@ -14,11 +14,11 @@ export class SignInDialogService implements OnDestroy {
 
     constructor(
         private dialog:MatDialog,
-        private authenticationStore:AuthenticationStore
+        private authenticationStore:AuthenticationStore,
     ) {}
 
     private open() {
-        this.dialogRef = this.dialog.open(SignInDialogComponent);
+        this.dialogRef = this.dialog.open(SignInDialogComponent, {disableClose: true});
     }
 
     private close() {

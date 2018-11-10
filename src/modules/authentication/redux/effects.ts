@@ -30,30 +30,30 @@ export class AuthenticationEffects {
     @Effect() SignInEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN),
         map(toPayload),
-        exhaustMap((payload:AuthenticationPayload) => this.authenticate(payload))
+        exhaustMap((payload:AuthenticationPayload) => this.authenticate(payload)),
     );
 
     private authenticate(payload:AuthenticationPayload) {
         return this.authenticationRepository.authenticate(payload).pipe(
             map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
-            catchError((e:any) => of(new SignInFail(normalizeError(e))))
+            catchError((e:any) => of(new SignInFail(normalizeError(e)))),
         );
     }
 
     @Effect() SingInFailEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN_FAIL),
         map(toPayload),
-        map((payload:any) => new SetError(payload))
+        map((payload:any) => new SetError(payload)),
     );
 
     @Effect() ResetErrorEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN),
-        map(() => new SetError(null))
+        map(() => new SetError(null)),
     );
 
     @Effect() SetProgressEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN),
-        map(() => new SetProgress(true))
+        map(() => new SetProgress(true)),
     );
 
     @Effect() ResetProgressEffect$:Observable<Action> = this.actions$.pipe(
@@ -61,7 +61,7 @@ export class AuthenticationEffects {
             AuthenticationActions.SIGN_IN_SUCCESS,
             AuthenticationActions.SIGN_IN_FAIL,
         ),
-        map(() => new SetProgress(false))
+        map(() => new SetProgress(false)),
     );
 
     /**
@@ -69,6 +69,6 @@ export class AuthenticationEffects {
      */
     @Effect() SignInSuccessEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN_SUCCESS),
-        map(() => new AuthenticationDiscard())
+        map(() => new AuthenticationDiscard()),
     );
 }
