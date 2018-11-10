@@ -18,7 +18,7 @@
         mat-button
         type="button"
         color="primary"
-        (click)="close()"
+        (click)="authDiscard()"
         class="flex-basis-100"
         [disabled]="authenticationStore.isInProgress | async"
     >Cancel</button>

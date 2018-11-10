@@ -64,6 +64,9 @@ export class AuthenticationEffects {
         map(() => new SetProgress(false))
     );
 
+    /**
+     * @Effect discards authentication request upon successful authentication
+     */
     @Effect() SignInSuccessEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AuthenticationActions.SIGN_IN_SUCCESS),
         map(() => new AuthenticationDiscard())
