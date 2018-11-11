@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Router} from '@angular/router';
-import {Action, Store} from '@ngrx/store';
+import {Action} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';

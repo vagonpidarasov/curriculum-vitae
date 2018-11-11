@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
-import {Action} from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 import {ReplaySubject} from 'rxjs';
 
 import {AuthenticationEffects} from './effects';
@@ -8,6 +8,7 @@ import {SignIn, SetProgress, SignInSuccess} from './actions';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationMockRepository} from '../mock';
+import {SignInDialogService} from '../sign-in-dialog.service';
 
 describe('AuthenticationEffects', () => {
     let effects:AuthenticationEffects;
@@ -22,6 +23,8 @@ describe('AuthenticationEffects', () => {
                 AuthenticationEffects,
                 provideMockActions(() => actions),
                 {provide: AuthenticationRepository, useClass: AuthenticationMockRepository},
+                {provide: Store, useValue: {}},
+                {provide: SignInDialogService, useValue: {}},
             ],
         });
 
