@@ -8,8 +8,9 @@ This is an Angular Seed project.
 
 ## Features
 
-- basic project architecture 
+- basic project architecture  and scaffolds 
 - routing, with router guard service
+- authentication
 - tslint configured
 - i18n (extract and AOT enabled)
 - JIT (for development) and AOT (for production) versions of the app
@@ -18,5 +19,5 @@ This is an Angular Seed project.
 - unit tests configured (using old school karma and jasmine)
 - code splitting, styles extraction, tree shaking
 - roboto webfont included
-- amterial design icons font included
-- basic proxy implementation (with authentication stub)
+- material design icons font included
+- basic proxy implementation (with authentication stub implemented)

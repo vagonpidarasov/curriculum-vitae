@@ -1,7 +1,8 @@
+import {Action} from '@ngrx/store';
 export class AuthenticationState {
     isAuthenticated:boolean = false;
     username:string = null;
     isInProgress:boolean = false;
     error:string = null;
-    authenticationRequest:number = 0;
+    authenticationRequest:Action|null = null;
 }

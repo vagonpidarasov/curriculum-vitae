@@ -1,5 +1,4 @@
-import {Component, ViewEncapsulation, OnInit} from '@angular/core';
-import {NavigationService} from 'src/modules/navigation';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
     selector: 'app',
@@ -7,9 +6,4 @@ import {NavigationService} from 'src/modules/navigation';
     styleUrls: ['./app.component.scss'],
     encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnInit {
-    constructor(private navigationService:NavigationService) {}
-    ngOnInit() {
-        this.navigationService.init();
-    }
-}
+export class AppComponent {}

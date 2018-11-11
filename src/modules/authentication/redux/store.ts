@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Store, select} from '@ngrx/store';
+import {Store, select, Action} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
-import {isAuthenticated, username, isInProgress, error, authenticationRequest} from './selectors';
+import {isAuthenticated, username, isInProgress, error} from './selectors';
 import {SignIn, SignOut, SetError, AuthenticationRequest, AuthenticationDiscard} from './actions';
 import {AuthenticationPayload} from '../interfaces';
 
@@ -27,10 +27,6 @@ export class AuthenticationStore {
         return this.store.pipe(select(error));
     }
 
-    get authenticationRequest():Observable<number> {
-        return this.store.pipe(select(authenticationRequest));
-    }
-
     setError(payload:string):void {
         this.store.dispatch(new SetError(payload));
     }
@@ -43,8 +39,8 @@ export class AuthenticationStore {
         this.store.dispatch(new SignOut());
     }
 
-    authRequest():void {
-        this.store.dispatch(new AuthenticationRequest());
+    authRequest(payload:Action = null):void {
+        this.store.dispatch(new AuthenticationRequest(payload));
     }
 
     authDiscard():void {

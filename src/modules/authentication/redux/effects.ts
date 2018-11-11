@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {Action} from '@ngrx/store';
+import {Action, Store} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, exhaustMap, tap} from 'rxjs/operators';
+import {catchError, map, exhaustMap, tap, withLatestFrom, filter} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 import {normalizeError} from 'src/modules/error';
@@ -11,6 +11,7 @@ import {normalizeError} from 'src/modules/error';
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
 import {SignInDialogService} from '../sign-in-dialog.service';
+import {FeatureState as AuthFeatureState} from './feature';
 
 import {
     AuthenticationActions,
@@ -24,6 +25,7 @@ import {
 export class AuthenticationEffects {
     constructor(
         private actions$:Actions,
+        private store:Store<AuthFeatureState>,
         private authenticationRepository:AuthenticationRepository,
         private signInDialogService:SignInDialogService,
     ) {}
@@ -63,6 +65,12 @@ export class AuthenticationEffects {
             AuthenticationActions.SIGN_IN_FAIL,
         ),
         map(() => new SetProgress(false)),
+    );
+
+    @Effect() SingInSuccessEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AuthenticationActions.SIGN_IN_SUCCESS),
+        withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationRequest),
+        filter((authenticationRequest:Action) => !!authenticationRequest)
     );
 
     /**

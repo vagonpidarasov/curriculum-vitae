@@ -39,7 +39,7 @@ describe('AuthenticationEffects', () => {
         );
     });
 
-    it('should emit SignInSuccess action in response to SignIn', () => {
+    it('should emit SignInSuccess action in response to SignIn action', () => {
         const username:string = 'username';
         const password:string = 'password';
         sourceAction = new SignIn({username, password});

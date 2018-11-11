@@ -48,6 +48,7 @@ export class SetError implements Action {
 
 export class AuthenticationRequest implements Action {
     readonly type = AuthenticationActions.AUTHENTICATION_REQUEST;
+    constructor(public payload:Action) {}
 }
 
 export class AuthenticationDiscard implements Action {
