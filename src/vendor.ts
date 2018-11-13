@@ -10,8 +10,9 @@ import '@angular/common';
 import '@angular/material';
 
 // ngrx
-// import '@ngrx/core';
 import '@ngrx/store';
+import '@ngrx/effects';
+import '@ngrx/router-store';
 
 // rxjs
 import 'rxjs';

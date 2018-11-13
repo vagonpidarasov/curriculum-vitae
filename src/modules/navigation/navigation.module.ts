@@ -15,8 +15,6 @@ import {RouterGuardService} from './router-guard.service';
         EffectsModule.forFeature([NavigationEffects]),
         AuthenticationModule,
     ],
-    providers: [
-        RouterGuardService,
-    ],
+    providers: [RouterGuardService],
 })
 export class NavigationModule {}

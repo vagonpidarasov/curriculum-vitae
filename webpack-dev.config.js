@@ -26,6 +26,6 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
         new atl.CheckerPlugin(),
-        new MiniCssExtractPlugin({filename: '[name].css'})
+        new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
 });

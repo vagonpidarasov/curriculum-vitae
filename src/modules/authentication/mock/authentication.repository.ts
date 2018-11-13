@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
 
-import {AuthenticationResponse, AuthenticationPayload } from '../interfaces';
+import {AuthenticationResponse, AuthenticationPayload} from '../interfaces';
 import {AuthenticationRepository} from '../authentication.repository';
 
 @Injectable()

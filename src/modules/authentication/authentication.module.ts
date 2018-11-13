@@ -4,7 +4,6 @@ import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 import {
     MatInputModule,
     MatButtonModule,
-    MatIconModule,
     MatProgressBarModule,
     MatDialogModule,
 } from '@angular/material';
@@ -25,7 +24,6 @@ import {SignInDialogService} from './sign-in-dialog.service';
 export const MatModules = [
     MatInputModule,
     MatButtonModule,
-    MatIconModule,
     MatProgressBarModule,
     MatDialogModule,
 ];

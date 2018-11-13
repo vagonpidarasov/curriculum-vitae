@@ -21,7 +21,7 @@ module.exports = {
         public: '127.0.0.1:8080',
         inline: true,
         watchContentBase: true,
-        contentBase: helpers.root('src')
+        contentBase: helpers.root('src'),
     },
 
     resolve: {
@@ -41,7 +41,7 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     {loader: MiniCssExtractPlugin.loader},
-                    'css-loader'
+                    'css-loader',
                 ],
 
                 include: [/node_modules/],
@@ -67,7 +67,7 @@ module.exports = {
                 commons: {
                     test: /[\\/]node_modules[\\/]/,
                     name: 'vendor',
-                    chunks: 'all'
+                    chunks: 'all',
                 }
             }
         },
