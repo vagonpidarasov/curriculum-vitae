@@ -20,6 +20,7 @@ import {
 import {SignInFormComponent} from './sign-in-form';
 import {SignInDialogComponent} from './sign-in-dialog';
 import {SignInDialogService} from './sign-in-dialog.service';
+import {SingInDialogEffects} from './sign-in-dialog.effects';
 
 export const MatModules = [
     MatInputModule,
@@ -35,7 +36,7 @@ export const MatModules = [
         FormsModule,
         ReactiveFormsModule,
         StoreModule.forFeature(FeatureStateName, AuthenticationReducer),
-        EffectsModule.forFeature([AuthenticationEffects]),
+        EffectsModule.forFeature([AuthenticationEffects, SingInDialogEffects]),
         ...MatModules,
     ],
     providers: [AuthenticationStore, SignInDialogService],

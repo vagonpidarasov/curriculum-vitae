@@ -6,6 +6,11 @@ import {filter} from 'rxjs/operators';
 import {AuthenticationPayload} from '../interfaces';
 import {AuthenticationStore} from '../redux';
 
+export const EscapeKey:{key:string, keyCode:number} = {
+    key: 'Escape',
+    keyCode: 27,
+};
+
 @Component({
     selector: 'sign-in-dialog',
     templateUrl: './sign-in-dialog.component.html',
@@ -25,7 +30,7 @@ export class SignInDialogComponent implements OnDestroy, OnInit {
             .subscribe(() => this.authDiscard());
 
         this.keydownEventsSubscription = this.dialogRef.keydownEvents()
-            .pipe(filter((e:KeyboardEvent) => e.key === 'Escape'))
+            .pipe(filter((e:KeyboardEvent) => e.key === EscapeKey.key))
             .subscribe(() => this.authDiscard());
     }
 

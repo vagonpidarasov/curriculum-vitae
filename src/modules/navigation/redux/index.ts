@@ -1,1 +1,4 @@
-export {NavigationEffects} from './effects';
+import {AuthenticationEffects} from './effects';
+
+export {AuthenticationEffects} from './effects';
+export {NavigationActions} from './actions';

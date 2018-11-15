@@ -3,14 +3,13 @@ import {Action, Store} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {Observable, of} from 'rxjs';
-import {catchError, map, exhaustMap, tap, withLatestFrom, filter} from 'rxjs/operators';
+import {catchError, map, exhaustMap, withLatestFrom, filter} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 import {normalizeError} from 'src/modules/error';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
-import {SignInDialogService} from '../sign-in-dialog.service';
 import {FeatureState as AuthFeatureState} from './feature';
 
 import {
@@ -27,7 +26,6 @@ export class AuthenticationEffects {
         private actions$:Actions,
         private store:Store<AuthFeatureState>,
         private authenticationRepository:AuthenticationRepository,
-        private signInDialogService:SignInDialogService,
     ) {}
 
     @Effect() SignInEffect$:Observable<Action> = this.actions$.pipe(
@@ -71,26 +69,5 @@ export class AuthenticationEffects {
         ofType(AuthenticationActions.SIGN_IN_SUCCESS),
         withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationRequest),
         filter((authenticationRequest:Action) => !!authenticationRequest)
-    );
-
-    /**
-     * @Effect opens dialog upon AUTHENTICATION_REQUEST
-     */
-    @Effect({dispatch: false})
-    OpenDialogEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(AuthenticationActions.AUTHENTICATION_REQUEST),
-        tap(() => this.signInDialogService.open()),
-    );
-
-    /**
-     * @Effect opens dialog upon AUTHENTICATION_DISCARD or SIGN_IN_SUCCESS
-     */
-    @Effect({dispatch: false})
-    CloseDialogEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(
-            AuthenticationActions.SIGN_IN_SUCCESS,
-            AuthenticationActions.AUTHENTICATION_DISCARD,
-        ),
-        tap(() => this.signInDialogService.close()),
     );
 }
