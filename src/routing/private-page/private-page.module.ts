@@ -1,16 +1,17 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterModule} from '@angular/router';
 
-import {PublicPageContainerModule, PublicPageContainerComponent as component} from './container';
+import {PrivatePageContainerModule, PrivatePageContainerComponent as component} from './container';
 import {path} from './path';
 import {NavigationModule, RouterGuardService} from 'src/modules/navigation';
 
+const canActivate = [RouterGuardService];
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
-        PublicPageContainerModule,
+        PrivatePageContainerModule,
         NavigationModule,
-        RouterModule.forChild([{path, component, canActivate: [RouterGuardService]}]),
+        RouterModule.forChild([{path, component, canActivate}]),
     ],
 })
-export class PublicPageModule {}
+export class PrivatePageModule {}

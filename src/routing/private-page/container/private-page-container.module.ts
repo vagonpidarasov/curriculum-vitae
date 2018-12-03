@@ -1,12 +1,12 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {MatCardModule, MatButtonModule} from '@angular/material';
 
-import {PublicPageContainerComponent} from './public-page-container.component';
+import {PrivatePageContainerComponent} from './private-page-container.component';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [MatCardModule, MatButtonModule],
-    declarations: [PublicPageContainerComponent],
-    exports: [PublicPageContainerComponent],
+    declarations: [PrivatePageContainerComponent],
+    exports: [PrivatePageContainerComponent],
 })
-export class PublicPageContainerModule {}
+export class PrivatePageContainerModule {}

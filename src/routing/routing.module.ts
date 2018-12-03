@@ -7,11 +7,11 @@ import {NavigationModule} from 'src/modules/navigation';
 import {RouterConfig} from './router.config';
 
 import {HomePageModule} from './home-page';
-import {PublicPageModule} from './public-page';
+import {PrivatePageModule} from './private-page';
 
 export const RoutingModules = [
     HomePageModule,
-    PublicPageModule,
+    PrivatePageModule,
 ];
 
 @NgModule({

@@ -10,4 +10,4 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 
 + don't call dialog.open directly - update authRequest
 
-- rename public-page to private-page
++ rename public-page to private-page
