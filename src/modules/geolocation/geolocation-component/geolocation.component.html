@@ -1,4 +1,8 @@
-<div *ngIf="!!position" class="geolocation-info">
+<div
+    *ngIf="!!position"
+    @onEnter
+    class="geolocation-info"
+>
     <p class="longitude"><span>Longitude: </span><span>{{longitude}}</span></p>
     <p class="latitude"><span>Latitude: </span><span>{{latitude}}</span></p>
 </div>

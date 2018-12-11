@@ -8,11 +8,27 @@ import {
     OnChanges,
 } from '@angular/core';
 
+import {
+    trigger,
+    state,
+    style,
+    animate,
+    transition,
+} from '@angular/animations';
+
 @Component({
     selector: 'geolocation',
     templateUrl: './geolocation.component.html',
     styleUrls: ['./geolocation.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: [
+        trigger('onEnter', [
+            transition(':enter', [
+                style({ opacity: 0 }),
+                animate('0.5s', style({ opacity: 1 })),
+            ]),
+        ]),
+    ],
 })
 export class GeolocationComponent implements OnChanges{
     @Input() error:any = null;
@@ -23,11 +39,11 @@ export class GeolocationComponent implements OnChanges{
     buttonDisabled:boolean = false;
 
     get longitude():number {
-        return (<Position>this.position).coords.longitude;
+        return this.position ? (<Position>this.position).coords.longitude : null;
     }
 
     get latitude():number {
-        return (<Position>this.position).coords.latitude;
+        return this.position ? (<Position>this.position).coords.latitude : null;
     }
 
     ngOnChanges(changes:SimpleChanges) {
