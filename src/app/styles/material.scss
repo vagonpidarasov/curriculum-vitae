@@ -4,6 +4,10 @@
 
 .mat-button, .mat-raised-button {
     text-transform: uppercase;
+
+    &:focus{
+        outline: none;
+    }
 }
 
 .mat-snack-bar-handset .mat-snack-bar-container {

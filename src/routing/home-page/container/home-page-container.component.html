@@ -4,3 +4,9 @@
     <mat-icon class="verified-user">verified_user</mat-icon>
     <span>{{authenticationStore.username | async}}</span>
 </h3>
+
+<geolocation
+    [error]="geolocationStore.error | async"
+    [position]="geolocationStore.position | async"
+    (getGeolocationRequest)="geolocationStore.resolveGeolocation()"
+></geolocation>

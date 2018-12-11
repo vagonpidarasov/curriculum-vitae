@@ -1,0 +1,17 @@
+<div *ngIf="!!position" class="geolocation-info">
+    <p class="longitude"><span>Longitude: </span><span>{{longitude}}</span></p>
+    <p class="latitude"><span>Latitude: </span><span>{{latitude}}</span></p>
+</div>
+
+<div *ngIf="!!error" class="geolocation-error">
+    <p class=""><span>{{error}}</span></p>
+</div>
+
+<button
+    class="geolocation-button"
+    mat-raised-button
+    type="button"
+    color="primary"
+    [disabled]="buttonDisabled"
+    (click)="getGeolocation()"
+>Get Current Geolocation</button>
