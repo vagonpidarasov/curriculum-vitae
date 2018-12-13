@@ -5,13 +5,13 @@ import {AuthenticationRepository} from 'src/modules/authentication';
 import {GeolocationRepository} from 'src/modules/geolocation';
 
 import {AuthenticationHttpRepository} from './http';
-import {GeolocationRepositoryImplementation} from './other';
+import {GeolocationNavigatorRepository} from './other';
 
 @NgModule({
     imports: [HttpClientModule],
     providers: [
         {provide: AuthenticationRepository, useClass: AuthenticationHttpRepository},
-        {provide: GeolocationRepository, useClass: GeolocationRepositoryImplementation},
+        {provide: GeolocationRepository, useClass: GeolocationNavigatorRepository},
     ],
 })
 export class RepositoriesModule {}

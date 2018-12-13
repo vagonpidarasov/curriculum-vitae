@@ -1,1 +1,1 @@
-export {GeolocationRepositoryImplementation} from './geolocation.repository';
+export {GeolocationNavigatorRepository} from './geolocation.repository';
