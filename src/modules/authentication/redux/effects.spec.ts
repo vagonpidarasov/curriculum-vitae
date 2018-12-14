@@ -1,7 +1,9 @@
 import {TestBed} from '@angular/core/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
-import {Action, Store} from '@ngrx/store';
+import {Store} from '@ngrx/store';
 import {ReplaySubject} from 'rxjs';
+
+import {Action} from 'src/modules/redux-helpers';
 
 import {AuthenticationEffects} from './effects';
 import {SignIn, SetProgress, SignInSuccess} from './actions';

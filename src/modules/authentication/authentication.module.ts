@@ -12,7 +12,7 @@ import {StoreModule} from '@ngrx/store';
 
 import {
     AuthenticationStore,
-    AuthenticationReducer,
+    reducer,
     FeatureStateName,
     AuthenticationEffects,
 } from './redux';
@@ -35,7 +35,7 @@ export const MatModules = [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        StoreModule.forFeature(FeatureStateName, AuthenticationReducer),
+        StoreModule.forFeature(FeatureStateName, reducer),
         EffectsModule.forFeature([AuthenticationEffects, SingInDialogEffects]),
         ...MatModules,
     ],

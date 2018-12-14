@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ReducerType} from './reducer.type';
+import {ReducerType} from './types';
 
 export type ReducerTestSuiteType = () => void;
 

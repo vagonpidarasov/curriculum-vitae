@@ -1,10 +1,12 @@
 import {ReducerTestSuite} from 'src/modules/redux-helpers/test';
+
 import {AuthenticationState} from './state';
-import {AuthenticationReducer, signInSuccess} from './reducer';
+import {reducer} from './reducer';
+import {signInSuccess} from './reducers';
 import {SignInSuccess, SignOut} from './actions';
 
 describe('AuthenticationReducer', ReducerTestSuite(
-    AuthenticationReducer,
+    reducer,
     new AuthenticationState(),
     new SignOut()
 ));

@@ -1,33 +1,33 @@
 import {Action} from '@ngrx/store';
+import {ActionWithPayload} from 'src/modules/redux-helpers';
+import {
+    RESOLVE_GEOLOCATION,
+    SET_GEOLOCATION,
+    RESET_GEOLOCATION,
+    RESOLVE_GEOLOCATION_SUCCESS,
+    RESOLVE_GEOLOCATION_FAIL
+} from './action-types';
 
-export enum GeolocationActions {
-    RESOLVE_GEOLOCATION = 'Geolocation:Resolve',
-    SET_GEOLOCATION = 'Geolocation:Set',
-    RESET_GEOLOCATION = 'Geolocation:Reset',
-    RESOLVE_GEOLOCATION_SUCCESS = 'Geolocation:Resolve-Success',
-    RESOLVE_GEOLOCATION_FAIL = 'Geolocation:Resolve-Fail',
-}
-
-export class ResolveGeolocation implements Action {
-    readonly type = GeolocationActions.RESOLVE_GEOLOCATION;
+export class ResolveGeolocation implements ActionWithPayload {
+    readonly type = RESOLVE_GEOLOCATION;
     constructor(public payload:boolean) {}
 }
 
-export class SetGeolocation implements Action {
-    readonly type = GeolocationActions.SET_GEOLOCATION;
+export class SetGeolocation implements ActionWithPayload {
+    readonly type = SET_GEOLOCATION;
     constructor(public payload:Position) {}
 }
 
 export class ResetGeolocation implements Action {
-    readonly type = GeolocationActions.RESET_GEOLOCATION;
+    readonly type = RESET_GEOLOCATION;
 }
 
-export class ResolveGeolocationSuccess implements Action {
-    readonly type = GeolocationActions.RESOLVE_GEOLOCATION_SUCCESS;
+export class ResolveGeolocationSuccess implements ActionWithPayload {
+    readonly type = RESOLVE_GEOLOCATION_SUCCESS;
     constructor(public payload:Position) {}
 }
 
-export class ResolveGeolocationFail implements Action {
-    readonly type = GeolocationActions.RESOLVE_GEOLOCATION_FAIL;
+export class ResolveGeolocationFail implements ActionWithPayload {
+    readonly type = RESOLVE_GEOLOCATION_FAIL;
     constructor(public payload:PositionError) {}
 }

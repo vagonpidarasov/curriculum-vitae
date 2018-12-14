@@ -10,7 +10,6 @@ import {
 
 import {
     trigger,
-    state,
     style,
     animate,
     transition,
@@ -30,7 +29,7 @@ import {
         ]),
     ],
 })
-export class GeolocationComponent implements OnChanges{
+export class GeolocationComponent implements OnChanges {
     @Input() error:any = null;
     @Input() position:any = null;
 

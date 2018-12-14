@@ -1,17 +1,17 @@
-import {FeatureState, FeatureStateName} from './feature';
+import {getFeatureState, FeatureState} from './feature';
 
 export function isAuthenticated(state:FeatureState):boolean {
-    return state[FeatureStateName].isAuthenticated;
+    return getFeatureState(state).isAuthenticated;
 }
 
 export function username(state:FeatureState):string {
-    return state[FeatureStateName].username;
+    return getFeatureState(state).username;
 }
 
 export function error(state:FeatureState):string {
-    return state[FeatureStateName].error;
+    return getFeatureState(state).error;
 }
 
 export function isInProgress(state:FeatureState):boolean {
-    return state[FeatureStateName].isInProgress;
+    return getFeatureState(state).isInProgress;
 }

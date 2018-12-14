@@ -1,20 +1,14 @@
 import {Injectable} from '@angular/core';
-import {Action, Store} from '@ngrx/store';
+import {Action} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap} from 'rxjs/operators';
 
 import {toPayload} from 'src/modules/redux-helpers';
 
 import {GeolocationRepository} from '../geolocation.repository';
-
-import {
-    GeolocationActions,
-    ResolveGeolocationFail,
-    ResolveGeolocationSuccess,
-    SetGeolocation,
-} from './actions';
+import {RESOLVE_GEOLOCATION, RESOLVE_GEOLOCATION_SUCCESS} from './action-types';
+import {ResolveGeolocationFail, ResolveGeolocationSuccess, SetGeolocation} from './actions';
 
 @Injectable()
 export class GeolocationEffects {
@@ -24,7 +18,7 @@ export class GeolocationEffects {
     ) {}
 
     @Effect() ResolveGeolocationEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(GeolocationActions.RESOLVE_GEOLOCATION),
+        ofType(RESOLVE_GEOLOCATION),
         map(toPayload),
         exhaustMap((payload:boolean) => this.resolveGeolocation(payload)),
     );
@@ -37,7 +31,7 @@ export class GeolocationEffects {
     }
 
     @Effect() ResolveGeolocationSuccessEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(GeolocationActions.RESOLVE_GEOLOCATION_SUCCESS),
+        ofType(RESOLVE_GEOLOCATION_SUCCESS),
         map(toPayload),
         map((payload:Position) => new SetGeolocation(payload)),
     );

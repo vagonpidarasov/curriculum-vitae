@@ -1,5 +1,5 @@
-export {GeolocationStore} from './store';
-export {GeolocationEffects} from './effects';
-export {FeatureStateName, FeatureState} from './feature';
-export {GeolocationReducer} from './reducer';
+export * from './store';
+export * from './effects';
+export * from './feature';
+export * from './reducer';
 export * from './actions';
