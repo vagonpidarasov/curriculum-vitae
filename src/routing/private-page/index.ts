@@ -1,1 +1,1 @@
-export {PrivatePageModule} from './private-page.module';
+export {PrivatePageRouteModule} from './private-page-route.module';

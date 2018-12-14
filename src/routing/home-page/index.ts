@@ -1,1 +1,1 @@
-export {HomePageModule} from './home-page.module';
+export {HomePageRouteModule} from './home-page-route.module';

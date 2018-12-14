@@ -5,7 +5,7 @@ import {MatToolbarModule, MatButtonModule, MatTabsModule} from '@angular/materia
 
 import {AuthenticationModule} from 'src/modules/authentication';
 import {HeaderComponent} from './header.component';
-import {HeaderContainerComponent} from './header-container.component';
+import {HeaderContainer} from './header.container';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -17,7 +17,7 @@ import {HeaderContainerComponent} from './header-container.component';
         MatTabsModule,
         AuthenticationModule,
     ],
-    declarations: [HeaderComponent, HeaderContainerComponent],
-    exports: [HeaderComponent, HeaderContainerComponent],
+    declarations: [HeaderComponent, HeaderContainer],
+    exports: [HeaderComponent, HeaderContainer],
 })
 export class HeaderModule {}

@@ -3,9 +3,9 @@ import {AuthenticationStore} from 'src/modules/authentication';
 
 @Component({
     selector: 'header-container',
-    templateUrl: './header-container.component.html',
-    styleUrls: ['./header-container.component.scss'],
+    templateUrl: './header.container.html',
+    styleUrls: ['./header.container.scss'],
 })
-export class HeaderContainerComponent {
+export class HeaderContainer {
     constructor(public authenticationStore:AuthenticationStore) {}
 }

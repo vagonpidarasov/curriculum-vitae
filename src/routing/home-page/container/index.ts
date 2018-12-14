@@ -1,2 +1,2 @@
-export {HomePageContainerModule} from './home-page-container.module';
-export {HomePageContainerComponent} from './home-page-container.component';
+export {HomePageContainer} from './home-page.container';
+export {HomePageModule} from './home-page.module';

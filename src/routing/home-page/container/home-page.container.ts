@@ -5,10 +5,10 @@ import {GeolocationStore} from 'src/modules/geolocation';
 
 @Component({
     selector: 'home-page',
-    templateUrl: './home-page-container.component.html',
-    styleUrls: ['./home-page-container.component.scss'],
+    templateUrl: './home-page.container.html',
+    styleUrls: ['./home-page.container.scss'],
 })
-export class HomePageContainerComponent {
+export class HomePageContainer {
     constructor(
         @Inject(LOCALE_ID) public locale:string,
         public authenticationStore:AuthenticationStore,

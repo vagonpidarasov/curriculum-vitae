@@ -6,12 +6,12 @@ import {NavigationModule} from 'src/modules/navigation';
 
 import {RouterConfig} from './router.config';
 
-import {HomePageModule} from './home-page';
-import {PrivatePageModule} from './private-page';
+import {HomePageRouteModule} from './home-page';
+import {PrivatePageRouteModule} from './private-page';
 
 export const RoutingModules = [
-    HomePageModule,
-    PrivatePageModule,
+    HomePageRouteModule,
+    PrivatePageRouteModule,
 ];
 
 @NgModule({

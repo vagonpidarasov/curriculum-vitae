@@ -12,6 +12,8 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 
 + rename public-page to private-page
 
-- add some simple angular animation
++ add some simple angular animation
 
 + add geolocation https://github.com/robisim74/angular-maps/blob/master/src/app/services/geolocation.service.ts
+
++ rename *-container.component.* to *.container.*

@@ -5,12 +5,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {AuthenticationModule} from 'src/modules/authentication';
 import {GeolocationModule} from 'src/modules/geolocation';
 
-import {HomePageContainerComponent} from './home-page-container.component';
+import {HomePageContainer} from './home-page.container';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [CommonModule, AuthenticationModule, GeolocationModule, MatIconModule],
-    exports: [HomePageContainerComponent],
-    declarations: [HomePageContainerComponent],
+    exports: [HomePageContainer],
+    declarations: [HomePageContainer],
 })
-export class HomePageContainerModule {}
+export class HomePageModule {}
