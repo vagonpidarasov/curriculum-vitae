@@ -7,7 +7,6 @@ const helpers = require('./webpack.helpers');
 
 module.exports = {
     entry: [
-        helpers.root('src/polyfills'),
         helpers.root('src/vendor'),
         helpers.root('src/index'),
         helpers.root('src/styles'),

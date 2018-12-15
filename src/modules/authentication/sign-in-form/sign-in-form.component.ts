@@ -32,7 +32,7 @@ import {
     PASSWORD_MIN_LENGTH,
     USERNAME_DATA_NAME,
     PASSWORD_DATA_NAME,
-} from '../constants';
+} from './constants';
 
 @Component({
     selector: 'sign-in-form',

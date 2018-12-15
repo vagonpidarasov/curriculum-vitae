@@ -16,6 +16,13 @@ import {SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL} from './action-types';
 
 @Injectable()
 export class AuthenticationEffects {
+    private authenticate(payload:AuthenticationPayload):Observable<ActionWithPayload> {
+        return this.authenticationRepository.authenticate(payload).pipe(
+            map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
+            catchError((e:any) => of(new SignInFail(normalizeError(e)))),
+        );
+    }
+
     constructor(
         private actions$:Actions,
         private store:Store<AuthFeatureState>,
@@ -27,13 +34,6 @@ export class AuthenticationEffects {
         map(toPayload),
         exhaustMap((payload:AuthenticationPayload) => this.authenticate(payload)),
     );
-
-    private authenticate(payload:AuthenticationPayload):Observable<ActionWithPayload> {
-        return this.authenticationRepository.authenticate(payload).pipe(
-            map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
-            catchError((e:any) => of(new SignInFail(normalizeError(e)))),
-        );
-    }
 
     @Effect() SingInFailEffect$:Observable<ActionWithPayload> = this.actions$.pipe(
         ofType(SIGN_IN_FAIL),

@@ -6,6 +6,6 @@ import {RouterCancelPayload} from '@ngrx/router-store';
  * @param {RouterCancelPayload<any, ActivatedRouteSnapshot>} payload
  * @returns {ActivatedRouteSnapshot}
  */
-export function extractActivatedRoute(payload:RouterCancelPayload<any, ActivatedRouteSnapshot>):ActivatedRouteSnapshot {
+export function toActivatedRoute(payload:RouterCancelPayload<any, ActivatedRouteSnapshot>):ActivatedRouteSnapshot {
     return payload.routerState.root.firstChild;
 }
