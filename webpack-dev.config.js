@@ -8,6 +8,18 @@ const helpers = require('./webpack.helpers');
 module.exports = webpackMerge(commonConfig, {
     mode: 'development',
 
+    // devtool: 'source-map',
+
+    devServer: {
+        historyApiFallback: true,
+        stats: 'minimal',
+        public: '127.0.0.1:8080',
+        inline: true,
+        watchContentBase: true,
+        contentBase: helpers.root('src'),
+        open: true,
+    },
+
     output: {
         path: helpers.root('dev'),
         publicPath: '/',

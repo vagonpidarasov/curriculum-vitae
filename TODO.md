@@ -20,4 +20,16 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 
 - clean node_modules and use the latest node
 
-- translate the app
+- translate the whole app
+
++ PWA
+https://medium.com/@nsmirnova/creating-pwa-with-angular-5-part-2-progressifying-the-application-449e3a706129
+https://alligator.io/angular/service-workers/
+https://blog.angular-university.io/angular-service-worker/
+    + touch manifest.json
+    + make it appear in the output dir (some webpack magic)
+    +  <link rel="manifest" href="manifest.json">
+    + npm install @angular/service-worker --save
+    + touch src/ngsw-config.json
+    + enable sw in angular cli ???
+    + ServiceWorkerModule.register('ngsw-worker.js') 

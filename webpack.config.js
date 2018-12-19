@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const webpackBundleAnalyzer = require('webpack-bundle-analyzer');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const helpers = require('./webpack.helpers');
+
+const {ContextReplacementPlugin} = webpack;
 
 module.exports = {
     entry: [
@@ -11,17 +11,6 @@ module.exports = {
         helpers.root('src/index'),
         helpers.root('src/styles'),
     ],
-
-    // devtool: 'source-map',
-
-    devServer: {
-        historyApiFallback: true,
-        stats: 'minimal',
-        public: '127.0.0.1:8080',
-        inline: true,
-        watchContentBase: true,
-        contentBase: helpers.root('src'),
-    },
 
     resolve: {
         extensions: ['.ts', '.js'],
@@ -73,8 +62,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, helpers.root('src')),
+        new ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, helpers.root('src')),
         new HtmlWebpackPlugin({template: 'src/index.html'}),
-        // new webpackBundleAnalyzer.BundleAnalyzerPlugin(),
     ],
 };
