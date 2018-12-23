@@ -1,9 +1,8 @@
 const webpackMerge = require('webpack-merge');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const atl = require('awesome-typescript-loader');
-
+const {CheckerPlugin} = require('awesome-typescript-loader');
 const commonConfig = require('./webpack.config.js');
-const helpers = require('./webpack.helpers');
+const {root} = require('./webpack.helpers');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'development',
@@ -16,12 +15,12 @@ module.exports = webpackMerge(commonConfig, {
         public: '127.0.0.1:8080',
         inline: true,
         watchContentBase: true,
-        contentBase: helpers.root('src'),
+        contentBase: root('src'),
         open: true,
     },
 
     output: {
-        path: helpers.root('dev'),
+        path: root('dev'),
         publicPath: '/',
         filename: '[name].js',
         sourceMapFilename: '[name].map',
@@ -37,7 +36,7 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
-        new atl.CheckerPlugin(),
+        new CheckerPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],
 });

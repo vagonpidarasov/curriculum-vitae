@@ -4,13 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
 const commonConfig = require('./webpack.config.js');
-const helpers = require('./webpack.helpers');
+const {root} = require('./webpack.helpers');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
 
     output: {
-        path: helpers.root('prod'),
+        path: root('prod'),
         publicPath: '/',
         filename: '[name].[chunkhash].js',
     },
@@ -35,9 +35,9 @@ module.exports = webpackMerge(commonConfig, {
             'pwa/icon.png',
         ]),
         new AngularCompilerPlugin({
-            tsConfigPath: helpers.root('tsconfig.json'),
-            entryModule: helpers.root('src/app/app.module#AppModule'),
-            i18nInFile: helpers.root('i18n/messages.ru.xlf'),
+            tsConfigPath: root('tsconfig.json'),
+            entryModule: root('src/app/app.module#AppModule'),
+            i18nInFile: root('i18n/messages.ru.xlf'),
             locale: 'ru',
         }),
         new MiniCssExtractPlugin({filename: '[name].[contenthash].css'}),

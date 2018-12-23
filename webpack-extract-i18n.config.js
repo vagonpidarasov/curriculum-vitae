@@ -1,15 +1,14 @@
 const webpackMerge = require('webpack-merge');
-const webpackNgtools = require('@ngtools/webpack');
+const {AngularCompilerPlugin} = require('@ngtools/webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 const commonConfig = require('./webpack.config.js');
-const helpers = require('./webpack.helpers');
+const {root} = require('./webpack.helpers');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'production',
 
     output: {
-        path: helpers.root('prod'),
+        path: root('prod'),
         publicPath: '/',
         filename: '[name].[chunkhash].js',
     },
@@ -29,10 +28,10 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
-            new webpackNgtools.AngularCompilerPlugin({
-                tsConfigPath: helpers.root('tsconfig.json'),
-                entryModule: helpers.root('src/app/app.module#AppModule'),
-                i18nOutFile: helpers.root('i18n/messages.xlf'),
+            new AngularCompilerPlugin({
+                tsConfigPath: root('tsconfig.json'),
+                entryModule: root('src/app/app.module#AppModule'),
+                i18nOutFile: root('i18n/messages.xlf'),
                 i18nOutFormat: 'xlf',
                 locale: 'en',
                 platform: 0,

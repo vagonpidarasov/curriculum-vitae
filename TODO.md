@@ -18,7 +18,7 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 
 + rename *-container.component.* to *.container.*
 
-- clean node_modules and use the latest node
++ clean node_modules and use the latest node
 
 - translate the whole app
 

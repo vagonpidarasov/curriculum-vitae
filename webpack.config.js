@@ -1,21 +1,19 @@
-const webpack = require('webpack');
+const {ContextReplacementPlugin} = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const helpers = require('./webpack.helpers');
-
-const {ContextReplacementPlugin} = webpack;
+const {loader} = require('mini-css-extract-plugin');
+const {root} = require('./webpack.helpers');
 
 module.exports = {
     entry: [
-        helpers.root('src/vendor'),
-        helpers.root('src/index'),
-        helpers.root('src/styles'),
+        root('src/vendor'),
+        root('src/index'),
+        root('src/styles'),
     ],
 
     resolve: {
         extensions: ['.ts', '.js'],
-        modules: [helpers.root('src'), 'node_modules'],
-        alias: {'src': helpers.root('src')},
+        modules: [root('src'), 'node_modules'],
+        alias: {'src': root('src')},
     },
 
     module: {
@@ -27,17 +25,14 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                use: [
-                    {loader: MiniCssExtractPlugin.loader},
-                    'css-loader',
-                ],
+                use: [{loader}, 'css-loader'],
 
                 include: [/node_modules/],
             },
             {
                 test: /\.html$/,
                 use: 'raw-loader',
-                exclude: [helpers.root('src/index.html')],
+                exclude: [root('src/index.html')],
             },
             {
                 test: /\.(png|eot|svg|ttf|woff|woff2)$/,
@@ -62,7 +57,7 @@ module.exports = {
     },
 
     plugins: [
-        new ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, helpers.root('src')),
+        new ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, root('src')),
         new HtmlWebpackPlugin({template: 'src/index.html'}),
     ],
 };
