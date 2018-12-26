@@ -1,11 +1,7 @@
-.warn {
-    color: #f44336;
-}
-
-.progress {
-    color: #3f51b5;
-}
-
-.text-align-center {
+.sing-in-dialog-title {
     text-align: center;
+
+    &.mat-progress {
+        color: #3f51b5;
+    }
 }

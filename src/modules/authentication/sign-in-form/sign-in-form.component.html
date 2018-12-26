@@ -29,10 +29,10 @@
         </mat-form-field>
     </section>
 
-    <section class="error flex align-items-center justify-content-space-around">
+    <section class="login-error flex align-items-center justify-content-space-around">
         <div *ngIf="!isInProgress && !error">&nbsp;</div>
         <mat-progress-bar *ngIf="isInProgress" mode="indeterminate"></mat-progress-bar>
-        <mat-error *ngIf="error" class="animate-opacity">{{error}}</mat-error>
+        <mat-error *ngIf="error" class="animation-shake">{{error}}</mat-error>
     </section>
 
     <section class="flex">

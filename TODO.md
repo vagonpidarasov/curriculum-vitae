@@ -33,3 +33,5 @@ https://blog.angular-university.io/angular-service-worker/
     + touch src/ngsw-config.json
     + enable sw in angular cli ???
     + ServiceWorkerModule.register('ngsw-worker.js') 
+
+- angular universal

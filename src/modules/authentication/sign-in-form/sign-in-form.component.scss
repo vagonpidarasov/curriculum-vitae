@@ -1,11 +1,10 @@
-mat-progress-bar {
-    margin: 9px 0;
-}
-
-section.error {
+.login-error {
     font-size: 75%;
     height: 20px;
     max-width: 180px;
-    //margin-bottom: 10px;
     transform: translate(0, -10px);
+
+    mat-progress-bar {
+        margin: 9px 0;
+    }
 }

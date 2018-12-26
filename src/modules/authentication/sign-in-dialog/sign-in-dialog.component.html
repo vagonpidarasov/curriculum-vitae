@@ -1,8 +1,9 @@
 <h2
     mat-dialog-title
-    class="text-align-center"
-    [class.warn]="authenticationStore.error | async"
-    [class.progress]="authenticationStore.isInProgress | async"
+    class="sing-in-dialog-title"
+    [class.mat-error]="authenticationStore.error | async"
+    [class.mat-progress]="authenticationStore.isInProgress | async"
+    [class.animation-shake]="authenticationStore.error | async"
 >Sign In</h2>
 <mat-dialog-content>
     <sign-in-form
@@ -18,8 +19,8 @@
         mat-button
         type="button"
         color="primary"
-        (click)="authDiscard()"
         class="flex-basis-100"
         [disabled]="authenticationStore.isInProgress | async"
+        (click)="authDiscard()"
     >Cancel</button>
 </mat-dialog-actions>
