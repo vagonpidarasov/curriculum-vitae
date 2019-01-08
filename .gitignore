@@ -57,11 +57,17 @@ typings/
 # dotenv environment variables file
 .env
 
+# idea
 .idea
 vcs.xml
 
+# build
 testresults
 dev
 prod
 
+# secret files
 proxy.config.js
+
+# firebase cache
+.firebase

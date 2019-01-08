@@ -31,7 +31,15 @@ https://blog.angular-university.io/angular-service-worker/
     +  <link rel="manifest" href="manifest.json">
     + npm install @angular/service-worker --save
     + touch src/ngsw-config.json
-    + enable sw in angular cli ???
+    + enable sw in angular cli
     + ServiceWorkerModule.register('ngsw-worker.js') 
 
 - angular universal
+
++ firebase
+
+- contentful
+
+- docker image with firebase ci/cd
+
+- do proper sign-out: call corresponding firebase method

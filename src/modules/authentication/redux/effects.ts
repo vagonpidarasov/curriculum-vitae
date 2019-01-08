@@ -6,7 +6,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap, withLatestFrom, filter} from 'rxjs/operators';
 
 import {Action, ActionWithPayload, toPayload} from 'src/modules/redux-helpers';
-import {normalizeError} from 'src/modules/error';
+import {firebaseAuthError} from 'src/modules/error';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
@@ -19,7 +19,7 @@ export class AuthenticationEffects {
     private authenticate(payload:AuthenticationPayload):Observable<ActionWithPayload> {
         return this.authenticationRepository.authenticate(payload).pipe(
             map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
-            catchError((e:any) => of(new SignInFail(normalizeError(e)))),
+            catchError((e:any) => of(new SignInFail(firebaseAuthError(e)))),
         );
     }
 
