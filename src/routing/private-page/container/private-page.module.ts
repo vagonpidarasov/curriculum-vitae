@@ -1,11 +1,18 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {MatCardModule, MatButtonModule} from '@angular/material';
+import {CommonModule} from '@angular/common';
+import {MatCardModule, MatButtonModule, MatIconModule} from '@angular/material';
 
 import {PrivatePageContainer} from './private-page.container';
+import {GeolocationModule} from 'src/modules/geolocation';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    imports: [MatCardModule, MatButtonModule],
+    imports: [
+        CommonModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        GeolocationModule],
     declarations: [PrivatePageContainer],
     exports: [PrivatePageContainer],
 })

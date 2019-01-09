@@ -40,7 +40,7 @@ https://blog.angular-university.io/angular-service-worker/
 + firebase
     - add some documentation about how to connect to a specific firebase project
 
-- contentful
++ contentful
 
 - docker image with firebase ci/cd
 

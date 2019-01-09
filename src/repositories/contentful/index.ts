@@ -1,0 +1,1 @@
+export {ContentfulRepositoryModule} from './module';

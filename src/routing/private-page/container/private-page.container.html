@@ -1,20 +1,12 @@
-<mat-card class="example-card">
-    <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>Shiba Inu</mat-card-title>
-        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
-    <mat-card-content>
-        <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-        </p>
-    </mat-card-content>
-    <mat-card-actions class="flex">
-        <span class="flex-auto"></span>
-        <button mat-button color="primary">Like</button>
-        <button mat-button color="primary">Share</button>
-    </mat-card-actions>
-</mat-card>
+<h1>Welcome to {{locale}}</h1>
+<h3 *ngIf="authenticationStore.isAuthenticated | async"
+    class="flex items-center justify-center">
+    <mat-icon class="verified-user">verified_user</mat-icon>
+    <span>{{authenticationStore.username | async}}</span>
+</h3>
+
+<geolocation
+    [error]="geolocationStore.error | async"
+    [position]="geolocationStore.position | async"
+    (getGeolocationRequest)="geolocationStore.resolveGeolocation()"
+></geolocation>

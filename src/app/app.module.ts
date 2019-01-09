@@ -8,7 +8,6 @@ import {EffectsModule} from '@ngrx/effects';
 import {AppRoutingModule} from 'src/routing';
 import {RepositoriesModule} from 'src/repositories';
 import {HeaderModule} from 'src/modules/header';
-import {FirebaseModule} from 'src/modules/firebase';
 
 import {isDevelopmentEnvironment} from '../environment';
 import {AppComponent} from './app.component';
@@ -20,7 +19,6 @@ import {AppComponent} from './app.component';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        FirebaseModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
         RepositoriesModule,

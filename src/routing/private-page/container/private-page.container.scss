@@ -1,13 +1,8 @@
-:host {
-    display: flex;
-    justify-content: center;
+h1, h2, h3 {
+    text-align: center;
+    margin: 10px 0;
 }
 
-.example-card {
-    max-width: 400px;
-}
-
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
+.verified-user {
+    font-size: 50px;
 }
