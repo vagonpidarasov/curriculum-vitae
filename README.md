@@ -26,6 +26,7 @@ If you would you like to have more control of your build process then this seed 
 - cli-free PWA setup
 - geolocation service
 - reset.css from bootstrap
+- firebase authentication
 
 ## scripts
 

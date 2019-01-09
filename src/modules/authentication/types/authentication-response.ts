@@ -1,4 +1,4 @@
-export interface AuthenticationResponse {
+export interface AuthenticationSignInResponse {
     username:string;
     uid?:string;
     displayName?:string;
@@ -7,3 +7,5 @@ export interface AuthenticationResponse {
     phoneNumber?:string;
     refreshToken?:string;
 }
+
+export type AuthenticationSignOutResponse  = void;

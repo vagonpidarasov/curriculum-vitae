@@ -21,6 +21,7 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 + clean node_modules and use the latest node
 
 - translate the whole app
+    - have en and ru versions as a subdirectories
 
 + PWA
 https://medium.com/@nsmirnova/creating-pwa-with-angular-5-part-2-progressifying-the-application-449e3a706129
@@ -37,6 +38,7 @@ https://blog.angular-university.io/angular-service-worker/
 - angular universal
 
 + firebase
+    - add some documentation about how to connect to a specific firebase project
 
 - contentful
 

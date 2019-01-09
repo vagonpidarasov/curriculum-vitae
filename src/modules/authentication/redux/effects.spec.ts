@@ -9,7 +9,7 @@ import {AuthenticationEffects} from './effects';
 import {SignIn, SetProgress, SignInSuccess} from './actions';
 
 import {AuthenticationRepository} from '../authentication.repository';
-import {AuthenticationMockRepository} from '../mock';
+import {AuthenticationRepositoryMock} from '../authentication.repository.mock';
 import {SignInDialogService} from '../sign-in-dialog.service';
 
 describe('AuthenticationEffects', () => {
@@ -24,7 +24,7 @@ describe('AuthenticationEffects', () => {
             providers: [
                 AuthenticationEffects,
                 provideMockActions(() => actions),
-                {provide: AuthenticationRepository, useClass: AuthenticationMockRepository},
+                {provide: AuthenticationRepository, useClass: AuthenticationRepositoryMock},
                 {provide: Store, useValue: {}},
                 {provide: SignInDialogService, useValue: {}},
             ],

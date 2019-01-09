@@ -21,7 +21,7 @@ import {
 import {Subscription, merge} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
-import {AuthenticationPayload} from '../interfaces';
+import {AuthenticationPayload} from '../types';
 
 import {
     USERNAME_VALIDATION_PATTERN,

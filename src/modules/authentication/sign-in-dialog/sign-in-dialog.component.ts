@@ -3,7 +3,7 @@ import {MatDialogRef} from '@angular/material';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {AuthenticationPayload} from '../interfaces';
+import {AuthenticationPayload} from '../types';
 import {AuthenticationStore} from '../redux';
 
 export const EscapeKey:{key:string, keyCode:number} = {

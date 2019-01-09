@@ -1,5 +1,5 @@
 import {Action, ActionWithPayload} from 'src/modules/redux-helpers';
-import {AuthenticationPayload} from '../interfaces/';
+import {AuthenticationPayload} from '../types';
 
 import {
     SIGN_IN,

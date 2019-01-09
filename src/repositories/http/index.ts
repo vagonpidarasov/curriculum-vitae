@@ -1,1 +1,1 @@
-export {AuthenticationHttpRepository} from './authentication.repository';
+export {HttpRepositoryModule} from './module';

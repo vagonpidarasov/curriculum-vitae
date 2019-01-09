@@ -4,7 +4,7 @@ import {Observable, Observer} from 'rxjs';
 import {GeolocationRepository} from 'src/modules/geolocation';
 
 @Injectable()
-export class GeolocationNavigatorRepository implements GeolocationRepository {
+export class GeolocationRepositoryNavigator implements GeolocationRepository {
     getCurrentPosition(enableHighAccuracy:boolean):Observable<Position> {
         return new Observable((observer:Observer<Position>) => {
             navigator.geolocation.getCurrentPosition(

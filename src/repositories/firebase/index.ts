@@ -1,1 +1,1 @@
-export {AuthenticationFirebaseRepository} from './authentication.repository';
+export {FirebaseRepositoryModule} from './module';

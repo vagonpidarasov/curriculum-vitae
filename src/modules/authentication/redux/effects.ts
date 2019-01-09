@@ -9,16 +9,16 @@ import {Action, ActionWithPayload, toPayload} from 'src/modules/redux-helpers';
 import {firebaseAuthError} from 'src/modules/error';
 
 import {AuthenticationRepository} from '../authentication.repository';
-import {AuthenticationPayload, AuthenticationResponse} from '../interfaces';
+import {AuthenticationPayload, AuthenticationSignInResponse} from '../types';
 import {FeatureState as AuthFeatureState} from './feature';
 import {SignInFail, SetProgress, SignInSuccess, SetError} from './actions';
 import {SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL} from './action-types';
 
 @Injectable()
 export class AuthenticationEffects {
-    private authenticate(payload:AuthenticationPayload):Observable<ActionWithPayload> {
-        return this.authenticationRepository.authenticate(payload).pipe(
-            map((response:AuthenticationResponse) => new SignInSuccess({username: response.username})),
+    private signIn(payload:AuthenticationPayload):Observable<ActionWithPayload> {
+        return this.authenticationRepository.signIn(payload).pipe(
+            map((response:AuthenticationSignInResponse) => new SignInSuccess({username: response.username})),
             catchError((e:any) => of(new SignInFail(firebaseAuthError(e)))),
         );
     }
@@ -32,7 +32,7 @@ export class AuthenticationEffects {
     @Effect() SignInEffect$:Observable<ActionWithPayload> = this.actions$.pipe(
         ofType(SIGN_IN),
         map(toPayload),
-        exhaustMap((payload:AuthenticationPayload) => this.authenticate(payload)),
+        exhaustMap((payload:AuthenticationPayload) => this.signIn(payload)),
     );
 
     @Effect() SingInFailEffect$:Observable<ActionWithPayload> = this.actions$.pipe(

@@ -7,7 +7,7 @@ import {Action} from 'src/modules/redux-helpers';
 import {FeatureState} from './feature';
 import {isAuthenticated, username, isInProgress, error} from './selectors';
 import {SignIn, SignOut, SetError, AuthenticationRequest, AuthenticationDiscard} from './actions';
-import {AuthenticationPayload} from '../interfaces';
+import {AuthenticationPayload} from '../types';
 
 @Injectable()
 export class AuthenticationStore {
