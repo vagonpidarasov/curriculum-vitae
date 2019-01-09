@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {toImageUrl} from 'src/modules/contentful';
 
 @Component({
     selector: 'blog-post',
@@ -7,4 +8,7 @@ import {Component, Input} from '@angular/core';
 })
 export class BlogPostComponent {
     @Input() blogPost:any = null;
+    toImageUrl(asset:any) {
+        return toImageUrl(asset);
+    }
 }
