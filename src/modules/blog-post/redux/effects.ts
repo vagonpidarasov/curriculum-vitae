@@ -5,9 +5,10 @@ import {catchError, map, exhaustMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux-helpers';
 
+import {BlogPost} from '../blog-post.interface';
 import {BlogPostRepository} from '../blog-post.repository';
 import {ResolvePostsFail, ResolvePostsSuccess, SetPosts} from './actions';
-import {RESOLVE, RESOLVE_SUCCESS} from './action-types';
+import {RESOLVE_BLOG_POSTS_SUCCESS, RESOLVE_BLOG_POSTS} from './action-types';
 
 @Injectable()
 export class BlogPostEffects {
@@ -24,16 +25,14 @@ export class BlogPostEffects {
     ) {}
 
     @Effect() ResolveBlogPostsEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE),
-        // map(toPayload),
+        ofType(RESOLVE_BLOG_POSTS),
+        map(toPayload),
         exhaustMap((payload:any) => this.getBlogPosts(payload)),
     );
 
-
-
     @Effect() ResolveBlogPostsSuccessEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_SUCCESS),
+        ofType(RESOLVE_BLOG_POSTS_SUCCESS),
         map(toPayload),
-        map((payload:any[]) => new SetPosts(payload)),
+        map((payload:BlogPost[]) => new SetPosts(payload)),
     );
 }

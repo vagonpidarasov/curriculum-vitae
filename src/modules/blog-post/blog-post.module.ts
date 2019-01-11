@@ -4,7 +4,7 @@ import {MatCardModule, MatButtonModule} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 
-import {BlogPostEffects, BlogPostStore, FeatureStateName, BlogPostReducer} from './redux';
+import {BlogPostEffects, BlogPostStore, FeatureStateName, reducer} from './redux';
 
 import {BlogPostComponent} from './blog-post.component';
 import {BlogPostContainer} from './blog-post.container';
@@ -16,7 +16,7 @@ export const MatModules = [MatCardModule, MatButtonModule];
     imports: [
         CommonModule,
         ...MatModules,
-        StoreModule.forFeature(FeatureStateName, BlogPostReducer),
+        StoreModule.forFeature(FeatureStateName, reducer),
         EffectsModule.forFeature([BlogPostEffects]),
     ],
     providers: [BlogPostStore],

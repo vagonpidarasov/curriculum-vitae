@@ -1,22 +1,17 @@
-import {Action} from '@ngrx/store';
-import {ReducerType} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux-helpers';
 import {BlogPostState} from './state';
-import {SetPosts} from './actions';
-import {SET} from './action-types';
+import {setBlogPosts} from './reducers';
+import {SET_BLOG_POSTS} from './action-types';
 
-const actions = new Map<string, ReducerType<BlogPostState>>();
+export const actionReducerMap = new Map<string, ReducerType<BlogPostState>>([
+    [SET_BLOG_POSTS, setBlogPosts],
+]);
 
-actions.set(SET, setBlogPosts);
-
-export function BlogPostReducer(
-    state:BlogPostState = new BlogPostState(),
-    action:Action,
-):BlogPostState {
-    const actionMethod = actions.get(action.type);
-    return actionMethod ? actionMethod(Object.assign(new BlogPostState(), state), action) : state;
-}
-
-export function setBlogPosts(state:BlogPostState, action:SetPosts) {
-    state.blogPosts = [...action.payload];
-    return state;
+export function reducer(state:BlogPostState, action:Action|ActionWithPayload):BlogPostState {
+    return reduce<BlogPostState>(
+        () => new BlogPostState(),
+        actionReducerMap,
+        state,
+        action,
+    );
 }

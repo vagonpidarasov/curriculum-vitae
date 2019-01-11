@@ -1,13 +1,10 @@
 import {NgModule} from '@angular/core';
 
 import {BlogPostRepository} from 'src/modules/blog-post';
-import {BlogPostRepositoryContentful} from './blog-post';
-
-import {ContentfulClient} from './client';
+import {BlogPostRepositoryContentful} from './blog-post.repository';
 
 @NgModule({
     providers: [
-        ContentfulClient,
         {provide: BlogPostRepository, useClass: BlogPostRepositoryContentful},
 
     ],

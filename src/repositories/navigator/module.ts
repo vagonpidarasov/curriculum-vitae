@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {GeolocationRepository} from 'src/modules/geolocation';
-import {GeolocationRepositoryNavigator} from './geolocation';
+import {GeolocationRepositoryNavigator} from './geolocation.repository';
 
 @NgModule({
     providers: [

@@ -1,9 +1,4 @@
+import {BlogPost} from '../blog-post.interface';
 export class BlogPostState {
-    blogPosts:any[] = [
-        {
-            avatar: 'https://material.angular.io/assets/img/examples/shiba1.jpg',
-            author: 'what',
-            content: 'asdfasfsdfd',
-        }
-    ];
+    blogPosts:BlogPost[] = [];
 }
