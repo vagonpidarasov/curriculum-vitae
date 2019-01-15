@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CheckerPlugin} = require('awesome-typescript-loader');
 const commonConfig = require('./webpack.config.js');
 const {root} = require('./webpack.helpers');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = webpackMerge(commonConfig, {
     mode: 'development',
@@ -36,6 +37,9 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
+        new CopyWebpackPlugin([
+            'pwa/manifest.json',
+        ]),
         new CheckerPlugin(),
         new MiniCssExtractPlugin({filename: '[name].css'}),
     ],

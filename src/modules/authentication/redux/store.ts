@@ -5,9 +5,9 @@ import {Observable} from 'rxjs';
 import {Action} from 'src/modules/redux-helpers';
 
 import {FeatureState} from './feature';
-import {isAuthenticated, isInProgress, error} from './selectors';
+import {isAuthenticated, isInProgress, error, userData} from './selectors';
 import {SignIn, SignOut, SetError, AuthenticationRequest, AuthenticationDiscard} from './actions';
-import {SignInPayload} from '../types';
+import {SignInPayload, UserData} from '../types';
 
 @Injectable()
 export class AuthenticationStore {
@@ -17,9 +17,9 @@ export class AuthenticationStore {
         return this.store.pipe(select(isAuthenticated));
     }
 
-    // get username():Observable<string> {
-    //     return this.store.pipe(select(username));
-    // }
+    get userData():Observable<UserData|null> {
+        return this.store.pipe(select(userData));
+    }
 
     get isInProgress():Observable<boolean> {
         return this.store.pipe(select(isInProgress));

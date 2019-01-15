@@ -2,7 +2,7 @@
 <h3 *ngIf="authenticationStore.isAuthenticated | async"
     class="flex items-center justify-center">
     <mat-icon class="verified-user">verified_user</mat-icon>
-    <span>{{authenticationStore.username | async}}</span>
+    <span class="email">{{(authenticationStore.userData | async).email}}</span>
 </h3>
 
 <geolocation

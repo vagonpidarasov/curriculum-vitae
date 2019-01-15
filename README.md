@@ -11,13 +11,12 @@ If you would you like to have more control of your build process then this seed 
 ## features
 
 - basic project architecture  and scaffolds 
-- routing, with router guard service
-- authentication
+- routing, protected routes
 - tslint configured
 - cli-free i18n
 - JIT (for development) and AOT (for production) versions of the app
 - material design library included
-- redux patterns implemented (using ngrx lib)
+- redux patterns implemented (using ngrx lib), redux persist, effects
 - unit tests configured (using old school karma and jasmine)
 - code splitting, styles extraction, tree shaking
 - roboto webfont included
@@ -26,7 +25,8 @@ If you would you like to have more control of your build process then this seed 
 - cli-free PWA setup
 - geolocation service
 - reset.css from bootstrap
-- firebase authentication
+- firebase authentication and deploy
+- contentful data
 
 ## scripts
 

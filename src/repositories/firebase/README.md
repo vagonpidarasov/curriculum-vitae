@@ -1,3 +1,3 @@
 # Firebase repository
 
-These repositories utilise firebase client to manage data.
+These repositories utilise firebase client to manage data and authentication.
