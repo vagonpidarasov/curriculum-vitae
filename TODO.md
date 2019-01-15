@@ -44,4 +44,7 @@ https://blog.angular-university.io/angular-service-worker/
 
 - docker image with firebase ci/cd
 
-- do proper sign-out: call corresponding firebase method
++ do proper sign-out: call corresponding firebase method
+
++ ngrx persist
+https://github.com/btroncone/ngrx-store-localstorage

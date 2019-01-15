@@ -1,5 +1,16 @@
 {
     "index": "/index.html",
+    "dataGroups": [
+        {
+            "name": "images",
+            "urls": [
+                "*images.ctfassets.net*"
+            ],
+            "cacheConfig": {
+                "strategy": "freshness"
+            }
+        }
+    ],
     "assetGroups": [{
         "name": "app",
         "installMode": "prefetch",
