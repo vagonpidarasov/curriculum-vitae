@@ -3,7 +3,7 @@ import {MatDialogRef} from '@angular/material';
 import {Subscription} from 'rxjs';
 import {filter} from 'rxjs/operators';
 
-import {AuthenticationPayload} from '../types';
+import {SignInPayload} from '../types';
 import {AuthenticationStore} from '../redux';
 
 export const EscapeKey:{key:string, keyCode:number} = {
@@ -44,7 +44,7 @@ export class SignInDialogComponent implements OnDestroy, OnInit {
         this.keydownEventsSubscription.unsubscribe();
     }
 
-    signIn(payload:AuthenticationPayload) {
+    signIn(payload:SignInPayload) {
         this.authenticationStore.signIn(payload);
     }
 

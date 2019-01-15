@@ -1,11 +1,8 @@
 import {Observable} from 'rxjs';
-import {
-    AuthenticationPayload,
-    AuthenticationSignInResponse,
-    AuthenticationSignOutResponse
-} from './types';
+import {SignInPayload, UserData} from './types';
 
 export abstract class AuthenticationRepository {
-    abstract signIn(accountId:AuthenticationPayload):Observable<AuthenticationSignInResponse>;
-    abstract signOut():Observable<AuthenticationSignOutResponse>;
+    abstract signIn(accountId:SignInPayload):Observable<UserData>;
+    abstract signOut():Observable<void>;
+    abstract isAuthenticated():Observable<boolean>;
 }

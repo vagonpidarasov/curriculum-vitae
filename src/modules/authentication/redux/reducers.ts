@@ -1,22 +1,23 @@
 import {AuthenticationState} from './state';
+import {UserData} from '../types';
 import {
-    SignInSuccess,
-    SignOut,
+    SetUserData,
     SetProgress,
     SetError,
     AuthenticationRequest,
     AuthenticationDiscard,
+    ResetUserData,
 } from './actions';
 
-export function signInSuccess(state:AuthenticationState, action:SignInSuccess):AuthenticationState {
+export function setUserData(state:AuthenticationState, action:SetUserData):AuthenticationState {
     state.isAuthenticated = true;
-    state.username = action.payload.username;
+    state.userData = Object.assign(new UserData(), action.payload);
     return state;
 }
 
-export function signOut(state:AuthenticationState, action:SignOut):AuthenticationState {
+export function resetUserData(state:AuthenticationState, action:ResetUserData):AuthenticationState {
     state.isAuthenticated = false;
-    state.username = null;
+    state.userData = null;
     return state;
 }
 

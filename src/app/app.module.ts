@@ -11,6 +11,7 @@ import {HeaderModule} from 'src/modules/header';
 
 import {isDevelopmentEnvironment} from '../environment';
 import {AppComponent} from './app.component';
+import {metaReducers} from './meta-reducers';
 
 @NgModule({
     bootstrap: [AppComponent],
@@ -19,7 +20,7 @@ import {AppComponent} from './app.component';
         BrowserModule,
         AppRoutingModule,
         BrowserAnimationsModule,
-        StoreModule.forRoot({}),
+        StoreModule.forRoot({}, {metaReducers}),
         EffectsModule.forRoot([]),
         RepositoriesModule,
         HeaderModule,

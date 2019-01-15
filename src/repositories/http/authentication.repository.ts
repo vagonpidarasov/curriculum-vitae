@@ -1,23 +1,26 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Observable, EMPTY} from 'rxjs';
+import {Observable, EMPTY, of} from 'rxjs';
 
 import {
     AuthenticationRepository,
-    AuthenticationPayload,
-    AuthenticationSignInResponse,
-    AuthenticationSignOutResponse,
+    SignInPayload,
+    UserData,
 } from 'src/modules/authentication';
 
 @Injectable()
 export class AuthenticationRepositoryHttp implements  AuthenticationRepository {
     constructor(private http:HttpClient) {}
 
-    signIn(payload:AuthenticationPayload):Observable<AuthenticationSignInResponse> {
-        return this.http.post<AuthenticationSignInResponse>('http://localhost:5151/authenticate', payload);
+    signIn(payload:SignInPayload):Observable<UserData> {
+        return this.http.post<any>('http://localhost:5151/authenticate', payload);
     }
 
-    signOut():Observable<AuthenticationSignOutResponse> {
+    signOut():Observable<void> {
         return EMPTY;
+    }
+
+    isAuthenticated():Observable<boolean> {
+        return of(false);
     }
 }

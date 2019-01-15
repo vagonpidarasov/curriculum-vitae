@@ -1,35 +1,44 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {Observable, Observer, EMPTY} from 'rxjs';
+import {Observable, Observer} from 'rxjs';
+import {map} from 'rxjs/operators';
 
 import {
     AuthenticationRepository,
-    AuthenticationPayload,
-    AuthenticationSignInResponse,
-    AuthenticationSignOutResponse,
+    SignInPayload,
+    UserData,
 } from 'src/modules/authentication';
-
-import {FirebaseSignInResponse} from 'src/modules/firebase';
-
-import {toAuthenticationResponse} from './to-authentication-response';
+import {SignInError, SignInResponse, toAuthErrorCode} from 'src/modules/firebase';
+import {toUserData} from './to-user-data';
+import {User} from 'firebase';
 
 @Injectable()
 export class AuthenticationRepositoryFirebase implements  AuthenticationRepository {
     constructor(private angularFireAuth:AngularFireAuth) {}
 
-    signIn(payload:AuthenticationPayload):Observable<AuthenticationSignInResponse> {
-        return new Observable((observer:Observer<AuthenticationSignInResponse>) => {
+    signIn(payload:SignInPayload):Observable<UserData> {
+        return new Observable((observer:Observer<UserData>) => {
             this.angularFireAuth.auth.signInWithEmailAndPassword(payload.username, payload.password)
-                .then((response:FirebaseSignInResponse) => {
-                    observer.next(toAuthenticationResponse(response));
+                .then((response:SignInResponse) => {
+                    observer.next(toUserData(response));
                     observer.complete();
                 })
-                .catch((e:any) => observer.error(e));
+                .catch((e:SignInError) => observer.error(toAuthErrorCode(e)));
         });
     }
 
-    signOut():Observable<AuthenticationSignOutResponse> {
-        this.angularFireAuth.auth.signOut();
-        return EMPTY;
+    signOut():Observable<void> {
+        return new Observable((observer:Observer<void>) => {
+            this.angularFireAuth.auth.signOut().then(() => {
+                observer.next(null);
+                observer.complete();
+            });
+        });
+    }
+
+    isAuthenticated():Observable<boolean> {
+        return this.angularFireAuth.authState.pipe(
+            map((authState:User|null) => !!authState)
+        );
     }
 }

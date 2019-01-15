@@ -2,17 +2,17 @@ import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux-
 import {AuthenticationState} from './state';
 
 import {
-    SIGN_IN_SUCCESS,
-    SIGN_OUT,
     SET_PROGRESS,
     SET_ERROR,
     AUTHENTICATION_REQUEST,
     AUTHENTICATION_DISCARD,
+    SET_USER_DATA,
+    RESET_USER_DATA,
 } from './action-types';
 
 import {
-    signInSuccess,
-    signOut,
+    setUserData,
+    resetUserData,
     setProgress,
     setError,
     authRequest,
@@ -20,8 +20,8 @@ import {
 } from './reducers';
 
 export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>>([
-    [SIGN_IN_SUCCESS, signInSuccess],
-    [SIGN_OUT, signOut],
+    [SET_USER_DATA, setUserData],
+    [RESET_USER_DATA, resetUserData],
     [SET_PROGRESS, setProgress],
     [SET_ERROR, setError],
     [AUTHENTICATION_REQUEST, authRequest],

@@ -11,6 +11,7 @@ import {SignIn, SetProgress, SignInSuccess} from './actions';
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationRepositoryMock} from '../authentication.repository.mock';
 import {SignInDialogService} from '../sign-in-dialog.service';
+import {UserData} from '../types';
 
 describe('AuthenticationEffects', () => {
     let effects:AuthenticationEffects;
@@ -48,7 +49,7 @@ describe('AuthenticationEffects', () => {
         const username:string = 'username';
         const password:string = 'password';
         sourceAction = new SignIn({username, password});
-        effectAction = new SignInSuccess({username});
+        effectAction = new SignInSuccess(Object.assign(new UserData(), {username}));
         actions.next(sourceAction);
 
         effects.SignInEffect$.subscribe(

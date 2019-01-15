@@ -2,8 +2,9 @@ import {ReducerTestSuite} from 'src/modules/redux-helpers/test';
 
 import {AuthenticationState} from './state';
 import {reducer} from './reducer';
-import {signInSuccess} from './reducers';
-import {SignInSuccess, SignOut} from './actions';
+import {setUserData} from './reducers';
+import {SetUserData, SignOut} from './actions';
+import {UserData} from '../types';
 
 describe('AuthenticationReducer', ReducerTestSuite(
     reducer,
@@ -18,10 +19,12 @@ describe('Authentication reducers', () => {
         state =  new AuthenticationState();
     });
 
-    it('should signInSuccess', () => {
-        const username:string = 'username';
-        signInSuccess(state, new SignInSuccess({username}));
+    it('should setUserData', () => {
+        const userData = new UserData();
+        userData.username = 'username';
+
+        setUserData(state, new SetUserData(userData));
         expect(state.isAuthenticated).toBeTruthy();
-        expect(state.username).toBe(username);
+        expect(state.userData.username).toBe(userData.username);
     });
 });

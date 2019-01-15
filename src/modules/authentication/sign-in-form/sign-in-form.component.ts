@@ -21,7 +21,7 @@ import {
 import {Subscription, merge} from 'rxjs';
 import {distinctUntilChanged} from 'rxjs/operators';
 
-import {AuthenticationPayload} from '../types';
+import {SignInPayload} from '../types';
 
 import {
     USERNAME_VALIDATION_PATTERN,
@@ -45,9 +45,9 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     @Input() isInProgress:boolean = false;
     @Input() isAuthenticated:boolean = false;
 
-    @Output() signInRequest:EventEmitter<AuthenticationPayload> = new EventEmitter();
+    @Output() signInRequest:EventEmitter<SignInPayload> = new EventEmitter();
     @Output() resetErrorRequest:EventEmitter<null> = new EventEmitter();
-    @Output() valueChanges:EventEmitter<AuthenticationPayload> = new EventEmitter();
+    @Output() valueChanges:EventEmitter<SignInPayload> = new EventEmitter();
 
     signInForm:FormGroup;
 
