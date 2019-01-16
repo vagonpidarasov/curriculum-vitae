@@ -4,7 +4,7 @@
         {
             "name": "contentful",
             "urls": [
-                "https://cdn.contentful.com/spaces/**"
+                "//cdn.contentful.com/spaces/**"
             ],
             "cacheConfig": {
                 "maxSize": 100,
@@ -18,7 +18,7 @@
         "name": "ctfassets",
         "resources": {
             "urls": [
-                "http://images.ctfassets.net/**"
+                "//images.ctfassets.net/**"
             ]
         }
     }, {
