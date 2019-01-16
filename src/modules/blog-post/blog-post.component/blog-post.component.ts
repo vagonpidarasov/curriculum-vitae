@@ -7,4 +7,5 @@ import {Component, Input} from '@angular/core';
 })
 export class BlogPostComponent {
     @Input() blogPost:any = null;
+    useAvatarFallback:boolean = false;
 }

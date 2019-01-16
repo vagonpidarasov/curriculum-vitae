@@ -11,7 +11,7 @@ import {
     GeolocationEffects,
 } from './redux';
 
-import {GeolocationComponent} from './geolocation-component';
+import {GeolocationComponent} from './geolocation.component';
 
 export const MatModules = [MatButtonModule];
 

@@ -12,7 +12,7 @@ export class BlogPostRepositoryContentful implements  BlogPostRepository {
 
     getBlogPosts():Observable<BlogPost[]> {
         return new Observable((observer:Observer<BlogPost[]>) => {
-            this.client.getEntries()
+            this.client.getEntries({content_type: 'blogPostEntry'})
                 .then((response:EntryCollection<BlogPost>) => {
                     observer.next(toItems<BlogPost>(response));
                     observer.complete();

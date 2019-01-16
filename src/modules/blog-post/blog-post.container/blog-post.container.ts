@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 
-import {BlogPostStore} from './redux';
+import {BlogPostStore} from '../redux';
 
 @Component({
     selector: 'blog-post-list',

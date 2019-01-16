@@ -2,16 +2,26 @@
     "index": "/index.html",
     "dataGroups": [
         {
-            "name": "images",
+            "name": "contentful",
             "urls": [
-                "*images.ctfassets.net*"
+                "https://cdn.contentful.com/spaces/**"
             ],
             "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "3d",
+                "timeout": "1m",
                 "strategy": "freshness"
             }
         }
     ],
     "assetGroups": [{
+        "name": "ctfassets",
+        "resources": {
+            "urls": [
+                "http://images.ctfassets.net/**"
+            ]
+        }
+    }, {
         "name": "app",
         "installMode": "prefetch",
         "resources": {
@@ -29,7 +39,8 @@
         "resources": {
             "files": [
                 "/*.woff",
-                "/*.woff2"
+                "/*.woff2",
+                "/*.ttf"
             ]
         }
     }]
