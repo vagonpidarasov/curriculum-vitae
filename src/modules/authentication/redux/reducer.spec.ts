@@ -3,13 +3,13 @@ import {ReducerTestSuite} from 'src/modules/redux-helpers/test';
 import {AuthenticationState} from './state';
 import {reducer} from './reducer';
 import {setUserData} from './reducers';
-import {SetUserData, SignOut} from './actions';
+import {SetUserData} from './actions';
 import {UserData} from '../types';
 
 describe('AuthenticationReducer', ReducerTestSuite(
     reducer,
     new AuthenticationState(),
-    new SignOut()
+    new SetUserData(new UserData())
 ));
 
 describe('Authentication reducers', () => {

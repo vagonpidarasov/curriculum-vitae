@@ -15,6 +15,8 @@ import {
     reducer,
     FeatureStateName,
     AuthenticationEffects,
+    SignOutEffects,
+    SignInEffects,
 } from './redux';
 
 import {SignInFormComponent} from './sign-in-form';
@@ -29,6 +31,13 @@ export const MatModules = [
     MatDialogModule,
 ];
 
+export const effects = [
+    AuthenticationEffects,
+    SignOutEffects,
+    SignInEffects,
+    SingInDialogEffects,
+];
+
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
@@ -36,7 +45,7 @@ export const MatModules = [
         FormsModule,
         ReactiveFormsModule,
         StoreModule.forFeature(FeatureStateName, reducer),
-        EffectsModule.forFeature([AuthenticationEffects, SingInDialogEffects]),
+        EffectsModule.forFeature(effects),
         ...MatModules,
     ],
     providers: [AuthenticationStore, SignInDialogService],

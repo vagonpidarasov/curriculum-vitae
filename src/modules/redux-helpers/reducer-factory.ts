@@ -1,6 +1,4 @@
-import {Action} from '@ngrx/store';
-import {ActionReducerMapType, StateFactoryType} from './types';
-import {ActionWithPayload} from './action-with-payload';
+import {ActionReducerMapType, StateFactoryType, Action, ActionWithPayload} from './types';
 
 export function reduce<StateType>(
     stateFactory:StateFactoryType<StateType>,

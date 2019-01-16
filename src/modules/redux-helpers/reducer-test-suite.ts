@@ -1,8 +1,4 @@
-import {Action} from '@ngrx/store';
-import {ReducerType} from './types';
-
-export type ReducerTestSuiteType = () => void;
-
+import {ReducerType, Action, ReducerTestSuiteType} from './types';
 /**
  * Returns a test suite which should test some basic reducer features
  * @param {ReducerType<S>} reducer
@@ -21,19 +17,22 @@ export function ReducerTestSuite<S>(reducer:ReducerType<S>, state:S, action:Acti
             initialState = Object.assign({}, state);
         });
 
-        it('should create an initial state', () => {
+        it('should create an initial state in response to a dummy action', () => {
             expectedState = reducer(null, dummyAction);
             expect(expectedState).toBeDefined();
+        });
+
+        it('should create an initial state in response to a known action', () => {
             expectedState = reducer(null, action);
             expect(expectedState).toBeDefined();
         });
 
-        it('should not mutate the source state', () => {
+        it('should not return the source state in response to a known action', () => {
             expectedState = reducer(initialState, action);
             expect(expectedState).not.toBe(initialState);
         });
 
-        it('should return the source state as a response to an unknown action', () => {
+        it('should return the source state in response to a dummy action', () => {
             expectedState = reducer(initialState, dummyAction);
             expect(expectedState).toBe(initialState);
         });

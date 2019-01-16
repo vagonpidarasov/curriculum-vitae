@@ -5,16 +5,15 @@ import {ReplaySubject} from 'rxjs';
 
 import {Action} from 'src/modules/redux-helpers';
 
-import {AuthenticationEffects} from './effects';
+import {SignInEffects} from './sign-in.effects';
 import {SignIn, SetProgress, SignInSuccess} from './actions';
-
 import {AuthenticationRepository} from '../authentication.repository';
 import {AuthenticationRepositoryMock} from '../authentication.repository.mock';
 import {SignInDialogService} from '../sign-in-dialog.service';
 import {UserData} from '../types';
 
 describe('AuthenticationEffects', () => {
-    let effects:AuthenticationEffects;
+    let effects:SignInEffects;
     let actions:ReplaySubject<Action>;
     let sourceAction:Action;
     let effectAction:Action;
@@ -23,7 +22,7 @@ describe('AuthenticationEffects', () => {
         TestBed.configureTestingModule({
             imports: [],
             providers: [
-                AuthenticationEffects,
+                SignInEffects,
                 provideMockActions(() => actions),
                 {provide: AuthenticationRepository, useClass: AuthenticationRepositoryMock},
                 {provide: Store, useValue: {}},
@@ -31,7 +30,7 @@ describe('AuthenticationEffects', () => {
             ],
         });
 
-        effects = TestBed.get(AuthenticationEffects);
+        effects = TestBed.get(SignInEffects);
         actions = new ReplaySubject(1);
     });
 
