@@ -1,4 +1,5 @@
-export const config = {
+import {FirebaseConfig} from 'src/modules/firebase';
+export const config:FirebaseConfig = {
     apiKey: 'AIzaSyDG80nz4dfAUAo8lZ2zc8o1RZkd7h_xUAQ',
     authDomain: 'angular-seed-9d336.firebaseapp.com',
     databaseURL: 'https://angular-seed-9d336.firebaseio.com',
