@@ -43,3 +43,38 @@ Production version of the app includes:
 - service worker (script and config) for PWA support
 - tree shaking
 - angular AOT
+
+## testing
+
+### `async/await`
+In order to use `async/await` with jasmine it is required to `"noEmitHelpers": false,` in tsconfig.json
+
+https://stackoverflow.com/questions/42415450/awaiter-is-not-defined-when-using-async-await-in-typescript/42426996#42426996
+
+https://blog.mariusschulz.com/2016/12/16/typescript-2-1-external-helpers-library
+
+NOTE that this will increase the size of the bundle.
+
+### `async` and `fixture.whenStable()`
+`fixture.whenStable()` is used in conjunction with `import {async} from '@angular/core/testing';`
+otherwise it is not needed: 
+
+https://stackoverflow.com/questions/53479998/does-fixture-whenstable-actually-do-anything-in-my-angular-tests-if-not-within
+
+### `fakeAsync` and `tick`
+`fakeAsync()` should be used in conjunction with `tick()` or `flush()`
+
+https://alligator.io/angular/testing-async-fakeasync/
+
+### `createComponent`
+`TestBed.createComponent(BannerComponent);` requests external files (template and css)
+using XHR, so it should be wrapper into async:
+```
+beforeEach(async() => {
+    fixture = TestBed.createComponent(SignInFormComponent);
+});
+```
+https://angular.io/guide/testing#calling-compilecomponents
+
+It is not required if `angular2-template-loader` is used since it inlines template (with the help of webpack) 
+https://github.com/TheLarkInn/angular2-template-loader#before
