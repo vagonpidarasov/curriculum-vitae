@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload} from 'src/modules/redux';
 import {SignInPayload, UserData} from '../types';
 
 import {

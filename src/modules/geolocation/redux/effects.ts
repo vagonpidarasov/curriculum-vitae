@@ -4,7 +4,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap} from 'rxjs/operators';
 
-import {toPayload} from 'src/modules/redux-helpers';
+import {toPayload} from 'src/modules/redux';
 
 import {GeolocationRepository} from '../geolocation.repository';
 import {RESOLVE_GEOLOCATION, RESOLVE_GEOLOCATION_SUCCESS} from './action-types';

@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {map, tap} from 'rxjs/operators';
 
-import {toPayload} from 'src/modules/redux-helpers';
+import {toPayload} from 'src/modules/redux';
 
 import {SET_CURRENT_ROUTE} from './redux';
 import {toUrl} from './to-url';

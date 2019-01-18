@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap} from 'rxjs/operators';
 
-import {Action, toPayload} from 'src/modules/redux-helpers';
+import {Action, toPayload} from 'src/modules/redux';
 
 import {BlogPost} from '../blog-post.interface';
 import {BlogPostRepository} from '../blog-post.repository';
@@ -12,7 +12,7 @@ import {RESOLVE_BLOG_POSTS_SUCCESS, RESOLVE_BLOG_POSTS} from './action-types';
 
 @Injectable()
 export class BlogPostEffects {
-    private getBlogPosts(payload:boolean):Observable<Action> {
+    private getBlogPosts(payload:any):Observable<Action> {
         return this.blogPostRepository.getBlogPosts().pipe(
             map((response:any[]) => new ResolvePostsSuccess(response)),
             catchError((e:PositionError) => of(new ResolvePostsFail(e))),

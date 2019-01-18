@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-import {Action} from 'src/modules/redux-helpers';
+import {Action} from 'src/modules/redux';
 
 import {FeatureState} from './feature';
 import {isAuthenticated, isInProgress, error, userData} from './selectors';

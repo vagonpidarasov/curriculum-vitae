@@ -1,4 +1,4 @@
-import {ReducerTestSuite} from 'src/modules/redux-helpers/test';
+import {ReducerTestSuite} from 'src/modules/redux/test';
 
 import {AuthenticationState} from './state';
 import {reducer} from './reducer';

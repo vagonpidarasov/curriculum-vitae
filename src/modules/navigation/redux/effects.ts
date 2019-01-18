@@ -5,7 +5,7 @@ import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {ActionWithPayload, toPayload} from 'src/modules/redux-helpers';
+import {ActionWithPayload, toPayload} from 'src/modules/redux';
 import {AuthenticationRequest, SIGN_OUT} from 'src/modules/authentication';
 
 import {toActivatedRoute} from '../to-activated-route';

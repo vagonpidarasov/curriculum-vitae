@@ -4,7 +4,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap, withLatestFrom, filter} from 'rxjs/operators';
 
-import {Action, ActionWithPayload, toPayload} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload, toPayload} from 'src/modules/redux';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {UserData, SignInPayload} from '../types';

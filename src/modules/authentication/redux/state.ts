@@ -1,4 +1,4 @@
-import {Action} from 'src/modules/redux-helpers';
+import {Action} from 'src/modules/redux';
 import {UserData} from '../types';
 
 export class AuthenticationState {

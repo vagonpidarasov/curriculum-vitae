@@ -8,6 +8,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {AppRoutingModule} from 'src/routing';
 import {RepositoriesModule} from 'src/repositories';
 import {HeaderModule} from 'src/modules/header';
+import {ReduxModule} from 'src/modules/redux';
 
 import {isDevelopmentEnvironment} from '../environment';
 import {AppComponent} from './app.component';
@@ -22,6 +23,7 @@ import {metaReducers} from './meta-reducers';
         BrowserAnimationsModule,
         StoreModule.forRoot({}, {metaReducers}),
         EffectsModule.forRoot([]),
+        ReduxModule,
         RepositoriesModule,
         HeaderModule,
         ServiceWorkerModule.register('ngsw-worker.js', {

@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux';
 import {AuthenticationState} from './state';
 
 import {

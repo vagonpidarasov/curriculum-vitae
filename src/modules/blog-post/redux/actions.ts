@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload} from 'src/modules/redux';
 import {BlogPost} from '../blog-post.interface';
 import {
     RESOLVE_BLOG_POSTS,

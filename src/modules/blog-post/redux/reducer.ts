@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux-helpers';
+import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux';
 import {BlogPostState} from './state';
 import {setBlogPosts} from './reducers';
 import {SET_BLOG_POSTS} from './action-types';

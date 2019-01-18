@@ -3,12 +3,12 @@ import {provideMockActions} from '@ngrx/effects/testing';
 import {Store} from '@ngrx/store';
 import {ReplaySubject} from 'rxjs';
 
-import {Action} from 'src/modules/redux-helpers';
+import {Action} from 'src/modules/redux';
 
 import {SignInEffects} from './sign-in.effects';
 import {SignIn, SetProgress, SignInSuccess} from './actions';
 import {AuthenticationRepository} from '../authentication.repository';
-import {AuthenticationRepositoryMock} from '../authentication.repository.mock';
+import {AuthenticationRepositoryStub} from '../authentication.repository.stub';
 import {SignInDialogService} from '../sign-in-dialog.service';
 import {UserData} from '../types';
 
@@ -24,7 +24,7 @@ describe('AuthenticationEffects', () => {
             providers: [
                 SignInEffects,
                 provideMockActions(() => actions),
-                {provide: AuthenticationRepository, useClass: AuthenticationRepositoryMock},
+                {provide: AuthenticationRepository, useClass: AuthenticationRepositoryStub},
                 {provide: Store, useValue: {}},
                 {provide: SignInDialogService, useValue: {}},
             ],

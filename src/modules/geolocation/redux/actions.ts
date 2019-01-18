@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ActionWithPayload} from 'src/modules/redux-helpers';
+import {ActionWithPayload} from 'src/modules/redux';
 import {
     RESOLVE_GEOLOCATION,
     SET_GEOLOCATION,
