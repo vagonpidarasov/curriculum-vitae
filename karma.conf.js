@@ -1,5 +1,5 @@
 'use strict';
-const helpers = require('./webpack.helpers');
+const {root} = require('./webpack.helpers');
 
 module.exports = function(karma) {
     karma.set({
@@ -44,8 +44,8 @@ module.exports = function(karma) {
             mode: 'development',
             resolve: {
                 extensions: ['.ts', '.js'],
-                modules: [helpers.root('src'), 'node_modules'],
-                alias: {src: helpers.root('src')},
+                modules: [root('src'), 'node_modules'],
+                alias: {src: root('src')},
             },
             module: {
                 rules: [
@@ -70,7 +70,7 @@ module.exports = function(karma) {
             noInfo: true
         },
 
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         port: 9998,
         runnerPort: 9101,
         colors: true,
