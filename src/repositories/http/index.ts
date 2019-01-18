@@ -1,1 +1,1 @@
-export {HttpRepositoryModule} from './module';
+export * from './module';

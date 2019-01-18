@@ -1,1 +1,1 @@
-export {GeolocationComponent} from './geolocation.component';
+export * from './geolocation.component';

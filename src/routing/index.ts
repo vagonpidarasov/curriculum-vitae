@@ -1,1 +1,1 @@
-export {AppRoutingModule} from './routing.module';
+export * from './routing.module';

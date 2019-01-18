@@ -1,2 +1,2 @@
-export {PrivatePageContainer} from './private-page.container';
-export {PrivatePageModule} from './private-page.module';
+export * from './private-page.container';
+export * from './private-page.module';

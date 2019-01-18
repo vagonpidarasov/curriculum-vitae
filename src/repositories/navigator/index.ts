@@ -1,1 +1,1 @@
-export {NavigatorRepositoryModule} from './module';
+export * from './module';

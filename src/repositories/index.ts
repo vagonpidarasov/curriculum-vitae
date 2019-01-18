@@ -1,1 +1,1 @@
-export {RepositoriesModule} from './repositories.module';
+export * from './repositories.module';

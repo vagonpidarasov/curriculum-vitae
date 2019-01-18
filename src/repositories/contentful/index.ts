@@ -1,1 +1,1 @@
-export {ContentfulRepositoryModule} from './module';
+export * from './module';

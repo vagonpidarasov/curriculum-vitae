@@ -9,7 +9,7 @@ import {BlogPostEntry} from './blog-post-entry';
 import {BLOG_POST_CONTENT_TYPE} from './content-types';
 
 @Injectable()
-export class BlogPostRepositoryContentful implements  BlogPostRepository {
+export class BlogPostRepositoryContentful implements BlogPostRepository {
     private client:ContentfulClientApi = createClient(config);
 
     getBlogPosts():Observable<BlogPost[]> {
