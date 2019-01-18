@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {GeolocationRepository} from './geolocation.repository';
 
 @Injectable()
-export class GeolocationMockRepository implements GeolocationRepository {
+export class GeolocationRepositoryStub implements GeolocationRepository {
     getCurrentPosition(enableHighAccuracy:boolean):Observable<Position> {
         return of({
             coords: {

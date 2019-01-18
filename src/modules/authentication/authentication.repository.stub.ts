@@ -5,7 +5,7 @@ import {AuthenticationRepository} from './authentication.repository';
 import {SignInPayload, UserData} from './types';
 
 @Injectable()
-export class AuthenticationRepositoryMock implements AuthenticationRepository {
+export class AuthenticationRepositoryStub implements AuthenticationRepository {
     signIn(payload:SignInPayload):Observable<UserData> {
         return of(Object.assign(new UserData(), {username: payload.username}));
     }
