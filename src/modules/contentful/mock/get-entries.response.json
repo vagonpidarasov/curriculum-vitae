@@ -1,0 +1,6 @@
+{
+    "items": [
+        {"fields": {"field1": "Batman", "field2": "Robin"}},
+        {"fields": {"field1": "Bruce", "field2": "Wayne"}}
+    ]
+}

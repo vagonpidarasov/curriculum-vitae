@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, ComponentFixtureAutoDetect} from '@angular/core/testing';
+import {ComponentFixture, TestBed, ComponentFixtureAutoDetect} from '@angular/core/testing';
 import {CommonModule} from '@angular/common';
 import {RouterTestingModule} from '@angular/router/testing';
 import {NO_ERRORS_SCHEMA, DebugElement} from '@angular/core';
@@ -18,7 +18,7 @@ describe('HeaderComponent', () => {
     let signOutButton:any;
     let subscription:Subscription;
 
-    beforeEach(async(() => {
+    beforeEach(() => {
         TestBed.configureTestingModule({
             schemas: [NO_ERRORS_SCHEMA],
             imports: [
@@ -30,7 +30,7 @@ describe('HeaderComponent', () => {
             //     {provide: ComponentFixtureAutoDetect, useValue: true},
             // ]
         });
-    }));
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(HeaderComponent);

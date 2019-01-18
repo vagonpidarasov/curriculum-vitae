@@ -53,11 +53,11 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
 
     private subscription:Subscription;
 
-    private get usernameFormControl():AbstractControl {
+    get usernameFormControl():AbstractControl {
         return this.signInForm.controls[USERNAME_DATA_NAME];
     }
 
-    private get passwordFormControl():AbstractControl {
+    get passwordFormControl():AbstractControl {
         return this.signInForm.controls[PASSWORD_DATA_NAME];
     }
 
@@ -113,7 +113,9 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.subscription.unsubscribe();
+        if (this.subscription) {
+            this.subscription.unsubscribe();
+        }
     }
 
     ngOnChanges(changes:SimpleChanges) {
