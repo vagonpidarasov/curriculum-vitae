@@ -1,4 +1,4 @@
-# Angular seed without cli
+# Angular seed without cli [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
 
 ## what
 
