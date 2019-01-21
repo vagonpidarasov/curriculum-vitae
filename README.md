@@ -1,4 +1,8 @@
-# Angular seed without cli [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
+# Angular Seed without cli [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
+
+## demo
+
+https://angular-seed-9d336.firebaseapp.com/
 
 ## what
 
@@ -17,7 +21,7 @@ If you would you like to have more control of your build process then this seed 
 - JIT (for development) and AOT (for production) versions of the app
 - material design library included
 - redux patterns implemented (using ngrx lib), redux persist, effects
-- unit tests configured (using old school karma and jasmine)
+- unit tests configured using karma/jasmine and headless Chrome
 - code splitting, styles extraction, tree shaking
 - roboto webfont included
 - material design icons font included
@@ -27,6 +31,7 @@ If you would you like to have more control of your build process then this seed 
 - reset.css from bootstrap
 - firebase authentication and deploy
 - contentful data
+- travis ci integration
 
 ## scripts
 
@@ -47,6 +52,7 @@ Production version of the app includes:
 ## testing
 
 ### `async/await`
+
 In order to use `async/await` with jasmine it is required to `"noEmitHelpers": false,` in tsconfig.json
 
 https://stackoverflow.com/questions/42415450/awaiter-is-not-defined-when-using-async-await-in-typescript/42426996#42426996
@@ -56,17 +62,20 @@ https://blog.mariusschulz.com/2016/12/16/typescript-2-1-external-helpers-library
 NOTE that this will increase the size of the bundle.
 
 ### `async` and `fixture.whenStable()`
+
 `fixture.whenStable()` is used in conjunction with `import {async} from '@angular/core/testing';`
 otherwise it is not needed: 
 
 https://stackoverflow.com/questions/53479998/does-fixture-whenstable-actually-do-anything-in-my-angular-tests-if-not-within
 
 ### `fakeAsync` and `tick`
+
 `fakeAsync()` should be used in conjunction with `tick()` or `flush()`
 
 https://alligator.io/angular/testing-async-fakeasync/
 
 ### `createComponent`
+
 `TestBed.createComponent(BannerComponent);` requests external files (template and css)
 using XHR, so it should be wrapper into async:
 ```
