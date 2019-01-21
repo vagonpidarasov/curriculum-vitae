@@ -70,12 +70,20 @@ module.exports = function(karma) {
             noInfo: true
         },
 
-        browsers: ['ChromeHeadless'],
+        browsers: ['ChromeHeadlessNoSandbox'],
         port: 9998,
         runnerPort: 9101,
         colors: true,
         logLevel: karma.LOG_INFO,
         autoWatch: true,
-        singleRun: true
+        singleRun: true,
+
+        customLaunchers: {
+            ChromeHeadlessNoSandbox: {
+                base: 'ChromeHeadless',
+                flags: ['--no-sandbox']
+            }
+        },
+
     });
 };
