@@ -8,10 +8,9 @@
 <mat-dialog-content>
     <sign-in-form
         [isInProgress]="authenticationStore.isInProgress | async"
-        [isAuthenticated]="authenticationStore.isAuthenticated | async"
         [error]="authenticationStore.error | async"
         (signInRequest)="signIn($event)"
-        (resetErrorRequest)="resetError($event)"
+        (setErrorRequest)="setError($event)"
     ></sign-in-form>
 </mat-dialog-content>
 <mat-dialog-actions>

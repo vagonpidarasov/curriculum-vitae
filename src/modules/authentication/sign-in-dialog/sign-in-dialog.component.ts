@@ -48,7 +48,7 @@ export class SignInDialogComponent implements OnDestroy, OnInit {
         this.authenticationStore.signIn(payload);
     }
 
-    resetError(payload:any) {
-        this.authenticationStore.setError(null);
+    setError(payload:string) {
+        this.authenticationStore.setError(payload);
     }
 }

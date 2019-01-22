@@ -8,7 +8,7 @@ import {Action} from 'src/modules/redux';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {FeatureState as AuthFeatureState} from './feature';
-import {SignOut} from './actions';
+import {SetError, SignOut} from './actions';
 
 @Injectable()
 export class AuthenticationEffects {
@@ -29,5 +29,10 @@ export class AuthenticationEffects {
         withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.isAuthenticated),
         filter((isAuthenticated:boolean) => isAuthenticated),
         map(() => new SignOut())
+    );
+
+    @Effect() InitResetErrorEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(INIT),
+        map(() => new SetError(null)),
     );
 }

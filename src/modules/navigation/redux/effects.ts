@@ -8,18 +8,22 @@ import {map} from 'rxjs/operators';
 import {ActionWithPayload, toPayload} from 'src/modules/redux';
 import {AuthenticationRequest, SIGN_OUT} from 'src/modules/authentication';
 
-import {toActivatedRoute} from '../to-activated-route';
-import {SetCurrentRoute} from './actions';
+import {toCanceledRoute} from '../to-canceled-route';
 import {toDefaultRoute} from '../to-default-route';
+import {SetCurrentRoute} from './actions';
 
 @Injectable()
 export class AuthenticationEffects {
     constructor(private actions$:Actions) {}
 
+    /**
+     * @Effect saves canceled route as a SetCurrentRoute action
+     * @type {Observable<any>}
+     */
     @Effect() ProtectedRouteRequestEffect$:Observable<ActionWithPayload> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
         map(toPayload),
-        map(toActivatedRoute),
+        map(toCanceledRoute),
         map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
         map((action:SetCurrentRoute) => new AuthenticationRequest(action)),
     );

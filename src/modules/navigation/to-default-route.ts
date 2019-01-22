@@ -1,7 +1,7 @@
 import {ActivatedRouteSnapshot} from '@angular/router';
 import {DEFAULT_ROUTE_URL} from './default-route-url';
-import {buildRoute} from './build-route';
+import {toRouteSnapshot} from './to-route-snapshot';
 
-export function toDefaultRoute(param:any):ActivatedRouteSnapshot {
-    return buildRoute(DEFAULT_ROUTE_URL);
+export function toDefaultRoute():ActivatedRouteSnapshot {
+    return toRouteSnapshot(DEFAULT_ROUTE_URL);
 }

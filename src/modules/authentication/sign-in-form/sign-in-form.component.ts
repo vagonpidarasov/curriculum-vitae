@@ -19,7 +19,7 @@ import {
 } from '@angular/forms';
 
 import {Subscription, merge} from 'rxjs';
-import {distinctUntilChanged} from 'rxjs/operators';
+import {distinctUntilChanged, filter} from 'rxjs/operators';
 
 import {SignInPayload} from '../types';
 
@@ -43,11 +43,9 @@ import {
 export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     @Input() error:string = null;
     @Input() isInProgress:boolean = false;
-    @Input() isAuthenticated:boolean = false;
 
     @Output() signInRequest:EventEmitter<SignInPayload> = new EventEmitter();
-    @Output() resetErrorRequest:EventEmitter<null> = new EventEmitter();
-    @Output() valueChanges:EventEmitter<SignInPayload> = new EventEmitter();
+    @Output() setErrorRequest:EventEmitter<string> = new EventEmitter();
 
     signInForm:FormGroup;
 
@@ -101,21 +99,14 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     ngOnInit() {
         this.subscription = merge(
             this.usernameFormControl.valueChanges.pipe(distinctUntilChanged()),
-            this.passwordFormControl.valueChanges.pipe(distinctUntilChanged())
-        ).subscribe(
-            () => {
-                this.valueChanges.emit(this.signInForm.value);
-                if (this.error) {
-                    this.resetErrorRequest.emit(null);
-                }
-            }
+            this.passwordFormControl.valueChanges.pipe(distinctUntilChanged()),
+        ).pipe(filter(() => !!this.error)).subscribe(
+            () => this.setErrorRequest.emit(null)
         );
     }
 
     ngOnDestroy() {
-        if (this.subscription) {
-            this.subscription.unsubscribe();
-        }
+        this.subscription.unsubscribe();
     }
 
     ngOnChanges(changes:SimpleChanges) {
@@ -128,8 +119,6 @@ export class SignInFormComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     submit() {
-        if (this.signInForm.valid && !this.isAuthenticated && !this.isInProgress) {
-            this.signInRequest.emit(this.signInForm.value);
-        }
+        this.signInRequest.emit(this.signInForm.value);
     }
 }
