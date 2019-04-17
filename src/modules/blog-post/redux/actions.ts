@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload} from 'src/modules/redux';
+import {Action} from 'src/modules/redux';
 import {BlogPost} from '../blog-post.interface';
 import {
     RESOLVE_BLOG_POSTS,
@@ -21,7 +21,7 @@ export class ResolvePostsFail implements Action {
     constructor(public payload:any) {}
 }
 
-export class SetPosts implements ActionWithPayload {
+export class SetPosts implements Action {
     readonly type = SET_BLOG_POSTS;
     constructor(public payload:BlogPost[]) {}
 }

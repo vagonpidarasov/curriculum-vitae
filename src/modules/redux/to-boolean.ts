@@ -1,4 +1,4 @@
-import {ActionWithPayload} from './types';
-export function toTrue(action:ActionWithPayload):any {
+import {Action} from './types';
+export function toTrue(action:Action):any {
     return true;
 }

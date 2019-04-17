@@ -1,6 +1,6 @@
-import {ActionWithPayload} from './types';
+import {Action} from './types';
 export function toValue(value:any) {
-    return function(action:ActionWithPayload):any {
+    return function(action:Action):any {
         return value;
     };
 }

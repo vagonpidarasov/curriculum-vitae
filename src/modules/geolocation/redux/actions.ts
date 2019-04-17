@@ -1,5 +1,4 @@
-import {Action} from '@ngrx/store';
-import {ActionWithPayload} from 'src/modules/redux';
+import {Action} from 'src/modules/redux';
 import {
     RESOLVE_GEOLOCATION,
     SET_GEOLOCATION,
@@ -8,12 +7,12 @@ import {
     RESOLVE_GEOLOCATION_FAIL
 } from './action-types';
 
-export class ResolveGeolocation implements ActionWithPayload {
+export class ResolveGeolocation implements Action {
     readonly type = RESOLVE_GEOLOCATION;
     constructor(public payload:boolean) {}
 }
 
-export class SetGeolocation implements ActionWithPayload {
+export class SetGeolocation implements Action {
     readonly type = SET_GEOLOCATION;
     constructor(public payload:Position) {}
 }
@@ -22,12 +21,12 @@ export class ResetGeolocation implements Action {
     readonly type = RESET_GEOLOCATION;
 }
 
-export class ResolveGeolocationSuccess implements ActionWithPayload {
+export class ResolveGeolocationSuccess implements Action {
     readonly type = RESOLVE_GEOLOCATION_SUCCESS;
     constructor(public payload:Position) {}
 }
 
-export class ResolveGeolocationFail implements ActionWithPayload {
+export class ResolveGeolocationFail implements Action {
     readonly type = RESOLVE_GEOLOCATION_FAIL;
     constructor(public payload:PositionError) {}
 }

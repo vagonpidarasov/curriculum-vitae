@@ -1,10 +1,10 @@
-import {ActionReducerMapType, StateFactoryType, Action, ActionWithPayload} from './types';
+import {ActionReducerMapType, StateFactoryType, Action} from './types';
 
 export function reduce<StateType>(
     stateFactory:StateFactoryType<StateType>,
     actionReducerMap:ActionReducerMapType<StateType>,
     state:StateType,
-    action:Action|ActionWithPayload,
+    action:Action,
 ):StateType {
     const originalState = state || stateFactory();
     const actionReducer = actionReducerMap.get(action.type);

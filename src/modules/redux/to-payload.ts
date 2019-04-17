@@ -1,4 +1,4 @@
-import {ActionWithPayload} from './types';
-export function toPayload<T = any>(action:ActionWithPayload):T {
+import {Action} from './types';
+export function toPayload<T = any>(action:Action):T {
     return <T>action.payload;
 }

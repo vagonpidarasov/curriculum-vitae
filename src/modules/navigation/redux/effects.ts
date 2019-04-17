@@ -5,7 +5,7 @@ import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-import {ActionWithPayload, toPayload} from 'src/modules/redux';
+import {Action, toPayload} from 'src/modules/redux';
 import {AuthenticationRequest, SIGN_OUT} from 'src/modules/authentication';
 
 import {toCanceledRoute} from '../to-canceled-route';
@@ -20,7 +20,7 @@ export class AuthenticationEffects {
      * @Effect saves canceled route as a SetCurrentRoute action
      * @type {Observable<any>}
      */
-    @Effect() ProtectedRouteRequestEffect$:Observable<ActionWithPayload> = this.actions$.pipe(
+    @Effect() ProtectedRouteRequestEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
         map(toPayload),
         map(toCanceledRoute),
@@ -28,7 +28,7 @@ export class AuthenticationEffects {
         map((action:SetCurrentRoute) => new AuthenticationRequest(action)),
     );
 
-    @Effect() SignOutEffect$:Observable<ActionWithPayload> = this.actions$.pipe(
+    @Effect() SignOutEffect$:Observable<Action> = this.actions$.pipe(
         ofType(SIGN_OUT),
         map(toDefaultRoute),
         map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),

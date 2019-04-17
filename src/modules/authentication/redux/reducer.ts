@@ -1,4 +1,4 @@
-import {Action, ActionWithPayload, ReducerType, reduce} from 'src/modules/redux';
+import {Action, ReducerType, reduce} from 'src/modules/redux';
 import {AuthenticationState} from './state';
 
 import {
@@ -28,7 +28,7 @@ export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>
     [AUTHENTICATION_DISCARD, authDiscard],
 ]);
 
-export function reducer(state:AuthenticationState, action:Action|ActionWithPayload):AuthenticationState {
+export function reducer(state:AuthenticationState, action:Action):AuthenticationState {
     return reduce<AuthenticationState>(
         () => new AuthenticationState(),
         actionReducerMap,
