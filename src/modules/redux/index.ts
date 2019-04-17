@@ -4,3 +4,4 @@ export * from './to-value';
 export * from './reducer-factory';
 export * from './types';
 export * from './redux.module';
+export * from './no-dispatch.metadada';

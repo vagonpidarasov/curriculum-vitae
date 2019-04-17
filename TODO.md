@@ -48,3 +48,5 @@ https://blog.angular-university.io/angular-service-worker/
 
 + ngrx persist
 https://github.com/btroncone/ngrx-store-localstorage
+
+- webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
