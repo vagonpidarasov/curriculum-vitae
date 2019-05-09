@@ -2,7 +2,7 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 import {AuthenticationModule} from 'src/modules/authentication';
 import {GeolocationModule} from 'src/modules/geolocation';
-import {BlogPostModule} from 'src/modules/blog-post';
+import {EmployeeModule} from 'src/modules/employee';
 
 import {HomePageContainer} from './home-page.container';
 
@@ -10,7 +10,7 @@ import {HomePageContainer} from './home-page.container';
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         AuthenticationModule,
-        BlogPostModule,
+        EmployeeModule,
         GeolocationModule,
     ],
     exports: [HomePageContainer],

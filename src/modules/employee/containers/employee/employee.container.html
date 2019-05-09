@@ -1,0 +1,12 @@
+<mat-card class="employee">
+    <mat-card-content>
+        <avatar [avatarUrl]="employeeStore.avatarUrl | async"></avatar>
+    </mat-card-content>
+
+    <mat-card-header class="items-center">
+        <employee [employee]="employeeStore.employee | async"></employee>
+    </mat-card-header>
+
+</mat-card>
+
+

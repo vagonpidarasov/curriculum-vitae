@@ -1,0 +1,9 @@
+<div class="avatar-container mat-card-padding">
+    <img
+        class="avatar-image"
+        *ngIf="avatarUrl && !useAvatarFallback"
+        [src]="avatarUrl"
+        (error)="useAvatarFallback = true"
+    />
+    <mat-icon *ngIf="useAvatarFallback">account_circle</mat-icon>
+</div>
