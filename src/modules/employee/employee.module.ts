@@ -1,6 +1,6 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatCardModule, MatButtonModule, MatIconModule} from '@angular/material';
+import {MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, MatExpansionModule} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 
@@ -11,10 +11,25 @@ import {
     EmployeeComponent,
     EducationComponent,
     EducationDescriptionComponent,
+    EmployeeOverviewComponent,
+    PositionComponent,
+    PositionDescriptionComponent,
 } from './components';
-import {EmployeeContainer, EducationContainer} from './containers';
 
-export const MatModules = [MatCardModule, MatButtonModule, MatIconModule];
+import {
+    EmployeeContainer,
+    EducationContainer,
+    CurrentPositionContainer,
+    ExperienceContainer,
+} from './containers';
+
+export const MatModules = [
+    MatExpansionModule,
+    MatChipsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+];
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -25,14 +40,24 @@ export const MatModules = [MatCardModule, MatButtonModule, MatIconModule];
         EffectsModule.forFeature([EmployeeEffects]),
     ],
     providers: [EmployeeStore],
-    exports: [EmployeeContainer, EducationContainer],
+    exports: [
+        EmployeeContainer,
+        EducationContainer,
+        CurrentPositionContainer,
+        ExperienceContainer,
+    ],
     declarations: [
+        CurrentPositionContainer,
+        EmployeeOverviewComponent,
         EducationDescriptionComponent,
         EducationComponent,
         EmployeeComponent,
         EmployeeContainer,
         AvatarComponent,
         EducationContainer,
+        PositionComponent,
+        PositionDescriptionComponent,
+        ExperienceContainer,
     ],
 })
 export class EmployeeModule {}

@@ -1,6 +1,6 @@
 import {FeatureState, FeatureStateName} from './feature';
 import {EmployeeState} from './state';
-import {Employee, Education} from '../models';
+import {Employee, Education, Experience} from '../models';
 
 export function getState(state:FeatureState):EmployeeState {
     return <EmployeeState>state[FeatureStateName];
@@ -12,6 +12,14 @@ export function employee(state:FeatureState):Employee {
 
 export function education(state:FeatureState):Education {
     return getState(state).education;
+}
+
+export function experience(state:FeatureState):Experience[] {
+    return getState(state).experience;
+}
+
+export function currentPosition(state:FeatureState):Experience {
+    return getState(state).currentPosition;
 }
 
 export function avatarUrl(state:FeatureState):string {

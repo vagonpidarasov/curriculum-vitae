@@ -22,3 +22,7 @@ mat-icon.material-icons {
 .mat-primary-color {
     color: #3f51b5;
 }
+
+mat-card-header.mat-custom-header div.mat-card-header-text {
+    display: none;
+}

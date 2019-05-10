@@ -1,0 +1,6 @@
+<div class="container" [class.inlined]="inlined">
+    <h3 class="position" [class.inlined]="inlined">{{position?.position}}</h3>
+    <h5 class="at" [class.inlined]="inlined" [hidden]="!inlined">at</h5>
+    <!--<mat-icon [hidden]="!inlined">alternate_email</mat-icon>-->
+    <mat-card-subtitle class="company" [class.inlined]="inlined">{{position?.companyName}}</mat-card-subtitle>
+</div>

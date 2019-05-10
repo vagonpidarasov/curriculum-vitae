@@ -1,0 +1,9 @@
+<div>{{employee?.overview}}</div>
+
+<h3 class="mat-primary-color">My expertise includes</h3>
+
+<mat-chip-list *ngIf="!!employee">
+    <mat-chip *ngFor="let skill of employee.expertiseArray">
+        {{skill}}
+    </mat-chip>
+</mat-chip-list>

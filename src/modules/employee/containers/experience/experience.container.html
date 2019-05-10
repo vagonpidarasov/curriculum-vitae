@@ -1,0 +1,11 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let position of employeeStore.experience | async">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <position [inlined]="true" [position]="position"></position>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <position-description [position]="position"></position-description>
+    </mat-expansion-panel>
+</mat-accordion>

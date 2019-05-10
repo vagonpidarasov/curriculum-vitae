@@ -1,11 +1,13 @@
 <mat-card class="employee">
-    <mat-card-content>
-        <avatar [avatarUrl]="employeeStore.avatarUrl | async"></avatar>
-    </mat-card-content>
+    <avatar [avatarUrl]="employeeStore.avatarUrl | async"></avatar>
 
-    <mat-card-header class="items-center">
+    <mat-card-header class="mat-custom-header items-center">
         <employee [employee]="employeeStore.employee | async"></employee>
     </mat-card-header>
+
+    <mat-card-content>
+        <employee-overview [employee]="employeeStore.employee  | async"></employee-overview>
+    </mat-card-content>
 
 </mat-card>
 

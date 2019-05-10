@@ -1,5 +1,5 @@
 import {Action} from 'src/modules/redux';
-import {Employee, Education} from '../models';
+import {Employee, Education, Experience} from '../models';
 import {
     RESOLVE_EMPLOYEES,
     RESOLVE_EMPLOYEES_FAIL,
@@ -10,6 +10,11 @@ import {
     RESOLVE_EDUCATIONS_FAIL,
     RESOLVE_EDUCATIONS_SUCCESS,
     SET_EDUCATION,
+    RESOLVE_EXPERIENCE,
+    RESOLVE_EXPERIENCE_FAIL,
+    RESOLVE_EXPERIENCE_SUCCESS,
+    SET_CURRENT_POSITION,
+    SET_EXPERIENCE,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -53,4 +58,28 @@ export class ResolveEducationsFail implements Action {
 export class SetEducation implements Action {
     readonly type = SET_EDUCATION;
     constructor(public payload:Education) {}
+}
+
+export class ResolveExperience implements Action {
+    readonly type = RESOLVE_EXPERIENCE;
+}
+
+export class ResolveExperienceSuccess implements Action {
+    readonly type = RESOLVE_EXPERIENCE_SUCCESS;
+    constructor(public payload:Experience[]) {}
+}
+
+export class ResolveExperienceFail implements Action {
+    readonly type = RESOLVE_EXPERIENCE_FAIL;
+    constructor(public payload:any) {}
+}
+
+export class SetExperience implements Action {
+    readonly type = SET_EXPERIENCE;
+    constructor(public payload:Experience[]) {}
+}
+
+export class SetCurrentPosition implements Action {
+    readonly type = SET_CURRENT_POSITION;
+    constructor(public payload:Experience) {}
 }

@@ -2,12 +2,12 @@ import {Injectable} from '@angular/core';
 import {INIT} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
-import {catchError, map, switchMap} from 'rxjs/operators';
+import {catchError, map, switchMap, tap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 import {toUrl} from 'src/modules/contentful';
 
-import {Education, Employee} from '../models';
+import {Education, Employee, Experience} from '../models';
 import {EmployeeRepository} from '../employee.repository';
 import {
     ResolveEmployees,
@@ -16,6 +16,11 @@ import {
     ResolveEmployeesSuccess,
     ResolveEducationsFail,
     ResolveEducationsSuccess,
+    ResolveExperience,
+    ResolveExperienceSuccess,
+    ResolveExperienceFail,
+    SetExperience,
+    SetCurrentPosition,
     SetEmployee,
     SetAvatarUrl,
     SetEducation,
@@ -26,6 +31,9 @@ import {
     SET_EMPLOYEE,
     RESOLVE_EDUCATIONS,
     RESOLVE_EDUCATIONS_SUCCESS,
+    RESOLVE_EXPERIENCE,
+    RESOLVE_EXPERIENCE_SUCCESS,
+    SET_EXPERIENCE,
 } from './action-types';
 
 @Injectable()
@@ -44,6 +52,13 @@ export class EmployeeEffects {
         );
     }
 
+    private getExperienceEntries():Observable<Action> {
+        return this.employeeRepository.getExperienceEntries().pipe(
+            map((response:any[]) => new ResolveExperienceSuccess(response)),
+            catchError((e:PositionError) => of(new ResolveExperienceFail(e))),
+        );
+    }
+
     constructor(
         private actions$:Actions,
         private employeeRepository:EmployeeRepository,
@@ -54,6 +69,7 @@ export class EmployeeEffects {
         switchMap(() => of(
             new ResolveEmployees(),
             new ResolveEducations(),
+            new ResolveExperience(),
         )),
     );
 
@@ -65,6 +81,10 @@ export class EmployeeEffects {
     @Effect() ResolveEducationEffect$:Observable<Action> = this.actions$.pipe(
         ofType(RESOLVE_EDUCATIONS),
         switchMap(() => this.getEducationEntries()),
+    );
+    @Effect() ResolveExperienceEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(RESOLVE_EXPERIENCE),
+        switchMap(() => this.getExperienceEntries()),
     );
 
     @Effect() ResolveEmployeeSuccessEffect$:Observable<Action> = this.actions$.pipe(
@@ -87,5 +107,22 @@ export class EmployeeEffects {
         map((payload:Employee) => payload.avatar),
         map((payload:any) => toUrl(payload)),
         map((payload:string) => new SetAvatarUrl(payload)),
+    );
+
+    @Effect() ResolveExperienceSuccessEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(RESOLVE_EXPERIENCE_SUCCESS),
+        map(toPayload),
+        map((payload:Experience[]) => payload
+            .filter((entry:Experience) => entry.isCurrentPosition !== true)
+            .sort((a:Experience, b:Experience) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime())
+        ),
+        map((payload:Experience[]) => new SetExperience(payload)),
+    );
+
+    @Effect() SetCurrentPositionEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(RESOLVE_EXPERIENCE_SUCCESS),
+        map(toPayload),
+        map((payload:Experience[]) => payload.find((entry:Experience) => entry.isCurrentPosition === true)),
+        map((payload:Experience) => new SetCurrentPosition(payload)),
     );
 }

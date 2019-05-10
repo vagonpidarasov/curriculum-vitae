@@ -5,4 +5,7 @@ export class Employee {
     dateOfBirth:Date;
     location:any;
     avatar:any;
+    overview:string;
+    expertise:string;
+    expertiseArray:string[];
 }
