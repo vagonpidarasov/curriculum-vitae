@@ -9,7 +9,7 @@ export function setEmployee(state:EmployeeState, action:SetEmployee) {
         dateOfBirth: action.payload.dateOfBirth,
         overview: action.payload.overview,
         age: 30,
-        expertiseArray: action.payload.expertise.split(','),
+        expertiseArray: action.payload.expertise.split(',').map(e => e.trim()).filter(e => !!e),
     });
     return state;
 }

@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, MatExpansionModule} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
+import {MarkdownModule} from 'ngx-markdown';
 
 import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
 
@@ -38,6 +39,7 @@ export const MatModules = [
         ...MatModules,
         StoreModule.forFeature(FeatureStateName, reducer),
         EffectsModule.forFeature([EmployeeEffects]),
+        MarkdownModule.forChild(),
     ],
     providers: [EmployeeStore],
     exports: [

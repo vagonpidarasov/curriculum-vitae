@@ -1,9 +1,22 @@
-<div>{{employee?.overview}}</div>
+<markdown ngPreserveWhitespaces [data]="employee?.overview"></markdown>
 
-<h3 class="mat-primary-color">My expertise includes</h3>
+<div class="expertise-title">
+    <em>My expertise includes</em>
+    <span class="flex-auto"></span>
+</div>
 
 <mat-chip-list *ngIf="!!employee">
-    <mat-chip *ngFor="let skill of employee.expertiseArray">
+    <mat-chip *ngFor="let skill of employee.expertiseArray | slice:0:expertiseLimit">
         {{skill}}
     </mat-chip>
+    <button
+        mat-icon-button
+        type="button"
+        class="toggle"
+        color="primary"
+        (click)="toggleExpertise()"
+    >
+        <mat-icon *ngIf="!expertiseExpanded">more_horiz</mat-icon>
+        <mat-icon *ngIf="expertiseExpanded">more</mat-icon>
+    </button>
 </mat-chip-list>

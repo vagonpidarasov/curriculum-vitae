@@ -4,6 +4,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {StoreModule} from '@ngrx/store';
 import {EffectsModule} from '@ngrx/effects';
+import {MarkdownModule} from 'ngx-markdown';
 
 import {AppRoutingModule} from 'src/routing';
 import {RepositoriesModule} from 'src/repositories';
@@ -23,6 +24,7 @@ import {metaReducers} from './meta-reducers';
         BrowserAnimationsModule,
         StoreModule.forRoot({}, {metaReducers}),
         EffectsModule.forRoot([]),
+        MarkdownModule.forRoot(),
         ReduxModule,
         RepositoriesModule,
         HeaderModule,
