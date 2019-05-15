@@ -1,19 +1,25 @@
 :host {
     display: flex;
-    justify-content: center;
-}
-
-.avatar-container {
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-    overflow: hidden;
-    display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1em;
+}
+
+.avatar-container {
+    width: 250px;
+    height: 250px;
+    border-radius: 150px;
+    overflow: hidden;
+
 
     .avatar-image {
         width: 100%;
+    }
+}
+
+@media (min-width:480px) {
+    .avatar-container {
+        width: 300px;
+        height: 300px;
     }
 }

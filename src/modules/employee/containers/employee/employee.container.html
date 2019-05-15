@@ -1,4 +1,4 @@
-<mat-card class="employee">
+<mat-card class="employee-overview">
     <avatar [avatarUrl]="employeeStore.avatarUrl | async"></avatar>
 
     <mat-card-header class="mat-custom-header items-center">
@@ -8,7 +8,4 @@
     <mat-card-content>
         <employee-overview [employee]="employeeStore.employee  | async"></employee-overview>
     </mat-card-content>
-
 </mat-card>
-
-

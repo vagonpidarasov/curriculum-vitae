@@ -39,6 +39,8 @@ https://blog.angular-university.io/angular-service-worker/
 
 + firebase
     - add some documentation about how to connect to a specific firebase project
+    - update .firebaserc
+    - firebase use projectname
 
 + contentful
 
@@ -50,3 +52,10 @@ https://blog.angular-university.io/angular-service-worker/
 https://github.com/btroncone/ngrx-store-localstorage
 
 - webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
+
+- body background
+- github link
+- contacts
+- rounded border for accordion
+- convert skillset into modal with search 
+- collapse all accordion's tabs

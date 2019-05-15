@@ -1,0 +1,27 @@
+.footer {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .logo-entry {
+        width: 100px;
+        height: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        margin: 0 1rem;
+    }
+}
+
+.footer-subtitle-container {
+    justify-content: center;
+
+    .footer-subtitle {
+        color: white;
+    }
+}

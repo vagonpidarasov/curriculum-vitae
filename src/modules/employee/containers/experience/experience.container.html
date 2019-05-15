@@ -1,8 +1,8 @@
-<mat-accordion>
+<mat-accordion [multi]="true">
     <mat-expansion-panel *ngFor="let position of employeeStore.experience | async">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <position [inlined]="true" [position]="position"></position>
+                <position [inline]="true" [position]="position"></position>
             </mat-panel-title>
         </mat-expansion-panel-header>
 

@@ -7,5 +7,7 @@ export class Employee {
     avatar:any;
     overview:string;
     expertise:string;
+    emailAddress:string;
+    phoneNumber:string;
     expertiseArray:string[];
 }

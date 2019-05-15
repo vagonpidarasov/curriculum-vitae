@@ -1,0 +1,16 @@
+<mat-card class="footer mat-primary-background-color">
+    <mat-card-header class="footer-subtitle-container">
+        <mat-card-subtitle class="footer-subtitle">Powered by</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="logo-container">
+            <a
+                *ngFor="let logo of logos"
+                [href]="logo.url"
+                target="_blank"
+                class="logo-entry"
+                [style.background-image]="logo.logoUrl | backgroundImageUrl"
+            ></a>
+        </div>
+    </mat-card-content>
+</mat-card>

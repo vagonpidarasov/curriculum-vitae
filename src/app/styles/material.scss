@@ -19,10 +19,14 @@ mat-icon.material-icons {
     height: auto;
 }
 
-.mat-primary-color {
-    color: #3f51b5;
-}
-
 mat-card-header.mat-custom-header div.mat-card-header-text {
     display: none;
+}
+
+.mat-card-super-title {
+    margin-left: 25px;
+}
+
+.mat-card-subtitle.bottom-margin-small {
+    margin-bottom: 0.5rem;
 }

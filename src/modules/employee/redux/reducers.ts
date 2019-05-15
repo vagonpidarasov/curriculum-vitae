@@ -3,12 +3,9 @@ import {SetEmployee, SetAvatarUrl, SetExperience, SetCurrentPosition, SetEducati
 import {Employee, Education, Experience} from '../models';
 
 export function setEmployee(state:EmployeeState, action:SetEmployee) {
-    state.employee = Object.assign(new Employee(), {
-        name: action.payload.name,
-        title: action.payload.title,
-        dateOfBirth: action.payload.dateOfBirth,
-        overview: action.payload.overview,
-        age: 30,
+    state.employee = Object.assign(new Employee(), {...action.payload}, {
+        age: new Date().getFullYear() - new Date(action.payload.dateOfBirth).getFullYear(),
+        // TODO extract expertise array into separate state
         expertiseArray: action.payload.expertise.split(',').map(e => e.trim()).filter(e => !!e),
     });
     return state;

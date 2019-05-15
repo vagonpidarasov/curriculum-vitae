@@ -3,5 +3,6 @@ export class Experience {
     position:string = null;
     description:string;
     startDate:string;
+    period:number;
     isCurrentPosition:boolean = false;
 }

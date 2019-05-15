@@ -1,2 +1,17 @@
-<h1>{{employee?.name}}</h1>
-<mat-card-subtitle>{{employee?.title}}</mat-card-subtitle>
+<h1 *ngIf="employee">{{employee.name}}</h1>
+<mat-card-subtitle *ngIf="employee" class="bottom-margin-small">{{employee.title}}</mat-card-subtitle>
+<mat-card-subtitle *ngIf="employee">
+    <a
+        [href]="employee.phoneNumber | tel"
+        target="_blank"
+        matTooltip="but here's my number"
+        matTooltipPosition="before"
+    >{{employee.phoneNumber}}</a>&nbsp;
+    <a
+        [href]="employee.emailAddress | mailto"
+        target="_blank"
+        matTooltip="so write me maybe"
+        matTooltipPosition="after"
+    >{{employee.emailAddress}}</a>
+</mat-card-subtitle>
+<mat-progress-bar *ngIf="!employee" mode="indeterminate"></mat-progress-bar>

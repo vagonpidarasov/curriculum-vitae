@@ -1,18 +1,5 @@
-.container.inlined {
-    display: flex;
-    align-items: baseline;
-}
-
-.position.inlined {
+.mat-card-subtitle.inline {
     margin: 0;
-}
-
-.company.inlined {
-    margin: 0;
-}
-
-.at.inlined {
-    margin-left: 1em;
-    margin-right: 1em;
-    margin-bottom: 0;
+    white-space: nowrap;
+    color: rgba(0,0,0,.87);
 }

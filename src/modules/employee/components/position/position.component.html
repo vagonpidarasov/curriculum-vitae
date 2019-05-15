@@ -1,6 +1,11 @@
-<div class="container" [class.inlined]="inlined">
-    <h3 class="position" [class.inlined]="inlined">{{position?.position}}</h3>
-    <h5 class="at" [class.inlined]="inlined" [hidden]="!inlined">at</h5>
-    <!--<mat-icon [hidden]="!inlined">alternate_email</mat-icon>-->
-    <mat-card-subtitle class="company" [class.inlined]="inlined">{{position?.companyName}}</mat-card-subtitle>
-</div>
+<h3 *ngIf="!inline" class="position">{{position?.position}}</h3>
+<mat-card-subtitle *ngIf="!inline" class="company">{{position?.companyName}}</mat-card-subtitle>
+
+<mat-card-subtitle *ngIf="inline" ngPreserveWhitespaces class="inline">
+    <span>{{position?.period}}</span>
+    <span>months</span>
+    <span>as</span>
+    <strong>{{position?.position}}</strong>
+    <span>at</span>
+    <span>{{position?.companyName}}</span>
+</mat-card-subtitle>

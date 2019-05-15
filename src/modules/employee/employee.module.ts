@@ -1,6 +1,14 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatCardModule, MatButtonModule, MatIconModule, MatChipsModule, MatExpansionModule} from '@angular/material';
+import {
+    MatProgressBarModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatChipsModule,
+    MatExpansionModule,
+    MatTooltipModule,
+} from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
@@ -24,12 +32,17 @@ import {
     ExperienceContainer,
 } from './containers';
 
+import {MailToPipe} from './mailto.pipe';
+import {TelPipe} from './tel.pipe';
+
 export const MatModules = [
     MatExpansionModule,
     MatChipsModule,
     MatCardModule,
     MatButtonModule,
     MatIconModule,
+    MatProgressBarModule,
+    MatTooltipModule,
 ];
 
 @NgModule({
@@ -49,6 +62,8 @@ export const MatModules = [
         ExperienceContainer,
     ],
     declarations: [
+        TelPipe,
+        MailToPipe,
         CurrentPositionContainer,
         EmployeeOverviewComponent,
         EducationDescriptionComponent,
