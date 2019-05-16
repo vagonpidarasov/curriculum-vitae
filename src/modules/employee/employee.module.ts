@@ -1,6 +1,7 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {
+    MatProgressSpinnerModule,
     MatProgressBarModule,
     MatCardModule,
     MatButtonModule,
@@ -23,6 +24,7 @@ import {
     EmployeeOverviewComponent,
     PositionComponent,
     PositionDescriptionComponent,
+    PositionTitleComponent,
 } from './components';
 
 import {
@@ -43,6 +45,7 @@ export const MatModules = [
     MatIconModule,
     MatProgressBarModule,
     MatTooltipModule,
+    MatProgressSpinnerModule,
 ];
 
 @NgModule({
@@ -75,6 +78,7 @@ export const MatModules = [
         PositionComponent,
         PositionDescriptionComponent,
         ExperienceContainer,
+        PositionTitleComponent,
     ],
 })
 export class EmployeeModule {}

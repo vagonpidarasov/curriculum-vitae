@@ -2,7 +2,7 @@
     <mat-expansion-panel *ngFor="let position of employeeStore.experience | async">
         <mat-expansion-panel-header>
             <mat-panel-title>
-                <position [inline]="true" [position]="position"></position>
+                <position-title [position]="position"></position-title>
             </mat-panel-title>
         </mat-expansion-panel-header>
 

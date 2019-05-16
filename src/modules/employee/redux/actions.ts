@@ -15,6 +15,7 @@ import {
     RESOLVE_EXPERIENCE_SUCCESS,
     SET_CURRENT_POSITION,
     SET_EXPERIENCE,
+    SET_EXPERTISE,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -82,4 +83,9 @@ export class SetExperience implements Action {
 export class SetCurrentPosition implements Action {
     readonly type = SET_CURRENT_POSITION;
     constructor(public payload:Experience) {}
+}
+
+export class SetExpertise implements Action {
+    readonly type = SET_EXPERTISE;
+    constructor(public payload:string[]) {}
 }

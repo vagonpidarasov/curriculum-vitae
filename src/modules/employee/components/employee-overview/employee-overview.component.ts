@@ -10,11 +10,13 @@ export const EXPERTISE_LIMIT = 10;
 })
 export class EmployeeOverviewComponent {
     @Input() employee:Employee = null;
+    @Input() expertise:string[] = [];
+
     expertiseExpanded:boolean = false;
     expertiseLimit:number = EXPERTISE_LIMIT;
 
     toggleExpertise() {
-        this.expertiseLimit = this.expertiseExpanded ? EXPERTISE_LIMIT : this.employee.expertiseArray.length;
+        this.expertiseLimit = this.expertiseExpanded ? EXPERTISE_LIMIT : this.expertise.length;
         this.expertiseExpanded = !this.expertiseExpanded;
     }
 }

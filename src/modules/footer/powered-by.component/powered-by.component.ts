@@ -1,3 +1,4 @@
+// tslint:disable:max-line-length
 import {Component, ChangeDetectionStrategy} from '@angular/core';
 
 @Component({
@@ -9,13 +10,16 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 export class PoweredByComponent {
     logos = [
         {
-            // tslint:disable-next-line:max-line-length
-            logoUrl: 'https://d33wubrfki0l68.cloudfront.net/92c7b4c3938bf70914c40c26c0b1e221ef558bf9/e8622/assets/images/logos/contentful-light.svg',
+            logoUrl: 'https://images.ctfassets.net/s3hc12klb4kw/7jSwS8hk1Bim6Y7jaXbsh4/16fca7eacabde5a6ecbab0e82eaf5a36/contentful-light.png',
             url: 'https://www.contentful.com/',
         },
         {
-            logoUrl: 'https://angular.io/assets/images/logos/angular/logo-nav@2x.png',
+            logoUrl: 'https://images.ctfassets.net/s3hc12klb4kw/2rBv8QjRg8kPJblMsAAcfg/1987087c19f6dc36fda954bba24b2d65/GitHub-Mark-Light-64px.png',
+            url: 'https://github.com/vagonpidarasov/angular-seed/tree/curriculum-vitae',
+        },
+        {
+            logoUrl: 'https://images.ctfassets.net/s3hc12klb4kw/63KtJdGveS7e2YEcCgffQv/6f3917b5299950ee739601e704d9bbfb/logo-nav_2x.png',
             url: 'https://angular.io/',
-        }
+        },
     ];
 }

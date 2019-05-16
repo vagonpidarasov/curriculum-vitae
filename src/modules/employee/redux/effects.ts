@@ -1,10 +1,11 @@
-import {Injectable} from '@angular/core';
+import {Injectable, Inject, Renderer2, RendererFactory2} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {INIT} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap, tap} from 'rxjs/operators';
 
-import {Action, toPayload} from 'src/modules/redux';
+import {Action, toPayload, NoDispatchMetadada} from 'src/modules/redux';
 import {toUrl} from 'src/modules/contentful';
 
 import {Education, Employee, Experience} from '../models';
@@ -24,6 +25,7 @@ import {
     SetEmployee,
     SetAvatarUrl,
     SetEducation,
+    SetExpertise,
 } from './actions';
 import {
     RESOLVE_EMPLOYEES,
@@ -33,7 +35,6 @@ import {
     RESOLVE_EDUCATIONS_SUCCESS,
     RESOLVE_EXPERIENCE,
     RESOLVE_EXPERIENCE_SUCCESS,
-    SET_EXPERIENCE,
 } from './action-types';
 
 @Injectable()
@@ -59,10 +60,15 @@ export class EmployeeEffects {
         );
     }
 
+    private renderer:Renderer2;
     constructor(
         private actions$:Actions,
         private employeeRepository:EmployeeRepository,
-    ) {}
+        private rendererFactory:RendererFactory2,
+        @Inject(DOCUMENT) private document:Document,
+    ) {
+        this.renderer = rendererFactory.createRenderer(null, null);
+    }
 
     @Effect() InitEffect$:Observable<Action> = this.actions$.pipe(
         ofType(INIT),
@@ -109,6 +115,14 @@ export class EmployeeEffects {
         map((payload:string) => new SetAvatarUrl(payload)),
     );
 
+    @Effect() SetExpertiseEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(SET_EMPLOYEE),
+        map(toPayload),
+        map((payload:Employee) => payload.expertise),
+        map((payload:string) => payload.split(',').map(e => e.trim()).filter(e => !!e)),
+        map((payload:string[]) => new SetExpertise(payload)),
+    );
+
     @Effect() ResolveExperienceSuccessEffect$:Observable<Action> = this.actions$.pipe(
         ofType(RESOLVE_EXPERIENCE_SUCCESS),
         map(toPayload),
@@ -124,5 +138,14 @@ export class EmployeeEffects {
         map(toPayload),
         map((payload:Experience[]) => payload.find((entry:Experience) => entry.isCurrentPosition === true)),
         map((payload:Experience) => new SetCurrentPosition(payload)),
+    );
+
+    @Effect(NoDispatchMetadada) SetBodyBackgroundEffect$ = this.actions$.pipe(
+        ofType(SET_EMPLOYEE),
+        map(toPayload),
+        map((payload:Employee) => payload.backgroundImage),
+        map((payload:any) => toUrl(payload)),
+        map((payload:string) => `url(${payload})`), // TODO use pipe
+        tap((payload:string) => this.renderer.setStyle(this.document.body, 'backgroundImage', payload)),
     );
 }

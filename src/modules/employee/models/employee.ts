@@ -5,9 +5,9 @@ export class Employee {
     dateOfBirth:Date;
     location:any;
     avatar:any;
+    backgroundImage:any;
     overview:string;
     expertise:string;
     emailAddress:string;
     phoneNumber:string;
-    expertiseArray:string[];
 }

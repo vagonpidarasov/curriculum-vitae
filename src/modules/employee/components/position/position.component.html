@@ -1,11 +1,2 @@
-<h3 *ngIf="!inline" class="position">{{position?.position}}</h3>
-<mat-card-subtitle *ngIf="!inline" class="company">{{position?.companyName}}</mat-card-subtitle>
-
-<mat-card-subtitle *ngIf="inline" ngPreserveWhitespaces class="inline">
-    <span>{{position?.period}}</span>
-    <span>months</span>
-    <span>as</span>
-    <strong>{{position?.position}}</strong>
-    <span>at</span>
-    <span>{{position?.companyName}}</span>
-</mat-card-subtitle>
+<h3 *ngIf="position" class="position">{{position.position}}</h3>
+<mat-card-subtitle *ngIf="position" class="company">{{position.companyName}}</mat-card-subtitle>

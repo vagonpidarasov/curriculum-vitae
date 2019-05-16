@@ -1,5 +1,5 @@
 <h1 *ngIf="employee">{{employee.name}}</h1>
-<mat-card-subtitle *ngIf="employee" class="bottom-margin-small">{{employee.title}}</mat-card-subtitle>
+<mat-card-subtitle *ngIf="employee" class="employee-title">{{employee.title}}</mat-card-subtitle>
 <mat-card-subtitle *ngIf="employee">
     <a
         [href]="employee.phoneNumber | tel"
@@ -14,4 +14,3 @@
         matTooltipPosition="after"
     >{{employee.emailAddress}}</a>
 </mat-card-subtitle>
-<mat-progress-bar *ngIf="!employee" mode="indeterminate"></mat-progress-bar>

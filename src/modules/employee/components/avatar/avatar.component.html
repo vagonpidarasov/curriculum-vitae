@@ -1,9 +1,12 @@
-<div class="avatar-container mat-card-padding">
+<div *ngIf="!avatarFailed" class="avatar-container">
     <img
         class="avatar-image"
-        *ngIf="avatarUrl && !useAvatarFallback"
+        *ngIf="avatarUrl"
         [src]="avatarUrl"
-        (error)="useAvatarFallback = true"
+        (error)="avatarFailed = true"
+        (load)="avatarLoaded = true"
+        [class.in-progress]="isInProgress"
     />
-    <mat-icon *ngIf="useAvatarFallback">account_circle</mat-icon>
 </div>
+
+<mat-progress-spinner *ngIf="isInProgress" mode="indeterminate"></mat-progress-spinner>

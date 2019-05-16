@@ -6,4 +6,5 @@ export class EmployeeState {
     avatarUrl:string = null;
     experience:Experience[] = [];
     currentPosition:Experience = null;
+    expertise:string[] = [];
 }

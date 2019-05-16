@@ -53,9 +53,9 @@ https://github.com/btroncone/ngrx-store-localstorage
 
 - webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
 
-- body background
-- github link
-- contacts
++ body background
++ github link
++ contacts
 - rounded border for accordion
 - convert skillset into modal with search 
 - collapse all accordion's tabs

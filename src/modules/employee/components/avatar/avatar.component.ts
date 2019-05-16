@@ -7,5 +7,10 @@ import {Component, Input} from '@angular/core';
 })
 export class AvatarComponent {
     @Input() avatarUrl:string = null;
-    useAvatarFallback:boolean = false;
+    avatarLoaded:boolean = false;
+    avatarFailed:boolean = false;
+
+    get isInProgress():boolean {
+        return !this.avatarLoaded && !this.avatarFailed;
+    }
 }

@@ -9,11 +9,16 @@ $secondary-color: #3f51b5;
     background-color: $primary-color;
 }
 
+.mat-primary-border-color {
+    border-color: $primary-color;
+}
+
 markdown {
     em {
         color: $primary-color;
     }
 }
 
-
-
+a, a:hover {
+    color: $primary-color;
+}

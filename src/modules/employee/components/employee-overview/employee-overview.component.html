@@ -1,13 +1,13 @@
-<markdown ngPreserveWhitespaces [data]="employee?.overview"></markdown>
+<markdown *ngIf="employee" ngPreserveWhitespaces [data]="employee.overview"></markdown>
 
-<div class="expertise-title">
-    <mat-card-subtitle class="bottom-margin-small">
+<div *ngIf="expertise.length > 0" class="expertise-title">
+    <span class="mat-primary-color">
         My expertise includes modern frontend frameworks and libraries such as:
-    </mat-card-subtitle>
+    </span>
 </div>
 
-<mat-chip-list *ngIf="!!employee">
-    <mat-chip *ngFor="let skill of employee.expertiseArray | slice:0:expertiseLimit">
+<mat-chip-list *ngIf="expertise.length > 0">
+    <mat-chip *ngFor="let skill of expertise | slice:0:expertiseLimit">
         {{skill}}
     </mat-chip>
 
@@ -19,6 +19,6 @@
         (click)="toggleExpertise()"
     >
         <mat-icon *ngIf="!expertiseExpanded" matTooltip="and more" matTooltipPosition="after">more_horiz</mat-icon>
-        <mat-icon *ngIf="expertiseExpanded" matTooltip="maybe less" matTooltipPosition="after">more</mat-icon>
+        <mat-icon *ngIf="expertiseExpanded" matTooltip="and less" matTooltipPosition="after">more</mat-icon>
     </button>
 </mat-chip-list>

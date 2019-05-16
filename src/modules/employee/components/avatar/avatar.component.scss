@@ -11,14 +11,28 @@
     border-radius: 150px;
     overflow: hidden;
 
-
     .avatar-image {
         width: 100%;
+
+        &.in-progress {
+            opacity: 0;
+        }
     }
+}
+
+.mat-progress-spinner {
+    position: absolute;
+    width: 250px;
+    height: 250px;
 }
 
 @media (min-width:480px) {
     .avatar-container {
+        width: 300px;
+        height: 300px;
+    }
+
+    .mat-progress-spinner {
         width: 300px;
         height: 300px;
     }

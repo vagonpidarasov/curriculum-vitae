@@ -25,3 +25,7 @@ export function currentPosition(state:FeatureState):Experience {
 export function avatarUrl(state:FeatureState):string {
     return getState(state).avatarUrl;
 }
+
+export function expertise(state:FeatureState):string[] {
+    return getState(state).expertise;
+}

@@ -1,1 +1,2 @@
-<markdown ngPreserveWhitespaces [data]="position?.description"></markdown>
+<markdown *ngIf="position" ngPreserveWhitespaces [data]="position.description"></markdown>
+<mat-progress-bar *ngIf="!position" mode="indeterminate"></mat-progress-bar>

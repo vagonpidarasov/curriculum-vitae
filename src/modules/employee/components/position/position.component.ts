@@ -8,5 +8,4 @@ import {Experience} from '../../models';
 })
 export class PositionComponent {
     @Input() position:Experience = null;
-    @Input() inline:boolean = false;
 }
