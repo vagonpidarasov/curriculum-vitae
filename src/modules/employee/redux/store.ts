@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
 import {employee, avatarUrl, education, experience, expertise, currentPosition} from './selectors';
-import {ResolveEmployees} from './actions';
+import {ResolveEmployees, SaveAsPdf} from './actions';
 import {Employee, Education, Experience} from '../models';
 
 @Injectable()
@@ -37,5 +37,9 @@ export class EmployeeStore {
 
     resolveEmployees():void {
         this.store.dispatch(new ResolveEmployees());
+    }
+
+    saveAsPdf():void {
+        this.store.dispatch(new SaveAsPdf());
     }
 }

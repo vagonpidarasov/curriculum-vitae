@@ -16,6 +16,7 @@ import {
     SET_CURRENT_POSITION,
     SET_EXPERIENCE,
     SET_EXPERTISE,
+    SAVE_AS_PDF,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -88,4 +89,8 @@ export class SetCurrentPosition implements Action {
 export class SetExpertise implements Action {
     readonly type = SET_EXPERTISE;
     constructor(public payload:string[]) {}
+}
+
+export class SaveAsPdf implements Action {
+    readonly type = SAVE_AS_PDF;
 }

@@ -18,6 +18,7 @@ import {CommonAppModule} from 'src/modules/common';
 
 import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
+import {DownloadPDFEffects} from './download-pdf.effects';
 import {
     AvatarComponent,
     EmployeeComponent,
@@ -53,7 +54,7 @@ export const MatModules = [
         CommonModule,
         ...MatModules,
         StoreModule.forFeature(FeatureStateName, reducer),
-        EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects]),
+        EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects, DownloadPDFEffects]),
         MarkdownModule.forChild(),
         CommonAppModule,
     ],

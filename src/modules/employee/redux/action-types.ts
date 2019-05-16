@@ -16,3 +16,4 @@ export const SET_CURRENT_POSITION = 'employee:set-current-position';
 
 export const SET_AVATAR_URL = 'employee:set-avatar-url';
 export const SET_EXPERTISE = 'employee:set-expertise';
+export const SAVE_AS_PDF = 'employee:save-as-pdf';
