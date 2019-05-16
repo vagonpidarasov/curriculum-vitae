@@ -14,8 +14,10 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
 
-import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
+import {CommonAppModule} from 'src/modules/common';
 
+import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
+import {BackgroundImageEffects} from './background-image.effects';
 import {
     AvatarComponent,
     EmployeeComponent,
@@ -34,9 +36,6 @@ import {
     ExperienceContainer,
 } from './containers';
 
-import {MailToPipe} from './mailto.pipe';
-import {TelPipe} from './tel.pipe';
-
 export const MatModules = [
     MatExpansionModule,
     MatChipsModule,
@@ -54,8 +53,9 @@ export const MatModules = [
         CommonModule,
         ...MatModules,
         StoreModule.forFeature(FeatureStateName, reducer),
-        EffectsModule.forFeature([EmployeeEffects]),
+        EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects]),
         MarkdownModule.forChild(),
+        CommonAppModule,
     ],
     providers: [EmployeeStore],
     exports: [
@@ -65,8 +65,6 @@ export const MatModules = [
         ExperienceContainer,
     ],
     declarations: [
-        TelPipe,
-        MailToPipe,
         CurrentPositionContainer,
         EmployeeOverviewComponent,
         EducationDescriptionComponent,
