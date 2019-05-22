@@ -4,8 +4,11 @@ import {RouterModule} from '@angular/router';
 import {MatToolbarModule, MatButtonModule, MatTabsModule} from '@angular/material';
 
 import {AuthenticationModule} from 'src/modules/authentication';
+import {CommonAppModule} from 'src/modules/common';
+
 import {HeaderComponent} from './header.component';
 import {HeaderContainer} from './header.container';
+import {SourceCodeComponent} from './source-code.component';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -16,8 +19,9 @@ import {HeaderContainer} from './header.container';
         MatButtonModule,
         MatTabsModule,
         AuthenticationModule,
+        CommonAppModule,
     ],
-    declarations: [HeaderComponent, HeaderContainer],
-    exports: [HeaderComponent, HeaderContainer],
+    declarations: [HeaderComponent, HeaderContainer, SourceCodeComponent],
+    exports: [HeaderComponent, HeaderContainer, SourceCodeComponent],
 })
 export class HeaderModule {}

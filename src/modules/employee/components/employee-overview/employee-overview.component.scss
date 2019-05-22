@@ -12,3 +12,11 @@
 button[mat-icon-button]:focus {
     outline: none;
 }
+
+.toggle {
+    &.collapsed {
+        .mat-icon {
+            transform: rotate(180deg);
+        }
+    }
+}

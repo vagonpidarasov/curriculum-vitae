@@ -1,9 +1,7 @@
 <markdown *ngIf="employee" ngPreserveWhitespaces [data]="employee.overview"></markdown>
 
 <div *ngIf="expertise.length > 0" class="expertise-title">
-    <span class="mat-primary-color">
-        My expertise includes modern frontend frameworks and libraries such as:
-    </span>
+    <b>My expertise includes:</b>
 </div>
 
 <mat-chip-list *ngIf="expertise.length > 0">
@@ -12,13 +10,16 @@
     </mat-chip>
 
     <button
+        *ngIf="isToggleShown"
         mat-icon-button
         type="button"
-        class="toggle"
         color="primary"
+        class="toggle"
+        [class.expanded]="expertiseExpanded"
+        [class.collapsed]="!expertiseExpanded"
         (click)="toggleExpertise()"
     >
-        <mat-icon *ngIf="!expertiseExpanded" matTooltip="and more" matTooltipPosition="after">more_horiz</mat-icon>
+        <mat-icon *ngIf="!expertiseExpanded" matTooltip="and more" matTooltipPosition="after">more</mat-icon>
         <mat-icon *ngIf="expertiseExpanded" matTooltip="and less" matTooltipPosition="after">more</mat-icon>
     </button>
 </mat-chip-list>

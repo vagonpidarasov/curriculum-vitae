@@ -15,6 +15,10 @@ export class EmployeeOverviewComponent {
     expertiseExpanded:boolean = false;
     expertiseLimit:number = EXPERTISE_LIMIT;
 
+    get isToggleShown():boolean {
+        return this.expertise.length > EXPERTISE_LIMIT;
+    }
+
     toggleExpertise() {
         this.expertiseLimit = this.expertiseExpanded ? EXPERTISE_LIMIT : this.expertise.length;
         this.expertiseExpanded = !this.expertiseExpanded;

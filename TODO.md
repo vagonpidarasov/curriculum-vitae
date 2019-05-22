@@ -54,11 +54,11 @@ https://github.com/btroncone/ngrx-store-localstorage
 - webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
 
 + body background
-- persist body background url
++ persist body background url
 + github link
 + contacts
 - rounded border for accordion
 - convert skillset into modal with search 
 - collapse all accordion's tabs
-- cnovert to pdf
-- remove firebase from the bundle as it is not needed for CV
+- convert to pdf
++ remove firebase from the bundle as it is not needed for CV

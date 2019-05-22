@@ -14,10 +14,6 @@ export class PoweredByComponent {
             url: 'https://www.contentful.com/',
         },
         {
-            logoUrl: 'https://images.ctfassets.net/s3hc12klb4kw/2rBv8QjRg8kPJblMsAAcfg/1987087c19f6dc36fda954bba24b2d65/GitHub-Mark-Light-64px.png',
-            url: 'https://github.com/vagonpidarasov/angular-seed/tree/curriculum-vitae',
-        },
-        {
             logoUrl: 'https://images.ctfassets.net/s3hc12klb4kw/63KtJdGveS7e2YEcCgffQv/6f3917b5299950ee739601e704d9bbfb/logo-nav_2x.png',
             url: 'https://angular.io/',
         },
