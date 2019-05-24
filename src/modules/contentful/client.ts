@@ -5,6 +5,7 @@ import {Observable, Observer} from 'rxjs';
 import {CONTENTFUL_CONFIG} from './config.injection-token';
 import {toItems} from './to-items';
 import {toUrl} from './to-url';
+import {ContentfulResponsePayload} from './response-payload.interface';
 
 @Injectable()
 export class ContentfulClient {
@@ -13,10 +14,16 @@ export class ContentfulClient {
         this.client = createClient(config);
     }
 
-    getEntries<T>(contentType:string):Observable<T[]> {
-        return new Observable((observer:Observer<T[]>) => {
-            this.client.getEntries<T>({content_type: contentType})
+    getEntries<T>(
+        contentType:string,
+        query:string = '',
+        limit:number = 100,
+        skip:number = 0,
+    ):Observable<T[]|ContentfulResponsePayload> {
+        return new Observable((observer:Observer<T[]|ContentfulResponsePayload>) => {
+            this.client.getEntries<T>({content_type: contentType, query, limit, skip})
                 .then((response:EntryCollection<T>) => {
+                    observer.next({total: response.total});
                     observer.next(toItems<T>(response));
                     observer.complete();
                 })

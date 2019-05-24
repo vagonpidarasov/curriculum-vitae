@@ -19,6 +19,6 @@ export class AuthenticationRepositoryStub implements  AuthenticationRepository {
     }
 
     isAuthenticated():Observable<boolean> {
-        return of(false);
+        return of(true);
     }
 }

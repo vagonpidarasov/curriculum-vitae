@@ -4,3 +4,4 @@ export * from './to-items';
 export * from './contentful.module';
 export * from './config.injection-token';
 export * from './client';
+export * from './response-payload.interface';

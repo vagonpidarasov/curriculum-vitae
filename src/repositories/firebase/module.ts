@@ -9,12 +9,12 @@ import {config} from './config';
 
 @NgModule({
     imports: [
-        // AngularFireModule.initializeApp(config),
-        // AngularFireAuthModule,
+        AngularFireModule.initializeApp(config),
+        AngularFireAuthModule,
     ],
     providers: [
-        // {provide: AuthenticationRepository, useClass: AuthenticationRepositoryFirebase},
-        {provide: AuthenticationRepository, useClass: AuthenticationRepositoryStub},
+        {provide: AuthenticationRepository, useClass: AuthenticationRepositoryFirebase},
+        // {provide: AuthenticationRepository, useClass: AuthenticationRepositoryStub},
     ],
 })
 export class FirebaseRepositoryModule {}

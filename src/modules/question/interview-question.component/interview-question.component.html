@@ -1,0 +1,9 @@
+<mat-card>
+    <mat-card-header>
+        <h3>{{interviewQuestion.question}}</h3>
+        <!--<mat-card-subtitle>{{interviewQuestion.area}}</mat-card-subtitle>-->
+    </mat-card-header>
+    <mat-card-content>
+        <markdown ngPreserveWhitespaces [data]="interviewQuestion.answer"></markdown>
+    </mat-card-content>
+</mat-card>

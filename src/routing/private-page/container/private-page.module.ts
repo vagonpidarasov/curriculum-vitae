@@ -4,6 +4,7 @@ import {MatCardModule, MatButtonModule, MatIconModule} from '@angular/material';
 
 import {PrivatePageContainer} from './private-page.container';
 import {GeolocationModule} from 'src/modules/geolocation';
+import {QuestionModule} from 'src/modules/question';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -12,7 +13,9 @@ import {GeolocationModule} from 'src/modules/geolocation';
         MatCardModule,
         MatButtonModule,
         MatIconModule,
-        GeolocationModule],
+        GeolocationModule,
+        QuestionModule
+    ],
     declarations: [PrivatePageContainer],
     exports: [PrivatePageContainer],
 })

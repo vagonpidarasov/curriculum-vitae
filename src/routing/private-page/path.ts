@@ -1,1 +1,1 @@
-export const path:string = 'private';
+export const path:string = 'interview-questions';

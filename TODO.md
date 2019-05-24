@@ -62,3 +62,4 @@ https://github.com/btroncone/ngrx-store-localstorage
 - collapse all accordion's tabs
 - convert to pdf
 + remove firebase from the bundle as it is not needed for CV
+- companies as links

@@ -1,0 +1,24 @@
+<div class="list-controls">
+    <query-string
+        [inProgress]="questionsStore.inProgress | async"
+        (searchRequest)="setQuery($event)"
+    ></query-string>
+    <mat-paginator
+        [length]="questionsStore.totalLength | async"
+        [pageSize]="questionsStore.pageSize | async"
+        [pageIndex]="questionsStore.pageIndex | async"
+        [disabled]="questionsStore.inProgress | async"
+        [showFirstLastButtons]="true"
+        (page)="setPage($event)"
+    ></mat-paginator>
+</div>
+
+<mat-progress-bar *ngIf="questionsStore.inProgress | async" mode="indeterminate"></mat-progress-bar>
+
+<interview-question
+    *ngFor="let question of questionsStore.questions | async"
+    [interviewQuestion]="question"
+    class="interview-question"
+></interview-question>
+
+

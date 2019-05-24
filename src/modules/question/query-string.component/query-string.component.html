@@ -1,0 +1,25 @@
+<form [formGroup]="queryStringForm" (ngSubmit)="submit()" class="query-string-form">
+    <section class="value">
+        <mat-form-field>
+            <mat-placeholder>Your Shoop da Whoop search</mat-placeholder>
+            <input
+                matInput
+                type="text"
+                autocomplete="off"
+                formControlName="queryString"
+            />
+        </mat-form-field>
+    </section>
+
+    <section class="flex">
+        <button
+            mat-raised-button
+            type="submit"
+            class="submit-button"
+            color="primary"
+            [disabled]="submitButtonDisabled"
+        >
+            <mat-icon>search</mat-icon>
+        </button>
+    </section>
+</form>
