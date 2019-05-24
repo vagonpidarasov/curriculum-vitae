@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, Output, EventEmitter,} from '@angular/core';
 import {InterviewQuestion} from '../question.type';
 
 @Component({
@@ -8,4 +8,5 @@ import {InterviewQuestion} from '../question.type';
 })
 export class InterviewQuestionComponent {
     @Input() interviewQuestion:InterviewQuestion = null;
+    @Output() keywordClick:EventEmitter<string> = new EventEmitter();
 }

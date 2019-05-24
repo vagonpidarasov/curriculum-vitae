@@ -13,7 +13,7 @@
     ></mat-paginator>
 </div>
 
-<mat-progress-bar *ngIf="questionsStore.inProgress | async" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar [class.in-progress]="questionsStore.inProgress | async" mode="indeterminate"></mat-progress-bar>
 
 <interview-question
     *ngFor="let question of questionsStore.questions | async"

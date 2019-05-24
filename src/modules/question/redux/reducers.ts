@@ -1,3 +1,4 @@
+import {InterviewQuestion} from '../question.type';
 import {QuestionState} from './state';
 import {
     SetQuestions,
@@ -9,7 +10,10 @@ import {
 } from './actions';
 
 export function setQuestions(state:QuestionState, action:SetQuestions) {
-    state.questions = [...action.payload];
+    state.questions = action.payload.map((question:InterviewQuestion) => ({
+        ...question,
+        keywordsArray: question.keywords ? question.keywords.split(',').map(k => k.trim()).filter(k => !!k) : [],
+    }));
     return state;
 }
 

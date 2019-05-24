@@ -31,7 +31,19 @@
 }
 
 :host /deep/ {
+    .mat-paginator {
+        background-color: transparent;
+    }
     .mat-paginator-page-size {
         display: none;
+    }
+}
+
+mat-progress-bar {
+    opacity: 0;
+    transition: opacity 0.3s;
+
+    &.in-progress {
+        opacity: 1;
     }
 }

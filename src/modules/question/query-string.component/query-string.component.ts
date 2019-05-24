@@ -19,7 +19,7 @@ import {
 } from '@angular/forms';
 
 import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
 
 export const QUERY_STRING_DATA_NAME = 'queryString';
 export const QUERY_STRING_MIN_LENGTH = 3;
@@ -44,6 +44,10 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
 
     get submitButtonDisabled():boolean {
         return this.queryStringForm.invalid || this.inProgress;
+    }
+
+    get hasValue():boolean {
+        return !!this.queryStringFormControl.value;
     }
 
     constructor(formBuilder:FormBuilder) {
@@ -74,6 +78,11 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
                 this.queryStringForm.enable({onlySelf: false})
             ;
         }
+    }
+
+    clear() {
+        this.queryStringFormControl.reset(null);
+        this.searchRequest.emit(null);
     }
 
     submit() {
