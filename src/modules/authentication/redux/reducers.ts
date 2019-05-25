@@ -6,6 +6,7 @@ import {
     SetError,
     AuthenticationRequest,
     AuthenticationDiscard,
+    AuthenticationFallback,
     ResetUserData,
 } from './actions';
 
@@ -38,5 +39,10 @@ export function authRequest(state:AuthenticationState, action:AuthenticationRequ
 
 export function authDiscard(state:AuthenticationState, action:AuthenticationDiscard):AuthenticationState {
     state.authenticationRequest = null;
+    return state;
+}
+
+export function authFallback(state:AuthenticationState, action:AuthenticationFallback):AuthenticationState {
+    state.authenticationDiscard = action.payload;
     return state;
 }

@@ -7,4 +7,5 @@ export class AuthenticationState {
     isInProgress:boolean = false;
     error:string = null;
     authenticationRequest:Action|null = null;
+    authenticationDiscard:Action|null = null;
 }

@@ -9,7 +9,7 @@ import {Action, toPayload} from 'src/modules/redux';
 import {AuthenticationRepository} from '../authentication.repository';
 import {UserData, SignInPayload} from '../types';
 import {FeatureState as AuthFeatureState} from './feature';
-import {SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL} from './action-types';
+import {SIGN_IN, SIGN_IN_SUCCESS, SIGN_IN_FAIL, AUTHENTICATION_DISCARD} from './action-types';
 import {
     SignInFail,
     SetProgress,
@@ -74,5 +74,15 @@ export class SignInEffects {
         ofType(SIGN_IN_SUCCESS),
         withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationRequest),
         filter((authenticationRequest:Action) => !!authenticationRequest)
+    );
+
+    /**
+     * @Effect fires previously stored fallback action upon auth discard
+     * @type {Observable<Action>}
+     */
+    @Effect() AuthDiscardEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(AUTHENTICATION_DISCARD),
+        withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationDiscard),
+        filter((authenticationDiscard:Action) => !!authenticationDiscard)
     );
 }

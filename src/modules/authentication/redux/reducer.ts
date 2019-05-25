@@ -8,6 +8,7 @@ import {
     AUTHENTICATION_DISCARD,
     SET_USER_DATA,
     RESET_USER_DATA,
+    AUTHENTICATION_FALLBACK,
 } from './action-types';
 
 import {
@@ -17,6 +18,7 @@ import {
     setError,
     authRequest,
     authDiscard,
+    authFallback,
 } from './reducers';
 
 export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>>([
@@ -26,6 +28,7 @@ export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>
     [SET_ERROR, setError],
     [AUTHENTICATION_REQUEST, authRequest],
     [AUTHENTICATION_DISCARD, authDiscard],
+    [AUTHENTICATION_FALLBACK, authFallback],
 ]);
 
 export function reducer(state:AuthenticationState, action:Action):AuthenticationState {

@@ -11,6 +11,7 @@ import {
     SET_ERROR,
     AUTHENTICATION_REQUEST,
     AUTHENTICATION_DISCARD,
+    AUTHENTICATION_FALLBACK,
     SET_USER_DATA,
     RESET_USER_DATA,
 } from './action-types';
@@ -64,4 +65,9 @@ export class AuthenticationRequest implements Action {
 
 export class AuthenticationDiscard implements Action {
     readonly type = AUTHENTICATION_DISCARD;
+}
+
+export class AuthenticationFallback implements Action {
+    readonly type = AUTHENTICATION_FALLBACK;
+    constructor(public payload:Action) {}
 }

@@ -1,9 +1,11 @@
 :host {
     display: flex;
-    justify-content: flex-end;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1em;
+//    max-width: 600px;
+//    margin: 0 auto;
+//    position: relative;
 }
 
 .github-icon {
@@ -12,8 +14,8 @@
     background-repeat: no-repeat;
     background-position: left;
     background-size: cover;
-    position: absolute;
-    z-index: 1;
-    transform: translate(-10px, 10px);
-    opacity: 0.5;
+    //position: absolute;
+    //z-index: 1;
+    //transform: translate(-10px, 10px);
+    //opacity: 0.5;
 }

@@ -8,6 +8,6 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SourceCodeComponent {
-    githubLogo = 'https://images.ctfassets.net/s3hc12klb4kw/1FZzeNgzQvhC1NUxhdIfSj/e227fd0ed67acd7234752b97c176a5e5/GitHub-Mark-64px.png';
+    githubLogo = 'https://images.ctfassets.net/s3hc12klb4kw/2rBv8QjRg8kPJblMsAAcfg/1987087c19f6dc36fda954bba24b2d65/GitHub-Mark-Light-64px.png';
     sourceCodeUrl = 'https://github.com/vagonpidarasov/angular-seed/tree/curriculum-vitae';
 }

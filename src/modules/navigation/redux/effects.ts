@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
-import {AuthenticationRequest, SIGN_OUT} from 'src/modules/authentication';
+import {AuthenticationRequest, AuthenticationFallback, SIGN_OUT} from 'src/modules/authentication';
 
 import {toCanceledRoute} from '../to-canceled-route';
 import {toDefaultRoute} from '../to-default-route';
@@ -17,7 +17,18 @@ export class AuthenticationEffects {
     constructor(private actions$:Actions) {}
 
     /**
-     * @Effect saves canceled route as a SetCurrentRoute action
+     * @Effect saves current route to be fired once auth is discarded
+     * @type {Observable<any>}
+     */
+    @Effect() FallbackNavigationActionEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(ROUTER_CANCEL),
+        map(toDefaultRoute),
+        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
+        map((action:SetCurrentRoute) => new AuthenticationFallback(action)),
+    );
+
+    /**
+     * @Effect saves canceled route to be fired once auth is done
      * @type {Observable<any>}
      */
     @Effect() ProtectedRouteRequestEffect$:Observable<Action> = this.actions$.pipe(
@@ -28,6 +39,10 @@ export class AuthenticationEffects {
         map((action:SetCurrentRoute) => new AuthenticationRequest(action)),
     );
 
+    /**
+     * @Effect navigates to the default route upon sign out
+     * @type {Observable<SetCurrentRoute>}
+     */
     @Effect() SignOutEffect$:Observable<Action> = this.actions$.pipe(
         ofType(SIGN_OUT),
         map(toDefaultRoute),
