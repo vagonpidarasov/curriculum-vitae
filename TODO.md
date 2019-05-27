@@ -63,3 +63,5 @@ https://github.com/btroncone/ngrx-store-localstorage
 - convert to pdf
 + remove firebase from the bundle as it is not needed for CV
 - companies as links
++ icons as svg
+- skeleton loader

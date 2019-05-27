@@ -3,19 +3,32 @@
     align-items: center;
     justify-content: center;
     margin-left: 1em;
-//    max-width: 600px;
-//    margin: 0 auto;
-//    position: relative;
 }
 
 .github-icon {
     width: 30px;
     height: 30px;
-    background-repeat: no-repeat;
-    background-position: left;
-    background-size: cover;
-    //position: absolute;
-    //z-index: 1;
-    //transform: translate(-10px, 10px);
-    //opacity: 0.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .svg-icon {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+:host /deep/ {
+    .github-icon {
+        .svg-icon {
+            svg {
+                flex: 1;
+                path {
+                    fill: white;
+                }
+            }
+        }
+    }
 }
