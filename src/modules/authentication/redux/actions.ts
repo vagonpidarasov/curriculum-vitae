@@ -11,7 +11,8 @@ import {
     SET_ERROR,
     AUTHENTICATION_REQUEST,
     AUTHENTICATION_DISCARD,
-    AUTHENTICATION_FALLBACK,
+    SET_AUTHENTICATION_DISCARD,
+    SET_AUTHENTICATION_REQUEST,
     SET_USER_DATA,
     RESET_USER_DATA,
 } from './action-types';
@@ -60,6 +61,10 @@ export class SetError implements Action {
 
 export class AuthenticationRequest implements Action {
     readonly type = AUTHENTICATION_REQUEST;
+}
+
+export class SetAuthenticationRequest implements Action {
+    readonly type = SET_AUTHENTICATION_REQUEST;
     constructor(public payload:Action) {}
 }
 
@@ -67,7 +72,7 @@ export class AuthenticationDiscard implements Action {
     readonly type = AUTHENTICATION_DISCARD;
 }
 
-export class AuthenticationFallback implements Action {
-    readonly type = AUTHENTICATION_FALLBACK;
+export class SetAuthenticationDiscard implements Action {
+    readonly type = SET_AUTHENTICATION_DISCARD;
     constructor(public payload:Action) {}
 }

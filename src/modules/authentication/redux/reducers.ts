@@ -4,9 +4,8 @@ import {
     SetUserData,
     SetProgress,
     SetError,
-    AuthenticationRequest,
-    AuthenticationDiscard,
-    AuthenticationFallback,
+    SetAuthenticationRequest,
+    SetAuthenticationDiscard,
     ResetUserData,
 } from './actions';
 
@@ -32,17 +31,12 @@ export function setError(state:AuthenticationState, action:SetError):Authenticat
     return state;
 }
 
-export function authRequest(state:AuthenticationState, action:AuthenticationRequest):AuthenticationState {
+export function setAuthRequest(state:AuthenticationState, action:SetAuthenticationRequest):AuthenticationState {
     state.authenticationRequest = action.payload;
     return state;
 }
 
-export function authDiscard(state:AuthenticationState, action:AuthenticationDiscard):AuthenticationState {
-    state.authenticationRequest = null;
-    return state;
-}
-
-export function authFallback(state:AuthenticationState, action:AuthenticationFallback):AuthenticationState {
+export function setAuthDiscard(state:AuthenticationState, action:SetAuthenticationDiscard):AuthenticationState {
     state.authenticationDiscard = action.payload;
     return state;
 }

@@ -4,11 +4,10 @@ import {AuthenticationState} from './state';
 import {
     SET_PROGRESS,
     SET_ERROR,
-    AUTHENTICATION_REQUEST,
-    AUTHENTICATION_DISCARD,
+    SET_AUTHENTICATION_REQUEST,
+    SET_AUTHENTICATION_DISCARD,
     SET_USER_DATA,
     RESET_USER_DATA,
-    AUTHENTICATION_FALLBACK,
 } from './action-types';
 
 import {
@@ -16,9 +15,8 @@ import {
     resetUserData,
     setProgress,
     setError,
-    authRequest,
-    authDiscard,
-    authFallback,
+    setAuthRequest,
+    setAuthDiscard,
 } from './reducers';
 
 export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>>([
@@ -26,9 +24,8 @@ export const actionReducerMap = new Map<string, ReducerType<AuthenticationState>
     [RESET_USER_DATA, resetUserData],
     [SET_PROGRESS, setProgress],
     [SET_ERROR, setError],
-    [AUTHENTICATION_REQUEST, authRequest],
-    [AUTHENTICATION_DISCARD, authDiscard],
-    [AUTHENTICATION_FALLBACK, authFallback],
+    [SET_AUTHENTICATION_REQUEST, setAuthRequest],
+    [SET_AUTHENTICATION_DISCARD, setAuthDiscard],
 ]);
 
 export function reducer(state:AuthenticationState, action:Action):AuthenticationState {

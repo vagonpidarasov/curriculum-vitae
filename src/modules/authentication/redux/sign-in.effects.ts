@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Store} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
-import {catchError, map, exhaustMap, withLatestFrom, filter} from 'rxjs/operators';
+import {catchError, map, exhaustMap, withLatestFrom, filter, switchMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 
@@ -16,6 +16,8 @@ import {
     SignInSuccess,
     SetError,
     SetUserData,
+    SetAuthenticationDiscard,
+    SetAuthenticationRequest,
 } from './actions';
 
 @Injectable()
@@ -73,7 +75,7 @@ export class SignInEffects {
     @Effect() SingInSuccessEffect$:Observable<Action> = this.actions$.pipe(
         ofType(SIGN_IN_SUCCESS),
         withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationRequest),
-        filter((authenticationRequest:Action) => !!authenticationRequest)
+        filter((action:Action) => !!action),
     );
 
     /**
@@ -83,6 +85,18 @@ export class SignInEffects {
     @Effect() AuthDiscardEffect$:Observable<Action> = this.actions$.pipe(
         ofType(AUTHENTICATION_DISCARD),
         withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.authenticationDiscard),
-        filter((authenticationDiscard:Action) => !!authenticationDiscard)
+        filter((action:Action) => !!action),
+    );
+
+    /**
+     * @Effects resets request and discard actions upon sing-in or discard
+     * @type {Observable<Action | SetAuthenticationRequest | SetAuthenticationDiscard>}
+     */
+    @Effect() AuthEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(SIGN_IN_SUCCESS, AUTHENTICATION_DISCARD),
+        switchMap(() => of(
+            new SetAuthenticationRequest(null),
+            new SetAuthenticationDiscard(null),
+        )),
     );
 }

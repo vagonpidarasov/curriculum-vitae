@@ -6,7 +6,12 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
-import {AuthenticationRequest, AuthenticationFallback, SIGN_OUT} from 'src/modules/authentication';
+import {
+    AuthenticationRequest,
+    SetAuthenticationDiscard,
+    SetAuthenticationRequest,
+    SIGN_OUT,
+} from 'src/modules/authentication';
 
 import {toCanceledRoute} from '../to-canceled-route';
 import {toDefaultRoute} from '../to-default-route';
@@ -20,23 +25,32 @@ export class AuthenticationEffects {
      * @Effect saves current route to be fired once auth is discarded
      * @type {Observable<any>}
      */
-    @Effect() FallbackNavigationActionEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetAuthRequestEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
         map(toDefaultRoute),
         map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
-        map((action:SetCurrentRoute) => new AuthenticationFallback(action)),
+        map((action:SetCurrentRoute) => new SetAuthenticationDiscard(action)),
     );
 
     /**
-     * @Effect saves canceled route to be fired once auth is done
+     * @Effect saves canceled route to be fired once auth is succeeded
      * @type {Observable<any>}
      */
-    @Effect() ProtectedRouteRequestEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetAuthDiscardEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
         map(toPayload),
         map(toCanceledRoute),
         map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
-        map((action:SetCurrentRoute) => new AuthenticationRequest(action)),
+        map((action:SetCurrentRoute) => new SetAuthenticationRequest(action)),
+    );
+
+    /**
+     * @Effect fires AuthRequest action when protected route is navigated
+     * @type {Observable<any>}
+     */
+    @Effect() AuthRequestActionEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(ROUTER_CANCEL),
+        map(() => new AuthenticationRequest()),
     );
 
     /**
