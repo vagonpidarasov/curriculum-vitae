@@ -4,6 +4,7 @@
     <mat-card-header class="mat-custom-header items-center">
         <employee
             [employee]="employeeStore.employee | async"
+            [address]="employeeStore.address | async"
             (downloadRequest)="employeeStore.saveAsPdf()"
         ></employee>
     </mat-card-header>

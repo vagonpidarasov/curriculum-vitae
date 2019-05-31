@@ -17,3 +17,8 @@ export const SET_CURRENT_POSITION = 'employee:set-current-position';
 export const SET_AVATAR_URL = 'employee:set-avatar-url';
 export const SET_EXPERTISE = 'employee:set-expertise';
 export const SAVE_AS_PDF = 'employee:save-as-pdf';
+
+export const SET_EMPLOYEE_ADDRESS = 'employee:set-address';
+export const RESOLVE_EMPLOYEE_ADDRESS = 'employee:resolve-address';
+export const RESOLVE_EMPLOYEE_ADDRESS_SUCCESS = 'employee:resolve-address-success';
+export const RESOLVE_EMPLOYEE_ADDRESS_FAIL = 'employee:resolve-address-fail';

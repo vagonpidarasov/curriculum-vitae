@@ -3,7 +3,7 @@ import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
-import {employee, avatarUrl, education, experience, expertise, currentPosition} from './selectors';
+import {employee, avatarUrl, education, experience, expertise, currentPosition, address} from './selectors';
 import {ResolveEmployees, SaveAsPdf} from './actions';
 import {Employee, Education, Experience} from '../models';
 
@@ -33,6 +33,10 @@ export class EmployeeStore {
 
     get expertise():Observable<string[]> {
         return this.store.pipe(select(expertise));
+    }
+
+    get address():Observable<string> {
+        return this.store.pipe(select(address));
     }
 
     resolveEmployees():void {

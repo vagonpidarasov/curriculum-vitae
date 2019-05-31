@@ -1,5 +1,5 @@
 import {Action} from 'src/modules/redux';
-import {Employee, Education, Experience} from '../models';
+import {Employee, Education, Experience, Location} from '../models';
 import {
     RESOLVE_EMPLOYEES,
     RESOLVE_EMPLOYEES_FAIL,
@@ -17,6 +17,10 @@ import {
     SET_EXPERIENCE,
     SET_EXPERTISE,
     SAVE_AS_PDF,
+    RESOLVE_EMPLOYEE_ADDRESS,
+    RESOLVE_EMPLOYEE_ADDRESS_FAIL,
+    RESOLVE_EMPLOYEE_ADDRESS_SUCCESS,
+    SET_EMPLOYEE_ADDRESS,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -93,4 +97,28 @@ export class SetExpertise implements Action {
 
 export class SaveAsPdf implements Action {
     readonly type = SAVE_AS_PDF;
+}
+
+export class ResolveEmployeeAddress implements Action {
+    static type = RESOLVE_EMPLOYEE_ADDRESS;
+    readonly type = RESOLVE_EMPLOYEE_ADDRESS;
+    constructor(public payload:Location) {}
+}
+
+export class ResolveEmployeeAddressSucceess implements Action {
+    static type = RESOLVE_EMPLOYEE_ADDRESS_SUCCESS;
+    readonly type = RESOLVE_EMPLOYEE_ADDRESS_SUCCESS;
+    constructor(public payload:any) {}
+}
+
+export class SetEmployeeAddress implements Action {
+    static type = SET_EMPLOYEE_ADDRESS;
+    readonly type = SET_EMPLOYEE_ADDRESS;
+    constructor(public payload:string) {}
+}
+
+export class ResolveEmployeeAddressFail implements Action {
+    static type = RESOLVE_EMPLOYEE_ADDRESS_FAIL;
+    readonly type = RESOLVE_EMPLOYEE_ADDRESS_FAIL;
+    constructor(public payload:any) {}
 }

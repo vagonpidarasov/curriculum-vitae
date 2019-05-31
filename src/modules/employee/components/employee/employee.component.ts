@@ -8,4 +8,5 @@ import {Employee} from '../../models';
 })
 export class EmployeeComponent {
     @Input() employee:Employee = null;
+    @Input() address:string = null;
 }

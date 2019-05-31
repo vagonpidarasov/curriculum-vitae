@@ -7,6 +7,7 @@ import {
     setExperience,
     setCurrentPosition,
     setExpertise,
+    setAddress,
 } from './reducers';
 import {
     SET_EMPLOYEE,
@@ -15,6 +16,7 @@ import {
     SET_CURRENT_POSITION,
     SET_EXPERIENCE,
     SET_EXPERTISE,
+    SET_EMPLOYEE_ADDRESS,
 } from './action-types';
 
 export const actionReducerMap = new Map<string, ReducerType<EmployeeState>>([
@@ -24,6 +26,7 @@ export const actionReducerMap = new Map<string, ReducerType<EmployeeState>>([
     [SET_CURRENT_POSITION, setCurrentPosition],
     [SET_EXPERIENCE, setExperience],
     [SET_EXPERTISE, setExpertise],
+    [SET_EMPLOYEE_ADDRESS, setAddress],
 ]);
 
 export function reducer(state:EmployeeState, action:Action):EmployeeState {

@@ -29,3 +29,7 @@ export function avatarUrl(state:FeatureState):string {
 export function expertise(state:FeatureState):string[] {
     return getState(state).expertise;
 }
+
+export function address(state:FeatureState):string {
+    return getState(state).address;
+}

@@ -16,7 +16,8 @@ import {MarkdownModule} from 'ngx-markdown';
 
 import {CommonAppModule} from 'src/modules/common';
 
-import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
+import {EmployeeStore, FeatureStateName, reducer} from './redux';
+import {EmployeeEffects, EducationEffects, ExperienceEffects } from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
 import {DownloadPDFEffects} from './download-pdf.effects';
 import {
@@ -48,13 +49,21 @@ export const MatModules = [
     MatProgressSpinnerModule,
 ];
 
+export const effects = [
+    EmployeeEffects,
+    EducationEffects,
+    ExperienceEffects,
+    BackgroundImageEffects,
+    DownloadPDFEffects,
+];
+
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         CommonModule,
         ...MatModules,
         StoreModule.forFeature(FeatureStateName, reducer),
-        EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects, DownloadPDFEffects]),
+        EffectsModule.forFeature(effects),
         MarkdownModule.forChild(),
         CommonAppModule,
     ],

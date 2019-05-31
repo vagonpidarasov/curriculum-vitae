@@ -1,9 +1,11 @@
+import {Location} from './location';
 export class Employee {
     name:string = null;
     title:string = null;
     age:number;
     dateOfBirth:Date;
-    location:any;
+    location:Location;
+    address:string;
     avatar:any;
     backgroundImage:any;
     overview:string;

@@ -1,5 +1,13 @@
 import {EmployeeState} from './state';
-import {SetEmployee, SetAvatarUrl, SetExperience, SetCurrentPosition, SetEducation, SetExpertise} from './actions';
+import {
+    SetEmployee,
+    SetAvatarUrl,
+    SetExperience,
+    SetCurrentPosition,
+    SetEducation,
+    SetExpertise,
+    SetEmployeeAddress,
+} from './actions';
 import {Employee, Education, Experience} from '../models';
 
 export function setEmployee(state:EmployeeState, action:SetEmployee) {
@@ -31,5 +39,10 @@ export function setCurrentPosition(state:EmployeeState, action:SetCurrentPositio
 
 export function setExpertise(state:EmployeeState, action:SetExpertise) {
     state.expertise = [...action.payload];
+    return state;
+}
+
+export function setAddress(state:EmployeeState, action:SetEmployeeAddress) {
+    state.address = action.payload;
     return state;
 }
