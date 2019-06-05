@@ -34,7 +34,6 @@ export interface GeocodingResponse {
                         }
                     },
                     Address:{
-                        // HERE
                         Label:string;
                         Country:string;
                         State:string;

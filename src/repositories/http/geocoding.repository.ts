@@ -3,7 +3,6 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-
 import {GeocodingRepository} from 'src/modules/geolocation';
 import {GeocodingResponse} from './geocoding-response.model';
 

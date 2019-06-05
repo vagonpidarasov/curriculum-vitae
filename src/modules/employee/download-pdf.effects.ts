@@ -1,4 +1,5 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
+import {DOCUMENT} from '@angular/common';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {tap, withLatestFrom} from 'rxjs/operators';
@@ -12,17 +13,12 @@ export class DownloadPDFEffects {
     constructor(
         private actions$:Actions,
         private store:Store<FeatureState>,
+        @Inject(DOCUMENT) private document:Document,
     ) {}
 
     @Effect(NoDispatchMetadada) SetBodyBackgroundEffect$ = this.actions$.pipe(
         ofType(SAVE_AS_PDF),
         withLatestFrom(this.store, (a:Action, s:FeatureState) => s.employee),
-        tap((employeeState:EmployeeState) => downloadPDF(
-            employeeState.employee,
-            employeeState.education,
-            employeeState.expertise,
-            employeeState.currentPosition,
-            employeeState.experience,
-        )),
+        tap((employeeState:EmployeeState) => downloadPDF(employeeState.employee, this.document.body)),
     );
 }

@@ -1,30 +1,25 @@
-import jsPDF from 'jspdf';
-import {Employee, Education, Experience} from './models';
+import * as jsPDF from 'jspdf';
+import {Employee} from './models';
 
-export function downloadPDF(
-    employee:Employee,
-    education:Education,
-    expertise:string[],
-    currentPosition:Experience,
-    experience:Experience[],
-) {
+export function downloadPDF(employee:Employee, html:HTMLElement) {
     const doc = new jsPDF();
-    const {name, title, phoneNumber, emailAddress, overview} = employee;
-    const text1 = [
-        name,
-        title,
-        phoneNumber,
-        emailAddress,
-        ...overview.split('.').map(o => `${o}.`),
-        expertise.join(','),
-    ];
-    doc.text(text1, 10, 10, {maxWidth: 190});
-    doc.addPage();
-    const text2 = [
-        currentPosition.position,
-        currentPosition.companyName,
-        ...currentPosition.description.split('.').map(o => `${o}.`),
-    ];
-    doc.text(text2, 10, 10, {maxWidth: 190});
-    doc.save(`${name.replace(/\s/g, '-')}-${new Date().getTime()}.pdf`);
+    const flags = {width: 190};
+    const {name} = employee;
+    // const fileName = `${name.replace(/\s/g, '-')}-${new Date().getTime()}.pdf`;
+    const fileName = `${name.replace(/\s/g, '-')}.pdf`;
+    const elementList = html.querySelectorAll('employee-summary > section');
+    const elements:HTMLElement[] = Array.prototype.slice.call(elementList);
+
+    const promiseArray = elements.map((element:HTMLElement, index:number) =>
+        new Promise(resolve =>
+            doc.fromHTML(element, 10, 10, flags, () => {
+                resolve();
+                if (index < elements.length - 1) {
+                    doc.addPage();
+                }
+            })
+        )
+    );
+
+    Promise.all(promiseArray).then(() => doc.save(fileName));
 }

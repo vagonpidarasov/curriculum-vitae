@@ -29,6 +29,7 @@ import {
     PositionComponent,
     PositionDescriptionComponent,
     PositionTitleComponent,
+    SummaryComponent,
 } from './components';
 
 import {
@@ -36,6 +37,7 @@ import {
     EducationContainer,
     CurrentPositionContainer,
     ExperienceContainer,
+    SummaryContainer,
 } from './containers';
 
 export const MatModules = [
@@ -73,6 +75,7 @@ export const effects = [
         EducationContainer,
         CurrentPositionContainer,
         ExperienceContainer,
+        SummaryContainer,
     ],
     declarations: [
         CurrentPositionContainer,
@@ -87,6 +90,8 @@ export const effects = [
         PositionDescriptionComponent,
         ExperienceContainer,
         PositionTitleComponent,
+        SummaryComponent,
+        SummaryContainer,
     ],
 })
 export class EmployeeModule {}
