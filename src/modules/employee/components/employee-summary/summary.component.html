@@ -1,14 +1,14 @@
 <section *ngIf="employee && education">
-    <h1 style="color:#3f51b5;">{{employee.name}}</h1>
+    <h1 style="color:#388e3c;">{{employee.name}}</h1>
     <h2>{{employee.title}}</h2>
     <h4 style="color:#aaa;">{{address}}</h4>
 
     <div>
-        <em>phone number:&nbsp;</em>
-        <span style="color:#3f51b5;">{{employee.phoneNumber}}</span>
-        <span>,&nbsp;</span>
-        <em>email:&nbsp;</em>
-        <span style="color:#3f51b5;">{{employee.emailAddress}}</span>
+        <em>phone number:</em>&nbsp;
+        <span style="color:#388e3c;">{{employee.phoneNumber}}</span>
+        <span>,</span>&nbsp;
+        <em>email:</em>&nbsp;
+        <span style="color:#388e3c;">{{employee.emailAddress}}</span>
     </div>
 
     <br /><br />
@@ -22,10 +22,10 @@
 
     <br />
 
-    <h1 style="color:#3f51b5;">Education</h1>
+    <h1 style="color:#388e3c;">Education</h1>
     <h2>
-        <span>{{education.degree}}</span>
-        <span> in </span>
+        <span>{{education.degree}}</span>&nbsp;
+        <span>in</span>&nbsp;
         <span>{{education.fieldOfStudy}}</span>
     </h2>
     <h4 style="color:#aaa;">{{education.universityName}}</h4>
@@ -33,13 +33,14 @@
 </section>
 
 <section *ngIf="position" class="position">
-    <h1 style="color:#3f51b5;">Position</h1>
+    <h1 style="color:#388e3c;">Position</h1>
     <h2>{{position.position}}</h2>
     <h4 style="color:#aaa;">{{position.companyName}}</h4>
     <markdown ngPreserveWhitespaces [data]="position.description"></markdown>
 
-    <h1 style="color:#3f51b5;">Experience</h1>
+    <h1 style="color:#388e3c;">Experience</h1>
 
+    <!-- TODO: reuse existing experience component -->
     <div *ngFor="let exp of experience; let i = index">
         <strong>{{exp.period}}</strong>&nbsp;
         <span>months</span>&nbsp;

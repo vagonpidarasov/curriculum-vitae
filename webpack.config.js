@@ -20,13 +20,17 @@ module.exports = {
         rules: [
             {
                 test: /\.scss$/,
+                use: [{loader}, 'css-loader', 'sass-loader'],
+                include: /node_modules|theme\.scss/,
+            },
+            {
+                test: /\.scss$/,
                 use: ['raw-loader', 'sass-loader'],
-                exclude: /node_modules/,
+                exclude: /node_modules|theme\.scss/,
             },
             {
                 test: /\.css$/,
                 use: [{loader}, 'css-loader'],
-
                 include: [/node_modules/],
             },
             {
@@ -48,7 +52,7 @@ module.exports = {
         splitChunks: {
             cacheGroups: {
                 commons: {
-                    test: /[\\/]node_modules[\\/]/,
+                    test: /[\\/]node_modules[\\/]|theme\.scss/,
                     name: 'vendor',
                     chunks: 'all',
                 }

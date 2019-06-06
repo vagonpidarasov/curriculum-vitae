@@ -1,6 +1,6 @@
 + setup i18n without angular cli
-https://github.com/ocombe/i18n-demo-no-cli
-https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-messages-xlf-without-angular-cli
+    https://github.com/ocombe/i18n-demo-no-cli
+    https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-messages-xlf-without-angular-cli
 
 - refactor webpack config files
 
@@ -14,7 +14,8 @@ https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-m
 
 + add some simple angular animation
 
-+ add geolocation https://github.com/robisim74/angular-maps/blob/master/src/app/services/geolocation.service.ts
++ add geolocation
+    https://github.com/robisim74/angular-maps/blob/master/src/app/services/geolocation.service.ts
 
 + rename *-container.component.* to *.container.*
 
@@ -49,7 +50,7 @@ https://blog.angular-university.io/angular-service-worker/
 + do proper sign-out: call corresponding firebase method
 
 + ngrx persist
-https://github.com/btroncone/ngrx-store-localstorage
+    https://github.com/btroncone/ngrx-store-localstorage
 
 - webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
 
@@ -61,8 +62,11 @@ https://github.com/btroncone/ngrx-store-localstorage
 - convert skillset into modal with search 
 - collapse all accordion's tabs
 + convert to pdf
-+ remove firebase from the bundle as it is not needed for CV
 - companies as links
 + icons as svg
 - skeleton loader
 - add facebook, linkedin, soundcloud links
++ theme
+    https://material.angular.io/guide/theming
+- optimise css selectors
+    - avoid using generic selectors, a (link) for example 

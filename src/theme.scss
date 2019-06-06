@@ -1,0 +1,44 @@
+@import '~@angular/material/theming';
+
+$primary-color-set: (
+    100: #c8e6c9,
+    500: #4caf50,
+    700: #388e3c,
+    contrast: (
+        100: $dark-primary-text,
+        500: $light-primary-text,
+        700: $light-primary-text,
+    )
+);
+
+//$primary-palette: mat-palette($mat-green);
+$primary-palette: mat-palette($primary-color-set);
+$accent-palette: mat-palette($mat-pink);
+$warn-palette: mat-palette($mat-red);
+
+$primary-color: map-get($primary-color-set, 500);
+
+$theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+
+@include mat-core();
+@include angular-material-theme($theme);
+
+.mat-primary-color {
+    color: $primary-color;
+}
+
+.mat-primary-background-color {
+    background-color: $primary-color;
+}
+
+.mat-primary-border-color {
+    border-color: $primary-color;
+}
+
+app a, app a:hover {
+    color: $primary-color;
+}
+
+.mat-primary-hover-color:not([href]):not([tabindex]):hover {
+    color: $primary-color;
+}

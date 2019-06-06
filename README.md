@@ -2,11 +2,11 @@
 
 ## demo
 
-https://angular-seed-9d336.firebaseapp.com/
+https://stanislav-beresnev.web.app/
 
 ## what
 
-This is a cli-free Angular Seed project.
+Stanislav Beresnev CV
 
 ## why
 
@@ -32,12 +32,14 @@ If you would you like to have more control of your build process then this seed 
 - firebase authentication and deploy
 - contentful data
 - travis ci integration
+- custom material theme
+- reverse geolocation
 
 ## scripts
 
-- `npm run dev` runs webpack development server, builds dev version of the app, watches files changes
-- `npm run proxy` runs backend api
-- `npm run prod` builds prod version of the app (doesn't watch for files change)
+- `npm run dev` or `npm start` runs webpack development server, builds dev version of the app, watches files changes
+- `npm run prod:build` builds prod version of the app
+- `npm run dev:build` builds dev version of the app
 - `npm run server` runs http server to serve prod version of the app
 - `npm run extract` extracts i18n keys into i18n/messages.xlf
 
