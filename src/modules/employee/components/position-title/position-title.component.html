@@ -1,8 +1,9 @@
 <mat-card-subtitle *ngIf="position" ngPreserveWhitespaces class="inline">
-    <span>{{position.period}}</span>
-    <span>months</span>
-    <span>as</span>
+    <span class="period">{{position.period}}</span>
+    <span class="month">months</span>
+    <span class="as">as</span>
     <strong>{{position.position}}</strong>
     <span>at</span>
-    <span>{{position.companyName}}</span>
+    <a *ngIf="position.companyUrl" [href]="position.companyUrl" target="_blank">{{position.companyName}}</a>
+    <span *ngIf="!position.companyUrl" class="mat-primary-color">{{position.companyName}}</span>
 </mat-card-subtitle>

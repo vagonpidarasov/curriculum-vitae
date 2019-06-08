@@ -42,3 +42,13 @@ app a, app a:hover {
 .mat-primary-hover-color:not([href]):not([tabindex]):hover {
     color: $primary-color;
 }
+
+.mat-card-subtitle {
+    .subtitle-link {
+        color: inherit;
+
+        &:hover {
+            //color: $primary-color;
+        }
+    }
+}

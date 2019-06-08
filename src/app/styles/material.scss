@@ -26,3 +26,13 @@ mat-card-header.mat-custom-header div.mat-card-header-text {
 .mat-card-super-title {
     margin-left: 25px;
 }
+
+.mat-accordion .mat-expansion-panel-header {
+    padding: 0 16px;
+}
+
+@media (min-width:480px) {
+    .mat-accordion .mat-expansion-panel-header {
+        padding: 0 24px;
+    }
+}

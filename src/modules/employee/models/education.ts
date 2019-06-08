@@ -6,4 +6,5 @@ export class Education {
     startDate:Date;
     endDate:Date;
     location:any;
+    url:string;
 }

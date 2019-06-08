@@ -48,9 +48,13 @@
         <strong>{{exp.position}}</strong>&nbsp;
         <span>at</span>&nbsp;
         <em>{{exp.companyName}}</em>&nbsp;
-        <!--<markdown *ngIf="i < 2" ngPreserveWhitespaces [data]="exp.description"></markdown>-->
     </div>
 </section>
 
-
-
+<section>
+    <div *ngFor="let exp of experience | slice:0:3">
+        <h2>{{exp.position}}</h2>
+        <h4 style="color:#aaa;">{{exp.companyName}}</h4>
+        <markdown ngPreserveWhitespaces [data]="exp.description"></markdown>
+    </div>
+</section>
