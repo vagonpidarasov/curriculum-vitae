@@ -4,6 +4,11 @@
     <span class="as">as</span>
     <strong>{{position.position}}</strong>
     <span>at</span>
-    <a *ngIf="position.companyUrl" [href]="position.companyUrl" target="_blank">{{position.companyName}}</a>
-    <span *ngIf="!position.companyUrl" class="mat-primary-color">{{position.companyName}}</span>
+    <a
+        *ngIf="position.companyUrl"
+        [href]="position.companyUrl"
+        target="_blank"
+        class="mat-secondary-text"
+    >{{position.companyName}}</a>
+    <span *ngIf="!position.companyUrl" class="mat-secondary-text">{{position.companyName}}</span>
 </mat-card-subtitle>

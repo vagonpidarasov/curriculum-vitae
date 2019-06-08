@@ -27,6 +27,14 @@ $theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
     color: $primary-color;
 }
 
+.mat-secondary-text {
+    color: $dark-secondary-text;
+
+    &:hover {
+        color: $dark-secondary-text;
+    }
+}
+
 .mat-primary-background-color {
     background-color: $primary-color;
 }
@@ -43,12 +51,12 @@ app a, app a:hover {
     color: $primary-color;
 }
 
+.mat-expansion-indicator::after {
+    color: $primary-color;
+}
+
 .mat-card-subtitle {
     .subtitle-link {
         color: inherit;
-
-        &:hover {
-            //color: $primary-color;
-        }
     }
 }

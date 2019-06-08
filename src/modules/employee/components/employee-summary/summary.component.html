@@ -1,7 +1,7 @@
 <section *ngIf="employee && education">
     <h1 style="color:#4caf50;">{{employee.name}}</h1>
     <h2>{{employee.title}}</h2>
-    <h4 style="color:#aaa;">{{address}}</h4>
+    <h4 style="color:#888;">{{address}}</h4>
 
     <div>
         <em>phone number:</em>&nbsp;
@@ -28,33 +28,33 @@
         <span>in</span>&nbsp;
         <span>{{education.fieldOfStudy}}</span>
     </h2>
-    <h4 style="color:#aaa;">{{education.universityName}}</h4>
+    <h4 style="color:#888;">{{education.universityName}}</h4>
     <markdown ngPreserveWhitespaces [data]="education.description"></markdown>
 </section>
 
 <section *ngIf="position" class="position">
     <h1 style="color:#4caf50;">Position</h1>
     <h2>{{position.position}}</h2>
-    <h4 style="color:#aaa;">{{position.companyName}}</h4>
+    <h4 style="color:#888;">{{position.companyName}}</h4>
     <markdown ngPreserveWhitespaces [data]="position.description"></markdown>
 
     <h1 style="color:#4caf50;">Experience</h1>
 
     <!-- TODO: reuse existing experience component -->
     <div *ngFor="let exp of experience; let i = index">
-        <strong>{{exp.period}}</strong>&nbsp;
+        <span>{{exp.period}}</span>&nbsp;
         <span>months</span>&nbsp;
         <span>as</span>&nbsp;
         <strong>{{exp.position}}</strong>&nbsp;
         <span>at</span>&nbsp;
-        <em>{{exp.companyName}}</em>&nbsp;
+        <span style="color:#888;">{{exp.companyName}}</span>&nbsp;
     </div>
 </section>
 
 <section>
     <div *ngFor="let exp of experience | slice:0:3">
         <h2>{{exp.position}}</h2>
-        <h4 style="color:#aaa;">{{exp.companyName}}</h4>
+        <h4 style="color:#888;">{{exp.companyName}}</h4>
         <markdown ngPreserveWhitespaces [data]="exp.description"></markdown>
     </div>
 </section>
