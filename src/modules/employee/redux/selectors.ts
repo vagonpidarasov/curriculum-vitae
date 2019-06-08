@@ -33,3 +33,7 @@ export function expertise(state:FeatureState):string[] {
 export function address(state:FeatureState):string {
     return getState(state).address;
 }
+
+export function filename(state:FeatureState):string {
+    return getState(state).filename;
+}

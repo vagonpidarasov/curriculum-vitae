@@ -8,6 +8,7 @@ import {
     setCurrentPosition,
     setExpertise,
     setAddress,
+    setFilename,
 } from './reducers';
 import {
     SET_EMPLOYEE,
@@ -17,6 +18,7 @@ import {
     SET_EXPERIENCE,
     SET_EXPERTISE,
     SET_EMPLOYEE_ADDRESS,
+    SET_FILENAME,
 } from './action-types';
 
 export const actionReducerMap = new Map<string, ReducerType<EmployeeState>>([
@@ -27,6 +29,7 @@ export const actionReducerMap = new Map<string, ReducerType<EmployeeState>>([
     [SET_EXPERIENCE, setExperience],
     [SET_EXPERTISE, setExpertise],
     [SET_EMPLOYEE_ADDRESS, setAddress],
+    [SET_FILENAME, setFilename],
 ]);
 
 export function reducer(state:EmployeeState, action:Action):EmployeeState {

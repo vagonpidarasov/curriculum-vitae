@@ -16,11 +16,12 @@ import {
     SET_CURRENT_POSITION,
     SET_EXPERIENCE,
     SET_EXPERTISE,
-    SAVE_AS_PDF,
+    DOWNLOAD_PDF,
     RESOLVE_EMPLOYEE_ADDRESS,
     RESOLVE_EMPLOYEE_ADDRESS_FAIL,
     RESOLVE_EMPLOYEE_ADDRESS_SUCCESS,
     SET_EMPLOYEE_ADDRESS,
+    SET_FILENAME,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -95,8 +96,9 @@ export class SetExpertise implements Action {
     constructor(public payload:string[]) {}
 }
 
-export class SaveAsPdf implements Action {
-    readonly type = SAVE_AS_PDF;
+export class DownloadPdf implements Action {
+    static type = DOWNLOAD_PDF;
+    readonly type = DOWNLOAD_PDF;
 }
 
 export class ResolveEmployeeAddress implements Action {
@@ -121,4 +123,10 @@ export class ResolveEmployeeAddressFail implements Action {
     static type = RESOLVE_EMPLOYEE_ADDRESS_FAIL;
     readonly type = RESOLVE_EMPLOYEE_ADDRESS_FAIL;
     constructor(public payload:any) {}
+}
+
+export class SetFilename implements Action {
+    static type = SET_FILENAME;
+    readonly type = SET_FILENAME;
+    constructor(public payload:string) {}
 }

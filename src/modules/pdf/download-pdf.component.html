@@ -1,0 +1,12 @@
+<button
+    [disabled]="!filename"
+    mat-button
+    color="primary"
+    type="button"
+    (click)="download()"
+    [matTooltip]="filename"
+    [matTooltipPosition]="tooltipPosition"
+>Download PDF</button>
+<div class="pdf-content" [attr.data-filename]="filename">
+    <ng-content></ng-content>
+</div>

@@ -8,4 +8,5 @@ export class EmployeeState {
     experience:Experience[] = [];
     currentPosition:Experience = null;
     expertise:string[] = [];
+    filename:string = null;
 }

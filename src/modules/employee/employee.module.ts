@@ -15,11 +15,11 @@ import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {CommonAppModule} from 'src/modules/common';
+import {PDFModule} from 'src/modules/pdf';
 
 import {EmployeeStore, FeatureStateName, reducer} from './redux';
-import {EmployeeEffects, EducationEffects, ExperienceEffects } from './redux';
+import {EmployeeEffects, EducationEffects, ExperienceEffects} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
-import {DownloadPDFEffects} from './download-pdf.effects';
 import {
     AvatarComponent,
     EmployeeComponent,
@@ -56,7 +56,6 @@ export const effects = [
     EducationEffects,
     ExperienceEffects,
     BackgroundImageEffects,
-    DownloadPDFEffects,
 ];
 
 @NgModule({
@@ -68,6 +67,7 @@ export const effects = [
         EffectsModule.forFeature(effects),
         MarkdownModule.forChild(),
         CommonAppModule,
+        PDFModule,
     ],
     providers: [EmployeeStore],
     exports: [

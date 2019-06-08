@@ -20,7 +20,9 @@ import {
     SetExpertise,
     ResolveEmployeeAddress,
     ResolveEmployeeAddressSucceess,
-    ResolveEmployeeAddressFail, SetEmployeeAddress,
+    ResolveEmployeeAddressFail,
+    SetEmployeeAddress,
+    SetFilename,
 } from '../actions';
 
 @Injectable()
@@ -83,6 +85,13 @@ export class EmployeeEffects {
         map(toPayload),
         map((payload:Employee) => payload.location),
         map((payload:Location) => new ResolveEmployeeAddress(payload)),
+    );
+
+    @Effect() SetFilenameEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(SET_EMPLOYEE),
+        map(toPayload),
+        map((payload:Employee) => `${payload.name.replace(/\s/g, '-')}.pdf`),
+        map((payload:string) => new SetFilename(payload)),
     );
 
     @Effect() ResolveEmployeeAddressEffect$:Observable<Action> = this.actions$.pipe(

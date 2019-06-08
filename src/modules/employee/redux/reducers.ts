@@ -7,6 +7,7 @@ import {
     SetEducation,
     SetExpertise,
     SetEmployeeAddress,
+    SetFilename,
 } from './actions';
 import {Employee, Education, Experience} from '../models';
 
@@ -44,5 +45,10 @@ export function setExpertise(state:EmployeeState, action:SetExpertise) {
 
 export function setAddress(state:EmployeeState, action:SetEmployeeAddress) {
     state.address = action.payload;
+    return state;
+}
+
+export function setFilename(state:EmployeeState, action:SetFilename) {
+    state.filename = action.payload;
     return state;
 }

@@ -70,3 +70,5 @@ https://blog.angular-university.io/angular-service-worker/
     https://material.angular.io/guide/theming
 - optimise css selectors
     - avoid using generic selectors, a (link) for example 
+    
++ pdf component <pdf-download [filename]="filename"><content/></pdf-download>
