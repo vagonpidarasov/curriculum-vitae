@@ -19,5 +19,11 @@
 }
 
 .mat-primary-color {
-    padding-left: 25px; // TODO make responsive
+    padding-left: 16px;
+}
+
+@media (min-width:480px) {
+    .mat-primary-color {
+        padding-left: 24px;
+    }
 }

@@ -1,6 +1,7 @@
 const {ContextReplacementPlugin} = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {loader} = require('mini-css-extract-plugin');
+const HTMLInlineCSSWebpackPlugin = require("html-inline-css-webpack-plugin").default;
 const {root} = require('./webpack.helpers');
 
 module.exports = {
@@ -63,5 +64,6 @@ module.exports = {
     plugins: [
         new ContextReplacementPlugin(/angular(\\|\/)core(\\|\/)/, root('src')),
         new HtmlWebpackPlugin({template: 'src/index.html'}),
+        new HTMLInlineCSSWebpackPlugin(),
     ],
 };

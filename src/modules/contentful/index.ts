@@ -1,4 +1,6 @@
 export * from './to-thumbnail-url';
+export * from './to-avatar-url';
+export * from './to-webp-url';
 export * from './to-url';
 export * from './to-items';
 export * from './contentful.module';

@@ -12,6 +12,18 @@
                 "timeout": "1m",
                 "strategy": "freshness"
             }
+        },
+        {
+            "name": "geocode",
+            "urls": [
+                "//reverse.geocoder.api.here.com/6.2/**"
+            ],
+            "cacheConfig": {
+                "maxSize": 100,
+                "maxAge": "10d",
+                "timeout": "3s",
+                "strategy": "performance"
+            }
         }
     ],
     "assetGroups": [{

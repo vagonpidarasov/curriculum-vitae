@@ -72,4 +72,7 @@ https://blog.angular-university.io/angular-service-worker/
     - avoid using generic selectors, a (link) for example 
     
 + pdf component <pdf-download [filename]="filename"><content/></pdf-download>
-- move powered by and social link to contentful 
+- move powered by and social link to contentful
++ media query padding for accordion content  
++ remove links from accordion title
++ media query for titles (Education, Position etc)

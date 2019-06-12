@@ -1,12 +1,14 @@
 <div *ngIf="!avatarFailed" class="avatar-container">
-    <img
-        class="avatar-image"
+    <picture
         *ngIf="avatarUrl"
-        [src]="avatarUrl"
-        (error)="avatarFailed = true"
-        (load)="avatarLoaded = true"
+        class="avatar-image"
         [class.in-progress]="isInProgress"
-    />
+    >
+        <source type="image/webp" [srcset]="getSrcSet('webp')" />
+        <source type="image/png" [srcset]="getSrcSet('png')" />
+        <img [src]="avatarUrl" (load)="avatarLoaded = true" (error)="avatarFailed = true"/>
+    </picture>
+
 </div>
 
 <mat-progress-spinner *ngIf="isInProgress" mode="indeterminate"></mat-progress-spinner>

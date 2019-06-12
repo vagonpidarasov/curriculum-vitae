@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {toAvatarUrl} from 'src/modules/contentful';
 
 @Component({
     selector: 'avatar',
@@ -12,5 +13,13 @@ export class AvatarComponent {
 
     get isInProgress():boolean {
         return !this.avatarLoaded && !this.avatarFailed;
+    }
+
+    getSrcSet(format:string):string {
+        return [
+            `${toAvatarUrl(this.avatarUrl, 300, 300, format)} 1x`,
+            `${toAvatarUrl(this.avatarUrl, 600, 600, format)} 2x`,
+            `${toAvatarUrl(this.avatarUrl, 900, 900, format)} 3x`,
+        ].join(',');
     }
 }

@@ -18,7 +18,14 @@
     <mat-card-actions class="employee-footer">
         <span class="flex-auto"></span>
         <download-pdf [filename]="employeeStore.filename | async">
-            <summary-container></summary-container>
+            <employee-summary
+                [position]="employeeStore.currentPosition | async"
+                [education]="employeeStore.education | async"
+                [address]="employeeStore.address | async"
+                [employee]="employeeStore.employee | async"
+                [expertise]="employeeStore.expertise | async"
+                [experience]="employeeStore.experience | async"
+            ></employee-summary>
         </download-pdf>
     </mat-card-actions>
 </mat-card>
