@@ -4,5 +4,5 @@
     <span>{{education.fieldOfStudy}}</span>
 </h3>
 <mat-card-subtitle *ngIf="education">
-    <a [href]="education.url" target="_blank" class="subtitle-link">{{education.universityName}}</a>
+    <a [href]="education.url" target="_blank" rel="noopener" class="subtitle-link">{{education.universityName}}</a>
 </mat-card-subtitle>

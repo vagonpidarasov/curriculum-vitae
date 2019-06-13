@@ -1,4 +1,4 @@
 <h3 *ngIf="position" class="position">{{position.position}}</h3>
 <mat-card-subtitle *ngIf="position" class="company">
-    <a [href]="position.companyUrl" target="_blank" class="subtitle-link">{{position.companyName}}</a>
+    <a [href]="position.companyUrl" target="_blank" rel="noopener" class="subtitle-link">{{position.companyName}}</a>
 </mat-card-subtitle>

@@ -65,14 +65,15 @@ https://blog.angular-university.io/angular-service-worker/
 - companies as links
 + icons as svg
 - skeleton loader
-- add facebook, linkedin, soundcloud links
++ add facebook, linkedin, soundcloud links
 + theme
     https://material.angular.io/guide/theming
 - optimise css selectors
     - avoid using generic selectors, a (link) for example 
     
 + pdf component <pdf-download [filename]="filename"><content/></pdf-download>
-- move powered by and social link to contentful
++ move powered by and social link to contentful
 + media query padding for accordion content  
 + remove links from accordion title
 + media query for titles (Education, Position etc)
+- add introduction section

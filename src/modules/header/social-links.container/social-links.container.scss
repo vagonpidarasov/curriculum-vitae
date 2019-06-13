@@ -4,7 +4,7 @@
     justify-content: center;
 }
 
-.github-icon {
+.social-link {
     width: 30px;
     height: 30px;
     display: flex;
@@ -21,7 +21,7 @@
 }
 
 :host /deep/ {
-    .github-icon {
+    .social-link {
         .svg-icon {
             svg {
                 flex: 1;

@@ -7,10 +7,11 @@ import {AngularSvgIconModule} from 'angular-svg-icon';
 
 import {AuthenticationModule} from 'src/modules/authentication';
 import {CommonAppModule} from 'src/modules/common';
+import {LinksModule} from 'src/modules/image-links';
 
 import {HeaderComponent} from './header.component';
 import {HeaderContainer} from './header.container';
-import {SourceCodeComponent} from './source-code.component';
+import {SocialLinksContainer} from './social-links.container';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -25,8 +26,9 @@ import {SourceCodeComponent} from './source-code.component';
         CommonAppModule,
         AngularSvgIconModule,
         MatIconModule,
+        LinksModule,
     ],
-    declarations: [HeaderComponent, HeaderContainer, SourceCodeComponent],
-    exports: [HeaderComponent, HeaderContainer, SourceCodeComponent],
+    declarations: [HeaderComponent, HeaderContainer, SocialLinksContainer],
+    exports: [HeaderComponent, HeaderContainer, SocialLinksContainer],
 })
 export class HeaderModule {}
