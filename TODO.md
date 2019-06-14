@@ -62,7 +62,7 @@ https://blog.angular-university.io/angular-service-worker/
 - convert skillset into modal with search 
 - collapse all accordion's tabs
 + convert to pdf
-- companies as links
++ companies as links
 + icons as svg
 - skeleton loader
 + add facebook, linkedin, soundcloud links
@@ -77,3 +77,4 @@ https://blog.angular-university.io/angular-service-worker/
 + remove links from accordion title
 + media query for titles (Education, Position etc)
 - add introduction section
+- lazy load some code/routes

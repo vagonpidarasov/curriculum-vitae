@@ -19,9 +19,10 @@ export class ContentfulClient {
         query:string = '',
         limit:number = 100,
         skip:number = 0,
+        order:string = 'sys.createdAt',
     ):Observable<T[]|ContentfulResponsePayload> {
         return new Observable((observer:Observer<T[]|ContentfulResponsePayload>) => {
-            this.client.getEntries<T>({content_type: contentType, query, limit, skip})
+            this.client.getEntries<T>({content_type: contentType, query, limit, skip, order})
                 .then((response:EntryCollection<T>) => {
                     observer.next({total: response.total});
                     observer.next(toItems<T>(response));
