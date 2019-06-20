@@ -12,6 +12,6 @@ export class InterviewQuestionRepositoryContentful implements InterviewQuestionR
 
     getQuestions(query:string, limit:number, skip:number):Observable<InterviewQuestion[]> {
         return <Observable<InterviewQuestion[]>>
-            this.client.getEntries<InterviewQuestion>(QUESTION_CONTENT_TYPE, query, limit, skip);
+            this.client.getEntries<InterviewQuestion>(QUESTION_CONTENT_TYPE, true, query, limit, skip);
     }
 }

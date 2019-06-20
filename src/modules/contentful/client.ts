@@ -16,6 +16,7 @@ export class ContentfulClient {
 
     getEntries<T>(
         contentType:string,
+        withMetadata:boolean = false,
         query:string = '',
         limit:number = 100,
         skip:number = 0,
@@ -24,7 +25,9 @@ export class ContentfulClient {
         return new Observable((observer:Observer<T[]|ContentfulResponsePayload>) => {
             this.client.getEntries<T>({content_type: contentType, query, limit, skip, order})
                 .then((response:EntryCollection<T>) => {
-                    observer.next({total: response.total});
+                    if (withMetadata) {
+                        observer.next({total: response.total});
+                    }
                     observer.next(toItems<T>(response));
                     observer.complete();
                 })
