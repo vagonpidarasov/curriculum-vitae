@@ -4,8 +4,8 @@
     <em>My expertise includes:</em>
 </div>
 
-<mat-chip-list *ngIf="expertise.length > 0">
-    <mat-chip *ngFor="let skill of expertise | slice:0:expertiseLimit">
+<mat-chip-list [@skillset]="expertiseLimit" *ngIf="expertise.length > 0">
+    <mat-chip @skill *ngFor="let skill of expertise | slice:0:expertiseLimit">
         {{skill}}
     </mat-chip>
 
