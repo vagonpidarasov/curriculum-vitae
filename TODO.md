@@ -59,7 +59,7 @@ https://blog.angular-university.io/angular-service-worker/
 + github link
 + contacts
 - rounded border for accordion
-- convert skillset into modal with search 
+- convert skillset into modal with search or add search input 
 - collapse all accordion's tabs
 + convert to pdf
 + companies as links
@@ -78,3 +78,6 @@ https://blog.angular-university.io/angular-service-worker/
 + media query for titles (Education, Position etc)
 - add introduction section
 - lazy load some code/routes
++ add animation to the skillset collapse/expand
+- add UP button to the interview question page
+- split employee module into employee, education, position, experience
