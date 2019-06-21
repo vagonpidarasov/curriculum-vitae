@@ -15,10 +15,10 @@ import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {CommonAppModule} from 'src/modules/common';
+import {QueryStringModule} from 'src/modules/query-string';
 
 import {InterviewQuestionsEffects, QuestionsStore, FeatureStateName, reducer} from './redux';
 import {InterviewQuestionComponent} from './interview-question.component';
-import {QueryStringComponent} from './query-string.component';
 import {QuestionsContainer} from './questions.container';
 
 export const MatModules = [
@@ -41,6 +41,7 @@ export const MatModules = [
         EffectsModule.forFeature([InterviewQuestionsEffects]),
         MarkdownModule.forChild(),
         CommonAppModule,
+        QueryStringModule,
     ],
     providers: [QuestionsStore],
     exports: [
@@ -49,7 +50,6 @@ export const MatModules = [
     declarations: [
         InterviewQuestionComponent,
         QuestionsContainer,
-        QueryStringComponent,
     ],
 })
 export class QuestionModule {}

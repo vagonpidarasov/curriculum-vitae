@@ -1,6 +1,7 @@
 <div class="list-controls">
     <query-string
-        [inProgress]="questionsStore.inProgress | async"
+        [hasButton]="true"
+        [disabled]="questionsStore.inProgress | async"
         (searchRequest)="setQuery($event)"
     ></query-string>
     <mat-paginator

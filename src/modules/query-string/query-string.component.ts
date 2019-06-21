@@ -8,6 +8,9 @@ import {
     OnChanges,
     OnInit,
     OnDestroy,
+    ViewChild,
+    ElementRef,
+    NgZone,
 } from '@angular/core';
 
 import {
@@ -19,10 +22,11 @@ import {
 } from '@angular/forms';
 
 import {Subscription} from 'rxjs';
-import {debounceTime, distinctUntilChanged, filter, tap} from 'rxjs/operators';
+import {debounceTime, distinctUntilChanged, filter} from 'rxjs/operators';
 
 export const QUERY_STRING_DATA_NAME = 'queryString';
-export const QUERY_STRING_MIN_LENGTH = 3;
+export const QUERY_STRING_MIN_LENGTH = 0;
+export const QUERY_STRING_DEBOUNCE_TIME = 500;
 
 @Component({
     selector: 'query-string',
@@ -31,8 +35,15 @@ export const QUERY_STRING_MIN_LENGTH = 3;
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
-    @Input() inProgress:boolean = false;
+    @Input() disabled:boolean = false;
+    @Input() hasPrefix:boolean = false;
+    @Input() hasButton:boolean = false;
+    @Input() debounceTime:number = QUERY_STRING_DEBOUNCE_TIME;
+    @Input() placeholder:string = 'Your Shoop da Whoop search';
+
     @Output() searchRequest:EventEmitter<string> = new EventEmitter();
+
+    @ViewChild('mainInput') mainInput:ElementRef;
 
     queryStringForm:FormGroup;
 
@@ -43,18 +54,17 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     get submitButtonDisabled():boolean {
-        return this.queryStringForm.invalid || this.inProgress;
+        return this.queryStringForm.invalid || this.disabled;
     }
 
     get hasValue():boolean {
         return !!this.queryStringFormControl.value;
     }
 
-    constructor(formBuilder:FormBuilder) {
+    constructor(private ngZone:NgZone, formBuilder:FormBuilder) {
         this.queryStringForm = formBuilder.group({
             [QUERY_STRING_DATA_NAME]: new FormControl(null, Validators.compose([
-                // Validators.required,
-                // Validators.minLength(QUERY_STRING_MIN_LENGTH),
+                Validators.minLength(QUERY_STRING_MIN_LENGTH),
             ])),
         });
     }
@@ -63,7 +73,7 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
         this.subscription = this.queryStringFormControl.valueChanges.pipe(
             filter(v => v !== null),
             distinctUntilChanged(),
-            debounceTime(500),
+            debounceTime(this.debounceTime),
         ).subscribe((payload:string) => this.searchRequest.emit(payload));
     }
 
@@ -72,8 +82,8 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
     }
 
     ngOnChanges(changes:SimpleChanges) {
-        if (changes.inProgress) {
-            changes.inProgress.currentValue ?
+        if (changes.disabled) {
+            changes.disabled.currentValue ?
                 this.queryStringForm.disable({onlySelf: false}) :
                 this.queryStringForm.enable({onlySelf: false})
             ;
@@ -83,6 +93,9 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
     clear() {
         this.queryStringFormControl.reset(null);
         this.searchRequest.emit(null);
+        this.ngZone.runOutsideAngular(() =>
+            setTimeout(() => this.mainInput.nativeElement.blur())
+        );
     }
 
     submit() {

@@ -16,6 +16,7 @@ import {MarkdownModule} from 'ngx-markdown';
 
 import {CommonAppModule} from 'src/modules/common';
 import {PDFModule} from 'src/modules/pdf';
+import {QueryStringModule} from 'src/modules/query-string';
 
 import {EmployeeStore, FeatureStateName, reducer} from './redux';
 import {EmployeeEffects, EducationEffects, ExperienceEffects} from './redux';
@@ -67,6 +68,7 @@ export const effects = [
         MarkdownModule.forChild(),
         CommonAppModule,
         PDFModule,
+        QueryStringModule,
     ],
     providers: [
         EmployeeStore,

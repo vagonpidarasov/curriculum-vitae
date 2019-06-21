@@ -1,13 +1,22 @@
 <markdown *ngIf="employee" ngPreserveWhitespaces [data]="employee.overview"></markdown>
 
 <div *ngIf="expertise.length > 0" class="expertise-title">
-    <em>My expertise includes:</em>
+    <query-string
+        placeholder="My expertise includes"
+        [hasPrefix]="true"
+        [debounceTime]="300"
+        (searchRequest)="search($event)"
+    ></query-string>
 </div>
 
-<mat-chip-list [@skillset]="expertiseLimit" *ngIf="expertise.length > 0">
-    <mat-chip @skill *ngFor="let skill of expertise | slice:0:expertiseLimit">
-        {{skill}}
-    </mat-chip>
+<mat-chip-list [@skillset]="expertiseLimit" *ngIf="expertise.length > 0" [multiple]="true">
+    <mat-chip
+        @skill
+        *ngFor="let skill of expertise | slice:0:expertiseLimit; let i = index"
+        color="primary"
+        [selectable]="false"
+        [selected]="match[i]"
+    >{{skill}}</mat-chip>
 
     <button
         *ngIf="isToggleShown"

@@ -1,6 +1,5 @@
 .expertise-title {
     margin-top: 1em;
-    margin-bottom: 1em;
 }
 
 .expertise-title {
@@ -8,6 +7,19 @@
     align-items: center;
 }
 
+:host /deep/ {
+    .mat-form-field-prefix {
+        transform: translateY(6px);
+    }
+    .mat-form-field-underline {
+        background-color: transparent;
+    }
+
+    .mat-chip {
+        &.selected {
+        }
+    }
+}
 
 button[mat-icon-button]:focus {
     outline: none;
