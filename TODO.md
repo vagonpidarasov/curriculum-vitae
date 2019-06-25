@@ -46,6 +46,8 @@ https://blog.angular-university.io/angular-service-worker/
 + contentful
 
 - docker image with firebase ci/cd
+    - Dockerfile
+    - build
 
 + do proper sign-out: call corresponding firebase method
 
@@ -59,7 +61,7 @@ https://blog.angular-university.io/angular-service-worker/
 + github link
 + contacts
 - rounded border for accordion
-- convert skillset into modal with search or add search input 
++ convert skillset into modal with search or add search input 
 - collapse all accordion's tabs
 + convert to pdf
 + companies as links

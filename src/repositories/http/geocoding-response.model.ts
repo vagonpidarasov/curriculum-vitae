@@ -15,24 +15,24 @@ export interface GeocodingResponse {
                     City:number;
                     District:number;
                     PostalCode:number;
-                },
+                };
                 Location:{
                     LocationId:string;
                     LocationType:string;
                     DisplayPosition:{
                         Latitude:number;
                         Longitude:number;
-                    },
+                    };
                     MapView:{
                         TopLeft:{
                             Latitude:number;
                             Longitude:number;
-                        },
+                        };
                         BottomRight:{
                             Latitude:number;
-                            Longitude:number,
+                            Longitude:number;
                         }
-                    },
+                    };
                     Address:{
                         Label:string;
                         Country:string;
@@ -45,7 +45,7 @@ export interface GeocodingResponse {
                             value:string;
                             key:string;
                         }]
-                    },
+                    };
                     MapReference:{
                         ReferenceId:string;
                         MapId:string;
@@ -56,8 +56,8 @@ export interface GeocodingResponse {
                         StateId:string;
                         CountyId:string;
                         CityId:string;
-                    }
-                }
+                    };
+                };
             }];
         }];
     };

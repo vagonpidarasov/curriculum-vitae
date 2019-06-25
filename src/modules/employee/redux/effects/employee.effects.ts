@@ -6,7 +6,7 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 import {toUrl} from 'src/modules/contentful';
-import {GeocodingRepository} from 'src/modules/geolocation';
+import {GeocodingRepository, Address} from 'src/modules/geolocation';
 
 import {Employee, Location} from '../../models';
 import {EmployeeRepository} from '../../employee.repository';
@@ -36,7 +36,7 @@ export class EmployeeEffects {
 
     private getAddress({lon, lat}:Location):Observable<Action> {
         return this.geocodingRepository.getAddress(lon, lat).pipe(
-            map((response:string) => new ResolveEmployeeAddressSucceess(response)),
+            map((response:Address) => new ResolveEmployeeAddressSucceess(response)),
             catchError((e:PositionError) => of(new ResolveEmployeeAddressFail(e))),
         );
     }
@@ -103,7 +103,7 @@ export class EmployeeEffects {
     @Effect() ResolveEmployeeAddressSuccessEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ResolveEmployeeAddressSucceess.type),
         map(toPayload),
-        map((payload:{Country:string, City:string}) => `${payload.City}, ${payload.Country}`),
+        map((payload:Address) => `${payload.city}, ${payload.country}`),
         map((payload:string) => new SetEmployeeAddress(payload)),
     );
 }
