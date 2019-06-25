@@ -19,23 +19,21 @@ import {PDFModule} from 'src/modules/pdf';
 import {QueryStringModule} from 'src/modules/query-string';
 
 import {EmployeeStore, FeatureStateName, reducer} from './redux';
-import {EmployeeEffects, EducationEffects, ExperienceEffects} from './redux';
+import {EmployeeEffects, ExperienceEffects} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
 import {
     AvatarComponent,
     EmployeeComponent,
-    EducationComponent,
-    EducationDescriptionComponent,
     EmployeeOverviewComponent,
     PositionComponent,
     PositionDescriptionComponent,
     PositionTitleComponent,
-    SummaryComponent,
+    // SummaryComponent,
 } from './components';
 
 import {
     EmployeeContainer,
-    EducationContainer,
+    // EducationContainer,
     CurrentPositionContainer,
     ExperienceContainer,
 } from './containers';
@@ -53,7 +51,6 @@ export const MatModules = [
 
 export const effects = [
     EmployeeEffects,
-    EducationEffects,
     ExperienceEffects,
     BackgroundImageEffects,
 ];
@@ -76,24 +73,20 @@ export const effects = [
     ],
     exports: [
         EmployeeContainer,
-        EducationContainer,
         CurrentPositionContainer,
         ExperienceContainer,
     ],
     declarations: [
         CurrentPositionContainer,
         EmployeeOverviewComponent,
-        EducationDescriptionComponent,
-        EducationComponent,
         EmployeeComponent,
         EmployeeContainer,
         AvatarComponent,
-        EducationContainer,
         PositionComponent,
         PositionDescriptionComponent,
         ExperienceContainer,
         PositionTitleComponent,
-        SummaryComponent,
+        // SummaryComponent,
     ],
 })
 export class EmployeeModule {}

@@ -1,6 +1,5 @@
 <mat-card-subtitle *ngIf="position" ngPreserveWhitespaces class="inline">
-    <span class="period">{{position.period}}</span>
-    <span class="month">months</span>
+    <span class="period">{{position.period | monthDesctruct}}</span>
     <span class="as">as</span>
     <strong>{{position.position}}</strong>
     <span class="at">at</span>

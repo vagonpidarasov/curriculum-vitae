@@ -41,9 +41,8 @@
     <h1 style="color:#339933;">Experience</h1>
 
     <!-- TODO: reuse existing experience component -->
-    <div *ngFor="let exp of experience; let i = index">
-        <span>{{exp.period}}</span>&nbsp;
-        <span>months</span>&nbsp;
+    <div *ngFor="let exp of experience">
+        <span>{{exp.period | monthDesctruct}}</span>&nbsp;
         <span>as</span>&nbsp;
         <strong>{{exp.position}}</strong>&nbsp;
         <span>at</span>&nbsp;

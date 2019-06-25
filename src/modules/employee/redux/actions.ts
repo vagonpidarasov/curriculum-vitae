@@ -6,10 +6,6 @@ import {
     RESOLVE_EMPLOYEES_SUCCESS,
     SET_EMPLOYEE,
     SET_AVATAR_URL,
-    RESOLVE_EDUCATIONS,
-    RESOLVE_EDUCATIONS_FAIL,
-    RESOLVE_EDUCATIONS_SUCCESS,
-    SET_EDUCATION,
     RESOLVE_EXPERIENCE,
     RESOLVE_EXPERIENCE_FAIL,
     RESOLVE_EXPERIENCE_SUCCESS,
@@ -46,25 +42,6 @@ export class SetEmployee implements Action {
 export class SetAvatarUrl implements Action {
     readonly type = SET_AVATAR_URL;
     constructor(public payload:string) {}
-}
-
-export class ResolveEducations implements Action {
-    readonly type = RESOLVE_EDUCATIONS;
-}
-
-export class ResolveEducationsSuccess implements Action {
-    readonly type = RESOLVE_EDUCATIONS_SUCCESS;
-    constructor(public payload:Education[]) {}
-}
-
-export class ResolveEducationsFail implements Action {
-    readonly type = RESOLVE_EDUCATIONS_FAIL;
-    constructor(public payload:any) {}
-}
-
-export class SetEducation implements Action {
-    readonly type = SET_EDUCATION;
-    constructor(public payload:Education) {}
 }
 
 export class ResolveExperience implements Action {

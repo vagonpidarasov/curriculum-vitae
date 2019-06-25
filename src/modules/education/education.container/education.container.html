@@ -1,0 +1,9 @@
+<mat-card class="education">
+    <mat-card-header class="mat-custom-header items-center">
+        <education-title [education]="educationStore.education | async"></education-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <education-description [education]="educationStore.education | async"></education-description>
+    </mat-card-content>
+</mat-card>

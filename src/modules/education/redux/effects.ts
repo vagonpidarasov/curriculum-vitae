@@ -6,15 +6,14 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 
-import {Education} from '../../models';
-import {EmployeeRepository} from '../../employee.repository';
-import {ResolveEducations, ResolveEducationsFail, ResolveEducationsSuccess, SetEducation} from '../actions';
-import {RESOLVE_EDUCATIONS, RESOLVE_EDUCATIONS_SUCCESS} from '../action-types';
+import {Education} from '../education.model';
+import {EducationRepository} from '../education.repository';
+import {ResolveEducations, ResolveEducationsFail, ResolveEducationsSuccess, SetEducation} from './actions';
 
 @Injectable()
 export class EducationEffects {
     private getEducationEntries():Observable<Action> {
-        return this.employeeRepository.getEducationEntries().pipe(
+        return this.educationRepository.getEducationEntries().pipe(
             map((response:any[]) => new ResolveEducationsSuccess(response)),
             catchError((e:PositionError) => of(new ResolveEducationsFail(e))),
         );
@@ -22,7 +21,7 @@ export class EducationEffects {
 
     constructor(
         private actions$:Actions,
-        private employeeRepository:EmployeeRepository,
+        private educationRepository:EducationRepository,
     ) {}
 
     @Effect() InitEffect$:Observable<Action> = this.actions$.pipe(
@@ -31,12 +30,12 @@ export class EducationEffects {
     );
 
     @Effect() ResolveEducationEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_EDUCATIONS),
+        ofType(ResolveEducations.type),
         switchMap(() => this.getEducationEntries()),
     );
 
     @Effect() ResolveEducationSuccessEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_EDUCATIONS_SUCCESS),
+        ofType(ResolveEducationsSuccess.type),
         map(toPayload),
         map((payload:Education[]) => payload[0]),
         map((payload:Education) => new SetEducation(payload)),

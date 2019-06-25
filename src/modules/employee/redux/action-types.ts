@@ -3,11 +3,6 @@ export const RESOLVE_EMPLOYEES_SUCCESS = 'employee:resolve-employees-success';
 export const RESOLVE_EMPLOYEES_FAIL = 'employee:resolve-employees-fail';
 export const SET_EMPLOYEE = 'employee:set-employee';
 
-export const RESOLVE_EDUCATIONS = 'employee:resolve-educations';
-export const RESOLVE_EDUCATIONS_SUCCESS = 'employee:resolve-educations-success';
-export const RESOLVE_EDUCATIONS_FAIL = 'employee:resolve-educations-fail';
-export const SET_EDUCATION = 'employee:set-education';
-
 export const RESOLVE_EXPERIENCE = 'employee:resolve-experience';
 export const RESOLVE_EXPERIENCE_SUCCESS = 'employee:resolve-experience-success';
 export const RESOLVE_EXPERIENCE_FAIL = 'employee:resolve-experience-fail';

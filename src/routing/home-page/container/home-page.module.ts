@@ -3,8 +3,8 @@ import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {AuthenticationModule} from 'src/modules/authentication';
 import {GeolocationModule} from 'src/modules/geolocation';
 import {EmployeeModule} from 'src/modules/employee';
+import {EducationModule} from 'src/modules/education';
 import {FooterModule} from 'src/modules/footer';
-
 
 import {HomePageContainer} from './home-page.container';
 
@@ -13,6 +13,7 @@ import {HomePageContainer} from './home-page.container';
     imports: [
         AuthenticationModule,
         EmployeeModule,
+        EducationModule,
         GeolocationModule,
         FooterModule,
     ],

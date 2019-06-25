@@ -4,22 +4,16 @@ import {
     SetAvatarUrl,
     SetExperience,
     SetCurrentPosition,
-    SetEducation,
     SetExpertise,
     SetEmployeeAddress,
     SetFilename,
 } from './actions';
-import {Employee, Education, Experience} from '../models';
+import {Employee, Experience} from '../models';
 
 export function setEmployee(state:EmployeeState, action:SetEmployee) {
     state.employee = Object.assign(new Employee(), {...action.payload}, {
         age: new Date().getFullYear() - new Date(action.payload.dateOfBirth).getFullYear(),
     });
-    return state;
-}
-
-export function setEducation(state:EmployeeState, action:SetEducation) {
-    state.education = Object.assign(new Education(), action.payload);
     return state;
 }
 

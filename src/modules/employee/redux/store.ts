@@ -3,9 +3,8 @@ import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
-import {employee, avatarUrl, education, experience, expertise, currentPosition, address, filename} from './selectors';
-import {ResolveEmployees, DownloadPdf} from './actions';
-import {Employee, Education, Experience} from '../models';
+import {employee, avatarUrl, experience, expertise, currentPosition, address, filename} from './selectors';
+import {Employee, Experience} from '../models';
 
 @Injectable()
 export class EmployeeStore {
@@ -13,10 +12,6 @@ export class EmployeeStore {
 
     get employee():Observable<Employee> {
         return this.store.pipe(select(employee));
-    }
-
-    get education():Observable<Education> {
-        return this.store.pipe(select(education));
     }
 
     get experience():Observable<Experience[]> {
@@ -42,12 +37,5 @@ export class EmployeeStore {
     get filename():Observable<string> {
         return this.store.pipe(select(filename));
     }
-    //
-    // resolveEmployees():void {
-    //     this.store.dispatch(new ResolveEmployees());
-    // }
-    //
-    // downloadPdf():void {
-    //     this.store.dispatch(new DownloadPdf());
-    // }
+
 }
