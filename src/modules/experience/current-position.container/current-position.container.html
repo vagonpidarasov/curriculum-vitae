@@ -1,0 +1,9 @@
+<mat-card class="current-position">
+    <mat-card-header class="mat-custom-header items-center">
+        <position-title [position]="experienceStore.currentPosition | async"></position-title>
+    </mat-card-header>
+
+    <mat-card-content>
+        <position-description [position]="experienceStore.currentPosition | async"></position-description>
+    </mat-card-content>
+</mat-card>

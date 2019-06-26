@@ -2,13 +2,11 @@ import {EmployeeState} from './state';
 import {
     SetEmployee,
     SetAvatarUrl,
-    SetExperience,
-    SetCurrentPosition,
     SetExpertise,
     SetEmployeeAddress,
     SetFilename,
 } from './actions';
-import {Employee, Experience} from '../models';
+import {Employee} from '../models';
 
 export function setEmployee(state:EmployeeState, action:SetEmployee) {
     state.employee = Object.assign(new Employee(), {...action.payload}, {
@@ -19,16 +17,6 @@ export function setEmployee(state:EmployeeState, action:SetEmployee) {
 
 export function setAvatarUrl(state:EmployeeState, action:SetAvatarUrl) {
     state.avatarUrl = action.payload;
-    return state;
-}
-
-export function setExperience(state:EmployeeState, action:SetExperience) {
-    state.experience = [...action.payload];
-    return state;
-}
-
-export function setCurrentPosition(state:EmployeeState, action:SetCurrentPosition) {
-    state.currentPosition = Object.assign(new Experience(), action.payload);
     return state;
 }
 

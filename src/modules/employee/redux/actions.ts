@@ -1,16 +1,11 @@
 import {Action} from 'src/modules/redux';
-import {Employee, Education, Experience, Location} from '../models';
+import {Employee, Location} from '../models';
 import {
     RESOLVE_EMPLOYEES,
     RESOLVE_EMPLOYEES_FAIL,
     RESOLVE_EMPLOYEES_SUCCESS,
     SET_EMPLOYEE,
     SET_AVATAR_URL,
-    RESOLVE_EXPERIENCE,
-    RESOLVE_EXPERIENCE_FAIL,
-    RESOLVE_EXPERIENCE_SUCCESS,
-    SET_CURRENT_POSITION,
-    SET_EXPERIENCE,
     SET_EXPERTISE,
     DOWNLOAD_PDF,
     RESOLVE_EMPLOYEE_ADDRESS,
@@ -21,54 +16,36 @@ import {
 } from './action-types';
 
 export class ResolveEmployees implements Action {
+    static type = RESOLVE_EMPLOYEES;
     readonly type = RESOLVE_EMPLOYEES;
 }
 
 export class ResolveEmployeesSuccess implements Action {
+    static type = RESOLVE_EMPLOYEES_SUCCESS;
     readonly type = RESOLVE_EMPLOYEES_SUCCESS;
     constructor(public payload:Employee[]) {}
 }
 
 export class ResolveEmployeesFail implements Action {
+    static type = RESOLVE_EMPLOYEES_FAIL;
     readonly type = RESOLVE_EMPLOYEES_FAIL;
     constructor(public payload:any) {}
 }
 
 export class SetEmployee implements Action {
+    static type = SET_EMPLOYEE;
     readonly type = SET_EMPLOYEE;
     constructor(public payload:Employee) {}
 }
 
 export class SetAvatarUrl implements Action {
+    static type = SET_AVATAR_URL;
     readonly type = SET_AVATAR_URL;
     constructor(public payload:string) {}
 }
 
-export class ResolveExperience implements Action {
-    readonly type = RESOLVE_EXPERIENCE;
-}
-
-export class ResolveExperienceSuccess implements Action {
-    readonly type = RESOLVE_EXPERIENCE_SUCCESS;
-    constructor(public payload:Experience[]) {}
-}
-
-export class ResolveExperienceFail implements Action {
-    readonly type = RESOLVE_EXPERIENCE_FAIL;
-    constructor(public payload:any) {}
-}
-
-export class SetExperience implements Action {
-    readonly type = SET_EXPERIENCE;
-    constructor(public payload:Experience[]) {}
-}
-
-export class SetCurrentPosition implements Action {
-    readonly type = SET_CURRENT_POSITION;
-    constructor(public payload:Experience) {}
-}
-
 export class SetExpertise implements Action {
+    static type = SET_EXPERTISE;
     readonly type = SET_EXPERTISE;
     constructor(public payload:string[]) {}
 }

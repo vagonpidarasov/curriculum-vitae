@@ -4,6 +4,7 @@ import {AuthenticationModule} from 'src/modules/authentication';
 import {GeolocationModule} from 'src/modules/geolocation';
 import {EmployeeModule} from 'src/modules/employee';
 import {EducationModule} from 'src/modules/education';
+import {ExperienceModule} from 'src/modules/experience';
 import {FooterModule} from 'src/modules/footer';
 
 import {HomePageContainer} from './home-page.container';
@@ -16,6 +17,7 @@ import {HomePageContainer} from './home-page.container';
         EducationModule,
         GeolocationModule,
         FooterModule,
+        ExperienceModule,
     ],
     exports: [HomePageContainer],
     declarations: [HomePageContainer],

@@ -1,8 +1,10 @@
-<h3 *ngIf="education">
-    <span>{{education.degree}}</span>
-    <span> in </span>
-    <span>{{education.fieldOfStudy}}</span>
-</h3>
+<mat-card-title>
+    <h3 *ngIf="education">
+        <span>{{education.degree}}</span>
+        <span> in </span>
+        <span>{{education.fieldOfStudy}}</span>
+    </h3>
+</mat-card-title>
 <mat-card-subtitle *ngIf="education">
     <a [href]="education.url" target="_blank" rel="noopener" class="subtitle-link">{{education.universityName}}</a>
 </mat-card-subtitle>

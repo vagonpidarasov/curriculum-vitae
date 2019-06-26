@@ -6,21 +6,20 @@ import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 
-import {Experience} from '../../models';
-import {EmployeeRepository} from '../../employee.repository';
-import {RESOLVE_EXPERIENCE, RESOLVE_EXPERIENCE_SUCCESS} from '../action-types';
+import {Experience} from '../experience.model';
+import {ExperienceRepository} from '../experience.repository';
 import {
     ResolveExperience,
     ResolveExperienceSuccess,
     ResolveExperienceFail,
     SetExperience,
     SetCurrentPosition,
-} from '../actions';
+} from './actions';
 
 @Injectable()
 export class ExperienceEffects {
     private getExperienceEntries():Observable<Action> {
-        return this.employeeRepository.getExperienceEntries().pipe(
+        return this.experienceRepository.getExperienceEntries().pipe(
             map((response:any[]) => new ResolveExperienceSuccess(response)),
             catchError((e:PositionError) => of(new ResolveExperienceFail(e))),
         );
@@ -28,7 +27,7 @@ export class ExperienceEffects {
 
     constructor(
         private actions$:Actions,
-        private employeeRepository:EmployeeRepository,
+        private experienceRepository:ExperienceRepository,
     ) {}
 
     @Effect() InitEffect$:Observable<Action> = this.actions$.pipe(
@@ -37,12 +36,12 @@ export class ExperienceEffects {
     );
 
     @Effect() ResolveExperienceEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_EXPERIENCE),
+        ofType(ResolveExperience.type),
         switchMap(() => this.getExperienceEntries()),
     );
 
     @Effect() ResolveExperienceSuccessEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_EXPERIENCE_SUCCESS),
+        ofType(ResolveExperienceSuccess.type),
         map(toPayload),
         map((payload:Experience[]) => payload
             .filter((entry:Experience) => entry.isCurrentPosition !== true)
@@ -52,7 +51,7 @@ export class ExperienceEffects {
     );
 
     @Effect() SetCurrentPositionEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(RESOLVE_EXPERIENCE_SUCCESS),
+        ofType(ResolveExperienceSuccess.type),
         map(toPayload),
         map((payload:Experience[]) => payload.find((entry:Experience) => entry.isCurrentPosition === true)),
         map((payload:Experience) => new SetCurrentPosition(payload)),

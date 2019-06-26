@@ -7,7 +7,6 @@ import {
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    MatExpansionModule,
     MatTooltipModule,
 } from '@angular/material';
 import {EffectsModule} from '@ngrx/effects';
@@ -18,28 +17,17 @@ import {CommonAppModule} from 'src/modules/common';
 import {PDFModule} from 'src/modules/pdf';
 import {QueryStringModule} from 'src/modules/query-string';
 
-import {EmployeeStore, FeatureStateName, reducer} from './redux';
-import {EmployeeEffects, ExperienceEffects} from './redux';
+import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
 import {
     AvatarComponent,
     EmployeeComponent,
     EmployeeOverviewComponent,
-    PositionComponent,
-    PositionDescriptionComponent,
-    PositionTitleComponent,
-    // SummaryComponent,
 } from './components';
 
-import {
-    EmployeeContainer,
-    // EducationContainer,
-    CurrentPositionContainer,
-    ExperienceContainer,
-} from './containers';
+import {EmployeeContainer} from './containers';
 
 export const MatModules = [
-    MatExpansionModule,
     MatChipsModule,
     MatCardModule,
     MatButtonModule,
@@ -49,19 +37,13 @@ export const MatModules = [
     MatProgressSpinnerModule,
 ];
 
-export const effects = [
-    EmployeeEffects,
-    ExperienceEffects,
-    BackgroundImageEffects,
-];
-
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
     imports: [
         CommonModule,
         ...MatModules,
         StoreModule.forFeature(FeatureStateName, reducer),
-        EffectsModule.forFeature(effects),
+        EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects]),
         MarkdownModule.forChild(),
         CommonAppModule,
         PDFModule,
@@ -73,20 +55,12 @@ export const effects = [
     ],
     exports: [
         EmployeeContainer,
-        CurrentPositionContainer,
-        ExperienceContainer,
     ],
     declarations: [
-        CurrentPositionContainer,
         EmployeeOverviewComponent,
         EmployeeComponent,
         EmployeeContainer,
         AvatarComponent,
-        PositionComponent,
-        PositionDescriptionComponent,
-        ExperienceContainer,
-        PositionTitleComponent,
-        // SummaryComponent,
     ],
 })
 export class EmployeeModule {}

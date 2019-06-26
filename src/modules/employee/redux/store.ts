@@ -3,8 +3,8 @@ import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
-import {employee, avatarUrl, experience, expertise, currentPosition, address, filename} from './selectors';
-import {Employee, Experience} from '../models';
+import {employee, avatarUrl, expertise, address, filename} from './selectors';
+import {Employee} from '../models';
 
 @Injectable()
 export class EmployeeStore {
@@ -12,14 +12,6 @@ export class EmployeeStore {
 
     get employee():Observable<Employee> {
         return this.store.pipe(select(employee));
-    }
-
-    get experience():Observable<Experience[]> {
-        return this.store.pipe(select(experience));
-    }
-
-    get currentPosition():Observable<Experience> {
-        return this.store.pipe(select(currentPosition));
     }
 
     get avatarUrl():Observable<string> {
