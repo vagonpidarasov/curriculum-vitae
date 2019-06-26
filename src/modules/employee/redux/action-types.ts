@@ -6,7 +6,6 @@ export const SET_EMPLOYEE = 'employee:set-employee';
 export const SET_AVATAR_URL = 'employee:set-avatar-url';
 export const SET_FILENAME = 'employee:set-filename';
 export const SET_EXPERTISE = 'employee:set-expertise';
-export const DOWNLOAD_PDF = 'employee:download-pdf';
 
 export const SET_EMPLOYEE_ADDRESS = 'employee:set-address';
 export const RESOLVE_EMPLOYEE_ADDRESS = 'employee:resolve-address';

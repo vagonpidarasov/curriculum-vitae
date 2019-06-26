@@ -14,17 +14,11 @@ import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
 
 import {CommonAppModule} from 'src/modules/common';
-import {PDFModule} from 'src/modules/pdf';
 import {QueryStringModule} from 'src/modules/query-string';
 
 import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
-import {
-    AvatarComponent,
-    EmployeeComponent,
-    EmployeeOverviewComponent,
-} from './components';
-
+import {AvatarComponent, EmployeeComponent, EmployeeOverviewComponent} from './components';
 import {EmployeeContainer} from './containers';
 
 export const MatModules = [
@@ -46,7 +40,6 @@ export const MatModules = [
         EffectsModule.forFeature([EmployeeEffects, BackgroundImageEffects]),
         MarkdownModule.forChild(),
         CommonAppModule,
-        PDFModule,
         QueryStringModule,
     ],
     providers: [

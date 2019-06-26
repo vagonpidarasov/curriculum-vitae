@@ -8,7 +8,7 @@ import {toWepbUrl, toUrl} from 'src/modules/contentful';
 import {toBackgroundUrl} from 'src/modules/common';
 
 import {Employee} from './models';
-import {SET_EMPLOYEE} from './redux';
+import {SetEmployee} from './redux';
 
 @Injectable()
 export class BackgroundImageEffects {
@@ -23,7 +23,7 @@ export class BackgroundImageEffects {
     }
 
     @Effect(NoDispatchMetadada) SetBodyBackgroundEffect$ = this.actions$.pipe(
-        ofType(SET_EMPLOYEE),
+        ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.backgroundImage),
         map((payload:any) => toUrl(payload)),

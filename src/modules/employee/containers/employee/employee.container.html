@@ -15,19 +15,7 @@
         ></employee-overview>
     </mat-card-content>
 
-    <!--<ng-content></ng-content>-->
-
     <mat-card-actions class="employee-footer">
-        <span class="flex-auto"></span>
-        <download-pdf [filename]="employeeStore.filename | async">
-            <!--<employee-summary-->
-                <!--[position]="employeeStore.currentPosition | async"-->
-                <!--[education]="employeeStore.education | async"-->
-                <!--[address]="employeeStore.address | async"-->
-                <!--[employee]="employeeStore.employee | async"-->
-                <!--[expertise]="employeeStore.expertise | async"-->
-                <!--[experience]="employeeStore.experience | async"-->
-            <!--&gt;</employee-summary>-->
-        </download-pdf>
+        <ng-content></ng-content>
     </mat-card-actions>
 </mat-card>

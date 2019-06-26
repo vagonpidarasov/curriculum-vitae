@@ -7,7 +7,6 @@ import {
     SET_EMPLOYEE,
     SET_AVATAR_URL,
     SET_EXPERTISE,
-    DOWNLOAD_PDF,
     RESOLVE_EMPLOYEE_ADDRESS,
     RESOLVE_EMPLOYEE_ADDRESS_FAIL,
     RESOLVE_EMPLOYEE_ADDRESS_SUCCESS,
@@ -50,18 +49,13 @@ export class SetExpertise implements Action {
     constructor(public payload:string[]) {}
 }
 
-export class DownloadPdf implements Action {
-    static type = DOWNLOAD_PDF;
-    readonly type = DOWNLOAD_PDF;
-}
-
 export class ResolveEmployeeAddress implements Action {
     static type = RESOLVE_EMPLOYEE_ADDRESS;
     readonly type = RESOLVE_EMPLOYEE_ADDRESS;
     constructor(public payload:Location) {}
 }
 
-export class ResolveEmployeeAddressSucceess implements Action {
+export class ResolveEmployeeAddressSuccess implements Action {
     static type = RESOLVE_EMPLOYEE_ADDRESS_SUCCESS;
     readonly type = RESOLVE_EMPLOYEE_ADDRESS_SUCCESS;
     constructor(public payload:any) {}
