@@ -5,6 +5,7 @@ import {
     SetExpertise,
     SetEmployeeAddress,
     SetFilename,
+    SetBackgroundUrl,
 } from './actions';
 import {Employee} from '../models';
 
@@ -17,6 +18,11 @@ export function setEmployee(state:EmployeeState, action:SetEmployee) {
 
 export function setAvatarUrl(state:EmployeeState, action:SetAvatarUrl) {
     state.avatarUrl = action.payload;
+    return state;
+}
+
+export function setBackgroundUrl(state:EmployeeState, action:SetBackgroundUrl) {
+    state.backgroundUrl = action.payload;
     return state;
 }
 

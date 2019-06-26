@@ -16,6 +16,7 @@ import {
     ResolveEmployeesSuccess,
     SetEmployee,
     SetAvatarUrl,
+    SetBackgroundUrl,
     SetExpertise,
     ResolveEmployeeAddress,
     ResolveEmployeeAddressSuccess,
@@ -69,6 +70,14 @@ export class EmployeeEffects {
         map((payload:Employee) => payload.avatar),
         map((payload:any) => toUrl(payload)),
         map((payload:string) => new SetAvatarUrl(payload)),
+    );
+
+    @Effect() ResolveBackgroundEffect$:Observable<Action> = this.actions$.pipe(
+        ofType(SetEmployee.type),
+        map(toPayload),
+        map((payload:Employee) => payload.backgroundImage),
+        map((payload:any) => toUrl(payload)),
+        map((payload:string) => new SetBackgroundUrl(payload)),
     );
 
     @Effect() SetExpertiseEffect$:Observable<Action> = this.actions$.pipe(

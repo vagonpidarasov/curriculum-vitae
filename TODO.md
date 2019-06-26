@@ -57,7 +57,7 @@ https://blog.angular-university.io/angular-service-worker/
 - webpack visualizer https://chrisbateman.github.io/webpack-visualizer/
 
 + body background
-- persist body background url
++ persist body background url
 + github link
 + contacts
 - rounded border for accordion

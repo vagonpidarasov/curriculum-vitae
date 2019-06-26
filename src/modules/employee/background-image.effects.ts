@@ -1,20 +1,21 @@
 import {Injectable, Inject, Renderer2, RendererFactory2} from '@angular/core';
 import {DOCUMENT} from '@angular/common';
 import {Actions, Effect, ofType} from '@ngrx/effects';
-import {map, tap, filter} from 'rxjs/operators';
+import {Store, INIT} from '@ngrx/store';
+import {map, tap, filter, withLatestFrom} from 'rxjs/operators';
 
-import {toPayload, NoDispatchMetadada} from 'src/modules/redux';
-import {toWepbUrl, toUrl} from 'src/modules/contentful';
+import {NoDispatchMetadada, Action} from 'src/modules/redux';
+import {toWepbUrl} from 'src/modules/contentful';
 import {toBackgroundUrl} from 'src/modules/common';
 
-import {Employee} from './models';
-import {SetEmployee} from './redux';
+import {SetBackgroundUrl, FeatureState as EmployeeFeatureState} from './redux';
 
 @Injectable()
 export class BackgroundImageEffects {
     private renderer:Renderer2;
     constructor(
         private actions$:Actions,
+        private store:Store<EmployeeFeatureState>,
         private rendererFactory:RendererFactory2,
         @Inject(DOCUMENT) private document:Document,
         @Inject('windowObject') private window:Window,
@@ -23,10 +24,8 @@ export class BackgroundImageEffects {
     }
 
     @Effect(NoDispatchMetadada) SetBodyBackgroundEffect$ = this.actions$.pipe(
-        ofType(SetEmployee.type),
-        map(toPayload),
-        map((payload:Employee) => payload.backgroundImage),
-        map((payload:any) => toUrl(payload)),
+        ofType(SetBackgroundUrl.type, INIT),
+        withLatestFrom(this.store, (a:Action, s:EmployeeFeatureState) => s.employee.backgroundUrl),
         filter((payload:string) => !!payload),
         map((payload:string) => this.window.createImageBitmap ? toWepbUrl(payload) : payload),
         map((payload:string) => toBackgroundUrl(payload)),

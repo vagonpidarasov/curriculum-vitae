@@ -12,6 +12,7 @@ import {
     RESOLVE_EMPLOYEE_ADDRESS_SUCCESS,
     SET_EMPLOYEE_ADDRESS,
     SET_FILENAME,
+    SET_BACKGROUND_URL,
 } from './action-types';
 
 export class ResolveEmployees implements Action {
@@ -40,6 +41,12 @@ export class SetEmployee implements Action {
 export class SetAvatarUrl implements Action {
     static type = SET_AVATAR_URL;
     readonly type = SET_AVATAR_URL;
+    constructor(public payload:string) {}
+}
+
+export class SetBackgroundUrl implements Action {
+    static type = SET_BACKGROUND_URL;
+    readonly type = SET_BACKGROUND_URL;
     constructor(public payload:string) {}
 }
 
