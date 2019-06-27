@@ -6,9 +6,10 @@ import {map, tap, filter, withLatestFrom} from 'rxjs/operators';
 
 import {NoDispatchMetadada, Action} from 'src/modules/redux';
 import {toWepbUrl} from 'src/modules/contentful';
-import {toBackgroundUrl} from 'src/modules/common';
+import {toBackgroundUrl, WINDOW} from 'src/modules/common';
 
 import {SetBackgroundUrl, FeatureState as EmployeeFeatureState} from './redux';
+import {MIN_WIDTH} from './background-image.const';
 
 @Injectable()
 export class BackgroundImageEffects {
@@ -18,13 +19,14 @@ export class BackgroundImageEffects {
         private store:Store<EmployeeFeatureState>,
         private rendererFactory:RendererFactory2,
         @Inject(DOCUMENT) private document:Document,
-        @Inject('windowObject') private window:Window,
+        @Inject(WINDOW) private window:Window,
     ) {
         this.renderer = rendererFactory.createRenderer(null, null);
     }
 
     @Effect(NoDispatchMetadada) SetBodyBackgroundEffect$ = this.actions$.pipe(
         ofType(SetBackgroundUrl.type, INIT),
+        filter(() => this.window.innerWidth > MIN_WIDTH),
         withLatestFrom(this.store, (a:Action, s:EmployeeFeatureState) => s.employee.backgroundUrl),
         filter((payload:string) => !!payload),
         map((payload:string) => this.window.createImageBitmap ? toWepbUrl(payload) : payload),

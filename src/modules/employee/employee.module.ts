@@ -42,13 +42,8 @@ export const MatModules = [
         CommonAppModule,
         QueryStringModule,
     ],
-    providers: [
-        EmployeeStore,
-        {provide: 'windowObject', useValue: window},
-    ],
-    exports: [
-        EmployeeContainer,
-    ],
+    providers: [EmployeeStore],
+    exports: [EmployeeContainer],
     declarations: [
         EmployeeOverviewComponent,
         EmployeeTitleComponent,
