@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {EmployeeStore} from '../../redux';
+import {EmployeeStore} from '../redux';
 
 @Component({
     selector: 'employee-container',

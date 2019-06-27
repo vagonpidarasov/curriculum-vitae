@@ -1,5 +1,6 @@
 import {Action} from 'src/modules/redux';
-import {Employee, Location} from '../models';
+import {Employee} from '../employee.model';
+import {LocationModel} from '../location.model';
 import {
     RESOLVE_EMPLOYEES,
     RESOLVE_EMPLOYEES_FAIL,
@@ -59,7 +60,7 @@ export class SetExpertise implements Action {
 export class ResolveEmployeeAddress implements Action {
     static type = RESOLVE_EMPLOYEE_ADDRESS;
     readonly type = RESOLVE_EMPLOYEE_ADDRESS;
-    constructor(public payload:Location) {}
+    constructor(public payload:LocationModel) {}
 }
 
 export class ResolveEmployeeAddressSuccess implements Action {

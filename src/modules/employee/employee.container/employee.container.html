@@ -2,10 +2,10 @@
     <avatar [avatarUrl]="employeeStore.avatarUrl | async"></avatar>
 
     <mat-card-header class="mat-custom-header items-center">
-        <employee
+        <employee-title
             [employee]="employeeStore.employee | async"
             [address]="employeeStore.address | async"
-        ></employee>
+        ></employee-title>
     </mat-card-header>
 
     <mat-card-content>

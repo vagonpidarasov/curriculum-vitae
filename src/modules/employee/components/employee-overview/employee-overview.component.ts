@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {trigger, style, animate, transition, query, stagger, animateChild} from '@angular/animations';
-import {Employee} from '../../models';
+import {Employee} from '../../employee.model';
 
 export const EXPERTISE_LIMIT = 10;
 

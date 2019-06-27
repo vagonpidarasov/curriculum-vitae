@@ -18,8 +18,8 @@ import {QueryStringModule} from 'src/modules/query-string';
 
 import {EmployeeEffects, EmployeeStore, FeatureStateName, reducer} from './redux';
 import {BackgroundImageEffects} from './background-image.effects';
-import {AvatarComponent, EmployeeComponent, EmployeeOverviewComponent} from './components';
-import {EmployeeContainer} from './containers';
+import {AvatarComponent, EmployeeTitleComponent, EmployeeOverviewComponent} from './components';
+import {EmployeeContainer} from './employee.container';
 
 export const MatModules = [
     MatChipsModule,
@@ -51,7 +51,7 @@ export const MatModules = [
     ],
     declarations: [
         EmployeeOverviewComponent,
-        EmployeeComponent,
+        EmployeeTitleComponent,
         EmployeeContainer,
         AvatarComponent,
     ],

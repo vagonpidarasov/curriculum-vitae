@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
 import {employee, avatarUrl, expertise, address, filename} from './selectors';
-import {Employee} from '../models';
+import {Employee} from '../employee.model';
 
 @Injectable()
 export class EmployeeStore {

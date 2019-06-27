@@ -1,6 +1,7 @@
 import {FeatureState, FeatureStateName} from './feature';
 import {EmployeeState} from './state';
-import {Employee} from '../models';
+import {Employee} from '../employee.model';
+
 
 export function getState(state:FeatureState):EmployeeState {
     return <EmployeeState>state[FeatureStateName];

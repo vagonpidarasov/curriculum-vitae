@@ -82,8 +82,8 @@ https://blog.angular-university.io/angular-service-worker/
 - lazy load some code/routes
 + add animation to the skillset collapse/expand
 - add UP button to the interview question page
-- split employee module into employee, education, position, experience
++ split employee module into employee, education, position, experience
     + split education
-    - refactor employee
-    - pdf
+    + refactor employee
+    + pdf
     + split experience

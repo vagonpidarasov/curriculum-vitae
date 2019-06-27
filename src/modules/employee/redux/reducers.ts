@@ -7,7 +7,7 @@ import {
     SetFilename,
     SetBackgroundUrl,
 } from './actions';
-import {Employee} from '../models';
+import {Employee} from '../employee.model';
 
 export function setEmployee(state:EmployeeState, action:SetEmployee) {
     state.employee = Object.assign(new Employee(), {...action.payload}, {

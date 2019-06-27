@@ -1,5 +1,5 @@
 import {Observable} from 'rxjs';
-import {Employee} from './models';
+import {Employee} from './employee.model';
 
 export abstract class EmployeeRepository {
     abstract getEmployeeEntries():Observable<Employee[]>;

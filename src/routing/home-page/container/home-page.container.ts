@@ -7,7 +7,5 @@ import {EmployeeStore} from 'src/modules/employee';
     styleUrls: ['./home-page.container.scss'],
 })
 export class HomePageContainer {
-    constructor(
-        public employeeStore:EmployeeStore,
-    ) {}
+    constructor(public employeeStore:EmployeeStore) {}
 }

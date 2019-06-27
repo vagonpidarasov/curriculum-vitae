@@ -1,4 +1,4 @@
-import {Employee} from '../models';
+import {Employee} from '../employee.model';
 
 export class EmployeeState {
     employee:Employee = null;

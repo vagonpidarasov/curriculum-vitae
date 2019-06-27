@@ -2,13 +2,14 @@ import {Injectable} from '@angular/core';
 import {INIT} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
-import {catchError, map, switchMap, tap} from 'rxjs/operators';
+import {catchError, map, switchMap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 import {toUrl} from 'src/modules/contentful';
 import {GeocodingRepository, Address} from 'src/modules/geolocation';
 
-import {Employee, Location} from '../models';
+import {Employee} from '../employee.model';
+import {LocationModel} from '../location.model';
 import {EmployeeRepository} from '../employee.repository';
 import {
     ResolveEmployees,
@@ -34,7 +35,7 @@ export class EmployeeEffects {
         );
     }
 
-    private getAddress({lon, lat}:Location):Observable<Action> {
+    private getAddress({lon, lat}:LocationModel):Observable<Action> {
         return this.geocodingRepository.getAddress(lon, lat).pipe(
             map((response:Address) => new ResolveEmployeeAddressSuccess(response)),
             catchError((e:PositionError) => of(new ResolveEmployeeAddressFail(e))),
@@ -92,7 +93,7 @@ export class EmployeeEffects {
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.location),
-        map((payload:Location) => new ResolveEmployeeAddress(payload)),
+        map((payload:LocationModel) => new ResolveEmployeeAddress(payload)),
     );
 
     @Effect() SetFilenameEffect$:Observable<Action> = this.actions$.pipe(
@@ -105,7 +106,7 @@ export class EmployeeEffects {
     @Effect() ResolveEmployeeAddressEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ResolveEmployeeAddress.type),
         map(toPayload),
-        switchMap((payload:Location) => this.getAddress(payload)),
+        switchMap((payload:LocationModel) => this.getAddress(payload)),
     );
 
     @Effect() ResolveEmployeeAddressSuccessEffect$:Observable<Action> = this.actions$.pipe(

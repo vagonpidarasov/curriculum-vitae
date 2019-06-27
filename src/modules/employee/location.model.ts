@@ -1,4 +1,4 @@
-export interface Location {
+export interface LocationModel {
     lon:number;
     lat:number;
 }
