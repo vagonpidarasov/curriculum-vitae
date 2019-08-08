@@ -99,7 +99,7 @@ export class EmployeeEffects {
     @Effect() SetFilenameEffect$:Observable<Action> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
-        map((payload:Employee) => `${payload.name.replace(/\s/g, '-')}.pdf`),
+        map((payload:Employee) => `${payload.name.replace(/\s/g, '-')}-CV.pdf`),
         map((payload:string) => new SetFilename(payload)),
     );
 
