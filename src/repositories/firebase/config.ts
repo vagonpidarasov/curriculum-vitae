@@ -1,6 +1,6 @@
 import {FirebaseConfig} from 'src/modules/firebase';
 export const config:FirebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
+    apiKey: 'AIzaSyDLDyp2fmw2Mqhuk4yLTgJIc_6sZD_1FXc',
     authDomain: 'stanislav-beresnev.firebaseapp.com',
     databaseURL: 'https://stanislav-beresnev.firebaseio.com',
     projectId: 'stanislav-beresnev',

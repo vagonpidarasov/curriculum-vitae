@@ -4,7 +4,6 @@ import {AngularFireModule} from '@angular/fire';
 
 import {AuthenticationRepository} from 'src/modules/authentication';
 import {AuthenticationRepositoryFirebase} from './authentication.repository';
-import {AuthenticationRepositoryStub} from './authentication.repository.stub';
 import {config} from './config';
 
 @NgModule({
@@ -14,7 +13,6 @@ import {config} from './config';
     ],
     providers: [
         {provide: AuthenticationRepository, useClass: AuthenticationRepositoryFirebase},
-        // {provide: AuthenticationRepository, useClass: AuthenticationRepositoryStub},
     ],
 })
 export class FirebaseRepositoryModule {}
