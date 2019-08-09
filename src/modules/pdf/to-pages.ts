@@ -1,6 +1,6 @@
-import * as jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 
-export function toPages(elements:HTMLElement[]):Promise<jsPDF> {
+export function toPages(elements:Array<HTMLElement>):Promise<jsPDF> {
     const doc = new jsPDF();
     const flags = {width: 190};
     const promiseArray = elements.map((element:HTMLElement, index:number) =>

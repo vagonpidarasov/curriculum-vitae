@@ -9,7 +9,6 @@ import {EffectsModule} from '@ngrx/effects';
 import {StoreModule} from '@ngrx/store';
 import {MarkdownModule} from 'ngx-markdown';
 
-
 import {EducationEffects, EducationStore, FeatureStateName, reducer} from './redux';
 import {EducationContainer} from './education.container';
 import {EducationTitleComponent} from './education-title.component';

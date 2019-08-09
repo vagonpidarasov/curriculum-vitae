@@ -1,2 +1,2 @@
 export * from './effects';
-export * from './action-types';
+export * from './actions';

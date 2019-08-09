@@ -3,18 +3,19 @@ import {ActivatedRouteSnapshot} from '@angular/router';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 
 import {Action, toPayload} from 'src/modules/redux';
 import {
     AuthenticationRequest,
     SetAuthenticationDiscard,
     SetAuthenticationRequest,
-    SIGN_OUT,
+    SignOut,
 } from 'src/modules/authentication';
 
-import {toCanceledRoute} from '../to-canceled-route';
-import {toDefaultRoute} from '../to-default-route';
+import {DEFAULT_ROUTE_URL} from '../default-route-url';
+import {toCanceledRouteUrl} from '../to-canceled-route-url';
+import {toDefaultRouteUrl} from '../to-default-route-url';
 import {SetCurrentRoute} from './actions';
 
 @Injectable()
@@ -25,10 +26,10 @@ export class AuthenticationEffects {
      * @Effect saves current route to be fired once auth is discarded
      * @type {Observable<any>}
      */
-    @Effect() SetAuthRequestEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetAuthDiscardEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
-        map(toDefaultRoute),
-        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
+        map(toDefaultRouteUrl),
+        map((route:string) => new SetCurrentRoute(route)),
         map((action:SetCurrentRoute) => new SetAuthenticationDiscard(action)),
     );
 
@@ -36,11 +37,11 @@ export class AuthenticationEffects {
      * @Effect saves canceled route to be fired once auth is succeeded
      * @type {Observable<any>}
      */
-    @Effect() SetAuthDiscardEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetAuthRequestEffect$:Observable<Action> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
         map(toPayload),
-        map(toCanceledRoute),
-        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
+        map(toCanceledRouteUrl),
+        map((payload:string) => new SetCurrentRoute(payload)),
         map((action:SetCurrentRoute) => new SetAuthenticationRequest(action)),
     );
 
@@ -58,8 +59,8 @@ export class AuthenticationEffects {
      * @type {Observable<SetCurrentRoute>}
      */
     @Effect() SignOutEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(SIGN_OUT),
-        map(toDefaultRoute),
-        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
+        ofType(SignOut.type),
+        map(toDefaultRouteUrl),
+        map((route:string) => new SetCurrentRoute(route)),
     );
 }

@@ -3,8 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {map, exhaustMap} from 'rxjs/operators';
 
 import {AuthenticationRepository} from '../authentication.repository';
-import {SIGN_OUT, SIGN_OUT_SUCCESS} from './action-types';
-import {ResetUserData, SignOutSuccess} from './actions';
+import {ResetUserData, SignOutSuccess, SignOut} from './actions';
 
 @Injectable()
 export class SignOutEffects {
@@ -14,13 +13,13 @@ export class SignOutEffects {
     ) {}
 
     @Effect() SignOutEffect$ = this.actions$.pipe(
-        ofType(SIGN_OUT),
+        ofType(SignOut.type),
         exhaustMap(() => this.authenticationRepository.signOut()),
         map(() => new SignOutSuccess()),
     );
 
     @Effect() SignOutSuccessEffect$ = this.actions$.pipe(
-        ofType(SIGN_OUT_SUCCESS),
+        ofType(SignOutSuccess.type),
         map(() => new ResetUserData()),
     );
 }

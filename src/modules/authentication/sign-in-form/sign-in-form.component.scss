@@ -1,14 +1,24 @@
-.login-error {
-    font-size: 75%;
-    height: 20px;
-    max-width: 180px;
-    transform: translate(0, -10px);
+.sing-in-form {
+    .login-error {
+        font-size: 75%;
+        height: 20px;
+        max-width: 180px;
+        transform: translate(0, -10px);
 
-    mat-progress-bar {
-        margin: 9px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        mat-progress-bar {
+            margin: 9px 0;
+        }
     }
-}
 
-.sign-in-button {
-    flex-basis: 100%;
+    .sign-in-button {
+        flex-basis: 100%;
+    }
+
+    .actions {
+        display: flex;
+    }
 }

@@ -43,7 +43,7 @@ export class QueryStringComponent implements OnChanges, OnInit, OnDestroy {
 
     @Output() searchRequest:EventEmitter<string> = new EventEmitter();
 
-    @ViewChild('mainInput') mainInput:ElementRef;
+    @ViewChild('mainInput', {static: false}) mainInput:ElementRef;
 
     queryStringForm:FormGroup;
 

@@ -7,12 +7,12 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use: [{loader}, 'css-loader', 'sass-loader'],
-                include: /node_modules|theme\.scss/,
+                include: /node_modules|index\.scss/,
             },
             {
                 test: /\.scss$/,
                 use: ['raw-loader', 'sass-loader'],
-                exclude: /node_modules|theme\.scss/,
+                exclude: /node_modules|index\.scss/,
             },
             {
                 test: /\.css$/,

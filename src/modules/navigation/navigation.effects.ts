@@ -5,8 +5,7 @@ import {map, tap} from 'rxjs/operators';
 
 import {toPayload, NoDispatchMetadada} from 'src/modules/redux';
 
-import {SET_CURRENT_ROUTE} from './redux';
-import {toUrl} from './to-url';
+import {SetCurrentRoute} from './redux';
 
 @Injectable()
 export class NavigationEffects {
@@ -15,9 +14,8 @@ export class NavigationEffects {
      * @Effect performs navigation upon currentRoute change
      */
     @Effect(NoDispatchMetadada) SetCurrentRouteEffect$ = this.actions$.pipe(
-        ofType(SET_CURRENT_ROUTE),
+        ofType(SetCurrentRoute.type),
         map(toPayload),
-        map(toUrl),
         tap((url:string) => this.router.navigateByUrl(url)),
     );
 }

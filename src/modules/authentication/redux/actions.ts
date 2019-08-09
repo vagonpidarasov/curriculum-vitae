@@ -18,11 +18,13 @@ import {
 } from './action-types';
 
 export class SignIn implements Action {
+    static type = SIGN_IN;
     readonly type = SIGN_IN;
     constructor(public payload:SignInPayload) {}
 }
 
 export class SignInSuccess implements Action {
+    static type = SIGN_IN_SUCCESS;
     readonly type = SIGN_IN_SUCCESS;
     constructor(public payload:UserData) {}
 }
@@ -42,10 +44,12 @@ export class ResetUserData implements Action {
 }
 
 export class SignOut implements Action {
+    static type = SIGN_OUT;
     readonly type = SIGN_OUT;
 }
 
 export class SignOutSuccess implements Action {
+    static type = SIGN_OUT_SUCCESS;
     readonly type = SIGN_OUT_SUCCESS;
 }
 
@@ -64,11 +68,13 @@ export class AuthenticationRequest implements Action {
 }
 
 export class SetAuthenticationRequest implements Action {
+    static type = SET_AUTHENTICATION_REQUEST;
     readonly type = SET_AUTHENTICATION_REQUEST;
     constructor(public payload:Action) {}
 }
 
 export class AuthenticationDiscard implements Action {
+    static type = AUTHENTICATION_DISCARD;
     readonly type = AUTHENTICATION_DISCARD;
 }
 

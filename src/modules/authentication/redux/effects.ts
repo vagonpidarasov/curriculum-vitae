@@ -26,7 +26,7 @@ export class AuthenticationEffects {
         ofType(INIT),
         switchMap(() => this.authenticationRepository.isAuthenticated()),
         filter((isAuthenticated:boolean) => !isAuthenticated),
-        withLatestFrom(this.store, (a:Action, s:AuthFeatureState) => s.authentication.isAuthenticated),
+        withLatestFrom<any, any>(this.store, (a:Action, s:AuthFeatureState) => s.authentication.isAuthenticated),
         filter((isAuthenticated:boolean) => isAuthenticated),
         map(() => new SignOut())
     );

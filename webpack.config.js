@@ -5,9 +5,7 @@ const moduleConfig = require('./webpack.module.config');
 
 module.exports = {
     entry: [
-        path.resolve(__dirname, 'src/vendor'),
         path.resolve(__dirname, 'src/index'),
-        path.resolve(__dirname, 'src/styles'),
     ],
 
     devServer,
@@ -25,7 +23,7 @@ module.exports = {
         splitChunks: {
             cacheGroups: {
                 commons: {
-                    test: /[\\/]node_modules[\\/]|theme\.scss/,
+                    test: /[\\/]node_modules[\\/]|index\.scss/,
                     name: 'vendor',
                     chunks: 'all',
                 }
