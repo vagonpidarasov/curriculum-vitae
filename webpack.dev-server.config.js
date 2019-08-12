@@ -8,6 +8,5 @@ module.exports = {
         watchContentBase: true,
         contentBase: path.resolve(__dirname, './src'),
         open: true,
-        // writeToDisk: false,
     },
 };

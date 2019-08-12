@@ -1,7 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const {AngularCompilerPlugin} = require('@ngtools/webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const config = require('./webpack.config.js');
 
 module.exports = merge(config, {
@@ -27,11 +26,6 @@ module.exports = merge(config, {
     },
 
     plugins: [
-        new CopyWebpackPlugin([
-            'node_modules/@angular/service-worker/ngsw-worker.js',
-            'pwa/manifest.json',
-            'pwa/icon.png',
-        ]),
         new AngularCompilerPlugin({
             tsConfigPath: path.resolve(__dirname, './tsconfig.json'),
             entryModule: path.resolve(__dirname, './src/app/app.module#AppModule'),

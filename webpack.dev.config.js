@@ -1,7 +1,6 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const config = require('./webpack.config.js');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = merge(config, {
     mode: 'development',
@@ -22,10 +21,4 @@ module.exports = merge(config, {
             },
         ],
     },
-
-    plugins: [
-        new CopyWebpackPlugin([
-            'pwa/manifest.json',
-        ]),
-    ],
 });
