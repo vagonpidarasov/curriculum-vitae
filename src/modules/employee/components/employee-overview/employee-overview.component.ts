@@ -21,9 +21,7 @@ export const EXPERTISE_LIMIT = 10;
         ]),
         trigger('skillset', [
             transition('* => *', [
-                query(':enter', [
-                    stagger(10, animateChild()),
-                ]),
+                query(':enter', [stagger(10, animateChild())], {optional: true}),
             ]),
         ]),
     ],

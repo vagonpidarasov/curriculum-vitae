@@ -9,26 +9,27 @@
     ></query-string>
 </div>
 
-<mat-chip-list [@skillset]="expertiseLimit" *ngIf="expertise.length > 0" [multiple]="true">
-    <mat-chip
-        @skill
-        *ngFor="let skill of expertise | slice:0:expertiseLimit; let i = index"
-        color="primary"
-        [selectable]="false"
-        [selected]="match[i]"
-    >{{skill}}</mat-chip>
+<div *ngIf="expertise.length > 0" class="expertise-list">
+    <mat-chip-list [@skillset]="expertiseLimit" [multiple]="true">
+        <mat-chip
+            @skill
+            *ngFor="let skill of expertise | slice:0:expertiseLimit; let i = index"
+            color="primary"
+            [selectable]="false"
+            [selected]="match[i]"
+        >{{skill}}</mat-chip>
 
-    <button
-        *ngIf="isToggleShown"
-        mat-icon-button
-        type="button"
-        color="primary"
-        class="toggle"
-        [class.expanded]="expertiseExpanded"
-        [class.collapsed]="!expertiseExpanded"
-        (click)="toggleExpertise()"
-    >
-        <mat-icon *ngIf="!expertiseExpanded" matTooltip="and more" matTooltipPosition="after">more</mat-icon>
-        <mat-icon *ngIf="expertiseExpanded" matTooltip="and less" matTooltipPosition="after">more</mat-icon>
-    </button>
-</mat-chip-list>
+        <button
+            *ngIf="isToggleShown"
+            mat-icon-button
+            type="button"
+            color="primary"
+            class="toggle"
+            [class.expanded]="expertiseExpanded"
+            [class.collapsed]="!expertiseExpanded"
+            (click)="toggleExpertise()"
+        >
+            <mat-icon matTooltipPosition="after">more</mat-icon>
+        </button>
+    </mat-chip-list>
+</div>
