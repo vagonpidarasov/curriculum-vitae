@@ -1,11 +1,13 @@
 @import '~@angular/material/theming';
+@import './modules/authentication/authentication.theme.scss';
+@import './modules/query-string/query-string.theme.scss';
+@import './modules/experience/experience.theme.scss';
+@import './modules/footer/footer.theme.scss';
+@import './routing/home-page/container/home-page.theme.scss';
 
 $primary-color-set: (
-    //100: #c8e6c9,
     100: #51bc56,
-    //500: #4caf50,
     500: #339933,
-    //700: #388e3c,
     700: #308433,
     contrast: (
         100: $dark-primary-text,
@@ -14,39 +16,16 @@ $primary-color-set: (
     )
 );
 
-//$primary-palette: mat-palette($mat-green);
 $primary-palette: mat-palette($primary-color-set);
 $accent-palette: mat-palette($mat-pink);
 $warn-palette: mat-palette($mat-red);
-
 $primary-color: map-get($primary-color-set, 500);
-
 $theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
 
 @include mat-core();
 @include angular-material-theme($theme);
 
-.mat-primary-color {
-    color: $primary-color;
-}
-
-.mat-secondary-text {
-    color: $dark-secondary-text;
-
-    &:hover {
-        color: $dark-secondary-text;
-    }
-}
-
-.mat-primary-background-color {
-    background-color: $primary-color;
-}
-
-.mat-primary-border-color {
-    border-color: $primary-color;
-}
-
-app a, app a:hover {
+a, a:hover {
     color: $primary-color;
 }
 
@@ -67,3 +46,9 @@ app a, app a:hover {
 .mat-app-background {
     background-color: #e5e5e5;
 }
+
+@include authentication($primary-color);
+@include home-page($primary-color);
+@include footer($primary-color);
+@include query-string($primary-color);
+@include experience($dark-secondary-text);

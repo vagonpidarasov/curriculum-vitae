@@ -1,0 +1,7 @@
+@mixin home-page($primary-color) {
+    .cv-sections-container {
+        .cv-section-title {
+            color: $primary-color;
+        }
+    }
+}

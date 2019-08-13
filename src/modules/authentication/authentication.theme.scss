@@ -1,0 +1,7 @@
+@mixin authentication($primary-color) {
+    sign-in-dialog {
+        .in-progress {
+            color: $primary-color;
+        }
+    }
+}

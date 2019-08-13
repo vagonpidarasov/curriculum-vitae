@@ -1,0 +1,7 @@
+@mixin footer($primary-color) {
+    footer {
+        .footer {
+            background-color: $primary-color;
+        }
+    }
+}

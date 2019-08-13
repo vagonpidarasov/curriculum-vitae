@@ -1,0 +1,7 @@
+@mixin experience($light-color) {
+    .mat-card-subtitle.inline{
+        .company {
+            color: $light-color;
+        }
+    }
+}
