@@ -1,4 +1,4 @@
-import {Injectable, Inject} from '@angular/core';
+import {Injectable, Inject, LOCALE_ID} from '@angular/core';
 import {EntryCollection, createClient, CreateClientParams, ContentfulClientApi, Asset} from 'contentful';
 import {Observable, Observer} from 'rxjs';
 
@@ -6,11 +6,15 @@ import {CONTENTFUL_CONFIG} from './config.injection-token';
 import {toItems} from './to-items';
 import {toUrl} from './to-url';
 import {ContentfulResponsePayload} from './response-payload.interface';
+import {toNormalizedLocale} from './to-normalized-locale';
 
 @Injectable()
 export class ContentfulClient {
     private client:ContentfulClientApi;
-    constructor(@Inject(CONTENTFUL_CONFIG) config:CreateClientParams) {
+    constructor(
+        @Inject(LOCALE_ID) private locale:string,
+        @Inject(CONTENTFUL_CONFIG) config:CreateClientParams,
+    ) {
         this.client = createClient(config);
     }
 
@@ -22,8 +26,9 @@ export class ContentfulClient {
         skip:number = 0,
         order:string = 'sys.createdAt',
     ):Observable<T[]|ContentfulResponsePayload> {
+        const locale = toNormalizedLocale(this.locale);
         return new Observable((observer:Observer<T[]|ContentfulResponsePayload>) => {
-            this.client.getEntries<T>({content_type: contentType, query, limit, skip, order})
+            this.client.getEntries<T>({content_type: contentType, query, limit, skip, order, locale})
                 .then((response:EntryCollection<T>) => {
                     if (withMetadata) {
                         observer.next({total: response.total});

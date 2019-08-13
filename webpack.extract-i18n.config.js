@@ -30,7 +30,7 @@ module.exports = merge(config, {
             new AngularCompilerPlugin({
                 tsConfigPath: path.resolve(__dirname, 'tsconfig.json'),
                 entryModule: path.resolve(__dirname, 'src/app/app.module#AppModule'),
-                i18nOutFile: path.resolve(__dirname, 'i18n/messages.xlf'),
+                i18nOutFile: path.resolve(__dirname, 'i18n/messages.en.xlf'),
                 i18nOutFormat: 'xlf',
                 locale: 'en',
                 platform: 0,

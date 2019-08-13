@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="ng2.template">
+        <body>
+            <trans-unit id="e95ae009d0bdb45fcc656e8b65248cf7396080d5" datatype="html">
+                <source>Overview</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/modules/header/header.component/header.component.html
+                    </context>
+                    <context context-type="linenumber">3</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="405deb58911bb8e5f84a0bed38139c53bc849ccb" datatype="html">
+                <source>Interview</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/modules/header/header.component/header.component.html
+                    </context>
+                    <context context-type="linenumber">4</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="ba4f24bf9bf3dc4db3d6bc1b8b63339295f0b806" datatype="html">
+                <source>Sign In</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/modules/header/header.component/header.component.html
+                    </context>
+                    <context context-type="linenumber">14</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="640eec093c685babaa3265137215e3cc92ad704d" datatype="html">
+                <source>Sign Out</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/modules/header/header.component/header.component.html
+                    </context>
+                    <context context-type="linenumber">22</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="ddb23021acde0ce82888106f550fdcd3b8cccea8" datatype="html">
+                <source>Education</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/routing/home-page/container/home-page.container.html
+                    </context>
+                    <context context-type="linenumber">12</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="1ba7568bba29f8d8e352f93e67002d0b548eb838" datatype="html">
+                <source>Position</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/routing/home-page/container/home-page.container.html
+                    </context>
+                    <context context-type="linenumber">17</context>
+                </context-group>
+            </trans-unit>
+            <trans-unit id="f90cab6d6d7166098c51a38932d5f8f68bbd4f4d" datatype="html">
+                <source>Experience</source>
+                <context-group purpose="location">
+                    <context context-type="sourcefile">src/routing/home-page/container/home-page.container.html
+                    </context>
+                    <context context-type="linenumber">22</context>
+                </context-group>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
