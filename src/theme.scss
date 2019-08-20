@@ -3,6 +3,7 @@
 @import './modules/query-string/query-string.theme.scss';
 @import './modules/experience/experience.theme.scss';
 @import './modules/footer/footer.theme.scss';
+@import './modules/question/question.theme.scss';
 @import './routing/home-page/container/home-page.theme.scss';
 
 $primary-color-set: (
@@ -29,10 +30,6 @@ a, a:hover {
     color: $primary-color;
 }
 
-.mat-primary-hover-color:not([href]):not([tabindex]):hover {
-    color: $primary-color;
-}
-
 .mat-expansion-indicator::after {
     color: $primary-color;
 }
@@ -48,6 +45,7 @@ a, a:hover {
 }
 
 @include authentication($primary-color);
+@include question($primary-color);
 @include home-page($primary-color);
 @include footer($primary-color);
 @include query-string($primary-color);

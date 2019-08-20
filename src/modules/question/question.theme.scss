@@ -1,0 +1,7 @@
+@mixin question($primary-color) {
+    interview-question {
+        .mat-primary-hover-color:not([href]):not([tabindex]):hover {
+            color: $primary-color;
+        }
+    }
+}
