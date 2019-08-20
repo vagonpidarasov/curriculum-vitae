@@ -1,5 +1,4 @@
-import * as jsPDF from 'jspdf';
-
+import jsPDF from 'jspdf';
 import {toPages} from './to-pages';
 import {toHTMLElements} from './to-html-elements';
 

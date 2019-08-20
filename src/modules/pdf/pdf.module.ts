@@ -1,10 +1,8 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {EffectsModule} from '@ngrx/effects';
 import {MatButtonModule, MatTooltipModule} from '@angular/material';
-
 import {DownloadPdfComponent} from './download-pdf.component';
-import {DownloadPdfEffects, PdfStore} from './redux';
+import {PDFService} from './pdf.service';
 
 @NgModule({
     schemas: [CUSTOM_ELEMENTS_SCHEMA],
@@ -12,9 +10,8 @@ import {DownloadPdfEffects, PdfStore} from './redux';
         CommonModule,
         MatButtonModule,
         MatTooltipModule,
-        EffectsModule.forFeature([DownloadPdfEffects])
     ],
-    providers: [PdfStore],
+    providers: [PDFService],
     declarations: [DownloadPdfComponent],
     exports: [DownloadPdfComponent],
 })

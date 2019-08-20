@@ -26,16 +26,19 @@ import {
     SetFilename,
 } from './actions';
 
+export type GetAddressType = ResolveEmployeeAddressSuccess|ResolveEmployeeAddressFail;
+export type GetEmployeeEntriesType = ResolveEmployeesSuccess|ResolveEmployeesFail;
+
 @Injectable()
 export class EmployeeEffects {
-    private getEmployeeEntries():Observable<Action> {
+    private getEmployeeEntries():Observable<GetEmployeeEntriesType> {
         return this.employeeRepository.getEmployeeEntries().pipe(
             map((response:any[]) => new ResolveEmployeesSuccess(response)),
             catchError((e:PositionError) => of(new ResolveEmployeesFail(e))),
         );
     }
 
-    private getAddress({lon, lat}:LocationModel):Observable<Action> {
+    private getAddress({lon, lat}:LocationModel):Observable<GetAddressType> {
         return this.geocodingRepository.getAddress(lon, lat).pipe(
             map((response:Address) => new ResolveEmployeeAddressSuccess(response)),
             catchError((e:PositionError) => of(new ResolveEmployeeAddressFail(e))),
@@ -48,24 +51,24 @@ export class EmployeeEffects {
         private geocodingRepository:GeocodingRepository,
     ) {}
 
-    @Effect() InitEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() InitEffect$:Observable<ResolveEmployees> = this.actions$.pipe(
         ofType(INIT),
         map(() => new ResolveEmployees()),
     );
 
-    @Effect() ResolveEmployeeEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveEmployeeEffect$:Observable<GetEmployeeEntriesType> = this.actions$.pipe(
         ofType(ResolveEmployees.type),
         switchMap(() => this.getEmployeeEntries()),
     );
 
-    @Effect() ResolveEmployeeSuccessEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveEmployeeSuccessEffect$:Observable<SetEmployee> = this.actions$.pipe(
         ofType(ResolveEmployeesSuccess.type),
         map(toPayload),
         map((payload:Employee[]) => payload[0]),
         map((payload:Employee) => new SetEmployee(payload)),
     );
 
-    @Effect() ResolveAvatarEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveAvatarEffect$:Observable<SetAvatarUrl> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.avatar),
@@ -73,7 +76,7 @@ export class EmployeeEffects {
         map((payload:string) => new SetAvatarUrl(payload)),
     );
 
-    @Effect() ResolveBackgroundEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveBackgroundEffect$:Observable<SetBackgroundUrl> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.backgroundImage),
@@ -81,7 +84,7 @@ export class EmployeeEffects {
         map((payload:string) => new SetBackgroundUrl(payload)),
     );
 
-    @Effect() SetExpertiseEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetExpertiseEffect$:Observable<SetExpertise> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.expertise),
@@ -89,27 +92,27 @@ export class EmployeeEffects {
         map((payload:string[]) => new SetExpertise(payload)),
     );
 
-    @Effect() SetEmployeeEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetEmployeeEffect$:Observable<ResolveEmployeeAddress> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => payload.location),
         map((payload:LocationModel) => new ResolveEmployeeAddress(payload)),
     );
 
-    @Effect() SetFilenameEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetFilenameEffect$:Observable<SetFilename> = this.actions$.pipe(
         ofType(SetEmployee.type),
         map(toPayload),
         map((payload:Employee) => `${payload.name.replace(/\s/g, '-')}-CV.pdf`),
         map((payload:string) => new SetFilename(payload)),
     );
 
-    @Effect() ResolveEmployeeAddressEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveEmployeeAddressEffect$:Observable<GetAddressType> = this.actions$.pipe(
         ofType(ResolveEmployeeAddress.type),
         map(toPayload),
         switchMap((payload:LocationModel) => this.getAddress(payload)),
     );
 
-    @Effect() ResolveEmployeeAddressSuccessEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveEmployeeAddressSuccessEffect$:Observable<SetEmployeeAddress> = this.actions$.pipe(
         ofType(ResolveEmployeeAddressSuccess.type),
         map(toPayload),
         map((payload:Address) => `${payload.city}, ${payload.country}`),

@@ -30,16 +30,19 @@ export class SignInSuccess implements Action {
 }
 
 export class SignInFail implements Action {
+    static type = SIGN_IN_FAIL;
     readonly type = SIGN_IN_FAIL;
     constructor(public payload:string) {}
 }
 
 export class SetUserData implements Action {
+    static type = SET_USER_DATA;
     readonly type = SET_USER_DATA;
     constructor(public payload:UserData) {}
 }
 
 export class ResetUserData implements Action {
+    static type = RESET_USER_DATA;
     readonly type = RESET_USER_DATA;
 }
 
@@ -54,16 +57,19 @@ export class SignOutSuccess implements Action {
 }
 
 export class SetProgress implements Action {
+    static type = SET_PROGRESS;
     readonly type = SET_PROGRESS;
     constructor(public payload:boolean) {}
 }
 
 export class SetError implements Action {
+    static type = SET_ERROR;
     readonly type = SET_ERROR;
     constructor(public payload:string) {}
 }
 
 export class AuthenticationRequest implements Action {
+    static type = AUTHENTICATION_REQUEST;
     readonly type = AUTHENTICATION_REQUEST;
 }
 
@@ -79,6 +85,7 @@ export class AuthenticationDiscard implements Action {
 }
 
 export class SetAuthenticationDiscard implements Action {
+    static type = SET_AUTHENTICATION_DISCARD;
     readonly type = SET_AUTHENTICATION_DISCARD;
     constructor(public payload:Action) {}
 }

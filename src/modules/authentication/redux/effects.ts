@@ -20,9 +20,8 @@ export class AuthenticationEffects {
 
     /**
      * @Effect watches for the authentication status changes and signs out if necessary
-     * @type {Observable<any>}
      */
-    @Effect() IsAuthenticatedEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() IsAuthenticatedEffect$:Observable<SignOut> = this.actions$.pipe(
         ofType(INIT),
         switchMap(() => this.authenticationRepository.isAuthenticated()),
         filter((isAuthenticated:boolean) => !isAuthenticated),
@@ -31,7 +30,10 @@ export class AuthenticationEffects {
         map(() => new SignOut())
     );
 
-    @Effect() InitResetErrorEffect$:Observable<Action> = this.actions$.pipe(
+    /**
+     * @Effect resets error upon app init
+     */
+    @Effect() InitResetErrorEffect$:Observable<SetError> = this.actions$.pipe(
         ofType(INIT),
         map(() => new SetError(null)),
     );

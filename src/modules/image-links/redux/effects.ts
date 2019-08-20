@@ -3,17 +3,17 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {INIT} from '@ngrx/store';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap} from 'rxjs/operators';
-
-import {Action, toPayload} from 'src/modules/redux';
+import {toPayload} from 'src/modules/redux';
 import {toUrl} from 'src/modules/contentful';
-
 import {ImageLink} from '../image-link.type';
 import {LinksRepository} from '../links.repository';
 import {ResolveLinks, ResolveLinksFail, ResolveLinksSuccess, SetFooterLinks, SetHeaderLinks} from './actions';
 
+export type GetImageLinkEntriesType = ResolveLinksFail|ResolveLinksSuccess;
+
 @Injectable()
 export class ImageLinksEffects {
-    private getImageLinkEntries():Observable<Action> {
+    private getImageLinkEntries():Observable<GetImageLinkEntriesType> {
         return this.linksRepository.getLinks().pipe(
             map((response:ImageLink[]) => new ResolveLinksSuccess(
                 response.map((r:ImageLink) => Object.assign(new ImageLink(), r, {imageUrl: toUrl(r.image)})))
@@ -27,24 +27,24 @@ export class ImageLinksEffects {
         private linksRepository:LinksRepository,
     ) {}
 
-    @Effect() InitEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() InitEffect$:Observable<ResolveLinks> = this.actions$.pipe(
         ofType(INIT),
         map(() => new ResolveLinks()),
     );
 
-    @Effect() ResolveEducationEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() ResolveEducationEffect$:Observable<GetImageLinkEntriesType> = this.actions$.pipe(
         ofType(ResolveLinks.type),
         switchMap(() => this.getImageLinkEntries()),
     );
 
-    @Effect() SetFooterLinksEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetFooterLinksEffect$:Observable<SetFooterLinks> = this.actions$.pipe(
         ofType(ResolveLinksSuccess.type),
         map(toPayload),
         map((payload:ImageLink[]) => payload.filter((image:ImageLink) => image.type === ImageLink.footer)),
         map((payload:ImageLink[]) => new SetFooterLinks(payload)),
     );
 
-    @Effect() SetHeaderLinksEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetHeaderLinksEffect$:Observable<SetHeaderLinks> = this.actions$.pipe(
         ofType(ResolveLinksSuccess.type),
         map(toPayload),
         map((payload:ImageLink[]) => payload.filter((image:ImageLink) => image.type === ImageLink.header)),
