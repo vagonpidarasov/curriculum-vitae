@@ -2,7 +2,7 @@
     https://github.com/ocombe/i18n-demo-no-cli
     https://stackoverflow.com/questions/48426608/angular-5-extract-i18n-and-create-messages-xlf-without-angular-cli
 
-- refactor webpack config files
++ refactor webpack config files
 
 + move header container to the header module
 
@@ -21,8 +21,9 @@
 
 + clean node_modules and use the latest node
 
-- translate the whole app
-    - have en and ru versions as a subdirectories
+- translate the app into es
+    - have en and es versions using firebase
+    - https://stackoverflow.com/questions/47782396/how-to-serve-effective-aot-language-angular-app-in-firebase-hosting
 
 + PWA
 https://medium.com/@nsmirnova/creating-pwa-with-angular-5-part-2-progressifying-the-application-449e3a706129
