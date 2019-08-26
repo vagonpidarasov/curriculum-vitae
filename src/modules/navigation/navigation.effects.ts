@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {map, tap} from 'rxjs/operators';
-import {toPayload, NoDispatchMetadada} from 'src/modules/redux';
+import {toPayload, NoDispatchMetadada} from 'yet-another-redux-helpers';
 import {SetCurrentRoute} from './redux';
 
 @Injectable()

@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-import {toPayload} from 'src/modules/redux';
+import {toPayload} from 'yet-another-redux-helpers';
 import {
     AuthenticationRequest,
     SetAuthenticationDiscard,

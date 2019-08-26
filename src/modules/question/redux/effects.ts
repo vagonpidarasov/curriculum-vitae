@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Store} from '@ngrx/store';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap, withLatestFrom, filter} from 'rxjs/operators';
-import {toPayload} from 'src/modules/redux';
+import {toPayload} from 'yet-another-redux-helpers';
 import {InterviewQuestion} from '../question.type';
 import {InterviewQuestionRepository} from '../question.repository';
 import {FeatureState as QuestionFeatureState} from './feature';

@@ -1,4 +1,4 @@
-import {Action, ReducerType, reduce} from 'src/modules/redux';
+import {Action, ReducerType, reduce} from 'yet-another-redux-helpers';
 import {ImageLinksState} from './state';
 import {setFooterLinks, setHeaderLinks} from './reducers';
 import {SET_HEADER_LINKS, SET_FOOTER_LINKS} from './action-types';

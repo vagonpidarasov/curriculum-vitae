@@ -1,4 +1,4 @@
-import {Action, ReducerType, reduce} from 'src/modules/redux';
+import {Action, ReducerType, reduce} from 'yet-another-redux-helpers';
 import {EducationState} from './state';
 import {setEducation} from './reducers';
 import {SET_EDUCATION} from './action-types';

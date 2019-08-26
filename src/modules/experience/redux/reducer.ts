@@ -1,4 +1,4 @@
-import {Action, ReducerType, reduce} from 'src/modules/redux';
+import {Action, ReducerType, reduce} from 'yet-another-redux-helpers';
 import {ExperienceState} from './state';
 import {setExperience, setCurrentPosition} from './reducers';
 import {

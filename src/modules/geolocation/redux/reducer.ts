@@ -1,5 +1,5 @@
 import {Action} from '@ngrx/store';
-import {ReducerType} from 'src/modules/redux';
+import {ReducerType} from 'yet-another-redux-helpers';
 import {GeolocationState} from './state';
 import {SetGeolocation, ResetGeolocation} from './actions';
 import {SET_GEOLOCATION, RESET_GEOLOCATION} from './action-types';

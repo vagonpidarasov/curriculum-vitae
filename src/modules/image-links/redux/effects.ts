@@ -3,7 +3,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {INIT} from '@ngrx/store';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {toPayload} from 'src/modules/redux';
+import {toPayload} from 'yet-another-redux-helpers';
 import {toUrl} from 'src/modules/contentful';
 import {ImageLink} from '../image-link.type';
 import {LinksRepository} from '../links.repository';

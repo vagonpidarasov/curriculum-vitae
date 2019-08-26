@@ -4,7 +4,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap} from 'rxjs/operators';
 
-import {Action, toPayload} from 'src/modules/redux';
+import {Action, toPayload} from 'yet-another-redux-helpers';
 import {toUrl} from 'src/modules/contentful';
 import {GeocodingRepository, Address} from 'src/modules/geolocation';
 

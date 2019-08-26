@@ -1,4 +1,4 @@
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 import {Experience} from '../experience.model';
 import {
     RESOLVE_EXPERIENCE,

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap} from 'rxjs/operators';
-import {toPayload} from 'src/modules/redux';
+import {toPayload} from 'yet-another-redux-helpers';
 import {GeolocationRepository} from '../geolocation.repository';
 import {ResolveGeolocationFail, ResolveGeolocationSuccess, SetGeolocation, ResolveGeolocation} from './actions';
 

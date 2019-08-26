@@ -2,7 +2,7 @@ import {TestBed} from '@angular/core/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
 import {Router} from '@angular/router';
 import {ReplaySubject, Subscription} from 'rxjs';
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 import {SetCurrentRoute} from './redux';
 import {NavigationEffects} from './navigation.effects';
 

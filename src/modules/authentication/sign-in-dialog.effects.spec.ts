@@ -1,7 +1,7 @@
 import {TestBed} from '@angular/core/testing';
 import {provideMockActions} from '@ngrx/effects/testing';
 import {ReplaySubject, Subscription} from 'rxjs';
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 import {SingInDialogEffects} from './sign-in-dialog.effects';
 import {SignInDialogService} from './sign-in-dialog.service';
 import {AuthenticationRequest, SignInSuccess, AuthenticationDiscard} from './redux';

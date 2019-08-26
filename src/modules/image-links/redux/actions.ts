@@ -1,4 +1,4 @@
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 import {ImageLink} from '../image-link.type';
 import {
     RESOLVE_IMAGE_LINKS,

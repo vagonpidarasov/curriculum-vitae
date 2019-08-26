@@ -4,7 +4,7 @@ import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Store, INIT} from '@ngrx/store';
 import {map, tap, filter, withLatestFrom} from 'rxjs/operators';
 
-import {NoDispatchMetadada, Action} from 'src/modules/redux';
+import {NoDispatchMetadada, Action} from 'yet-another-redux-helpers';
 import {toWepbUrl} from 'src/modules/contentful';
 import {toBackgroundUrl, WINDOW} from 'src/modules/common';
 

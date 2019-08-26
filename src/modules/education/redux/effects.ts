@@ -3,7 +3,7 @@ import {INIT} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {toPayload} from 'src/modules/redux';
+import {toPayload} from 'yet-another-redux-helpers';
 import {Education} from '../education.model';
 import {EducationRepository} from '../education.repository';
 import {ResolveEducations, ResolveEducationsFail, ResolveEducationsSuccess, SetEducation} from './actions';

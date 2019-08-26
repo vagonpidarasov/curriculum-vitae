@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {tap} from 'rxjs/operators';
-import {NoDispatchMetadada} from 'src/modules/redux';
+import {NoDispatchMetadada} from 'yet-another-redux-helpers';
 import {SignInDialogService} from './sign-in-dialog.service';
 import {AuthenticationRequest, SignInSuccess, AuthenticationDiscard} from './redux';
 

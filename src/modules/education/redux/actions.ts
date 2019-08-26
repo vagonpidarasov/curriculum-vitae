@@ -1,4 +1,4 @@
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 import {Education} from '../education.model';
 import {RESOLVE_EDUCATIONS, RESOLVE_EDUCATIONS_FAIL, RESOLVE_EDUCATIONS_SUCCESS, SET_EDUCATION} from './action-types';
 

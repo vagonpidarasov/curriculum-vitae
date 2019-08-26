@@ -3,7 +3,7 @@ import {Store} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable, of} from 'rxjs';
 import {catchError, map, exhaustMap, withLatestFrom, filter, switchMap} from 'rxjs/operators';
-import {Action, toPayload} from 'src/modules/redux';
+import {Action, toPayload} from 'yet-another-redux-helpers';
 import {AuthenticationRepository} from '../authentication.repository';
 import {UserData, SignInPayload} from '../types';
 import {FeatureState as AuthFeatureState} from './feature';

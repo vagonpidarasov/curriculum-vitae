@@ -3,8 +3,7 @@ import {Store, INIT} from '@ngrx/store';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {Observable} from 'rxjs';
 import {map, withLatestFrom, filter, switchMap} from 'rxjs/operators';
-
-import {Action} from 'src/modules/redux';
+import {Action} from 'yet-another-redux-helpers';
 
 import {AuthenticationRepository} from '../authentication.repository';
 import {FeatureState as AuthFeatureState} from './feature';
