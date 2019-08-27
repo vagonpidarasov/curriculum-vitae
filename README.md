@@ -1,55 +1,49 @@
-# Angular Seed without cli [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
+# Curriculum Vitae App [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
 
 ## demo
 
 https://stanislav-beresnev.web.app/
 
-## what
-
-Stanislav Beresnev CV
-
-## why
-
-If you would you like to have more control of your build process then this seed project is for you.
-
 ## features
 
-- basic project architecture  and scaffolds 
+- angular 8
+- angular ivy
 - routing, protected routes
 - tslint configured
-- cli-free i18n
+- i18n
 - JIT (for development) and AOT (for production) versions of the app
-- material design library included
 - redux patterns implemented (using ngrx lib), redux persist, effects
-- unit tests configured using karma/jasmine and headless Chrome
+- unit tests configured using jest
 - code splitting, styles extraction, tree shaking
 - roboto webfont included
 - material design icons font included
-- basic proxy implementation (with authentication stub implemented)
-- cli-free PWA setup
-- geolocation service
+- Progressive Web App setup
 - reset.css from bootstrap
 - firebase authentication and deploy
-- contentful data
+- contentful integration
 - travis ci integration
+- material design library included
 - custom material theme
+- geolocation service
 - reverse geolocation
+
+## env
+
+Before running or building the app `.env` file should be created:
+```
+FIREBASE_API_KEY=your-firebase-api-key
+CONTENTFUL_ACCESS_TOKEN=your-contentful-api-key
+```
 
 ## scripts
 
 - `npm run dev` or `npm start` runs webpack development server, builds dev version of the app, watches files changes
+- `npm run prod` runs webpack development server, builds prod version of the app, watches files changes
 - `npm run prod:build` builds prod version of the app
 - `npm run dev:build` builds dev version of the app
-- `npm run server` runs http server to serve prod version of the app
 - `npm run extract` extracts i18n keys into i18n/messages.xlf
-
-## prod
-
-Production version of the app includes:
-- i18n messages file with translations
-- service worker (script and config) for PWA support
-- tree shaking
-- angular AOT
+- `npm run deploy` deploys the app into firebase hosting
+- `npm run test` runs tslint + jest
 
 ## testing
 
