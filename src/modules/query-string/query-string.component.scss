@@ -1,0 +1,16 @@
+.query-string-form {
+    display: flex;
+    align-items: center;
+
+    .value {
+        flex: 1;
+
+        .mat-form-field {
+            width: 95%;
+        }
+    }
+
+    .actions {
+        display: flex;
+    }
+}

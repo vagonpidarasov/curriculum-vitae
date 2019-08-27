@@ -2,7 +2,7 @@
     mat-dialog-title
     class="sing-in-dialog-title"
     [class.mat-error]="authenticationStore.error | async"
-    [class.mat-progress]="authenticationStore.isInProgress | async"
+    [class.in-progress]="authenticationStore.isInProgress | async"
     [class.animation-shake]="authenticationStore.error | async"
 >Sign In</h2>
 <mat-dialog-content>

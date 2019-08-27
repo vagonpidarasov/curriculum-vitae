@@ -1,15 +1,16 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <a routerLink="/" routerLinkActive="active" i18n>Home</a>
-        <a routerLink="/private" routerLinkActive="active">Private</a>
+        <a routerLink="/" routerLinkActive="active" i18n>Overview</a>
+        <a routerLink="/interview-questions" routerLinkActive="active" i18n>Interview</a>
 
         <span class="flex-auto"></span>
 
         <button
-            *ngIf="!isAuthenticated"
+            *ngIf="false"
             mat-button
             class="sign-in-button"
             (click)="signIn()"
+            i18n
         >Sign In</button>
 
         <button
@@ -17,6 +18,8 @@
             mat-button
             class="sign-out-button"
             (click)="signOut()"
+            i18n
         >Sign Out</button>
+        <social></social>
     </mat-toolbar-row>
 </mat-toolbar>

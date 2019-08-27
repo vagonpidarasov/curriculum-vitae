@@ -1,0 +1,14 @@
+<mat-card class="footer">
+    <mat-card-content>
+        <div class="logo-container">
+            <a
+                *ngFor="let link of imageLinksStore.footerLinks | async"
+                [href]="link.url"
+                target="_blank"
+                rel="noopener"
+                class="logo-entry"
+                [style.background-image]="link.imageUrl | backgroundImageUrl"
+            ></a>
+        </div>
+    </mat-card-content>
+</mat-card>

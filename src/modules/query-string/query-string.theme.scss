@@ -1,0 +1,7 @@
+@mixin query-string($primary-color) {
+    query-string {
+        .query-string-prefix-icon {
+            color: $primary-color;
+        }
+    }
+}

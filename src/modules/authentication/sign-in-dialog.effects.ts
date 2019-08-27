@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {tap} from 'rxjs/operators';
-
-import {NoDispatchMetadada} from 'src/modules/redux';
-
+import {NoDispatchMetadada} from 'yet-another-redux-helpers';
 import {SignInDialogService} from './sign-in-dialog.service';
-import {AUTHENTICATION_REQUEST, SIGN_IN_SUCCESS, AUTHENTICATION_DISCARD} from './redux';
+import {AuthenticationRequest, SignInSuccess, AuthenticationDiscard} from './redux';
 
 @Injectable()
 export class SingInDialogEffects {
@@ -18,7 +16,7 @@ export class SingInDialogEffects {
      * @Effect opens dialog upon AUTHENTICATION_REQUEST
      */
     @Effect(NoDispatchMetadada) OpenDialogEffect$ = this.actions$.pipe(
-        ofType(AUTHENTICATION_REQUEST),
+        ofType(AuthenticationRequest.type),
         tap(() => this.signInDialogService.open()),
     );
 
@@ -26,7 +24,7 @@ export class SingInDialogEffects {
      * @Effect closes dialog upon AUTHENTICATION_DISCARD or SIGN_IN_SUCCESS
      */
     @Effect(NoDispatchMetadada) CloseDialogEffect$ = this.actions$.pipe(
-        ofType(SIGN_IN_SUCCESS, AUTHENTICATION_DISCARD),
+        ofType(SignInSuccess.type, AuthenticationDiscard.type),
         tap(() => this.signInDialogService.close()),
     );
 }

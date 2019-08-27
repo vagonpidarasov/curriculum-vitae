@@ -2,8 +2,6 @@ import {Injectable} from '@angular/core';
 import {Store, select} from '@ngrx/store';
 import {Observable} from 'rxjs';
 
-import {Action} from 'src/modules/redux';
-
 import {FeatureState} from './feature';
 import {isAuthenticated, isInProgress, error, userData} from './selectors';
 import {SignIn, SignOut, SetError, AuthenticationRequest, AuthenticationDiscard} from './actions';
@@ -41,8 +39,8 @@ export class AuthenticationStore {
         this.store.dispatch(new SignOut());
     }
 
-    authRequest(payload:Action = null):void {
-        this.store.dispatch(new AuthenticationRequest(payload));
+    authRequest():void {
+        this.store.dispatch(new AuthenticationRequest());
     }
 
     authDiscard():void {

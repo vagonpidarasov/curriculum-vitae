@@ -1,0 +1,9 @@
+export const RESOLVE_INTERVIEW_QUESTIONS = 'question:resolve';
+export const RESOLVE_INTERVIEW_QUESTIONS_SUCCESS = 'question:resolve-success';
+export const RESOLVE_INTERVIEW_QUESTIONS_FAIL = 'question:resolve-fail';
+export const SET_INTERVIEW_QUESTIONS = 'question:set';
+export const SET_INTERVIEW_QUESTIONS_TOTAL_LENGTH = 'question:set-total-length';
+export const SET_IN_PROGRESS = 'question:set-progress';
+export const RESET_IN_PROGRESS = 'question:reset-progress';
+export const SET_PAGE_INDEX = 'question:set-page-index';
+export const SET_SEARCH_QUERY = 'question:set-search-query';

@@ -2,11 +2,8 @@ import {Injectable} from '@angular/core';
 import {Router} from '@angular/router';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {map, tap} from 'rxjs/operators';
-
-import {toPayload, NoDispatchMetadada} from 'src/modules/redux';
-
-import {SET_CURRENT_ROUTE} from './redux';
-import {toUrl} from './to-url';
+import {toPayload, NoDispatchMetadada} from 'yet-another-redux-helpers';
+import {SetCurrentRoute} from './redux';
 
 @Injectable()
 export class NavigationEffects {
@@ -15,9 +12,8 @@ export class NavigationEffects {
      * @Effect performs navigation upon currentRoute change
      */
     @Effect(NoDispatchMetadada) SetCurrentRouteEffect$ = this.actions$.pipe(
-        ofType(SET_CURRENT_ROUTE),
+        ofType(SetCurrentRoute.type),
         map(toPayload),
-        map(toUrl),
         tap((url:string) => this.router.navigateByUrl(url)),
     );
 }

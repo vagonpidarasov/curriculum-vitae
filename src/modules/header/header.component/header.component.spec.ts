@@ -44,12 +44,12 @@ describe('HeaderComponent', () => {
         }
     });
 
-    it('should show sign-in button by default', () => {
+    it('should not show sign-in button', () => {
         fixture.detectChanges();
-        signInButton = debugElement.query(By.css('button.sign-in-button')).nativeElement;
+        signInButton = debugElement.query(By.css('button.sign-in-button'));
         signOutButton = debugElement.query(By.css('button.sign-out-button'));
 
-        expect(signInButton.textContent).toEqual('Sign In');
+        expect(signInButton).toBeNull();
         expect(signOutButton).toBeNull();
     });
 
@@ -63,7 +63,7 @@ describe('HeaderComponent', () => {
         expect(signInButton).toBeNull();
     });
 
-    it('should emit sign-in request when sign-in button is clicked', () => {
+    it.skip('should emit sign-in request when sign-in button is clicked', () => {
         let emitted = false;
 
         fixture.detectChanges();

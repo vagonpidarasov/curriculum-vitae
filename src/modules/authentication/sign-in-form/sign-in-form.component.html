@@ -1,4 +1,4 @@
-<form [formGroup]="signInForm" (ngSubmit)="submit()">
+<form [formGroup]="signInForm" (ngSubmit)="submit()" class="sing-in-form">
     <section>
         <mat-form-field>
             <mat-placeholder>Username</mat-placeholder>
@@ -29,13 +29,13 @@
         </mat-form-field>
     </section>
 
-    <section class="login-error flex items-center justify-around">
+    <section class="login-error">
         <div *ngIf="!isInProgress && !error">&nbsp;</div>
         <mat-progress-bar *ngIf="isInProgress" mode="indeterminate"></mat-progress-bar>
         <mat-error *ngIf="error" class="animation-shake">{{error}}</mat-error>
     </section>
 
-    <section class="flex">
+    <section class="actions">
         <button
             mat-raised-button
             type="submit"

@@ -1,1 +1,29 @@
-<blog-post-list></blog-post-list>
+<div class="cv-sections-container">
+    <div class="cv-section employee-info">
+        <employee-container>
+            <span class="flex-auto"></span>
+            <download-pdf [filename]="employeeStore.filename | async">
+                <print-summary-container></print-summary-container>
+            </download-pdf>
+        </employee-container>
+    </div>
+
+    <div class="cv-section education-info">
+        <h2 class="cv-section-title" i18n>Education</h2>
+        <education-container></education-container>
+    </div>
+
+    <div class="cv-section current-position">
+        <h2 class="cv-section-title" i18n>Position</h2>
+        <current-position-container></current-position-container>
+    </div>
+
+    <div class="cv-section experience-info">
+        <h2 class="cv-section-title" i18n>Experience</h2>
+        <experience-container></experience-container>
+    </div>
+
+    <div class="footer">
+        <footer></footer>
+    </div>
+</div>

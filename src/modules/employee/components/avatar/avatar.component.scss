@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.avatar-container {
+    width: 300px;
+    height: 300px;
+    border-radius: 150px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .avatar-image {
+        &.in-progress {
+            opacity: 0;
+        }
+    }
+}
+
+.mat-progress-spinner {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+}

@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+@import './modules/authentication/authentication.theme.scss';
+@import './modules/query-string/query-string.theme.scss';
+@import './modules/experience/experience.theme.scss';
+@import './modules/footer/footer.theme.scss';
+@import './modules/question/question.theme.scss';
+@import './routing/home-page/container/home-page.theme.scss';
+
+$primary-color-set: (
+    100: #51bc56,
+    500: #339933,
+    700: #308433,
+    contrast: (
+        100: $dark-primary-text,
+        500: $light-primary-text,
+        700: $light-primary-text,
+    )
+);
+
+$primary-palette: mat-palette($primary-color-set);
+$accent-palette: mat-palette($mat-pink);
+$warn-palette: mat-palette($mat-red);
+$primary-color: map-get($primary-color-set, 500);
+$theme: mat-light-theme($primary-palette, $accent-palette, $warn-palette);
+
+@include mat-core();
+@include angular-material-theme($theme);
+
+a, a:hover {
+    color: $primary-color;
+}
+
+.mat-expansion-indicator::after {
+    color: $primary-color;
+}
+
+.mat-card-subtitle {
+    .subtitle-link {
+        color: inherit;
+    }
+}
+
+.mat-app-background {
+    background-color: #e5e5e5;
+}
+
+@include authentication($primary-color);
+@include question($primary-color);
+@include home-page($primary-color);
+@include footer($primary-color);
+@include query-string($primary-color);
+@include experience($dark-secondary-text);

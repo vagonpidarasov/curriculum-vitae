@@ -3,11 +3,14 @@ import {HttpClientModule} from '@angular/common/http';
 
 import {AuthenticationRepository} from 'src/modules/authentication';
 import {AuthenticationRepositoryHttp} from './authentication.repository';
+import {GeocodingRepository} from 'src/modules/geolocation';
+import {GeocodingRepositoryHttp} from './geocoding.repository';
 
 @NgModule({
     imports: [HttpClientModule],
     providers: [
-        {provide: AuthenticationRepository, useClass: AuthenticationRepositoryHttp},
+        {provide: GeocodingRepository, useClass: GeocodingRepositoryHttp},
+        // {provide: AuthenticationRepository, useClass: AuthenticationRepositoryHttp},
     ],
 })
 export class HttpRepositoryModule {}

@@ -12,3 +12,6 @@ export const RESET_USER_DATA = 'authentication:reset-user-data';
 
 export const AUTHENTICATION_REQUEST = 'authentication:authentication-request';
 export const AUTHENTICATION_DISCARD = 'authentication:authentication-discard';
+
+export const SET_AUTHENTICATION_REQUEST = 'authentication:set-authentication-request';
+export const SET_AUTHENTICATION_DISCARD = 'authentication:set-authentication-discard';

@@ -1,1 +1,27 @@
+.cv-sections-container {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    max-width: 640px;
+    margin: 0 auto;
 
+    .cv-section {
+        margin-top: 24px;
+    }
+
+    .footer {
+        margin-top: 1.5rem;
+    }
+
+    .cv-section.employee-info {
+        margin-top: 0;
+    }
+
+    .cv-section-title {
+        padding-left: 16px;
+    }
+}
+
+.flex-auto {
+    flex: 1;
+}

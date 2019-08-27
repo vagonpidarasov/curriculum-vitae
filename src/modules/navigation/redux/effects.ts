@@ -1,15 +1,17 @@
 import {Injectable} from '@angular/core';
-import {ActivatedRouteSnapshot} from '@angular/router';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ROUTER_CANCEL} from '@ngrx/router-store';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-import {Action, toPayload} from 'src/modules/redux';
-import {AuthenticationRequest, SIGN_OUT} from 'src/modules/authentication';
-
-import {toCanceledRoute} from '../to-canceled-route';
-import {toDefaultRoute} from '../to-default-route';
+import {toPayload} from 'yet-another-redux-helpers';
+import {
+    AuthenticationRequest,
+    SetAuthenticationDiscard,
+    SetAuthenticationRequest,
+    SignOut,
+} from 'src/modules/authentication';
+import {toCanceledRouteUrl} from '../to-canceled-route-url';
+import {toDefaultRouteUrl} from '../to-default-route-url';
 import {SetCurrentRoute} from './actions';
 
 @Injectable()
@@ -17,20 +19,40 @@ export class AuthenticationEffects {
     constructor(private actions$:Actions) {}
 
     /**
-     * @Effect saves canceled route as a SetCurrentRoute action
-     * @type {Observable<any>}
+     * @Effect saves current route to be fired once auth is discarded
      */
-    @Effect() ProtectedRouteRequestEffect$:Observable<Action> = this.actions$.pipe(
+    @Effect() SetAuthDiscardEffect$:Observable<SetAuthenticationDiscard> = this.actions$.pipe(
         ofType(ROUTER_CANCEL),
-        map(toPayload),
-        map(toCanceledRoute),
-        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
-        map((action:SetCurrentRoute) => new AuthenticationRequest(action)),
+        map(toDefaultRouteUrl),
+        map((route:string) => new SetCurrentRoute(route)),
+        map((action:SetCurrentRoute) => new SetAuthenticationDiscard(action)),
     );
 
-    @Effect() SignOutEffect$:Observable<Action> = this.actions$.pipe(
-        ofType(SIGN_OUT),
-        map(toDefaultRoute),
-        map((route:ActivatedRouteSnapshot) => new SetCurrentRoute(route)),
+    /**
+     * @Effect saves canceled route to be fired once auth is succeeded
+     */
+    @Effect() SetAuthRequestEffect$:Observable<SetAuthenticationRequest> = this.actions$.pipe(
+        ofType(ROUTER_CANCEL),
+        map(toPayload),
+        map(toCanceledRouteUrl),
+        map((payload:string) => new SetCurrentRoute(payload)),
+        map((action:SetCurrentRoute) => new SetAuthenticationRequest(action)),
+    );
+
+    /**
+     * @Effect fires AuthRequest action when protected route is navigated
+     */
+    @Effect() AuthRequestActionEffect$:Observable<AuthenticationRequest> = this.actions$.pipe(
+        ofType(ROUTER_CANCEL),
+        map(() => new AuthenticationRequest()),
+    );
+
+    /**
+     * @Effect navigates to the default route upon sign out
+     */
+    @Effect() SignOutEffect$:Observable<SetCurrentRoute> = this.actions$.pipe(
+        ofType(SignOut.type),
+        map(toDefaultRouteUrl),
+        map((route:string) => new SetCurrentRoute(route)),
     );
 }

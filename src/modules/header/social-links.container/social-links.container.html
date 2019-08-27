@@ -1,0 +1,9 @@
+<a
+    *ngFor="let link of imageLinksStore.headerLinks | async"
+    [href]="link.url"
+    target="_blank"
+    rel="noopener"
+    class="social-link"
+>
+    <svg-icon class="svg-icon" [src]="link.imageUrl"></svg-icon>
+</a>

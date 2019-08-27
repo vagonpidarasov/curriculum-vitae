@@ -1,16 +1,18 @@
 {
     "compilerOptions": {
-        "target": "es5",
+        "baseUrl": "./",
+        "target": "es6",
         "module": "es2015",
         "lib": ["es2015", "dom"],
         "moduleResolution": "node",
-        "types": ["node", "webpack", "core-js", "rx", "jasmine"],
+        "types": ["node", "webpack", "core-js", "rx", "jest", "hammerjs"],
         "typeRoots": ["node_modules/@types"],
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "sourceMap": true,
         "noEmitHelpers": true,
-        "baseUrl": "./"
+        "importHelpers": true,
+        "esModuleInterop": true
     },
 
     "exclude": [
@@ -21,6 +23,11 @@
         "resolveGlobs": true,
         "forkChecker": true
     },
+
+    "angularCompilerOptions": {
+        "enableIvy": true
+    },
+
     "compileOnSave": false,
     "buildOnSave": false
 }

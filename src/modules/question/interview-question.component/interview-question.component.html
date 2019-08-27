@@ -1,0 +1,17 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3>{{interviewQuestion.question}}</h3>
+        </mat-card-title>
+        <mat-card-subtitle *ngIf="interviewQuestion.keywordsArray?.length > 0">
+            <a
+                *ngFor="let keyword of interviewQuestion.keywordsArray"
+                (click)="keywordClick.emit(keyword)"
+                class="mat-primary-hover-color keyword"
+            >#{{keyword}}&nbsp;</a>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <markdown ngPreserveWhitespaces [data]="interviewQuestion.answer"></markdown>
+    </mat-card-content>
+</mat-card>
