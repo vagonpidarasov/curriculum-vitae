@@ -1,4 +1,4 @@
-# Curriculum Vitae App [![Build Status](https://travis-ci.org/vagonpidarasov/angular-seed.svg?branch=master)](https://travis-ci.org/vagonpidarasov/angular-seed)
+# Curriculum Vitae App [![Build Status](https://travis-ci.org/vagonpidarasov/curriculum-vitae.svg?branch=master)](https://travis-ci.org/vagonpidarasov/curriculum-vitae)
 
 ## demo
 
