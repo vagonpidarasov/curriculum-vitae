@@ -3,18 +3,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {User} from 'firebase';
 import {Observable, Observer} from 'rxjs';
 import {map} from 'rxjs/operators';
-
-import {
-    AuthenticationRepository,
-    SignInPayload,
-    UserData,
-} from 'src/modules/authentication';
-import {
-    SignInError,
-    SignInResponse,
-    toAuthErrorCode,
-    toFlatUserData,
-} from 'src/modules/firebase';
+import {AuthenticationRepository, SignInPayload, UserData} from 'src/modules/authentication';
+import {SignInError, SignInResponse, toAuthErrorCode, toFlatUserData} from 'src/modules/firebase';
 
 @Injectable()
 export class AuthenticationRepositoryFirebase implements  AuthenticationRepository {
