@@ -33,6 +33,8 @@ Before running or building the app `.env` file should be created:
 ```
 FIREBASE_API_KEY=your-firebase-api-key
 CONTENTFUL_ACCESS_TOKEN=your-contentful-api-key
+HERE_COM_APP_ID=here-com-app-id
+HERE_COM_APP_CODE=here-com-app-code
 ```
 
 ## scripts
