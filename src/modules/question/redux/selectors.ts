@@ -3,7 +3,7 @@ import {QuestionState} from './state';
 import {InterviewQuestion} from '../question.type';
 
 export function getState(state:FeatureState):QuestionState {
-    return <QuestionState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function questions(state:FeatureState):InterviewQuestion[] {

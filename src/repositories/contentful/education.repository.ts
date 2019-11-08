@@ -11,6 +11,6 @@ export class EducationRepositoryContentful implements EducationRepository {
     constructor(private client:ContentfulClient) {}
 
     getEducationEntries():Observable<Education[]> {
-        return <Observable<Education[]>>this.client.getEntries<Education>(EDUCATION_CONTENT_TYPE);
+        return (this.client.getEntries<Education>(EDUCATION_CONTENT_TYPE) as Observable<Education[]>);
     }
 }

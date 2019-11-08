@@ -11,7 +11,6 @@ export class LinksRepositoryContentful implements LinksRepository {
     constructor(private client:ContentfulClient) {}
 
     getLinks():Observable<ImageLink[]> {
-        return <Observable<ImageLink[]>>
-            this.client.getEntries<ImageLink>(LINK_CONTENT_TYPE);
+        return (this.client.getEntries<ImageLink>(LINK_CONTENT_TYPE) as Observable<ImageLink[]>);
     }
 }

@@ -21,10 +21,10 @@ module.exports = {
         new MiniCssExtractPlugin({filename: '[name].css'}),
         new HTMLInlineCSSWebpackPlugin(),
         new CheckerPlugin(),
-        new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            reportFilename: 'bundle-size.html',
-            openAnalyzer: false,
-        }),
+        // new BundleAnalyzerPlugin({
+        //     analyzerMode: 'static',
+        //     reportFilename: 'bundle-size.html',
+        //     openAnalyzer: false,
+        // }),
     ],
 };

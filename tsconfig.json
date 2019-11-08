@@ -12,7 +12,9 @@
         "sourceMap": true,
         "noEmitHelpers": true,
         "importHelpers": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "downlevelIteration": true
     },
 
     "exclude": [

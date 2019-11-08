@@ -23,7 +23,7 @@ export type GetQuestionEntriesType = ResolveQuestionsFail|ResolveQuestionsSucces
 
 @Injectable()
 export class InterviewQuestionsEffects {
-    private getQuestionEntries(payload:{skip:number, limit:number, query:string}):Observable<GetQuestionEntriesType> {
+    private getQuestionEntries(payload:{skip:number; limit:number; query:string}):Observable<GetQuestionEntriesType> {
         return this.interviewQuestionRepository.getQuestions(payload.query, payload.limit, payload.skip).pipe(
             map((response:InterviewQuestion[]) => new ResolveQuestionsSuccess(response)),
             catchError((e:PositionError) => of(new ResolveQuestionsFail(e))),

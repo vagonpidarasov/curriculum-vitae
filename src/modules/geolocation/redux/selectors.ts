@@ -2,7 +2,7 @@ import {FeatureState, FeatureStateName} from './feature';
 import {GeolocationState} from './state';
 
 export function getState(state:FeatureState):GeolocationState {
-    return <GeolocationState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function position(state:FeatureState):Position {

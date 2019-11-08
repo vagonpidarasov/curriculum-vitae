@@ -11,6 +11,6 @@ export class ExperienceRepositoryContentful implements ExperienceRepository {
     constructor(private client:ContentfulClient) {}
 
     getExperienceEntries():Observable<Experience[]> {
-        return <Observable<Experience[]>>this.client.getEntries<Experience>(EXPERIENCE_CONTENT_TYPE);
+        return (this.client.getEntries<Experience>(EXPERIENCE_CONTENT_TYPE) as Observable<Experience[]>);
     }
 }

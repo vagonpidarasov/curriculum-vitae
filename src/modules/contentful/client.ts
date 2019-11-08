@@ -28,6 +28,7 @@ export class ContentfulClient {
     ):Observable<T[]|ContentfulResponsePayload> {
         const locale = toNormalizedLocale(this.locale);
         return new Observable((observer:Observer<T[]|ContentfulResponsePayload>) => {
+            // eslint-disable-next-line @typescript-eslint/camelcase
             this.client.getEntries<T>({content_type: contentType, query, limit, skip, order, locale})
                 .then((response:EntryCollection<T>) => {
                     if (withMetadata) {

@@ -11,14 +11,13 @@ export class InterviewQuestionRepositoryContentful implements InterviewQuestionR
     constructor(private client:ContentfulClient) {}
 
     getQuestions(query:string, limit:number, skip:number):Observable<InterviewQuestion[]> {
-        return <Observable<InterviewQuestion[]>>
-            this.client.getEntries<InterviewQuestion>(
-                QUESTION_CONTENT_TYPE,
-                true,
-                query,
-                limit,
-                skip,
-                '-sys.createdAt',
-            );
+        return (this.client.getEntries<InterviewQuestion>(
+            QUESTION_CONTENT_TYPE,
+            true,
+            query,
+            limit,
+            skip,
+            '-sys.createdAt',
+        ) as Observable<InterviewQuestion[]>);
     }
 }

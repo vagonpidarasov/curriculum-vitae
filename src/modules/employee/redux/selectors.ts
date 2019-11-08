@@ -3,7 +3,7 @@ import {EmployeeState} from './state';
 import {Employee} from '../employee.model';
 
 export function getState(state:FeatureState):EmployeeState {
-    return <EmployeeState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function employee(state:FeatureState):Employee {

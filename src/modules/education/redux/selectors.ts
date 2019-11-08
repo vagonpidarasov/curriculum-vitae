@@ -3,7 +3,7 @@ import {EducationState} from './state';
 import {Education} from '../education.model';
 
 export function getState(state:FeatureState):EducationState {
-    return <EducationState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function education(state:FeatureState):Education {

@@ -3,7 +3,7 @@ import {ImageLinksState} from './state';
 import {ImageLink} from '../image-link.type';
 
 export function getState(state:FeatureState):ImageLinksState {
-    return <ImageLinksState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function footerLinks(state:FeatureState):ImageLink[] {

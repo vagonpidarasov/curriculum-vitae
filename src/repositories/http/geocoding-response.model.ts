@@ -31,7 +31,7 @@ export interface GeocodingResponse {
                         BottomRight:{
                             Latitude:number;
                             Longitude:number;
-                        }
+                        };
                     };
                     Address:{
                         Label:string;
@@ -44,7 +44,7 @@ export interface GeocodingResponse {
                         AdditionalData:[{
                             value:string;
                             key:string;
-                        }]
+                        }];
                     };
                     MapReference:{
                         ReferenceId:string;

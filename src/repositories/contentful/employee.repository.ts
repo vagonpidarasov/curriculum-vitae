@@ -11,6 +11,6 @@ export class EmployeeRepositoryContentful implements EmployeeRepository {
     constructor(private client:ContentfulClient) {}
 
     getEmployeeEntries():Observable<Employee[]> {
-        return <Observable<Employee[]>>this.client.getEntries<Employee>(EMPLOYEE_CONTENT_TYPE);
+        return (this.client.getEntries<Employee>(EMPLOYEE_CONTENT_TYPE) as Observable<Employee[]>);
     }
 }

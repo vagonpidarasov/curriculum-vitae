@@ -3,7 +3,7 @@ import {ExperienceState} from './state';
 import {Experience} from '../experience.model';
 
 export function getState(state:FeatureState):ExperienceState {
-    return <ExperienceState>state[FeatureStateName];
+    return state[FeatureStateName];
 }
 
 export function experience(state:FeatureState):Experience[] {

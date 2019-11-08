@@ -38,11 +38,11 @@ export class GeolocationComponent implements OnChanges {
     buttonDisabled:boolean = false;
 
     get longitude():number {
-        return this.position ? (<Position>this.position).coords.longitude : null;
+        return this.position ? (this.position).coords.longitude : null;
     }
 
     get latitude():number {
-        return this.position ? (<Position>this.position).coords.latitude : null;
+        return this.position ? (this.position).coords.latitude : null;
     }
 
     ngOnChanges(changes:SimpleChanges) {

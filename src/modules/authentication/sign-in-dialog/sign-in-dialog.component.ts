@@ -6,7 +6,7 @@ import {filter} from 'rxjs/operators';
 import {SignInPayload} from '../types';
 import {AuthenticationStore} from '../redux';
 
-export const EscapeKey:{key:string, keyCode:number} = {
+export const EscapeKey:{key:string; keyCode:number} = {
     key: 'Escape',
     keyCode: 27,
 };
