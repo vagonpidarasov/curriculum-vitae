@@ -6,7 +6,6 @@ import {
     SetError,
     SetAuthenticationRequest,
     SetAuthenticationDiscard,
-    ResetUserData,
 } from './actions';
 
 export function setUserData(state:AuthenticationState, action:SetUserData):AuthenticationState {
@@ -15,7 +14,7 @@ export function setUserData(state:AuthenticationState, action:SetUserData):Authe
     return state;
 }
 
-export function resetUserData(state:AuthenticationState, action:ResetUserData):AuthenticationState {
+export function resetUserData(state:AuthenticationState):AuthenticationState {
     state.isAuthenticated = false;
     state.userData = null;
     return state;

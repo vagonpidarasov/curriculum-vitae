@@ -1,15 +1,15 @@
 import {Action} from '@ngrx/store';
 import {ReducerType} from 'yet-another-redux-helpers';
 import {GeolocationState} from './state';
-import {SetGeolocation, ResetGeolocation} from './actions';
+import {SetGeolocation} from './actions';
 import {SET_GEOLOCATION, RESET_GEOLOCATION} from './action-types';
 
-export function setGeolocation(state:GeolocationState, action:SetGeolocation) {
+export function setGeolocation(state:GeolocationState, action:SetGeolocation):GeolocationState {
     state.position = action.payload;
     return state;
 }
 
-export function resetGeolocation(state:GeolocationState, action:ResetGeolocation) {
+export function resetGeolocation(state:GeolocationState):GeolocationState {
     state.position = null;
     return state;
 }

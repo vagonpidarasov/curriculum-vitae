@@ -4,16 +4,9 @@ import {
     EventEmitter,
     Input,
     ChangeDetectionStrategy,
-    SimpleChanges,
     OnChanges,
 } from '@angular/core';
-
-import {
-    trigger,
-    style,
-    animate,
-    transition,
-} from '@angular/animations';
+import {trigger, style, animate, transition} from '@angular/animations';
 
 @Component({
     selector: 'geolocation',
@@ -45,7 +38,7 @@ export class GeolocationComponent implements OnChanges {
         return this.position ? (this.position).coords.latitude : null;
     }
 
-    ngOnChanges(changes:SimpleChanges) {
+    ngOnChanges() {
         this.buttonDisabled = false;
     }
 

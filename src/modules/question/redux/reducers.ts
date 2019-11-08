@@ -2,8 +2,6 @@ import {InterviewQuestion} from '../question.type';
 import {QuestionState} from './state';
 import {
     SetQuestions,
-    SetProgress,
-    ResetProgress,
     SetQuestionsTotalLength,
     SetPageIndex,
     SetSearchQuery,
@@ -17,12 +15,12 @@ export function setQuestions(state:QuestionState, action:SetQuestions) {
     return state;
 }
 
-export function setProgress(state:QuestionState, action:SetProgress) {
+export function setProgress(state:QuestionState) {
     state.inProgress = true;
     return state;
 }
 
-export function resetProgress(state:QuestionState, action:ResetProgress) {
+export function resetProgress(state:QuestionState) {
     state.inProgress = false;
     return state;
 }

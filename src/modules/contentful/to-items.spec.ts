@@ -1,4 +1,4 @@
-import {Entry, EntryCollection} from 'contentful';
+import {EntryCollection} from 'contentful';
 import {toItems} from './to-items';
 import entryCollection from './mock/get-entries.response.json';
 

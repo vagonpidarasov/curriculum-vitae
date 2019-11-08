@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 
 import {FeatureState} from './feature';
 import {questions, inProgress, totalLength, pageSize, pageIndex} from './selectors';
-import {ResolveQuestions, SetPageIndex, SetSearchQuery} from './actions';
+import {SetPageIndex, SetSearchQuery} from './actions';
 import {InterviewQuestion} from '../question.type';
 
 @Injectable()
