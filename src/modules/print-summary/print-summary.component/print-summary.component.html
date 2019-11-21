@@ -33,27 +33,26 @@
 </section>
 
 <section *ngIf="position" class="position">
-    <h1 style="color:#339933;">Position</h1>
+    <h1 style="color:#339933;">Current position</h1>
     <h2>{{position.position}}</h2>
-    <h4 style="color:#888;">{{position.companyName}}</h4>
+    <h4 style="color:#888;">
+        <span>{{position.companyName}}</span>,
+        <span>from</span>&nbsp;
+        <span>{{position.startDate | date:'MMMM yyyy'}}</span>&nbsp;
+    </h4>
     <markdown ngPreserveWhitespaces [data]="position.description"></markdown>
 
-    <h1 style="color:#339933;">Experience</h1>
+    <h1 style="color:#339933;">Previous experience</h1>
 
-    <!-- TODO: reuse existing experience component -->
     <div *ngFor="let exp of experience">
-        <span>{{exp.period | monthDesctruct}}</span>&nbsp;
-        <span>as</span>&nbsp;
-        <strong>{{exp.position}}</strong>&nbsp;
-        <span>at</span>&nbsp;
-        <span style="color:#888;">{{exp.companyName}}</span>&nbsp;
-    </div>
-</section>
-
-<section>
-    <div *ngFor="let exp of experience | slice:0:3">
         <h2>{{exp.position}}</h2>
-        <h4 style="color:#888;">{{exp.companyName}}</h4>
+        <h4 style="color:#888;">
+            <span>{{exp.companyName}}</span>,
+            <span>from</span>&nbsp;
+            <span>{{exp.startDate | date:'MMMM yyyy'}}</span>&nbsp;
+            <span>to</span>&nbsp;
+            <span>{{exp.startDate | dateIncr:exp.period | date:'MMMM yyyy'}}</span>&nbsp;
+        </h4>
         <markdown ngPreserveWhitespaces [data]="exp.description"></markdown>
     </div>
 </section>
