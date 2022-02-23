@@ -1,4 +1,5 @@
 import {Component, Output, EventEmitter, Input, ChangeDetectionStrategy} from '@angular/core';
+import {Employee} from '../../employee';
 
 @Component({
     selector: 'header',
@@ -8,6 +9,7 @@ import {Component, Output, EventEmitter, Input, ChangeDetectionStrategy} from '@
 })
 export class HeaderComponent  {
     @Input() isAuthenticated:boolean = false;
+    @Input() employee:Employee = null;
     @Output() signInRequest:EventEmitter<null> = new EventEmitter();
     @Output() signOutRequest:EventEmitter<null> = new EventEmitter();
 

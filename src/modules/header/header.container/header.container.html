@@ -1,4 +1,5 @@
 <header
+    [employee]="employeeStore.employee | async"
     [isAuthenticated]="authenticationStore.isAuthenticated | async"
     (signInRequest)="authenticationStore.authRequest()"
     (signOutRequest)="authenticationStore.signOut()"

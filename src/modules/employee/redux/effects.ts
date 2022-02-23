@@ -113,7 +113,7 @@ export class EmployeeEffects {
     @Effect() ResolveEmployeeAddressSuccessEffect$:Observable<SetEmployeeAddress> = this.actions$.pipe(
         ofType(ResolveEmployeeAddressSuccess.type),
         map(toPayload),
-        map((payload:Address) => `${payload.city}, ${payload.country}`),
+        map((payload:Address) => payload.city),
         map((payload:string) => new SetEmployeeAddress(payload)),
     );
 }

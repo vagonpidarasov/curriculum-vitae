@@ -13,4 +13,5 @@ export class Employee {
     expertise:string;
     emailAddress:string;
     phoneNumber:string;
+    linkedin:string;
 }

@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges,
 import {trigger, style, animate, transition, query, stagger, animateChild} from '@angular/animations';
 import {Employee} from '../../employee.model';
 
-export const EXPERTISE_LIMIT = 10;
+export const EXPERTISE_LIMIT = 6;
 
 @Component({
     selector: 'employee-overview',

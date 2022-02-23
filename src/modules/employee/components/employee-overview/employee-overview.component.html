@@ -19,17 +19,19 @@
             [selected]="match[i]"
         >{{skill}}</mat-chip>
 
-        <button
-            *ngIf="isToggleShown"
-            mat-icon-button
-            type="button"
+        <mat-chip
             color="primary"
+            [selectable]="false"
+            (click)="toggleExpertise()"
+            [selected]="true"
             class="toggle"
             [class.expanded]="expertiseExpanded"
             [class.collapsed]="!expertiseExpanded"
-            (click)="toggleExpertise()"
         >
-            <mat-icon matTooltipPosition="after">more</mat-icon>
-        </button>
+            <span *ngIf="!expertiseExpanded">and more</span>
+            <span *ngIf="expertiseExpanded">collapse</span>
+            &nbsp;
+            <mat-icon>more</mat-icon>
+        </mat-chip>
     </mat-chip-list>
 </div>

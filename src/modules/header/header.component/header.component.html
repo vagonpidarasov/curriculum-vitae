@@ -1,25 +1,12 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <a routerLink="/" routerLinkActive="active" i18n>Overview</a>
-        <a routerLink="/interview-questions" routerLinkActive="active" i18n>Interview</a>
-
-        <span class="flex-auto"></span>
-
-        <button
-            *ngIf="false"
-            mat-button
-            class="sign-in-button"
-            (click)="signIn()"
-            i18n
-        >Sign In</button>
-
-        <button
-            *ngIf="isAuthenticated"
-            mat-button
-            class="sign-out-button"
-            (click)="signOut()"
-            i18n
-        >Sign Out</button>
-        <social></social>
+    <mat-toolbar-row class="desktop">
+        <a [href]="employee.phoneNumber | tel" target="_blank" class="contact" rel="noopener">{{employee.phoneNumber}}</a>
+        <a [href]="employee.emailAddress | mailto" target="_blank" class="contact"rel="noopener">{{employee.emailAddress}}</a>
+        <a [href]="employee.linkedin" target="_blank" rel="noopener" class="contact">LinkedIn</a>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="mobile">
+        <a [href]="employee.phoneNumber | tel" target="_blank" class="contact" rel="noopener">phone</a>
+        <a [href]="employee.emailAddress | mailto" target="_blank" class="contact"rel="noopener">email</a>
+        <a [href]="employee.linkedin" target="_blank" rel="noopener" class="contact">LinkedIn</a>
     </mat-toolbar-row>
 </mat-toolbar>

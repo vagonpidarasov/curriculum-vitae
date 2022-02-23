@@ -1,11 +1,2 @@
-<h1 *ngIf="employee">{{employee.name}}</h1>
-<mat-card-subtitle *ngIf="employee" class="employee-title">{{employee.title}}</mat-card-subtitle>
-<mat-card-subtitle *ngIf="employee" class="employee-title">
-    <a [href]="employee.emailAddress | mailto" target="_blank" rel="noopener">{{employee.emailAddress}}</a>
-</mat-card-subtitle>
-<mat-card-subtitle *ngIf="employee" class="employee-title">
-    <a [href]="employee.phoneNumber | tel" target="_blank" rel="noopener">{{employee.phoneNumber}}</a>
-</mat-card-subtitle>
-<mat-card-subtitle *ngIf="address" class="employee-title">
-    <a [href]="employee.location | mapLocationQuery" target="_blank" rel="noopener">{{address}}</a>
-</mat-card-subtitle>
+<h1>{{employee.name}}</h1>
+<mat-card-subtitle *ngIf="employee" class="employee-title">{{employee.title}}, {{address}}</mat-card-subtitle>
